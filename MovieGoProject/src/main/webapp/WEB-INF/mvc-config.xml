@@ -24,9 +24,13 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- 정적 리소스 등록 -->
+	<!-- default resource -->
 	<mvc:resources location="/resources/js/" mapping="/js/**" />
 	<mvc:resources location="/resources/css/" mapping="/css/**" />
 	<mvc:resources location="/resources/img/" mapping="/img/**"/>
+	<!-- header resource -->
+	<mvc:resources location="/resources/js/header" mapping="/header/js/**" />  
+	<mvc:resources location="/resources/css/header" mapping="/header/css/**" />
+	
 
 </beans>

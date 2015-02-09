@@ -5,13 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
+<!-- video css -->
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bigvideo.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/content.css">
+<!-- form css  -->
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
 <script src="<%=request.getContextPath() %>/js/modernizr-2.5.3.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-
 	<!-- contents -->
     <header>
         <div class="mockup-content">

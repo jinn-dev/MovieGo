@@ -4,9 +4,9 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="text/html;charset=euc-kr">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="<%=request.getContextPath() %>/css/default.css" rel="stylesheet"/>
-<link href="<%=request.getContextPath() %>/css/component.css" rel="stylesheet" />
-<script src="<%=request.getContextPath() %>/js/modernizr.custom.js"></script>
+<link href="<%=request.getContextPath() %>/header/css/default.css" rel="stylesheet"/>
+<link href="<%=request.getContextPath() %>/header/css/component.css" rel="stylesheet" />
+<script src="<%=request.getContextPath() %>/header/js/modernizr.custom.js"></script>
 <title>MOVIE GO</title>
 </head>
 <body>
@@ -59,7 +59,7 @@
 		</div>
 	</div>
 	<!-- classie.js by @desandro: https://github.com/desandro/classie -->
-	<script src="<%=request.getContextPath() %>/js/classie.js"></script>
-	<script src="<%=request.getContextPath() %>/js/cbpAnimatedHeader.js"></script>
+	<script src="<%=request.getContextPath() %>/header/js/classie.js"></script>
+	<script src="<%=request.getContextPath() %>/header/js/cbpAnimatedHeader.js"></script>
 </body>
 </html>
