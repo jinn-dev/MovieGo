@@ -6,75 +6,37 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
 <!-- video css -->
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bigvideo.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/content.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/bigvideo.css">
+<script src="<%=request.getContextPath()%>/main/js/modernizr-2.5.3.min.js"></script>
 <!-- form css  -->
 <link rel="stylesheet" type="text/css" href="css/demo.css" />
-<script src="<%=request.getContextPath() %>/js/modernizr-2.5.3.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- contents -->
-    <header>
-        <div class="mockup-content">
-					<div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
-						<button type="button">Login</button>
-						<div class="morph-content">
-							<div>
-								<div class="content-style-form content-style-form-1">
-									<span class="icon icon-close">Close the dialog</span>
-									<h2>Login</h2>
-									<form>
-										<p><label>Email</label><input type="text" /></p>
-										<p><label>Password</label><input type="password" /></p>
-										<p><button>Login</button></p>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div><!-- morph-button -->
-					<strong class="joiner">or</strong>
-					<div class="morph-button morph-button-modal morph-button-modal-3 morph-button-fixed">
-						<button type="button">Signup</button>
-						<div class="morph-content">
-							<div>
-								<div class="content-style-form content-style-form-2">
-									<span class="icon icon-close">Close the dialog</span>
-									<h2>Sign Up</h2>
-									<form>
-										<p><label>Email</label><input type="text" /></p>
-										<p><label>Password</label><input type="password" /></p>
-										<p><label>Repeat Password</label><input type="password" /></p>
-										<p><button>Sign Up</button></p>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div><!-- morph-button -->
-				</div><!-- /form-mockup -->
-    </header>
-
-	<!-- video -->
+	<!-- Login & Join Form -->
+	<header>
+	<h1>Contents</h1>
+	</header>
 	<div class="wrapper">
-        <div class="screen" id="screen-3" data-video="vid/camera.mp4">
-            <img src="<%=request.getContextPath() %>/img/camera.jpg" class="big-image" />
-            <h1 class="video-title">MOVIE <font color="#a52127">GO</font></h1>
-        </div>
-    </div>
-
-
-    <!-- BigVideo Dependencies -->
+		<div class="screen" id="screen-3" data-video="vid/camera.mp4">
+			<img src="<%=request.getContextPath() %>/img/camera.jpg" class="big-image" />
+			<h1 class="video-title">MOVIE GO</h1>
+		</div>
+	</div>
+	
+	<!-- BigVideo Dependencies -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.8.1.min.js"><\/script>')</script>
     <script src="<%=request.getContextPath() %>/js/jquery-ui-1.8.22.custom.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/jquery.imagesloaded.min.js"></script>
-    <script src="<%=request.getContextPath() %>/http://vjs.zencdn.net/c/video.js"></script>
-
-    <!-- BigVideo -->
+    <script src="<%=request.getContextPath() %>/main/js/jquery.imagesloaded.min.js"></script>
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+	
+	 <!-- BigVideo -->
     <script src="js/bigvideo.js"></script>
-
-    <!-- Tutorial Demo -->
+	
+	 <!-- Tutorial Demo -->
     <script src="js/jquery.transit.min.js"></script>
     <script>
         $(function() {
@@ -110,6 +72,14 @@
                 $window.on('resize', adjustImagePositioning);
             }
             
+            // Next button click goes to next div
+            $('#next-btn').on('click', function(e) {
+                e.preventDefault();
+                if (!isTransitioning) {
+                    next();
+                }
+            });
+
             function showVideo() {
                 BV.show($('#screen-'+screenIndex).attr('data-video'),{ambient:true});
             }
@@ -137,54 +107,54 @@
                     onTransitionComplete();
             }
 
-            /* 
-					function onVideoLoaded() {
-						    $('#screen-'+screenIndex).find('.big-image').transit({'opacity':0},500)
-						}
-						 
-						function onTransitionComplete() {
-						    isTransitioning = false;
-						    if (!isTouch) {
-						        $('#big-video-wrap').css('left',0);
-						        showVideo();
-						    }
-						} 
-						  
-						 function adjustImagePositioning() {
-						    $bigImage.each(function(){
-						        var $img = $(this),
-						            img = new Image();
+            function onVideoLoaded() {
+                $('#screen-'+screenIndex).find('.big-image').transit({'opacity':0},500)
+            }
 
-						        img.src = $img.attr('src');
+            function onTransitionComplete() {
+                isTransitioning = false;
+                if (!isTouch) {
+                    $('#big-video-wrap').css('left',0);
+                    showVideo();
+                }
+            }
 
-						        var windowWidth = $window.width(),
-						            windowHeight = $window.height(),
-						            r_w = windowHeight / windowWidth,
-						            i_w = img.width,
-						            i_h = img.height,
-						            r_i = i_h / i_w,
-						            new_w, new_h, new_left, new_top;
+            function adjustImagePositioning() {
+                $bigImage.each(function(){
+                    var $img = $(this),
+                        img = new Image();
 
-						        if( r_w > r_i ) {
-						            new_h   = windowHeight;
-						            new_w   = windowHeight / r_i;
-						        }
-						        else {
-						            new_h   = windowWidth * r_i;
-						            new_w   = windowWidth;
-						        }
+                    img.src = $img.attr('src');
 
-						        $img.css({
-						            width   : new_w,
-						            height  : new_h,
-						            left    : ( windowWidth - new_w ) / 2,
-						            top     : ( windowHeight - new_h ) / 2
-						        })
+                    var windowWidth = $window.width(),
+                        windowHeight = $window.height(),
+                        r_w = windowHeight / windowWidth,
+                        i_w = img.width,
+                        i_h = img.height,
+                        r_i = i_h / i_w,
+                        new_w, new_h, new_left, new_top;
 
-						    });
+                    if( r_w > r_i ) {
+                        new_h   = windowHeight;
+                        new_w   = windowHeight / r_i;
+                    }
+                    else {
+                        new_h   = windowWidth * r_i;
+                        new_w   = windowWidth;
+                    }
 
-						} */
-					});
-				</script>
+                    $img.css({
+                        width   : new_w,
+                        height  : new_h,
+                        left    : ( windowWidth - new_w ) / 2,
+                        top     : ( windowHeight - new_h ) / 2
+                    })
+
+                });
+
+            }
+        });
+    </script>
+	
 </body>
 </html>

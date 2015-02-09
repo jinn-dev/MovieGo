@@ -54,12 +54,46 @@
 						umami four loko vinyl lomo hoodie wolf banh mi.</p>
 				</div>
 			</section>
-			
+			<section>
+				<div>
+					<p>Cardigan gluten-free photo booth pug, occupy ethnic bicycle
+						rights disrupt ennui jean shorts art party raw denim Carles Tonx
+						artisan. Freegan aesthetic skateboard, forage iPhone ugh umami
+						tumblr McSweeney's chillwave biodiesel vinyl pitchfork gentrify
+						asymmetrical. Sartorial synth wayfarers, freegan pork belly
+						post-ironic ennui salvia direct trade shoreditch Wes Anderson
+						pitchfork. Mumblecore Truffaut american apparel, Austin
+						single-origin coffee post-ironic tofu retro Vice fanny pack
+						narwhal Neutra skateboard 90's. Kogi sartorial post-ironic
+						gentrify helvetica McSweeney's Schlitz, mustache 8-bit polaroid
+						hella flexitarian viral kale chips tote bag. Banh mi PBR
+						typewriter Banksy. Beard messenger bag deep v, keffiyeh lo-fi
+						umami four loko vinyl lomo hoodie wolf banh mi.</p>
+				</div>
+			</section>
+			<section>
+				<div>
+					<p>Cardigan gluten-free photo booth pug, occupy ethnic bicycle
+						rights disrupt ennui jean shorts art party raw denim Carles Tonx
+						artisan. Freegan aesthetic skateboard, forage iPhone ugh umami
+						tumblr McSweeney's chillwave biodiesel vinyl pitchfork gentrify
+						asymmetrical. Sartorial synth wayfarers, freegan pork belly
+						post-ironic ennui salvia direct trade shoreditch Wes Anderson
+						pitchfork. Mumblecore Truffaut american apparel, Austin
+						single-origin coffee post-ironic tofu retro Vice fanny pack
+						narwhal Neutra skateboard 90's. Kogi sartorial post-ironic
+						gentrify helvetica McSweeney's Schlitz, mustache 8-bit polaroid
+						hella flexitarian viral kale chips tote bag. Banh mi PBR
+						typewriter Banksy. Beard messenger bag deep v, keffiyeh lo-fi
+						umami four loko vinyl lomo hoodie wolf banh mi.</p>
+				</div>
+			</section>
 			
 		</div>
 	</div>
 	<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+	<!-- 스크롤바 내릴때 header size 바뀌는 js -->
 	<script src="<%=request.getContextPath() %>/header/js/classie.js"></script>
-	<script src="<%=request.getContextPath() %>/header/js/cbpAnimatedHeader.js"></script>
+	<script src="<%=request.getContextPath() %>/header/js/cbpAnimatedHeader.js"></script> 
 </body>
 </html>
