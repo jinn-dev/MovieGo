@@ -22,7 +22,7 @@
 			$(this).val('');
 		}).blur(function() {
 			if ($(this).val() == "") {
-				$(this).val("");
+				$(this).val("아이디는 영문/숫자 10자리 입력");
 			}
 		});
 	});
@@ -42,7 +42,6 @@
 		<div class="mockup-content">
 			<!-- 로그인 -->
 			<div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
-				
 				<button type="button">Login</button>
 				<div class="morph-content">
 					<div>
@@ -59,9 +58,8 @@
 								<p>
 									<button>LOGIN</button>
 								</p>
-								<c:url value="/idConfirm" var="url" />
-									<a href="#" onClick="window.open('${url }','client_window', 'resizable=no scrollbars=no width=500 height=500')">ID/비밀번호 찾기</a>
-								</div>
+								<c:url value="/userInfo" var="url" />
+									<a href="#" id="idpw" onClick="window.open('${url }','client_window', 'resizable=no scrollbars=no width=300 height=600')">ID/비밀번호 찾기</a>
 							</form>
 						</div>
 					</div>
@@ -79,7 +77,7 @@
 							<h2>SIGN UP</h2>
 							<form id="joinform" name="joinform">
 								<p>
-									<label>ID</label><input type="text" id="joinid" name="joinid" value="아이디는 영문/숫자 10자리 입력 " required />
+									<label>ID</label><input type="text" id="joinid" name="joinid" value="아이디는 영문/숫자 10자리 입력" required />
 								</p>
 								<p>
 									<label>Password</label><input type="password" id="pass" name="pass" required />

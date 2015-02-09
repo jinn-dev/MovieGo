@@ -16,7 +16,7 @@ public class ControllerTest {
 	
 	@RequestMapping(value="/main",  method=RequestMethod.GET)
 	public String mainTest(){
-		return "/main";
+		return "main";
 	}
 	
 
@@ -27,9 +27,9 @@ public class ControllerTest {
 		return "test";
 	}
 
-	@RequestMapping(value="/idConfirm",  method=RequestMethod.GET)
+	@RequestMapping(value="/userInfo",  method=RequestMethod.GET)
 	public String idConfirmTest(){
-		return "/find_user_info";
+		return "find_user_info";
 	}
 	
 
