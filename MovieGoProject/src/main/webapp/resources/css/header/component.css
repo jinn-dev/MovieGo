@@ -1,4 +1,5 @@
 @CHARSET "UTF-8";
+/* header css */
 .cbp-af-header {
 	position: fixed;
 	top: 0;
@@ -78,6 +79,7 @@
 }
 
 /* Example Media Queries */
+/* 
 @media screen and (max-width: 55em) {
 	
 	.cbp-af-header .cbp-af-inner {
@@ -126,4 +128,4 @@
 	.cbp-af-header.cbp-af-header-shrink nav a {
 		line-height: 1;
 	}
-}
+} */

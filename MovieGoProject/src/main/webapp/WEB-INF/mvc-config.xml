@@ -8,12 +8,14 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- Uncomment and your base-package here: <context:component-scan base-package="org.springframework.samples.web"/> -->
+	
+	<!-- @MVC와 관련된 번들만 등록 -->
+	<context:component-scan base-package="com.mvg.controller"></context:component-scan>
 
 	<mvc:annotation-driven />
 
 	<!-- 단순한 view 페이지 등록 -->
 	<mvc:view-controller path="/" view-name="header" />
-	<mvc:view-controller path="/" view-name="main" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -22,9 +24,16 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- 정적 리소스 등록 -->
+	<!-- default resource -->
 	<mvc:resources location="/resources/js/" mapping="/js/**" />
 	<mvc:resources location="/resources/css/" mapping="/css/**" />
 	<mvc:resources location="/resources/img/" mapping="/img/**"/>
+	<!--  main resource -->
+	<mvc:resources location="/resources/js/main/" mapping="/main/js/**" />
+	<mvc:resources location="/resources/css/main/" mapping="/main/css/**" />
+	<!-- header resource -->
+	<mvc:resources location="/resources/js/header/" mapping="/header/js/**" />  
+	<mvc:resources location="/resources/css/header/" mapping="/header/css/**" />
+	
 
 </beans>

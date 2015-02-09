@@ -5,38 +5,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bigvideo.css">
-<script src="<%=request.getContextPath() %>/js/modernizr-2.5.3.min.js"></script>
+<!-- video css -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/bigvideo.css">
+<script src="<%=request.getContextPath()%>/main/js/modernizr-2.5.3.min.js"></script>
+<!-- form css  -->
+<link rel="stylesheet" type="text/css" href="css/demo.css" />
 <title>Insert title here</title>
 </head>
 <body>
-
-	<!-- contents -->
-    <header>
-        <h1>View Contents</h1>
-    </header>
-
-	<!-- video -->
+	<!-- Login & Join Form -->
+	<header>
+	<h1>Contents</h1>
+	</header>
 	<div class="wrapper">
-        <div class="screen" id="screen-3" data-video="vid/camera.mp4">
-            <img src="<%=request.getContextPath() %>/img/camera.jpg" class="big-image" />
-            <h1 class="video-title"></h1>
-        </div>
-    </div>
-
-
-    <!-- BigVideo Dependencies -->
+		<div class="screen" id="screen-3" data-video="vid/camera.mp4">
+			<img src="<%=request.getContextPath() %>/img/camera.jpg" class="big-image" />
+			<h1 class="video-title">MOVIE GO</h1>
+		</div>
+	</div>
+	
+	<!-- BigVideo Dependencies -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.8.1.min.js"><\/script>')</script>
     <script src="<%=request.getContextPath() %>/js/jquery-ui-1.8.22.custom.min.js"></script>
-    <script src="<%=request.getContextPath() %>/js/jquery.imagesloaded.min.js"></script>
-    <script src="<%=request.getContextPath() %>/http://vjs.zencdn.net/c/video.js"></script>
-
-    <!-- BigVideo -->
+    <script src="<%=request.getContextPath() %>/main/js/jquery.imagesloaded.min.js"></script>
+    <script src="http://vjs.zencdn.net/c/video.js"></script>
+	
+	 <!-- BigVideo -->
     <script src="js/bigvideo.js"></script>
-
-    <!-- Tutorial Demo -->
+	
+	 <!-- Tutorial Demo -->
     <script src="js/jquery.transit.min.js"></script>
     <script>
         $(function() {
@@ -155,5 +155,6 @@
             }
         });
     </script>
+	
 </body>
 </html>
