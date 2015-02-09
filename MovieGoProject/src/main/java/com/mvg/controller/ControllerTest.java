@@ -19,10 +19,18 @@ public class ControllerTest {
 		return "/main";
 	}
 	
+
 	@RequestMapping(value="/test", method=RequestMethod.GET) 
 	public String testMethod(Model model) {
 		int result = service.getUserCntService();
 		model.addAttribute("cnt", result);
 		return "test";
 	}
+
+	@RequestMapping(value="/idConfirm",  method=RequestMethod.GET)
+	public String idConfirmTest(){
+		return "/find_user_info";
+	}
+	
+
 }

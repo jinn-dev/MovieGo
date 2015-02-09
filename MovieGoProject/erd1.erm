@@ -96,9 +96,9 @@
 			</export_image_setting>
 			<export_java_setting>
 				<java_output></java_output>
-				<package_name></package_name>
+				<package_name>entity</package_name>
 				<class_name_suffix></class_name_suffix>
-				<src_file_encoding></src_file_encoding>
+				<src_file_encoding>UTF-8</src_file_encoding>
 				<with_hibernate>false</with_hibernate>
 			</export_java_setting>
 			<export_testdata_setting>
@@ -135,7 +135,11 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2015-02-08 16:26:14</creation_date>
+<<<<<<< HEAD
 			<updated_date>2015-02-09 17:46:17</updated_date>
+=======
+			<updated_date>2015-02-09 15:10:21</updated_date>
+>>>>>>> branch 'master' of https://github.com/kjeun/MovieGo.git
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
