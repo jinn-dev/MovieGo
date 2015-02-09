@@ -31,6 +31,7 @@
 	<!--  main resource -->
 	<mvc:resources location="/resources/js/main/" mapping="/main/js/**" />
 	<mvc:resources location="/resources/css/main/" mapping="/main/css/**" />
+	<mvc:resources location="/reousrce/fonts/" mapping="/main/fonts/**"/>
 	<!-- header resource -->
 	<mvc:resources location="/resources/js/header/" mapping="/header/js/**" />  
 	<mvc:resources location="/resources/css/header/" mapping="/header/css/**" />

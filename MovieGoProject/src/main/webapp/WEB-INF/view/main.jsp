@@ -7,150 +7,146 @@
 <!-- video css -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/bigvideo.css">
-<script src="<%=request.getContextPath()%>/main/js/modernizr-2.5.3.min.js"></script>
+<!-- content css -->
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/demo.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/component.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/content.css" />
 <title>MOVIE GO MAIN</title>
 </head>
 <body>
-	  <header>
-	 	<p>Contents</p>
-    </header>
+	<div class="wrapper">
+		<div class="screen" id="screen-3" data-video="vid/camera.mp4">
+			<img src="<%=request.getContextPath()%>/img/camera.jpg"
+				class="big-image" />
+			<h1 class="video-title">MOVIE GO</h1>
+		</div>
+	</div>
 
-    <div class="wrapper">
-        <div class="screen" id="screen-3" data-video="vid/camera.mp4">
-            <img src="<%=request.getContextPath() %>/img/camera.jpg" class="big-image" />
-            <h1 class="video-title">MOVIE GO</h1>
-        </div>
-    </div>
-    
-     <!-- BigVideo Dependencies -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery-1.8.1.min.js"><\/script>')</script>
-    <script src="<%=request.getContextPath() %>/js/jquery-ui-1.8.22.custom.min.js"></script>
-    <script src="<%=request.getContextPath() %>/main/js/jquery.imagesloaded.min.js"></script>
-    <script src="http://vjs.zencdn.net/c/video.js"></script>
+	<header>
+	<div class="mockup-content">
+		<div
+			class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
+			<button type="button">Login</button>
+			<div class="morph-content">
+				<div>
+					<div class="content-style-form content-style-form-1">
+						<span class="icon icon-close">Close the dialog</span>
+						<h2>Login</h2>
+						<form>
+							<p>
+								<label>Email</label><input type="text" />
+							</p>
+							<p>
+								<label>Password</label><input type="password" />
+							</p>
+							<p>
+								<button>Login</button>
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- morph-button -->
+		<strong class="joiner">or</strong>
+		<div
+			class="morph-button morph-button-modal morph-button-modal-3 morph-button-fixed">
+			<button type="button">Signup</button>
+			<div class="morph-content">
+				<div>
+					<div class="content-style-form content-style-form-2">
+						<span class="icon icon-close">Close the dialog</span>
+						<h2>Sign Up</h2>
+						<form>
+							<p>
+								<label>Email</label><input type="text" />
+							</p>
+							<p>
+								<label>Password</label><input type="password" />
+							</p>
+							<p>
+								<label>Repeat Password</label><input type="password" />
+							</p>
+							<p>
+								<button>Sign Up</button>
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- morph-button -->
+	</div>
+	<!-- /form-mockup --> </header>
+	<script src="<%=request.getContextPath()%>/main/js/classie.js"></script>
+		<script src="<%=request.getContextPath()%>/main/js/uiMorphingButton_fixed.js"></script>
+		<script>
+			(function() {
+				var docElem = window.document.documentElement, didScroll, scrollPosition;
 
-    <!-- BigVideo -->
-    <script src="<%=request.getContextPath() %>/main/js/bigvideo.js"></script>
+				// trick to prevent scrolling when opening/closing button
+				function noScrollFn() {
+					window.scrollTo( scrollPosition ? scrollPosition.x : 0, scrollPosition ? scrollPosition.y : 0 );
+				}
 
-    <!-- Tutorial Demo -->
-    <script src="<%=request.getContextPath() %>/main/js/jquery.transit.min.js"></script>
-    <script>
-        $(function() {
+				function noScroll() {
+					window.removeEventListener( 'scroll', scrollHandler );
+					window.addEventListener( 'scroll', noScrollFn );
+				}
 
-            // Use Modernizr to detect for touch devices, 
-            // which don't support autoplay and may have less bandwidth, 
-            // so just give them the poster images instead
-            var screenIndex = 1,
-                numScreens = $('.screen').length,
-                isTransitioning = false,
-                transitionDur = 1000,
-                BV,
-                videoPlayer,
-                isTouch = Modernizr.touch,
-                $bigImage = $('.big-image'),
-                $window = $(window);
-            
-            if (!isTouch) {
-                // initialize BigVideo
-                BV = new $.BigVideo({forceAutoplay:isTouch});
-                BV.init();
-                showVideo();
-                
-                BV.getPlayer().addEvent('loadeddata', function() {
-                    onVideoLoaded();
-                });
+				function scrollFn() {
+					window.addEventListener( 'scroll', scrollHandler );
+				}
 
-                // adjust image positioning so it lines up with video
-                $bigImage
-                    .css('position','relative')
-                    .imagesLoaded(adjustImagePositioning);
-                // and on window resize
-                $window.on('resize', adjustImagePositioning);
-            }
-            
-            // Next button click goes to next div
-            $('#next-btn').on('click', function(e) {
-                e.preventDefault();
-                if (!isTransitioning) {
-                    next();
-                }
-            });
+				function canScroll() {
+					window.removeEventListener( 'scroll', noScrollFn );
+					scrollFn();
+				}
 
-            function showVideo() {
-                BV.show($('#screen-'+screenIndex).attr('data-video'),{ambient:true});
-            }
+				function scrollHandler() {
+					if( !didScroll ) {
+						didScroll = true;
+						setTimeout( function() { scrollPage(); }, 60 );
+					}
+				};
 
-            function next() {
-                isTransitioning = true;
-                
-                // update video index, reset image opacity if starting over
-                if (screenIndex === numScreens) {
-                    $bigImage.css('opacity',1);
-                    screenIndex = 1;
-                } else {
-                    screenIndex++;
-                }
-                
-                if (!isTouch) {
-                    $('#big-video-wrap').transit({'left':'-100%'},transitionDur)
-                }
-                    
-                (Modernizr.csstransitions)?
-                    $('.wrapper').transit(
-                        {'left':'-'+(100*(screenIndex-1))+'%'},
-                        transitionDur,
-                        onTransitionComplete):
-                    onTransitionComplete();
-            }
+				function scrollPage() {
+					scrollPosition = { x : window.pageXOffset || docElem.scrollLeft, y : window.pageYOffset || docElem.scrollTop };
+					didScroll = false;
+				};
 
-            function onVideoLoaded() {
-                $('#screen-'+screenIndex).find('.big-image').transit({'opacity':0},500)
-            }
+				scrollFn();
 
-            function onTransitionComplete() {
-                isTransitioning = false;
-                if (!isTouch) {
-                    $('#big-video-wrap').css('left',0);
-                    showVideo();
-                }
-            }
+				[].slice.call( document.querySelectorAll( '.morph-button' ) ).forEach( function( bttn ) {
+					new UIMorphingButton( bttn, {
+						closeEl : '.icon-close',
+						onBeforeOpen : function() {
+							// don't allow to scroll
+							noScroll();
+						},
+						onAfterOpen : function() {
+							// can scroll again
+							canScroll();
+						},
+						onBeforeClose : function() {
+							// don't allow to scroll
+							noScroll();
+						},
+						onAfterClose : function() {
+							// can scroll again
+							canScroll();
+						}
+					} );
+				} );
 
-            function adjustImagePositioning() {
-                $bigImage.each(function(){
-                    var $img = $(this),
-                        img = new Image();
+				// for demo purposes only
+				[].slice.call( document.querySelectorAll( 'form button' ) ).forEach( function( bttn ) { 
+					bttn.addEventListener( 'click', function( ev ) { ev.preventDefault(); } );
+				} );
+			})();
+		</script>
 
-                    img.src = $img.attr('src');
-
-                    var windowWidth = $window.width(),
-                        windowHeight = $window.height(),
-                        r_w = windowHeight / windowWidth,
-                        i_w = img.width,
-                        i_h = img.height,
-                        r_i = i_h / i_w,
-                        new_w, new_h, new_left, new_top;
-
-                    if( r_w > r_i ) {
-                        new_h   = windowHeight;
-                        new_w   = windowHeight / r_i;
-                    }
-                    else {
-                        new_h   = windowWidth * r_i;
-                        new_w   = windowWidth;
-                    }
-
-                    $img.css({
-                        width   : new_w,
-                        height  : new_h,
-                        left    : ( windowWidth - new_w ) / 2,
-                        top     : ( windowHeight - new_h ) / 2
-                    })
-
-                });
-
-            }
-        });
-    </script>
 </body>
 </html>
