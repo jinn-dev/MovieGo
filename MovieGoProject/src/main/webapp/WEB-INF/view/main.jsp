@@ -11,8 +11,6 @@
 
 <!-- content css -->
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/normalize.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/demo.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/component.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/content.css" />
 <script src="<%=request.getContextPath()%>/main/js/modernizr.custom.js"></script>
@@ -36,7 +34,7 @@
 				<div>
 					<div class="content-style-form content-style-form-1">
 						<span class="icon icon-close">Close the dialog</span>
-						<h2>Login</h2>
+						<h2>LOGIN</h2>
 						<form>
 							<p>
 								<label>Email</label><input type="text" />
@@ -45,8 +43,9 @@
 								<label>Password</label><input type="password" />
 							</p>
 							<p>
-								<button>Login</button>
+								<button>LOGIN</button>
 							</p>
+							<div id="idpw"><a href="#">ID/비밀번호 찾기</a></div>
 						</form>
 					</div>
 				</div>
