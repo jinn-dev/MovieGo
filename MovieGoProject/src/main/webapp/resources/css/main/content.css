@@ -10,6 +10,11 @@
 		url('../fonts/icomoon/icomoon.svg?i64fx9#icomoon') format('svg');
 }
 
+#idpw{
+	color: #0e0e0e;
+	text-align: center;
+}
+
 .icon-close {
 	z-index: 100;
 	display: block;
@@ -206,7 +211,7 @@
 	width: 100%;
 	border: 2px solid #ebd3bd;
 	background: transparent;
-	color: #b09a86;
+	color: #5D5D5D;
 	font-weight: 300;
 	font-size: 2.2em;
 }
@@ -308,7 +313,7 @@
 	-webkit-transition-delay: 0.5s;
 	transition-delay: 0.5s;
 }
-
+ 
 .morph-button.open .content-style-form-2 h2,
 .morph-button.open .content-style-form-2 p,
 .morph-button.open .content-style-form-2 .icon-close {
@@ -317,6 +322,7 @@
 	transform: translateY(0);
 }
 
+/* 
 .content-style-form-4 form {
 	padding: 30px;
 	background: #fff;
@@ -362,8 +368,9 @@
 	-webkit-transition-delay: 0.35s;
 	transition-delay: 0.35s;
 }
-
-.content-style-social {
+*/
+/* 
+ .content-style-social {
 	padding: 30px;
 	text-align: left;
 }
@@ -553,20 +560,5 @@
 		right: 5px;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ */
 
