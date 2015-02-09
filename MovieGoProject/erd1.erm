@@ -96,9 +96,9 @@
 			</export_image_setting>
 			<export_java_setting>
 				<java_output></java_output>
-				<package_name></package_name>
+				<package_name>entity</package_name>
 				<class_name_suffix></class_name_suffix>
-				<src_file_encoding></src_file_encoding>
+				<src_file_encoding>UTF-8</src_file_encoding>
 				<with_hibernate>false</with_hibernate>
 			</export_java_setting>
 			<export_testdata_setting>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2015-02-08 16:26:14</creation_date>
-			<updated_date>2015-02-09 13:58:39</updated_date>
+			<updated_date>2015-02-09 15:10:21</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -3207,7 +3207,7 @@
 	</test_data_list>
 	<sequence_set>
 		<sequence>
-			<name>SEQ_reservations_reservation_id</name>
+			<name>SEQ_cancellations_cancel_id</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value></min_value>
@@ -3222,7 +3222,22 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>SEQ_nowmovies_nowmovie_id</name>
+			<name>SEQ_comments_comment_id</name>
+			<schema></schema>
+			<increment>1</increment>
+			<min_value></min_value>
+			<max_value></max_value>
+			<start>1</start>
+			<cache></cache>
+			<nocache>false</nocache>
+			<cycle>false</cycle>
+			<order>false</order>
+			<description></description>
+			<data_type></data_type>
+			<decimal_size>0</decimal_size>
+		</sequence>
+		<sequence>
+			<name>SEQ_customerboards_board_id</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value></min_value>
@@ -3252,7 +3267,37 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>SEQ_wishlists_wish_id</name>
+			<name>SEQ_nowmovies_nowmovie_id</name>
+			<schema></schema>
+			<increment>1</increment>
+			<min_value></min_value>
+			<max_value></max_value>
+			<start>1</start>
+			<cache></cache>
+			<nocache>false</nocache>
+			<cycle>false</cycle>
+			<order>false</order>
+			<description></description>
+			<data_type></data_type>
+			<decimal_size>0</decimal_size>
+		</sequence>
+		<sequence>
+			<name>SEQ_reservationinfo_reservationinfo_id</name>
+			<schema></schema>
+			<increment>1</increment>
+			<min_value></min_value>
+			<max_value></max_value>
+			<start>1</start>
+			<cache></cache>
+			<nocache>false</nocache>
+			<cycle>false</cycle>
+			<order>false</order>
+			<description></description>
+			<data_type></data_type>
+			<decimal_size>0</decimal_size>
+		</sequence>
+		<sequence>
+			<name>SEQ_reservations_reservation_id</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value></min_value>
@@ -3297,52 +3342,7 @@
 			<decimal_size>0</decimal_size>
 		</sequence>
 		<sequence>
-			<name>SEQ_customerboards_board_id</name>
-			<schema></schema>
-			<increment>1</increment>
-			<min_value></min_value>
-			<max_value></max_value>
-			<start>1</start>
-			<cache></cache>
-			<nocache>false</nocache>
-			<cycle>false</cycle>
-			<order>false</order>
-			<description></description>
-			<data_type></data_type>
-			<decimal_size>0</decimal_size>
-		</sequence>
-		<sequence>
-			<name>SEQ_comments_comment_id</name>
-			<schema></schema>
-			<increment>1</increment>
-			<min_value></min_value>
-			<max_value></max_value>
-			<start>1</start>
-			<cache></cache>
-			<nocache>false</nocache>
-			<cycle>false</cycle>
-			<order>false</order>
-			<description></description>
-			<data_type></data_type>
-			<decimal_size>0</decimal_size>
-		</sequence>
-		<sequence>
-			<name>SEQ_cancellations_cancel_id</name>
-			<schema></schema>
-			<increment>1</increment>
-			<min_value></min_value>
-			<max_value></max_value>
-			<start>1</start>
-			<cache></cache>
-			<nocache>false</nocache>
-			<cycle>false</cycle>
-			<order>false</order>
-			<description></description>
-			<data_type></data_type>
-			<decimal_size>0</decimal_size>
-		</sequence>
-		<sequence>
-			<name>SEQ_reservationinfo_reservationinfo_id</name>
+			<name>SEQ_wishlists_wish_id</name>
 			<schema></schema>
 			<increment>1</increment>
 			<min_value></min_value>
@@ -3359,15 +3359,21 @@
 	</sequence_set>
 	<trigger_set>
 		<trigger>
-			<name>TRI_reservations_reservation_id</name>
+			<name>TRI_cancellations_cancel_id</name>
 			<schema></schema>
-			<sql>BEFORE INSERT ON reservations&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_reservations_reservation_id.nextval&#x0D;&#x0A;&#x09;INTO :new.reservation_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
+			<sql>BEFORE INSERT ON cancellations&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_cancellations_cancel_id.nextval&#x0D;&#x0A;&#x09;INTO :new.cancel_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
 			<description></description>
 		</trigger>
 		<trigger>
-			<name>TRI_nowmovies_nowmovie_id</name>
+			<name>TRI_comments_comment_id</name>
 			<schema></schema>
-			<sql>BEFORE INSERT ON nowmovies&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_nowmovies_nowmovie_id.nextval&#x0D;&#x0A;&#x09;INTO :new.nowmovie_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
+			<sql>BEFORE INSERT ON comments&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_comments_comment_id.nextval&#x0D;&#x0A;&#x09;INTO :new.comment_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
+			<description></description>
+		</trigger>
+		<trigger>
+			<name>TRI_customerboards_board_id</name>
+			<schema></schema>
+			<sql>BEFORE INSERT ON customerboards&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_customerboards_board_id.nextval&#x0D;&#x0A;&#x09;INTO :new.board_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
 			<description></description>
 		</trigger>
 		<trigger>
@@ -3377,9 +3383,21 @@
 			<description></description>
 		</trigger>
 		<trigger>
-			<name>TRI_wishlists_wish_id</name>
+			<name>TRI_nowmovies_nowmovie_id</name>
 			<schema></schema>
-			<sql>BEFORE INSERT ON wishlists&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_wishlists_wish_id.nextval&#x0D;&#x0A;&#x09;INTO :new.wish_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
+			<sql>BEFORE INSERT ON nowmovies&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_nowmovies_nowmovie_id.nextval&#x0D;&#x0A;&#x09;INTO :new.nowmovie_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
+			<description></description>
+		</trigger>
+		<trigger>
+			<name>TRI_reservationinfo_reservationinfo_id</name>
+			<schema></schema>
+			<sql>BEFORE INSERT ON reservationinfo&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_reservationinfo_reservationinfo_id.nextval&#x0D;&#x0A;&#x09;INTO :new.reservationinfo_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
+			<description></description>
+		</trigger>
+		<trigger>
+			<name>TRI_reservations_reservation_id</name>
+			<schema></schema>
+			<sql>BEFORE INSERT ON reservations&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_reservations_reservation_id.nextval&#x0D;&#x0A;&#x09;INTO :new.reservation_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
 			<description></description>
 		</trigger>
 		<trigger>
@@ -3395,27 +3413,9 @@
 			<description></description>
 		</trigger>
 		<trigger>
-			<name>TRI_customerboards_board_id</name>
+			<name>TRI_wishlists_wish_id</name>
 			<schema></schema>
-			<sql>BEFORE INSERT ON customerboards&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_customerboards_board_id.nextval&#x0D;&#x0A;&#x09;INTO :new.board_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
-			<description></description>
-		</trigger>
-		<trigger>
-			<name>TRI_comments_comment_id</name>
-			<schema></schema>
-			<sql>BEFORE INSERT ON comments&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_comments_comment_id.nextval&#x0D;&#x0A;&#x09;INTO :new.comment_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
-			<description></description>
-		</trigger>
-		<trigger>
-			<name>TRI_cancellations_cancel_id</name>
-			<schema></schema>
-			<sql>BEFORE INSERT ON cancellations&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_cancellations_cancel_id.nextval&#x0D;&#x0A;&#x09;INTO :new.cancel_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
-			<description></description>
-		</trigger>
-		<trigger>
-			<name>TRI_reservationinfo_reservationinfo_id</name>
-			<schema></schema>
-			<sql>BEFORE INSERT ON reservationinfo&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_reservationinfo_reservationinfo_id.nextval&#x0D;&#x0A;&#x09;INTO :new.reservationinfo_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
+			<sql>BEFORE INSERT ON wishlists&#x0D;&#x0A;FOR EACH ROW&#x0D;&#x0A;BEGIN&#x0D;&#x0A;&#x09;SELECT SEQ_wishlists_wish_id.nextval&#x0D;&#x0A;&#x09;INTO :new.wish_id&#x0D;&#x0A;&#x09;FROM dual;&#x0D;&#x0A;END</sql>
 			<description></description>
 		</trigger>
 	</trigger_set>
