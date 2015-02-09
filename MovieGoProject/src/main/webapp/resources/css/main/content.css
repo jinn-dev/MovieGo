@@ -199,17 +199,17 @@
 .content-style-form label {
 	display: block;
 	padding: 10px 0 0;
-	color: #d5bba4;
+	color: #5e5e5e;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	font-weight: bold;
+	/* font-weight: bold; */
 }
 
 .content-style-form input[type="text"],
 .content-style-form input[type="password"] {
 	padding: 10px;
 	width: 100%;
-	border: 2px solid #ebd3bd;
+	border: 2px solid #ffffff;
 	background: transparent;
 	color: #5D5D5D;
 	font-weight: 300;
@@ -218,8 +218,8 @@
 
 .content-style-form input[type="text"]:focus,
 .content-style-form input[type="password"]:focus {
-	border-color: #e75854;
-	color: #e75854;
+	border-color: #5D5D5D;
+	color: #5D5D5D;
 }
 
 .content-style-form input:focus {
@@ -232,13 +232,15 @@
 	padding: 1.5em;
 	width: 100%;
 	border: none;
-	background: #e75854;
+	background: #8C8C8C;
 	color: #f9f6e5;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 800;
 	font-size: 1.25em;
 }
+
+
 
 .content-style-form .icon-close {
 	top: 0;
@@ -248,7 +250,7 @@
 }
 
 .content-style-form .icon-close:hover {
-	color: #e75854;
+	color: #8C8C8C;
 }
 
 .js .content-style-form-1 h2,

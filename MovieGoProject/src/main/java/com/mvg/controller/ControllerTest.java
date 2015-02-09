@@ -11,4 +11,10 @@ public class ControllerTest {
 	public String mainTest(){
 		return "/main";
 	}
+	
+	@RequestMapping(value="/idConfirm",  method=RequestMethod.GET)
+	public String idConfirmTest(){
+		return "/find_user_info";
+	}
+	
 }
