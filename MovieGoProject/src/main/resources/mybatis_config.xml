@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="oracle.properties"></properties>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="com.mvg.entity.Cancellation" alias="Cancellation" />
+		<typeAlias type="com.mvg.entity.Comment" alias="Comment" />
+		<typeAlias type="com.mvg.entity.CustomerBoard" alias="CustomerBoard" />
+		<typeAlias type="com.mvg.entity.Evaluation" alias="Evaluation" />
+		<typeAlias type="com.mvg.entity.Movie" alias="Movie" />
+		<typeAlias type="com.mvg.entity.NowMovie" alias="NowMovie" />
+		<typeAlias type="com.mvg.entity.Reservation" alias="Reservation" />
+		<typeAlias type="com.mvg.entity.SeatInfo" alias="SeatInfo" />
+		<typeAlias type="com.mvg.entity.Theater" alias="Theater" />
+		<typeAlias type="com.mvg.entity.User" alias="User" />
+		<typeAlias type="com.mvg.entity.Wishlist" alias="Wishlist" />
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mappers/userMapper.xml" />
+	</mappers>
+</configuration>
