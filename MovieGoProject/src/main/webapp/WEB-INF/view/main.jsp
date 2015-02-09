@@ -14,14 +14,49 @@
 
 	<!-- contents -->
     <header>
-        <h1>View Contents</h1>
+        <div class="mockup-content">
+					<div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
+						<button type="button">Login</button>
+						<div class="morph-content">
+							<div>
+								<div class="content-style-form content-style-form-1">
+									<span class="icon icon-close">Close the dialog</span>
+									<h2>Login</h2>
+									<form>
+										<p><label>Email</label><input type="text" /></p>
+										<p><label>Password</label><input type="password" /></p>
+										<p><button>Login</button></p>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div><!-- morph-button -->
+					<strong class="joiner">or</strong>
+					<div class="morph-button morph-button-modal morph-button-modal-3 morph-button-fixed">
+						<button type="button">Signup</button>
+						<div class="morph-content">
+							<div>
+								<div class="content-style-form content-style-form-2">
+									<span class="icon icon-close">Close the dialog</span>
+									<h2>Sign Up</h2>
+									<form>
+										<p><label>Email</label><input type="text" /></p>
+										<p><label>Password</label><input type="password" /></p>
+										<p><label>Repeat Password</label><input type="password" /></p>
+										<p><button>Sign Up</button></p>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div><!-- morph-button -->
+				</div><!-- /form-mockup -->
     </header>
 
 	<!-- video -->
 	<div class="wrapper">
         <div class="screen" id="screen-3" data-video="vid/camera.mp4">
             <img src="<%=request.getContextPath() %>/img/camera.jpg" class="big-image" />
-            <h1 class="video-title"></h1>
+            <h1 class="video-title">MOVIE <font color="#a52127">GO</font></h1>
         </div>
     </div>
 
@@ -72,14 +107,6 @@
                 $window.on('resize', adjustImagePositioning);
             }
             
-            // Next button click goes to next div
-            $('#next-btn').on('click', function(e) {
-                e.preventDefault();
-                if (!isTransitioning) {
-                    next();
-                }
-            });
-
             function showVideo() {
                 BV.show($('#screen-'+screenIndex).attr('data-video'),{ambient:true});
             }
@@ -107,53 +134,54 @@
                     onTransitionComplete();
             }
 
-            function onVideoLoaded() {
-                $('#screen-'+screenIndex).find('.big-image').transit({'opacity':0},500)
-            }
+            /* 
+					function onVideoLoaded() {
+						    $('#screen-'+screenIndex).find('.big-image').transit({'opacity':0},500)
+						}
+						 
+						function onTransitionComplete() {
+						    isTransitioning = false;
+						    if (!isTouch) {
+						        $('#big-video-wrap').css('left',0);
+						        showVideo();
+						    }
+						} 
+						  
+						 function adjustImagePositioning() {
+						    $bigImage.each(function(){
+						        var $img = $(this),
+						            img = new Image();
 
-            function onTransitionComplete() {
-                isTransitioning = false;
-                if (!isTouch) {
-                    $('#big-video-wrap').css('left',0);
-                    showVideo();
-                }
-            }
+						        img.src = $img.attr('src');
 
-            function adjustImagePositioning() {
-                $bigImage.each(function(){
-                    var $img = $(this),
-                        img = new Image();
+						        var windowWidth = $window.width(),
+						            windowHeight = $window.height(),
+						            r_w = windowHeight / windowWidth,
+						            i_w = img.width,
+						            i_h = img.height,
+						            r_i = i_h / i_w,
+						            new_w, new_h, new_left, new_top;
 
-                    img.src = $img.attr('src');
+						        if( r_w > r_i ) {
+						            new_h   = windowHeight;
+						            new_w   = windowHeight / r_i;
+						        }
+						        else {
+						            new_h   = windowWidth * r_i;
+						            new_w   = windowWidth;
+						        }
 
-                    var windowWidth = $window.width(),
-                        windowHeight = $window.height(),
-                        r_w = windowHeight / windowWidth,
-                        i_w = img.width,
-                        i_h = img.height,
-                        r_i = i_h / i_w,
-                        new_w, new_h, new_left, new_top;
+						        $img.css({
+						            width   : new_w,
+						            height  : new_h,
+						            left    : ( windowWidth - new_w ) / 2,
+						            top     : ( windowHeight - new_h ) / 2
+						        })
 
-                    if( r_w > r_i ) {
-                        new_h   = windowHeight;
-                        new_w   = windowHeight / r_i;
-                    }
-                    else {
-                        new_h   = windowWidth * r_i;
-                        new_w   = windowWidth;
-                    }
+						    });
 
-                    $img.css({
-                        width   : new_w,
-                        height  : new_h,
-                        left    : ( windowWidth - new_w ) / 2,
-                        top     : ( windowHeight - new_h ) / 2
-                    })
-
-                });
-
-            }
-        });
-    </script>
+						} */
+					});
+				</script>
 </body>
 </html>
