@@ -4,15 +4,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width">
+
 <!-- video css -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/style.css">
+
 <!-- content css -->
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/demo.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/component.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/content.css" />
+<script src="<%=request.getContextPath()%>/main/js/modernizr.custom.js"></script>
 <title>MOVIE GO MAIN</title>
 </head>
 <body>
