@@ -60,8 +60,7 @@
 									<button>LOGIN</button>
 								</p>
 								<c:url value="/idConfirm" var="url" />
-								<div id="idpw">
-									<a href="${url }">ID/비밀번호 찾기</a>
+									<a href="#" onClick="window.open('${url }','client_window', 'resizable=no scrollbars=no width=500 height=500')">ID/비밀번호 찾기</a>
 								</div>
 							</form>
 						</div>
@@ -125,6 +124,7 @@
 			}
 			return;
 		}
+		
 		
 		(function() {
 			var docElem = window.document.documentElement, didScroll, scrollPosition;
