@@ -1,5 +1,7 @@
 package com.mvg.entity;
 
+import java.util.Date;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -8,13 +10,23 @@ public class Reservation {
 	private int reservationId;
 	private int reservationNum;
 	private int reservationPrice;
+	private Date reservationDate;
 
 	public Reservation(int reservationId, int reservationNum,
-			int reservationPrice) {
+			int reservationPrice, Date reservationDate) {
 		super();
 		this.reservationId = reservationId;
 		this.reservationNum = reservationNum;
 		this.reservationPrice = reservationPrice;
+		this.reservationDate = reservationDate;
+	}
+
+	public Date getReservationDate() {
+		return reservationDate;
+	}
+
+	public void setReservationDate(Date reservationDate) {
+		this.reservationDate = reservationDate;
 	}
 
 	public int getReservationId() {
@@ -45,7 +57,8 @@ public class Reservation {
 	public String toString() {
 		return "Reservation [reservationId=" + reservationId
 				+ ", reservationNum=" + reservationNum + ", reservationPrice="
-				+ reservationPrice + "]";
+				+ reservationPrice + ", reservationDate=" + reservationDate
+				+ "]";
 	}
 
 }
