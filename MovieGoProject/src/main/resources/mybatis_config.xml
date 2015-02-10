@@ -23,5 +23,6 @@
 
 	<mappers>
 		<mapper resource="mappers/userMapper.xml" />
+		<mapper resource="mappers/CustomerBoardMapper.xml"/>
 	</mappers>
 </configuration>
