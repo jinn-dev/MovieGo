@@ -11,9 +11,6 @@ body {
     color: #fff;
     background: #111;
     overflow: hidden;
-    font-family: 'Open Sans Condensed', Arial, sans-serif;
-    font-weight: 300;
-    font-size: 1em;
 }
 
 .wrapper {
@@ -24,36 +21,13 @@ body {
 }
 
 /* Text */
-h1,
-h2 {
+h1{
     margin: 0;
     padding: 0;
     text-shadow: 1px 1px 1px rgba(0,0,0,.5);
-}
-
-p {
-    line-height: 1.4;
-    text-shadow: 1px 1px 1px #000;
-}
-
-a,
-a:visited {
-    color: #fff;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #40a5c6;
-}
-
-h1 a,
-h1 a:hover,
-h1 a:visited {
-    text-decoration: none;
-}
-
-p a {
-    font-weight: 700;
+	font-family: Arial;
+	font-weight: 300;
+    font-size: 1em;
 }
 
 /* Header */
@@ -61,35 +35,17 @@ header {
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: 3;
+    z-index: 999;
     color: #fff;
     background: rgba(255,255,255,0.1);
     padding: 60px;
     width: 800px;
     height: 200px;
-    /* border-radius: 50%; */
     margin: -200px 0 0 -400px;
     text-align: center;
 }
 
-header h1 {
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
-    padding: 0 0 10px 0;
-    font-size: 1.7em;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.8);
-}
-
-header h1 span {
-    font-weight: 300;
-}
-
-header p {
-    font-family: Cambria, Georgia, serif;
-    font-style: italic;
-}
-
 /* Video Pages */
-
 .screen {
     position: relative;
     height: 100%;
@@ -105,10 +61,10 @@ header p {
     width: auto;
 }
 
-.video-title {
+.main-title {
     position: absolute;
-    top: 5%;
-    right: 5%;
+    top: 15%;
+    right: 33%;
     opacity: .5;
     margin: 40px 0 0 0;
     padding: 0;
