@@ -32,5 +32,9 @@ public class ControllerTest {
 		return "find_user_info";
 	}
 	
+	//api이용한 페이지로 가게하는 requestMapping
+
+	
+	//jsp 에서 openapi사용해보기
 
 }
