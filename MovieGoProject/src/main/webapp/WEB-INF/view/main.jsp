@@ -50,7 +50,7 @@
 										<p><label>Email</label><input type="text" /></p>
 										<p><label>Password</label><input type="password" /></p>
 										<p><button>Login</button></p>
-										<p id="searchinfo"><a href="javascript:goInfo()">ID/비밀번호 찾기</a></p>
+										<p id="searchinfo"><a href="javascript:userInfo()">ID/비밀번호 찾기</a></p>
 									</form>
 								</div>
 							</div>
@@ -73,7 +73,7 @@
 										<input type="password" id="pass2" name="pass2" onblur="javascript:passchk()"/></p>
 										<input type="text" name="chk" id="confirm"  
 										value="비밀번호를 입력하세요" readonly="readonly">
-										<p><label>생년월일</label><input type="text" /></p>
+										<p><label>생년월일</label><input type="date" /></p>
 										<p><button>Sign Up</button></p>
 									</form>
 								</div>
@@ -85,8 +85,8 @@
 	<script src="<%=request.getContextPath()%>/main/js/classie.js"></script>
 	<script src="<%=request.getContextPath()%>/main/js/uiMorphingButton_fixed.js"></script>
 	<script>
-		function goInfo(){
-			<c:url value="/userInfo" var="url"></c:url>
+		function userInfo(){
+			<c:url value="/find_user_info" var="url"></c:url>
 			window.open('${url}','client_window', 'resizable=no scrollbars=no width=400 height=550');
 		}
 		/* 비밀번호 유효성 체크 */
