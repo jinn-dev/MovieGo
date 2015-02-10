@@ -13,6 +13,8 @@ public class CustomerBoard {
 	private String boardContent;
 	private Date boardDate;
 
+	public CustomerBoard(){}
+	
 	public CustomerBoard(int boardId, String userId, String boardTitle,
 			String boardContent, Date boardDate) {
 		super();

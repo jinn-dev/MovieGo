@@ -15,9 +15,15 @@ public class CustomerBoardServiceImpl implements CustomerBoardService {
 	CustomerBoardDao dao;
 	
 	@Override
-	public List<CustomerBoard> getAllBoard() {
+	public List<CustomerBoard> getAllBoardList() {
 		List<CustomerBoard> results = dao.getAllBoard();
 		return results;
+	}
+
+	@Override
+	public int addBoard(CustomerBoard board) {
+		int result = dao.insertCustomerBoard(board);
+		return result;
 	}
 
 }

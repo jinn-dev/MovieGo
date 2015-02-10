@@ -11,7 +11,6 @@
 	
 	<!-- @MVC와 관련된 번들만 등록 -->
 	<context:component-scan base-package="com.mvg.controller"></context:component-scan>
-
 	<mvc:annotation-driven />
 
 	<!-- 단순한 view 페이지 등록 -->

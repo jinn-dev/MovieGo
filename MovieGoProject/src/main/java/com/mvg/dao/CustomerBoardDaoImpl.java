@@ -19,7 +19,7 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	String nameSpace="com.mvg.mappers.customerBoardMapper.";
+	private final String namespace="com.mvg.mappers.customerBoardMapper.";
 	
 	@Override
 	public int getAllBoardCount() {
@@ -29,9 +29,8 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 
 	@Override
 	public List<CustomerBoard> getAllBoard() {
-		String stmt = nameSpace+"selectAllBoard";
+		String stmt = namespace+"selectAllBoard";
 		List<CustomerBoard> results = sqlSession.selectList(stmt);
-		logger.trace(""+results);
 		return results;
 	}
 
@@ -43,8 +42,9 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 
 	@Override
 	public int insertCustomerBoard(CustomerBoard board) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt= namespace+"insertBoard";
+		int result = sqlSession.insert(stmt, board);
+		return result;
 	}
 
 	@Override

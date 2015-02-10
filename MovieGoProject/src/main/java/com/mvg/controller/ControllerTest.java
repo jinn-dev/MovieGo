@@ -29,16 +29,6 @@ public class ControllerTest {
 		return "user/main_logined";
 	}
 	
-	@RequestMapping(value="/board", method=RequestMethod.GET)
-	public String boardlist(){
-		return "board/board_list";
-	}
-	
-	@RequestMapping(value="/board_write", method=RequestMethod.GET)
-	public String boardwrite(){
-		return "board/board_write";
-	}
-	
 	@RequestMapping(value="/board_view", method=RequestMethod.GET)
 	public String boardview(){
 		return "board/board_view";

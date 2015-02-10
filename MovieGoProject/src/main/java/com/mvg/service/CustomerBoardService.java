@@ -6,5 +6,7 @@ import com.mvg.entity.CustomerBoard;
 
 public interface CustomerBoardService {
 
-	List<CustomerBoard> getAllBoard();
+	List<CustomerBoard> getAllBoardList();
+	
+	int addBoard(CustomerBoard board);
 }

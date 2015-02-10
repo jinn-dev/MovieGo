@@ -20,10 +20,11 @@
 		<h3>1:1문의</h3>
 		<h5>- 문의하시기 전 FAQ를 확인하시면 궁금증을 더욱 빠르게 해결하실 수 있습니다.<br>
 		- 1:1 문의 운영 시간 (09:00 ~ 20:00) </h5>
-		<button>WRITE</button>
+		<c:url value="/board/write" var="url" />
+		<a href="${url }"><button>WRITE</button></a>
 	</header>
 	<table>
-		<tr zz>
+		<tr >
 			<th>
 				<div>
 					<b>글번호</b>
@@ -45,12 +46,14 @@
 				</div>
 			</th>
 		</tr>
+		<c:forEach items="${lists }" var="list">
 		<tr>
-			<td width="55">0</td>
-			<td align=left width="318"><a href="#" target=_self>글제목입니다.</a></td>
-			<td width="110">admin</td>
-			<td width="119">2015-02-10</td>
+			<td width="55"><c:out value="${list.boardId}"/></td>
+			<td align=left width="318"><a href="#" target=_self><c:out value="${list.boardTitle}"/></a></td>
+			<td width="110"><c:out value="${list.userId}"/></td>
+			<td width="119"><c:out value="${list.boardDate}"/></td>
 		</tr>
+		</c:forEach>
 	</table>
 </body>
 </html>

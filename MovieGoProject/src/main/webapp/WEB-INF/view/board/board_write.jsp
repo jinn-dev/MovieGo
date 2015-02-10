@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -17,12 +18,15 @@
 			(09:00 ~ 20:00)
 		</h5>
 	</header>
+
 	<section>
+	<c:url value="/board/add" var="url"/>
 	<div id="writeform">
-	<form>
-	<label>제목 </label><input id="title" type="text" value="제목을 입력해주세요."><br>
-	<label>내용 </label><textarea rows="5" cols="80"></textarea><br>
-	<input type="submit"/>
+	<form method="POST" action="${url }">
+	<label>아이디(test) </label><input type="text" name="userId" id="userId" /><br>
+	<label>제목 </label><input type="text" name="boardTitle" id="boardTitle" value="제목을 입력해주세요."/><br>
+	<label>내용 </label><textarea rows="5" cols="80" name="boardContent" id="boardContent"></textarea><br>
+	<button type="submit" name="proceed">완료</button>
 	<input type="reset"/>
 	</form>
 	</div>
