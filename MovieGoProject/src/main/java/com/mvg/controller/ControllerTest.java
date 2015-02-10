@@ -26,7 +26,7 @@ public class ControllerTest {
 	
 	@RequestMapping(value="/main_logined", method=RequestMethod.GET)
 	public String mainLogined(){
-		return "main_logined";
+		return "user/main_logined";
 	}
 	
 	@RequestMapping(value="/test", method=RequestMethod.GET) 

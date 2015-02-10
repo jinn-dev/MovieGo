@@ -10,7 +10,7 @@
 <title>MOVIE GO</title>
 </head>
 <body>
-	<!--  header 메뉴 -->
+	<!--  header 시작 -->
 	<div class="container">
 		<div class="cbp-af-header">
 			<div class="cbp-af-inner">
