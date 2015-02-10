@@ -29,6 +29,11 @@ public class ControllerTest {
 		return "user/main_logined";
 	}
 	
+	@RequestMapping(value="/board", method=RequestMethod.GET)
+	public String boardlist(){
+		return "board/board_list";
+	}
+	
 	@RequestMapping(value="/test", method=RequestMethod.GET) 
 	public String testMethod(Model model) {
 		int result = service.getUserCntService();

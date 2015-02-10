@@ -1,0 +1,33 @@
+@CHARSET "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+
+h2{
+	text-align: center;
+	font-family:'나눔고딕';
+}
+
+td.no{
+	width: 5px;
+}
+td.userid{
+    width: 7px;
+}
+td.date{
+    width: 5px;
+}
+#list{
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+}
+
+#drophere{
+	border: 1px dotted;
+	margin: 0 auto;
+	width: 80%;
+	color: #fff;
+    background: rgba(255,255,255,0.8);
+    margin: -200px 0 0 -400px;
+	
+}
+
