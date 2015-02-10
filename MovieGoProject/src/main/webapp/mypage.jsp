@@ -5,8 +5,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-</head>
+</head> 
+
 <body>
 mypage
+<table width="400" border="1" cellpadding="0" cellspacing="0">
+<tr>
+	<td colspan="2">
+	<jsp:include page="header.jsp" flush="false"></jsp:include>
+	</td>
+</tr>
+
+<tr>
+<td width="100" valign="top">
+	<jsp:include page="submenu.jsp" flush="false"></jsp:include>
+
+</td>
+</tr>
+</table>
 </body>
 </html>
