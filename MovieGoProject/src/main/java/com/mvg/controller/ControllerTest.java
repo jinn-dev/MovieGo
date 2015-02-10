@@ -34,6 +34,16 @@ public class ControllerTest {
 		return "board/board_list";
 	}
 	
+	@RequestMapping(value="/board_write", method=RequestMethod.GET)
+	public String boardwrite(){
+		return "board/board_write";
+	}
+	
+	@RequestMapping(value="/board_view", method=RequestMethod.GET)
+	public String boardview(){
+		return "board/board_view";
+	}
+	
 	@RequestMapping(value="/test", method=RequestMethod.GET) 
 	public String testMethod(Model model) {
 		int result = service.getUserCntService();
