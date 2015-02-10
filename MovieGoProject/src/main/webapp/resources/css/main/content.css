@@ -9,13 +9,6 @@
 		url('../fonts/icomoon/icomoon.ttf?i64fx9') format('truetype'),
 		url('../fonts/icomoon/icomoon.svg?i64fx9#icomoon') format('svg');
 }
-
-#idpw{
-	color: #0e0e0e;
-	margin: 0 auto;
-	
-}
-
 .icon-close {
 	z-index: 100;
 	display: block;
@@ -42,56 +35,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-camera:before {
-	content: "\e017";
-}
-
-.icon-server:before {
-	content: "\e022";
-}
-
-.icon-heart:before {
-	content: "\e024";
-}
-
-.icon-zoom-in:before {
-	content: "\e037";
-}
-
-.icon-microphone:before {
-	content: "\e048";
-}
-
-.icon-cloud:before {
-	content: "\e066";
-}
-
-.icon-user:before {
-	content: "\e074";
-}
-
-.icon-briefcase:before {
-	content: "\e075";
-}
-
-.icon-globe:before {
-	content: "\e078";
-}
-
-.icon-cog::before {
-	content: "\e600";
-}
 
 .icon-close::before {
 	content: "\e601";
-}
-
-.icon-play::before {
-	content: "\e602";
-}
-
-.icon-pause::before {
-	content: "\e603";
 }
 
 .icon-close {
@@ -101,80 +47,16 @@
 }
 
 .icon-close:hover {
-	color: #a50a05;
+	color: #585353;
 }
 
 /* Styles for dummy content */
 
-/* Style for overlay */
-
-.content-style-overlay {
-	padding: 100px 50px;
-	text-align: center;
-}
-
-.content-style-overlay h2 {
-	margin: 0 0 1em 0;
-	padding: 0;
-	font-weight: 300;
-	font-size: 3em;
-}
-
-.content-style-overlay p {
-	margin: 0 auto;
-	padding: 10px 0;
-	max-width: 700px;
-	text-align: justify;
-	font-weight: 300;
-	font-size: 1.5em;
-}
-
-.content-style-overlay .icon-close {
-	border: 2px solid #f9e1c9;
-	border-radius: 50%;
-	line-height: 2.8;
-}
-
-.content-style-overlay .icon-close:hover {
-	border-color: #a50a05;	
-}
-
 /* Style for text modal */
-.content-style-text {
-	padding: 60px;
-	text-align: left;
-}
-
-.content-style-text h2 {
-	margin: 0 0 0.5em 0;
-	font-weight: 300;
-	font-size: 1.00em;
-}
-
-.content-style-text p {
-	color: rgba(255,255,255,0.5);
-	font-weight: 300;
-	font-size: 1.15em;
-	line-height: 1.4;
-}
-
-.content-style-text label {
-    padding: 10px;
-    color: #f9e1c9;
-    font-weight: bold;
-}
-
-.content-style-text .icon-close {
-	top: 0;
-	right: 0;
-	color: rgba(0,0,0,0.2);
-}
-
-.content-style-text .icon-close:hover {
-	color: #f9e1c9;
-}
 
 /* Style for form modal */
+
+
 .content-style-form {
 	position: relative;
 	text-align: left;
@@ -188,43 +70,64 @@
 	font-size: 3.5em;
 }
 
+.content-style-form h3 {
+	margin: 0 auto;
+	padding: 1.0m 0 0 0;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.7em;
+}
+
 .content-style-form form {
 	padding: 10px 30px;
 }
 
+#searchinfo{
+	margin: 0 90px 0 90px;
+	padding: 0 0 1.0em 0;
+	color: #424143;
+	font-weight: bold;
+	font-size: 0.7em;
+	
+}
 .content-style-form form p {
 	margin: 0 0 5px 0;
 	font-size: 0.7em;
 }
 
+#confirm{
+	size: 0.1em;
+	width: 100%;
+	font-weight: bold;
+	border-width: 0px;
+	font-size: 0.8em;
+}
+
 .content-style-form label {
 	display: block;
 	padding: 10px 0 0;
-	color: #5e5e5e;
+	color: #424143;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-	/* font-weight: bold; */
+	font-weight: bold;
 }
 
 .content-style-form input[type="text"],
 .content-style-form input[type="password"] {
-	padding: 10px;
+	padding: 2.5px;
 	width: 100%;
-	border: 2px solid #ffffff;
+	border: 2px solid #FFFFFF;
 	background: transparent;
-	color: #5D5D5D;
+	color: #424143;
 	font-weight: 300;
 	font-size: 2.2em;
 }
 
 .content-style-form input[type="text"]:focus,
 .content-style-form input[type="password"]:focus {
-	border-color: #5D5D5D;
-	color: #5D5D5D;
-}
-
-.content-style-form input:focus {
-	outline: 0;
+	border-color: #A52127;
+	outline: none;
+	color: #585353;
 }
 
 .content-style-form button {
@@ -233,90 +136,30 @@
 	padding: 1.5em;
 	width: 100%;
 	border: none;
-	background: #8C8C8C;
-	color: #f9f6e5;
+	background: #A52127;
+	color: #F2F2F2;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 800;
 	font-size: 1.25em;
 }
 
-/* id&pw 찾기 start */
-.content-style-form-3 label {
-	display: block;
-	padding: 10px 0 0;
-	color: #5e5e5e;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: bold;
+.content-style-form button:focus{
+	outline: none;
 }
 
-.content-style-form-3 input[type="text"] {
-	padding: 5px;
-	width: 100%;
-	border: 2px solid #ffffff;
-	background: transparent;
-	color: #5D5D5D;
-	font-weight: 300;
-	font-size: 1.0em;
+ .morph-button button:focus{
+ 	outline: none;
+ }
+.content-style-form .icon-close {
+	top: 0;
+	right: 0;
+	color: #424143;
+	font-size: 75%;
 }
-
-.content-style-form-3 input[type="text"]:focus {
-	border-color: #5D5D5D;
-	color: #5D5D5D;
-}
-
-.content-style-form-3 input:focus {
-	outline: 0;
-}
-
-.content-style-form-3 form {
-	padding: 5px 5px;
-}
-
-
-#findemail {
-	display: block;
-	margin-top: 1em;
-	margin-left: 0.5em;
-	padding: 0.5em;
-	width: 100%;
-	border: none;
-	background: #8C8C8C;
-	color: #ffffff;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: 800;
-	font-size: 1.00em;
-}
-
-.content-style-text-3 {
-	padding: 30px;
-	text-align: left;
-}
-
-.content-style-text-3 h2 {
-	margin: 0 0 0 0;
-	font-weight: 1000;
-	font-size: 1.00em;
-}
-
-.content-style-text-3 p {
-	color: rgba(255, 255, 255, 0.5);
-	font-weight: 300;
-	font-size: 1.15em;
-	line-height: 1.4;
-}
-
-.content-style-text-3 label {
-	padding: 10px;
-	color: #5D5D5D;
-	font-weight: bold;
-}
-/* id&pw 찾기 close */
 
 .content-style-form .icon-close:hover {
-	color: #8C8C8C;
+	color: #A52127;
 }
 
 .js .content-style-form-1 h2,
@@ -381,7 +224,7 @@
 	-webkit-transition-delay: 0.5s;
 	transition-delay: 0.5s;
 }
- 
+
 .morph-button.open .content-style-form-2 h2,
 .morph-button.open .content-style-form-2 p,
 .morph-button.open .content-style-form-2 .icon-close {
@@ -389,6 +232,21 @@
 	-webkit-transform: translateY(0);
 	transform: translateY(0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

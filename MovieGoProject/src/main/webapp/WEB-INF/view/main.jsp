@@ -6,8 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <!-- video css -->
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/style.css">
 <!-- content css -->
 <link rel="shortcut icon" href="../favicon.ico">
@@ -27,88 +25,70 @@
 		});
 	});
 </script>
-<title>MOVIE GO MAIN</title>
+<title>메인 페이지</title>
 </head>
 <body>
 	<!-- 메인 배경화면 -->
-	<div class="wrapper">
-		<div class="screen" id="screen-3" data-video="vid/camera.mp4">
-			<img src="<%=request.getContextPath()%>/img/camera.jpg"
-				class="big-image" />
-			<h1 class="video-title">MOVIE GO</h1>
-		</div>
-	</div>
-	<header>
-		<div class="mockup-content">
-			<!-- 로그인 -->
-			<div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
-				<button type="button">Login</button>
-				<div class="morph-content">
-					<div>
-						<div class="content-style-form content-style-form-1">
-							<span class="icon icon-close">Close the dialog</span>
-							<h2>LOGIN</h2>
-							<form>
-								<p>
-									<label>ID</label><input type="text" />
-								</p>
-								<p>
-									<label>Password</label><input type="password" />
-								</p>
-								<p>
-									<button>LOGIN</button>
-								</p>
-								<c:url value="/userInfo" var="url" />
-									<a href="#" id="idpw" onClick="window.open('${url }','client_window', 'resizable=no scrollbars=no width=300 height=600')">ID/비밀번호 찾기</a>
-							</form>
-						</div>
-					</div>
-				</div>
+		<div class="wrapper">
+			<div class="screen" id="screen-3" data-video="vid/camera.mp4">
+				<img src="<%=request.getContextPath()%>/img/camera.jpg"
+					class="big-image" />
+				<h1 class="main-title">MOVIE<font color="#A52127">GO</font></h1>
 			</div>
-			<!-- morph-button -->
-			<strong class="joiner">or</strong>
-			<!--  회원가입 -->
-			<div class="morph-button morph-button-modal morph-button-modal-3 morph-button-fixed">
-				<button type="button">SIGN UP</button>
-				<div class="morph-content">
-					<div>
-						<div class="content-style-form content-style-form-2">
-							<span class="icon icon-close">Close the dialog</span>
-							<h2>SIGN UP</h2>
-							<form id="joinform" name="joinform">
-								<p>
-									<label>ID</label><input type="text" id="joinid" name="joinid" value="아이디는 영문/숫자 10자리 입력" required />
-								</p>
-								<p>
-									<label>Password</label><input type="password" id="pass" name="pass" required />
-								</p>
-								<p>
-									<label>Repeat Password</label><input type="password" name="pass2" onblur="javascript:passchk()" required /> 
-								    <input type="text" style="border-width: 0px" size="0.1px" name="chk"  value="비밀번호를 입력하세요" readonly="readonly">
-
-									
-								</p>
-								<p>
-									<label>Email</label><input type="text" required />
-								</p>
-								<p>
-									<label>Birth</label><input type="date" />
-								</p>
-								<p>
-								  <button type="submit" name="submitB">Sign Up</button>
-								</p>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- morph-button -->
 		</div>
-		<!-- /form-mockup -->
-	</header>
+		<!-- 로그인/회원가입 -->
+		<header>
+				<div class="mockup-content">
+					<div class="morph-button morph-button-modal morph-button-modal-1 morph-button-fixed">
+						<button type="button">LOGIN</button>
+						<div class="morph-content">
+							<div>
+								<div class="content-style-form content-style-form-1">
+									<span class="icon icon-close">Close the dialog</span>
+									<h2>Login</h2>
+									<form>
+										<p><label>Email</label><input type="text" /></p>
+										<p><label>Password</label><input type="password" /></p>
+										<p><button>Login</button></p>
+										<p id="searchinfo"><a href="javascript:goInfo()">ID/비밀번호 찾기</a></p>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div><!-- morph-button -->
+					
+					<div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
+						<button type="button">SIGN UP</button>
+						<div class="morph-content">
+							<div>
+								<div class="content-style-form content-style-form-2">
+									<span class="icon icon-close">Close the dialog</span>
+									<h2>Sign Up</h2>
+									<form name="joinform">
+										<p><label>아이디 (영문/숫자 혼합 10자리)</label><input type="text"/></p>
+										<p><label>이메일</label><input type="text" /></p>
+										<p><label>비밀번호 (영문/숫자 혼합 10자리)</label>
+										<input type="password" id="pass" name="pass"/></p>
+										<p><label>비밀번호 확인</label>
+										<input type="password" id="pass2" name="pass2" onblur="javascript:passchk()"/></p>
+										<input type="text" name="chk" id="confirm"  
+										value="비밀번호를 입력하세요" readonly="readonly">
+										<p><label>생년월일</label><input type="text" /></p>
+										<p><button>Sign Up</button></p>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div><!-- morph-button -->
+				</div><!-- /form-mockup -->
+		</header>	
 	<script src="<%=request.getContextPath()%>/main/js/classie.js"></script>
 	<script src="<%=request.getContextPath()%>/main/js/uiMorphingButton_fixed.js"></script>
 	<script>
+		function goInfo(){
+			<c:url value="/userInfo" var="url"></c:url>
+			window.open('${url}','client_window', 'resizable=no scrollbars=no width=400 height=550');
+		}
 		/* 비밀번호 유효성 체크 */
 		function passchk() {
 			var pass = document.joinform.pass.value;
@@ -122,7 +102,6 @@
 			}
 			return;
 		}
-		
 		
 		(function() {
 			var docElem = window.document.documentElement, didScroll, scrollPosition;
@@ -199,6 +178,8 @@
 						});
 					});
 		})();
+		
+		
 	</script>
 </body>
 </html>
