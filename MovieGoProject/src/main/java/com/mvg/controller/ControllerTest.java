@@ -19,7 +19,16 @@ public class ControllerTest {
 		return "main";
 	}
 	
-
+	@RequestMapping(value="/find_user_info",  method=RequestMethod.GET)
+	public String idConfirmTest(){
+		return "user/find_user_info";
+	}
+	
+	@RequestMapping(value="/main_logined", method=RequestMethod.GET)
+	public String mainLogined(){
+		return "main_logined";
+	}
+	
 	@RequestMapping(value="/test", method=RequestMethod.GET) 
 	public String testMethod(Model model) {
 		int result = service.getUserCntService();
@@ -27,10 +36,7 @@ public class ControllerTest {
 		return "test";
 	}
 
-	@RequestMapping(value="/userInfo",  method=RequestMethod.GET)
-	public String idConfirmTest(){
-		return "find_user_info";
-	}
+	
 	
 
 }

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-main_logined
+<jsp:include page="/header.jsp"/>
+main page
 </body>
 </html>
