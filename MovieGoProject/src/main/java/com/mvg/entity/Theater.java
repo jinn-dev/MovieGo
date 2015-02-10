@@ -5,21 +5,21 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class Theater {
 
-	private int theaterNumber;
+	private int theaterId;
 	private String theaterName;
 
 	public Theater(int theaterNumber, String theaterName) {
 		super();
-		this.theaterNumber = theaterNumber;
+		this.theaterId = theaterNumber;
 		this.theaterName = theaterName;
 	}
 
 	public int getTheaterNumber() {
-		return theaterNumber;
+		return theaterId;
 	}
 
 	public void setTheaterNumber(int theaterNumber) {
-		this.theaterNumber = theaterNumber;
+		this.theaterId = theaterNumber;
 	}
 
 	public String getTheaterName() {
@@ -32,7 +32,7 @@ public class Theater {
 
 	@Override
 	public String toString() {
-		return "Theater [theaterNumber=" + theaterNumber + ", theaterName="
+		return "Theater [theaterNumber=" + theaterId + ", theaterName="
 				+ theaterName + "]";
 	}
 
