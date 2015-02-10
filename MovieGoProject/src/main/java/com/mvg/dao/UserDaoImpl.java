@@ -32,8 +32,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int insertUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace + "insertUser";
+		int result = sqlSession.insert(stmt);
+		return result;
 	}
 
 	@Override
@@ -56,7 +57,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method st76ub
 		return null;
 	}
 

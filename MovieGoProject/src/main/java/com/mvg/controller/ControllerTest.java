@@ -36,10 +36,11 @@ public class ControllerTest {
 		return "test";
 	}
 
-	
-	
 	//api이용한 페이지로 가게하는 requestMapping
-
+	@RequestMapping(value="/api", method=RequestMethod.GET)
+	public String InsertMovie(Model model) {
+		return "restService";
+	}
 	
 	//jsp 에서 openapi사용해보기
 
