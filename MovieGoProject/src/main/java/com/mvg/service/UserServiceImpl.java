@@ -32,9 +32,9 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public User getUserByUserId(String userId) {
-		User user = dao.getUserByUserId(userId);
-		return user;
+	public User getUserByUserId(User user) {
+		User result = dao.getUserByUserId(user);
+		return result;
 
 	}
 

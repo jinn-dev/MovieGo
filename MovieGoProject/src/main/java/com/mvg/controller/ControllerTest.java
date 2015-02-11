@@ -48,8 +48,7 @@ public class ControllerTest {
 
 	@RequestMapping(value="/login",  method=RequestMethod.POST)
 	public String login(@ModelAttribute("log") User log){
-		String userId = log.getUserId();
-		service.getUserByUserId(userId);
+		service.getUserByUserId(log);
 		return "user/main_logined";
 	}
 	@RequestMapping(value="/main_logined", method=RequestMethod.POST)

@@ -45,27 +45,22 @@
 		<td>영화명(영문)</td>
 		<td>장르</td>
 		<td>영화감독</td>
-		<td>배우1</td>
-		<td>배우2</td>
-		<td>배우3</td>
+		<td>배우</td>
 		<!-- <td>포스터url</td>
 		<td>줄거리</td> -->
 	</tr>
 
 
 	<c:if
-		test="${not empty movieResult.movieInfo }">
-		<c:forEach items="${movieResult.movieInfo }"
-			var="movie">
+		test="${not empty movieResult.movieInfoResult }">
+		<c:forEach items="${movieResult.movieInfoResult }" var="movieInfo">
 			<tr>
-				<td><c:out value="${movie.movieCd }" /></td>
-				<td><c:out value="${movie.movieNm }" /></td>
-				<td><c:out value="${movie.movieNmEn }" /></td>
-				<td><c:out value="${movie.genreNm }" /></td>
-				<td><c:out value="${movie.directors.peopleNm }" /></td>
-				<td><c:out value="${movie.actors.actor.peopleNm }" /></td>
-				<td><c:out value="${movie.actors.actor.peopleNm }" /></td>
-				<td><c:out value="${movie.actors.actor.peopleNm }" /></td>
+				<td><c:out value="${movieCd }" /></td>
+				<td><c:out value="${movieNm }" /></td>
+				<td><c:out value="${movieNmEn }" /></td>
+				<td><c:out value="${genreNm }" /></td>
+				<td><c:out value="${directors }" /></td>
+				<td><c:out value="${actors }" /></td>
 			</tr>
 		</c:forEach>
 	</c:if>
