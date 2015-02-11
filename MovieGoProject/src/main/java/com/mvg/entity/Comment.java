@@ -9,14 +9,18 @@ public class Comment {
 
 	private int commentId;
 	private int boardId;
+	private String userId;
 	private String commentContent;
 	private Date commentDate;
 
-	public Comment(int commentId, int boardId, String commentContent,
-			Date commentDate) {
+	public Comment(){}
+
+	public Comment(int commentId, int boardId, String userId,
+			String commentContent, Date commentDate) {
 		super();
 		this.commentId = commentId;
 		this.boardId = boardId;
+		this.userId = userId;
 		this.commentContent = commentContent;
 		this.commentDate = commentDate;
 	}
@@ -35,6 +39,14 @@ public class Comment {
 
 	public void setBoardId(int boardId) {
 		this.boardId = boardId;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getCommentContent() {
@@ -56,8 +68,11 @@ public class Comment {
 	@Override
 	public String toString() {
 		return "Comment [commentId=" + commentId + ", boardId=" + boardId
-				+ ", commentContent=" + commentContent + ", commentDate="
-				+ commentDate + "]";
+				+ ", userId=" + userId + ", commentContent=" + commentContent
+				+ ", commentDate=" + commentDate + "]";
 	}
+	
+	
+	
 
 }

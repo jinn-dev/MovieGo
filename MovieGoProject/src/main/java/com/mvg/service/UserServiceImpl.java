@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 	UserDao dao;
 	
 	@Override
-	public Integer getUserCntService() {
+	public int getUserCntService() {
 		int result = dao.getUserCount();
 		return result;
 	}
@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService {
 		int result = dao.insertUser(user);
 		return result;
 	}
+
 
 	@Override
 	public User getUserByUserId(String userId) {

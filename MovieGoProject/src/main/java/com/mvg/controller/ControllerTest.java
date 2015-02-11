@@ -24,25 +24,28 @@ public class ControllerTest {
 	static {
 		logger = LoggerFactory.getLogger(ControllerTest.class);
 	}
-	
-	 @InitBinder
-	 public void initBinder(WebDataBinder binder) throws Exception {
-	     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-	     binder.registerCustomEditor(Date.class, "userBirthday", new CustomDateEditor(simpleDateFormat, true));
-	 }
+	@InitBinder
+	public void initBinder(WebDataBinder binder) throws Exception {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		binder.registerCustomEditor(Date.class, "userBirthday",
+				new CustomDateEditor(simpleDateFormat, true));
+	}
+
 	@Autowired
 	UserService service;
-	
-	@RequestMapping(value="/main",  method=RequestMethod.GET)
-	public String mainTest(){
+
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	public String mainTest() {
 		return "main";
 	}
-	
-	@RequestMapping(value="/find_user_info",  method=RequestMethod.GET)
-	public String idConfirmTest(){
+
+	@RequestMapping(value = "/find_user_info", method = RequestMethod.GET)
+	public String idConfirmTest() {
 		return "user/find_user_info";
 	}
+
 	@RequestMapping(value="/login",  method=RequestMethod.POST)
 	public String login(@ModelAttribute("log") User log){
 		String userId = log.getUserId();
@@ -52,20 +55,27 @@ public class ControllerTest {
 	@RequestMapping(value="/main_logined", method=RequestMethod.POST)
 	public String mainLogined(User user){
 	    service.insertUser(user);
+	    
+		logger.trace("수업 " + user);
 		return "user/main_logined";
 	}
-	
-	@RequestMapping(value="/board_view", method=RequestMethod.GET)
-	public String boardview(){
+
+	@RequestMapping(value = "/board_view", method = RequestMethod.GET)
+	public String boardview() {
 		return "board/board_view";
 	}
-		@RequestMapping(value="/test", method=RequestMethod.GET) 
+
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String testMethod(Model model) {
 		int result = service.getUserCntService();
 		model.addAttribute("cnt", result);
 		return "test";
 	}
 
-	
+	// api이용한 페이지로 가게하는 requestMapping
+	@RequestMapping(value = "/api", method = RequestMethod.GET)
+	public String InsertMovie(Model model) {
+		return "restService2";
+	}
 
 }

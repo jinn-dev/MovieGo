@@ -9,6 +9,8 @@ public class Wishlist {
 	private String userId;
 	private String movieCode;
 
+	public Wishlist() {}
+	
 	public Wishlist(int wishId, String userId, String movieCode) {
 		super();
 		this.wishId = wishId;

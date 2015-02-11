@@ -15,6 +15,8 @@ public class Movie {
 	private String movieActor3;
 	private String movieImgUrl;
 
+	public Movie() {}
+	
 	public Movie(String movieCode, String movieTitleKr, String movieTitleEng,
 			String movieGenre, String movieDirector, String movieActor1,
 			String movieImgUrl) {

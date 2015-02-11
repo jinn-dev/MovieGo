@@ -20,6 +20,7 @@
 		<result column="user_email" jdbcType="VARCHAR" property="userEmail" />
 		<result column="user_birthday" jdbcType="DATE" property="userBirthday" />
 	</resultMap> -->
+
 </mapper>
 
 

@@ -17,12 +17,12 @@ public class UserDaoImpl implements UserDao {
 	static {
 		logger = LoggerFactory.getLogger(UserDaoImpl.class);
 	}
-	
+
 	private final String namespace = "com.mvg.mappers.userMapper.";
-	
+
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
+
 	@Override
 	public int getUserCount() {
 		String stmt = namespace + "getUserCount";
@@ -33,7 +33,6 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int insertUser(User user) {
 		int result = -1;
-		
 		String stmt = namespace + "insertUser";
 		result = sqlSession.insert(stmt, user);
 		return result;
@@ -60,7 +59,7 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method st76ub
 		return null;
 	}
 

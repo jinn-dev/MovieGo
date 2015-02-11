@@ -5,7 +5,7 @@
   <mapper namespace="com.mvg.mappers.customerBoardMapper">
   
   <select id="selectAllBoard" resultMap="boardMap">
-  	select board_id, user_id, board_title, board_content, board_date
+  	select board_id, user_id, board_title, board_date
     from customerboards 
     order by board_id desc
   </select>
@@ -16,6 +16,15 @@
   	where board_id = #{boardId}
   </select>
   
+  <select id="selectBoardByIdWithCmt" resultMap="ComplexBoardComment">
+  	select b.board_id, b.user_id, b.board_title, b.board_content, b.board_date,
+  	c.comment_id, c.board_id, c.user_id, c.comment_content, c.comment_date
+  	from customerboards b
+  	left join comments c
+  	on(b.board_id = c.board_id)
+  	where b.board_id = #{boardId}
+  
+  </select>
   
   <insert id="insertBoard" parameterType="CustomerBoard">
  	insert into customerboards (user_id, board_title, board_content)
@@ -29,7 +38,19 @@
   </update>
   
   
-  
+  <resultMap type="CustomerBoard" id="ComplexBoardComment">
+  	<id column="board_id" jdbcType="INTEGER" property="boardId"/>
+  	<result column="user_id" jdbcType="VARCHAR" property="userId"/>
+  	<result column="board_title" jdbcType="VARCHAR" property="boardTitle"/>
+  	<result column="board_content" jdbcType="VARCHAR" property="boardContent"/>
+  	<result column="board_date" jdbcType="DATE" property="boardDate"/>
+  	<collection property="comments" ofType="Comment">
+  	<id column="comment_id" jdbcType="INTEGER" property="commentId"/>
+  	<result column="user_id" jdbcType="VARCHAR" property="userId"/>
+  	<result column="comment_content" jdbcType="VARCHAR" property="commentContent"/>
+  	<result column="comment_date" jdbcType="DATE" property="commentDate"/>
+  	</collection>
+  </resultMap>
   
   
   <resultMap type="CustomerBoard" id="boardMap">

@@ -8,6 +8,8 @@ public class Theater {
 	private int theaterId;
 	private String theaterName;
 
+	public Theater() {}
+	
 	public Theater(int theaterNumber, String theaterName) {
 		super();
 		this.theaterId = theaterNumber;

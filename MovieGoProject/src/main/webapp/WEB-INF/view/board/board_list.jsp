@@ -24,7 +24,7 @@
 		<c:url value="/board/write" var="url" />
 		<a href="${url }"><button>WRITE</button></a>
 	</header>
-	<table>
+	<table id="list">
 		<tr >
 			<th>
 				<div>
@@ -52,7 +52,8 @@
 			<td width="55">
 			<c:out value="${list.boardId}"/></td>
 			<td align=left width="318">
-			<a href="#" target=_self><c:out value="${list.boardTitle}"/></a></td>
+			<c:url value="/board/view?boardId=${list.boardId}" var="url"/>
+			<a href="${url }" target=_self><c:out value="${list.boardTitle}"/></a></td>
 			<td width="110"><c:out value="${list.userId}"/></td>
 			<fmt:formatDate value="${list.boardDate}" type="date" var="date"/>			
 			<td width="119"><c:out value="${date}"/></td>

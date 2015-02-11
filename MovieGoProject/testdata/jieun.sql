@@ -1,8 +1,13 @@
--- 새 테이블
-INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('admin', '1', 'a', '', 'n', '0');
+-- 회원
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('a', '1', 'a', '', 'n', '');
 
 
--- 새 테이블
-INSERT INTO customerboards (user_id, board_title, board_content) VALUES ('admin', '안녕하세요 ', 'ㅎㅇㅎㅇㅎㅇ');
+-- 게시판
+INSERT INTO customerboards (user_id, board_title, board_content) VALUES ('a', '테스트중', '내용 불러오기 성공');
+
+
+-- 댓글
+INSERT INTO comments (board_id, user_id, comment_content) VALUES ('2', 'a', 'hihi');
+INSERT INTO comments (board_id, user_id, comment_content) VALUES ('2', 'a', 'hello');
 
 
