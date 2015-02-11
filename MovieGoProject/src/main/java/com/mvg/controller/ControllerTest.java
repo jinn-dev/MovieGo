@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.mvg.entity.User;
 import com.mvg.service.UserService;
@@ -56,10 +57,16 @@ public class ControllerTest {
 	public String login(Model model, @ModelAttribute("log") User log, HttpSession session){
 		User user = service.getUserByUserId(log);
 		logger.trace("수업:" + session.getAttribute("log"));
-		
 		model.addAttribute("log", user);
 		return "user/main_logined";
 	}
+	
+	@RequestMapping(value="/logout",  method=RequestMethod.GET)
+	public String logout(@ModelAttribute("log") User log, SessionStatus sessionStatus){
+		sessionStatus.setComplete();
+		return "redirect:/main";
+	}
+	
 	@RequestMapping(value="/main_logined", method=RequestMethod.POST)
 	public String mainLogined(User user, Model model){
 	    service.insertUser(user);

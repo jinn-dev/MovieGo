@@ -9,10 +9,6 @@ header{
 	border: none;
 	letter-spacing: 1px;
 	padding: 0.5em;
-	position: fixed;
-	left: 1202px;
-	top: 305px;
-	right: 0%;
 }
 
 .list-table table{
@@ -66,17 +62,14 @@ header{
 	margin: 0px auto;
 	text-align: left;
 	width: 740px;
-	border: 1px solid;
 }
 
 .comment-form-inner{
-	margin: 0 auto;
-	]
-	text-align: left;
+	text-align: center;
 	width: 700px;
-	border: 1px solid;
 }
 
 .writeform div{
 	align: center;
 }
+
