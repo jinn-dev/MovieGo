@@ -20,6 +20,8 @@
 	});
 </script>
 <body>
+	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+
 코멘트쓰기
 영화제목
 코멘트<input type="text" id="comment" name="comment" value="코멘트를 입력하세요. ">

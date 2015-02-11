@@ -17,16 +17,20 @@
 	<div class="container">
 		<div class="cbp-af-header">
 			<div class="cbp-af-inner">
-				<h1><font color="#0e0e0e">MOVIE</font><font color="#a52127">GO</font></h1>
+				<h1>
+					<font color="#0e0e0e">MOVIE</font><font color="#a52127">GO</font>
+				</h1>
 				<nav>
 					<a href="#">RESERVATION</a> 
 					<a href="#">영화평가</a>
-					<a href="#">MY PAGE</a>
-					<c:url value="/board" var="url"/>
+					<a href="#">MYPAGE</a>
+					<c:url value="/mypage" var="url" />
+					<a href="${url }">MY PAGE</a>
+					<c:url value="/board" var="url" />
 					<a href="${url }">고객센터</a>
-					<c:out value="${log.userId}"/>
-					<c:url value="/logout" var="url"/>
+					<c:url value="/logout" var="url" />
 					<a href="${url }"><button>LOGOUT</button></a>
+					<c:out value="${log.userId}" />
 				</nav>
 			</div>
 		</div>

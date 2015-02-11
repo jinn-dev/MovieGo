@@ -27,6 +27,8 @@ function wishlist(){
 
 </script>
 <body>
+	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+
 영화평가하기
 포스터 or 리스트 형태
 별점 추가

@@ -16,7 +16,7 @@
 <title>고객센터</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
 	<header>
 		<h3>1:1문의</h3>
 		<h5>
