@@ -32,8 +32,11 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int insertUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = -1;
+		
+		String stmt = namespace + "insertUser";
+		result = sqlSession.insert(stmt, user);
+		return result;
 	}
 
 	@Override
