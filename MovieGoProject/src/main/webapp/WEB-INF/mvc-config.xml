@@ -11,7 +11,6 @@
 	
 	<!-- @MVC와 관련된 번들만 등록 -->
 	<context:component-scan base-package="com.mvg.controller"></context:component-scan>
-
 	<mvc:annotation-driven />
 
 	<!-- 단순한 view 페이지 등록 -->
@@ -35,6 +34,8 @@
 	<!-- header resource -->
 	<mvc:resources location="/resources/js/header/" mapping="/header/js/**" />  
 	<mvc:resources location="/resources/css/header/" mapping="/header/css/**" />
+	<!-- header resource -->
+	<mvc:resources location="/resources/css/board/" mapping="/board/css/**" />
 	
 
 </beans>

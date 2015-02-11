@@ -5,10 +5,17 @@
 <mapper namespace="com.mvg.mappers.userMapper">
 <select id="getUserCount" resultType="Integer">
 		select count(*) from users		
+<<<<<<< HEAD
 </select>
 <insert id="insertUser">
 	insert into users(user_id, user_pwd, user_email, user_birthday) values(#{userId}, #{userPwd}, #{userEmail}, #{userBirthday})
 </insert>
+=======
+	</select>
+ <insert id = "insertUser" parameterType = "User">
+  	insert into users (user_id, user_pwd, user_email, user_birthday) values (#{userId}, #{userPwd}, #{userEmail}, #{userBirthday})
+  </insert>
+>>>>>>> refs/remotes/origin/master
 </mapper>
 
 
