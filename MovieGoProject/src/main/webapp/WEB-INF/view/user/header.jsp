@@ -12,18 +12,20 @@
 <title>MOVIE GO</title>
 </head>
 <body>
-	 <c:out value="${log.userId}"/>님 반갑습니다.<br> 
 
 	<!--  header 시작 -->
 	<div class="container">
 		<div class="cbp-af-header">
 			<div class="cbp-af-inner">
+			
 				<h1><font color="#0e0e0e">MOVIE</font><font color="#a52127">GO</font></h1>
+				
 				<nav>
 					<a href="#">RESERVATION</a> 
 					<a href="#">영화평가</a>
 					<a href="#">MY PAGE</a>
-					<a href="#">고객센터</a>
+					<a href="#">고객센터</a>   	        <c:out value="${log.userId}"/>님 반갑습니다.<br> 
+					
 				</nav>
 			</div>
 		</div>
