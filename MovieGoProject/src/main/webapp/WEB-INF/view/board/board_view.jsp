@@ -2,6 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,11 +61,16 @@
 				</tr>
 				</c:forEach>
 			</c:if>
-		</table>
-		<c:url value="/board/" var="url"></c:url>
-		<form action="${url }">
-		<label>코멘트 쓰기</label><input type="text"/>
-		</form>
+		</table><br>
+		
+		<c:url value="/comment/write" var="url"></c:url>
+		
+		<form:form method="post" modelAttribute="comment" action="${url }">
+		<input type="hidden" name="boardId" value="${content.boardId }"/><br>
+		<label>ID(test)</label><input type="text" name="userId"/>
+		<label>코멘트 쓰기</label><input type="text" name="commentContent"/>
+		<button type="submit">등록</button>
+		</form:form>
 
 	</section>
 </body>

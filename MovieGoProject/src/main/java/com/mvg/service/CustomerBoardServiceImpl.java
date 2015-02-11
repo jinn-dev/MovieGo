@@ -37,5 +37,7 @@ public class CustomerBoardServiceImpl implements CustomerBoardService {
 		CustomerBoard result = dao.getBoardByBoardId(boardId);
 		return result;
 	}
+	
+	// 게시글 수정, 게시글 삭제, 게시글 검색
 
 }
