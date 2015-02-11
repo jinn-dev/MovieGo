@@ -131,7 +131,6 @@
 									<span class="icon icon-close">Close the dialog</span>
 									<h2>Login</h2>
 									<c:url value="/login" var="action"></c:url>
-									
 									<form:form modelAttribute="log" method="post" action="${action }" name="loginform">
 										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
 										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>
