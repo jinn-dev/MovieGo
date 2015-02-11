@@ -20,7 +20,7 @@ public class CustomerBoardController {
 	@Autowired
 	CustomerBoardService service;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET)
 	public String boardList(Model model){
 		List<CustomerBoard> lists = service.getAllBoardList();
 		model.addAttribute("lists", lists);
@@ -35,12 +35,13 @@ public class CustomerBoardController {
 	@RequestMapping(value="/submit", method=RequestMethod.POST)
 	public String boardSubmit(@ModelAttribute("board") CustomerBoard board){
 		service.addBoard(board);
-		return "redirect:/board/";
+		return "redirect:/board/list";
 	}
 	
 	@RequestMapping(value="/view", method=RequestMethod.GET)
 	public String showContent(@RequestParam int boardId, Model model){
-		
+		CustomerBoard content = service.getBoardByIdWithCmts(boardId);
+		model.addAttribute("content", content);
 		return "board/board_view";
 	}
 }

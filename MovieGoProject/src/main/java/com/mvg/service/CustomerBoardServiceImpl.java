@@ -26,4 +26,10 @@ public class CustomerBoardServiceImpl implements CustomerBoardService {
 		return result;
 	}
 
+	@Override
+	public CustomerBoard getBoardByIdWithCmts(int boardId) {
+		CustomerBoard result = dao.getBoardByBoardIdWithComments(boardId);
+		return result;
+	}
+
 }
