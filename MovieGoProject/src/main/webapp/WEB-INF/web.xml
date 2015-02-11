@@ -39,6 +39,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<!--  웰컴 파일 설정 -->
+	<welcome-file-list>
+		<welcome-file>main</welcome-file>
+	</welcome-file-list>
+	
 	<!-- 한글 인코딩 필터 설정 -->
 	<filter>
 		<filter-name>encodingfilter</filter-name>

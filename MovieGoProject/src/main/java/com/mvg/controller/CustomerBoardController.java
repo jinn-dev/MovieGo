@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvg.entity.CustomerBoard;
 import com.mvg.service.CustomerBoardService;
@@ -20,7 +20,7 @@ public class CustomerBoardController {
 	@Autowired
 	CustomerBoardService service;
 	
-	@RequestMapping(value="/list", method=RequestMethod.GET)
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String boardList(Model model){
 		List<CustomerBoard> lists = service.getAllBoardList();
 		model.addAttribute("lists", lists);
@@ -35,7 +35,12 @@ public class CustomerBoardController {
 	@RequestMapping(value="/submit", method=RequestMethod.POST)
 	public String boardSubmit(@ModelAttribute("board") CustomerBoard board){
 		service.addBoard(board);
-		return "redirect:/board/list";
+		return "redirect:/board/";
 	}
-
+	
+	@RequestMapping(value="/view", method=RequestMethod.GET)
+	public String showContent(@RequestParam int boardId, Model model){
+		
+		return "board/board_view";
+	}
 }
