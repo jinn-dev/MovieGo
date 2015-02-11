@@ -19,7 +19,7 @@
 <%	
 	
 	String targetDt = request.getParameter("targetDt")==null?"20140201":request.getParameter("targetDt");
-	String itemPerPage = request.getParameter("itemPerPage")==null?"10":request.getParameter("itemPerPage");
+	String itemPerPage = request.getParameter("itemPerPage")==null?"30":request.getParameter("itemPerPage");
 	String multiMovieYn = request.getParameter("multiMovieYn")==null?"":request.getParameter("multiMovieYn");
 	String repNationCd = request.getParameter("repNationCd")==null?"":request.getParameter("repNationCd");
 	String wideAreaCd = request.getParameter("wideAreaCd")==null?"":request.getParameter("wideAreaCd");
