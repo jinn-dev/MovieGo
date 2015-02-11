@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+header{
+	text-align: center;
+}
+
+table{
+	margin: 0 auto;
+	table-layout:fixed;
+	witdh: 710px;
+	border: 1px;
+	text-align: center;
+}
+
+.view table{
+	width: 740px;
+	table-layout:fixed;
+	margin: 0 auto;
+	border: 1px;
+	text-align: center;
+	
+}
+
+#view_tr-1 p{
+	align: center;
+}
+
+
+table th{
+	background: #0e0e0e;
+	color: white;
+	text-align: center;
+	width: 55px;
+}
+
+
+button{
+	margin: 0 0 0 550px;
+	}
+	
+
+input[type="text"]{
+	padding: 2.5px;
+	width: 30%;
+	border: 1px solid #000000;
+	background: transparent;
+	color: #424143;
+	font-weight: 300;
+	font-size: 12px;
+}
+
+label{
+	display: inline-block;
+}
+
+.list div{
+	align: center;
+}
+
+.writeform div{
+	align: center;
+}

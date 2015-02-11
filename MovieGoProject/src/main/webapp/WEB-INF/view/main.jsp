@@ -54,7 +54,6 @@
 							</div>
 						</div>
 					</div><!-- morph-button -->
-					
 					<div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
 						<button type="button">SIGN UP</button>
 						<div class="morph-content">

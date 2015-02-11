@@ -1,5 +1,6 @@
 package com.mvg.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,19 @@ public class CustomerBoard {
 	private String boardTitle;
 	private String boardContent;
 	private Date boardDate;
-
+	private ArrayList<Comment> comments;
+	
+	public ArrayList<Comment> getComments(){
+		return comments;
+	}
+	
+	public void setComments(ArrayList<Comment> comments){
+		this.comments = comments;
+	}
+	
+	
+	public CustomerBoard(){}
+	
 	public CustomerBoard(int boardId, String userId, String boardTitle,
 			String boardContent, Date boardDate) {
 		super();
@@ -65,9 +78,14 @@ public class CustomerBoard {
 
 	@Override
 	public String toString() {
-		return "CustomerBoard [boardId=" + boardId + ", userId=" + userId
-				+ ", boardTitle=" + boardTitle + ", boardContent="
-				+ boardContent + ", boardDate=" + boardDate + "]";
-	}
+		StringBuilder builder = new StringBuilder();
+		builder.append("CustomerBoard [boardId=").append(boardId).append(", ");
+		builder.append("userId=").append(userId).append(", ");
+		builder.append("boardTitle=").append(boardTitle).append(", ");
+		builder.append("boardContent=").append(boardContent).append(", ");
+		builder.append("boardDate=").append(boardDate).append(", ");
+		builder.append("Comment [").append(getComments()).append("]");
 
+		return builder.toString();
+	}
 }

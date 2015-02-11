@@ -51,17 +51,11 @@ public class ControllerTest {
 		return "user/main_logined";
 	}
 	
-	//	@RequestMapping(value="/dept/review", params="_event_confirmed", method=RequestMethod.POST)
-/*	public String update(@ModelAttribute("editDept") Department dept) {
-
-		
-		try {
-			deptService.updateDepartment(dept);
-		} catch (ServiceFailException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-	@RequestMapping(value="/test", method=RequestMethod.GET) 
+	@RequestMapping(value="/board_view", method=RequestMethod.GET)
+	public String boardview(){
+		return "board/board_view";
+	}
+		@RequestMapping(value="/test", method=RequestMethod.GET) 
 	public String testMethod(Model model) {
 		int result = service.getUserCntService();
 		model.addAttribute("cnt", result);
@@ -69,13 +63,5 @@ public class ControllerTest {
 	}
 
 	
-	//		Department dept = service.getDepartmentById(departmentId);
-
-	
-	
-	//api이용한 페이지로 가게하는 requestMapping
-
-	
-	//jsp 에서 openapi사용해보기
 
 }

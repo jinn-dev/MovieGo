@@ -22,7 +22,7 @@ public interface CustomerBoardDao {
 	int updateCustomerBoard(CustomerBoard board);
 	
 	//게시글 삭제..impl안에서 댓글 먼저 삭제
-	int delteCustomerBoard(int boardId);
+	int deleteCustomerBoard(int boardId);
 	
 	//게시글 하나 가져오기
 	CustomerBoard getBoardByBoardId(int boardId);
