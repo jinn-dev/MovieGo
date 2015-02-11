@@ -27,7 +27,7 @@
 <body>
 	<jsp:include page="header.jsp" flush="false"></jsp:include>
 <div id="modufy">
-개인정보수정
+개인정보수정<br>
 ID <input type="text"> <br>
 비밀번호<input type="password"><br> 
 비밀번호 확인<input type="password"> <br>

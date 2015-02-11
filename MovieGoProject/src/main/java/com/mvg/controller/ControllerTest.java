@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mvg.entity.User;
 import com.mvg.service.UserService;
 
 @Controller
+@SessionAttributes("log")
 public class ControllerTest {
 	private final static Logger logger;
 	static {
@@ -47,16 +49,15 @@ public class ControllerTest {
 	}
 
 	@RequestMapping(value="/login",  method=RequestMethod.POST)
-	public String login(@ModelAttribute("log") User log){
-		service.getUserByUserId(log);
+	public String login(Model model, @ModelAttribute("log") User log){
+		User user = service.getUserByUserId(log);
+		model.addAttribute("log", user);
 		return "user/main_logined";
 	}
 	@RequestMapping(value="/main_logined", method=RequestMethod.POST)
-	public String mainLogined(User user){
+	public String mainLogined(User user, Model model){
 	    service.insertUser(user);
-	    
-		logger.trace("수업 " + user);
-		return "user/main_logined";
+	    return "main";
 	}
 
 	@RequestMapping(value = "/board_view", method = RequestMethod.GET)
