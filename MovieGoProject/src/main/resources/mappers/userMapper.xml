@@ -10,7 +10,7 @@
   	insert into users (user_id, user_pwd, user_email, user_birthday) values (#{userId}, #{userPwd}, #{userEmail}, #{userBirthday})
   </insert>
   
-  	<select id="selectUser" parameterType="User" resultType="User">
+  	<select id="selectUser" parameterType="String" resultType="User">
 		select * from users where user_id=#{userId}
 	</select>
 	
