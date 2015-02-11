@@ -20,10 +20,10 @@ DROP TABLE cancellations CASCADE CONSTRAINTS;
 DROP TABLE comments CASCADE CONSTRAINTS;
 DROP TABLE customerboards CASCADE CONSTRAINTS;
 DROP TABLE evaluations CASCADE CONSTRAINTS;
-DROP TABLE wishlists CASCADE CONSTRAINTS;
 DROP TABLE reservationinfo CASCADE CONSTRAINTS;
 DROP TABLE seatinfo CASCADE CONSTRAINTS;
 DROP TABLE nowmovies CASCADE CONSTRAINTS;
+DROP TABLE wishlists CASCADE CONSTRAINTS;
 DROP TABLE movies CASCADE CONSTRAINTS;
 DROP TABLE reservations CASCADE CONSTRAINTS;
 DROP TABLE theaters CASCADE CONSTRAINTS;
@@ -113,11 +113,11 @@ CREATE TABLE movies
 	movie_title_kr varchar2(50) NOT NULL,
 	movie_title_eng varchar2(50) NOT NULL,
 	movie_genre varchar2(30) NOT NULL,
-	movie_directior varchar2(20) NOT NULL,
+	movie_directior varchar2(100) NOT NULL,
 	movie_actor1 varchar2(20) NOT NULL,
 	movie_actor2 varchar2(20),
 	movie_actor3 varchar2(20),
-	movie_img_url varchar2(100) NOT NULL,
+	movie_img_url varchar2(100),
 	movie_story varchar2(4000),
 	PRIMARY KEY (movie_code)
 );
@@ -204,7 +204,7 @@ ALTER TABLE comments
 ;
 
 
-ALTER TABLE evaluations
+ALTER TABLE nowmovies
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
 ;
@@ -216,7 +216,7 @@ ALTER TABLE wishlists
 ;
 
 
-ALTER TABLE nowmovies
+ALTER TABLE evaluations
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
 ;
@@ -252,7 +252,7 @@ ALTER TABLE nowmovies
 ;
 
 
-ALTER TABLE comments
+ALTER TABLE cancellations
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
@@ -264,25 +264,25 @@ ALTER TABLE customerboards
 ;
 
 
-ALTER TABLE wishlists
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
-ALTER TABLE cancellations
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
 ALTER TABLE evaluations
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
 
 
+ALTER TABLE comments
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
 ALTER TABLE reservationinfo
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE wishlists
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
