@@ -68,8 +68,9 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 
 	@Override
 	public CustomerBoard getBoardByBoardIdWithComments(int boardId) {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace+"selectBoardByIdWithCmt";
+		CustomerBoard results = sqlSession.selectOne(stmt, boardId);
+		return results;
 	}
 
 	@Override

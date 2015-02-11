@@ -4,7 +4,7 @@ header{
 	text-align: center;
 }
 
-table{
+#list{
 	margin: 0 auto;
 	table-layout:fixed;
 	witdh: 710px;
