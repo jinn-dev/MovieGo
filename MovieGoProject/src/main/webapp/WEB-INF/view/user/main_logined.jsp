@@ -10,8 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:url value="/header" var="url"/>
-	<jsp:include page="${url }" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<div class="main">
 		<div id="video">동영상 넣기</div>
 		<div id="box">

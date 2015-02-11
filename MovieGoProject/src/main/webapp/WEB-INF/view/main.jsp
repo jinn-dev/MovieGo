@@ -14,7 +14,7 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/component.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/content.css" />
-<script src="<%=request.getContextPath()%>/main/js/modernizr.custom.js"></script>
+<script src="<%=request.getContextPath ()%>/main/js/modernizr.custom.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 /* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */ 
@@ -82,7 +82,7 @@
 			
 			else {
 
-				alert("회원가입에 성공하셨습니다.");
+				alert("회원가입에 성공하셨습니다. 로그인해주세요");
 
 			}
 

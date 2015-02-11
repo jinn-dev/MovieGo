@@ -15,7 +15,7 @@
 <title>고객센터</title>
 </head>
 <body>
-	<jsp:include page="/header.jsp" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<header>
 		<h3>1:1문의</h3>
 		<h5>- 문의하시기 전 FAQ를 확인하시면 궁금증을 더욱 빠르게 해결하실 수 있습니다.<br>

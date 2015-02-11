@@ -54,6 +54,11 @@ public class UserDaoImpl implements UserDao {
 	public User getUserByUserId(User user) {
 		String stmt = namespace + "selectUser";
 		User result = sqlSession.selectOne(stmt, user);
+		if (result == null) {
+			logger.error("없습니다");
+		} else if(!result.getUserPwd().equals(user.getUserPwd())) {
+			logger.error("패스워드가 틀립니다");
+		}
 		return result;
 	}
 

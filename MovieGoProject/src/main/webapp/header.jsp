@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -12,6 +12,8 @@
 <title>MOVIE GO</title>
 </head>
 <body>
+	 <c:out value="${log.userId}"/>님 반갑습니다.<br> 
+
 	<!--  header 시작 -->
 	<div class="container">
 		<div class="cbp-af-header">
