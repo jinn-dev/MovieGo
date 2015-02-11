@@ -19,9 +19,68 @@
 <script>
 /* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */ 
 	$(document).ready(function() {
-	
+		$("#signup").click(function() {
+			var pwdLength = $("#userPwd").val().length;
+
+			if ($("#userId").val() == "") {
+
+				alert("아이디를 입력해주세요.");
+
+				event.preventDefault();
+
+			}
+			
+			else if ($("#userPwd").val() == "") {
+
+				alert("비밀번호를 입력해주세요.");
+
+				event.preventDefault();
+
+			}
+			else if (pwdLength > 10) {
+
+				alert("비밀번호는 10자이내로 입력해주세요.");
+
+				event.preventDefault();
+
+			}
+			else if ($("#pass2").val() == "") {
+
+				alert("비밀번호확인 입력해주세요.");
+
+				event.preventDefault();
+
+			}
+
+			else if ($("#userPwd").val() != $("#pass2").val()) {
+
+				alert("비밀번호와 확인 비밀번호가 일치하지 않습니다.");
+
+				$("#pass2").focus();
+
+				event.preventDefault();
+
+			}
+			
+			
+			
+			else if ($("#userEmail").val() == "") {
+
+				alert("이메일을 입력해주세요.");
+
+				event.preventDefault();
+
+			}
+			
+			else {
+
+				alert("회원가입에 성공하셨습니다.");
+				location.href="<%=request.getContextPath()%>/main_logined"
+
+			}
 
 	});
+		});
 </script>
 <title>메인 페이지</title>
 </head>
@@ -64,17 +123,17 @@
 									<c:url value="/main_logined" var="action"></c:url>
 									
 									<form:form modelAttribute="user" method="post" action="${action }" name="joinform">
-										<p><label>아이디 (영문/숫자 혼합 10자리)</label><input type="text" id="userId" name="userId" /></p>
+										<p><label>아이디 (영문/숫자 혼합 10자리)</label><input type="text" id="userId" name="userId"/></p>
 									
 										<p><label>이메일</label><input type="text" id="userEmail" name="userEmail"/></p>
 										<p><label>비밀번호 (영문/숫자 혼합 10자리)</label>
-										<input type="password" id="userPwd" name="userPwd"/></p>
+										<input type="password" id="userPwd" name="userPwd" /></p>
 										<p><label>비밀번호 확인</label>
  										<input type="password" id="pass2" name="pass2" onblur="javascript:passchk()"/></p>
 									<input type="text" name="chk" id="confirm"  
 										value="비밀번호를 입력하세요" readonly="readonly">
 										<p><label>생년월일</label><input type="date" id="userBirthday" name="userBirthday"/></p>
-										<p><input type="submit" onclick="javascript:signup()" value="signup"></p>
+										<p><input type="submit" id="signup" name="signup" value="signup"></p>
 									</form:form>
 								</div>
 							</div>
@@ -86,29 +145,7 @@
 	<script src="<%=request.getContextPath()%>/main/js/uiMorphingButton_fixed.js"></script>
 	<script>
 	
-	function signup(){
-		/* 		<c:url value="/main_logined" var="url"></c:url>
-				window.open('${url}','client_window', 'resizable=no scrollbars=no width=400 height=550'); */
-				if (pass2.length == 0 || pass2 == null) {
-					alert("비밀번호를 다시 확인하세요");
-					$("#userPwd").focus();
-					break;
-				}
-				
-				if(!userPwd.equals(pass2)) {
-					alert("비밀번호를 다시 확인하세요");
-					$("#userPwd").focus();
-					break;
 
-				}
-				
-				else {
-					alert("회원가입에 성공하셨습니다.");
-					location.href="<%=request.getContextPath()%>/main"
-
-				}
-				
-			}
 		function userInfo(){
 			<c:url value="/find_user_info" var="url"></c:url>
 			 location.href="reservation_complete.jsp"       	    
@@ -123,7 +160,9 @@
 				document.joinform.chk.value = "비밀번호를 입력하세요";
 			} else if (userPwd != pass2) {
 				document.joinform.chk.value = "비밀번호가 다릅니다.";
-			} else {
+			} 
+		
+			else {
 				document.joinform.chk.value = "비밀번호가 동일합니다.";
 			}
 			return;
