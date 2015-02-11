@@ -53,8 +53,9 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User getUserByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace + "selectUser";
+		User result = sqlSession.selectOne(stmt, userId);
+		return result;
 	}
 
 	@Override

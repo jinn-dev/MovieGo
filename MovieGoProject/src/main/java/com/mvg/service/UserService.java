@@ -6,5 +6,5 @@ public interface UserService {
 
 	public Integer getUserCntService();
 	public int insertUser(User user);
-
+	public User getUserByUserId(String userId);
 }

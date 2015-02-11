@@ -30,4 +30,11 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	@Override
+	public User getUserByUserId(String userId) {
+		User user = dao.getUserByUserId(userId);
+		return user;
+
+	}
+
 }
