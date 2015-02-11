@@ -44,7 +44,7 @@
 			<tr>
 		</table>
 		</div>
-		<div class="view-table">
+		<div class="comment-table">
 		<table border="1">
 			<tr>
 				<td colspan="5">COMMENT</td>
