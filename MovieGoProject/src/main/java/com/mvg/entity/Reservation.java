@@ -12,6 +12,8 @@ public class Reservation {
 	private int reservationPrice;
 	private Date reservationDate;
 
+	public Reservation() {}
+	
 	public Reservation(int reservationId, int reservationNum,
 			int reservationPrice, Date reservationDate) {
 		super();

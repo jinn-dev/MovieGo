@@ -13,6 +13,8 @@ public class User {
 	private boolean userCoupon;
 	private int userPoint;
 
+	public User() {}
+	
 	public User(String userId, String userPwd, String userEmail) {
 		super();
 		this.userId = userId;

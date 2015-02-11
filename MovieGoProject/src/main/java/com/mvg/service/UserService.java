@@ -5,7 +5,6 @@ import com.mvg.entity.User;
 public interface UserService {
 
 	public int getUserCntService();
-	
-	public int insertUserService(User user);
+
 	
 }

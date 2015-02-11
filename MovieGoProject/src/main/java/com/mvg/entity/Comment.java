@@ -12,6 +12,8 @@ public class Comment {
 	private String commentContent;
 	private Date commentDate;
 
+	public Comment() {}
+	
 	public Comment(int commentId, int boardId, String commentContent,
 			Date commentDate) {
 		super();

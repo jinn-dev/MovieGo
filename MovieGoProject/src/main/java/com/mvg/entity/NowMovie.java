@@ -11,6 +11,8 @@ public class NowMovie {
 	private String movieCode;
 	private Date movieDate;
 
+	public NowMovie() {}
+	
 	public NowMovie(int nowmovieId, int theaterId, String movieCode,
 			Date movieDate) {
 		super();

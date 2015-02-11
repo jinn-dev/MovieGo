@@ -18,10 +18,5 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
-	@Override
-	public int insertUserService(User user) {
-		int result = dao.insertUser(user);
-		return result;
-	}
 
 }

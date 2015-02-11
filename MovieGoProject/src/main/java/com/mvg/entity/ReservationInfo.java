@@ -9,6 +9,8 @@ public class ReservationInfo {
 	private String userId;
 	private int reservationId;
 
+	public ReservationInfo() {}
+	
 	public ReservationInfo(int reservationinfoId, int seatId, String userId,
 			int reservationId) {
 		super();
