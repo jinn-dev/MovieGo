@@ -24,5 +24,6 @@
 	<mappers>
 		<mapper resource="mappers/userMapper.xml" />
 		<mapper resource="mappers/CustomerBoardMapper.xml"/>
+		<mapper resource="mappers/CommentMapper.xml"/>
 	</mappers>
 </configuration>

@@ -21,6 +21,7 @@
 	$(document).ready(function() {
 		$("#signup").click(function() {
 			var pwdLength = $("#userPwd").val().length;
+			var idLength = $("#userId").val().length;
 
 			if ($("#userId").val() == "") {
 
@@ -30,9 +31,16 @@
 
 			}
 			
-			else if ($("#userPwd").val() == "") {
+			  else if ($("#userPwd").val() == "") {
 
-				alert("비밀번호를 입력해주세요.");
+				alert("pwd:" +$("#userPwd").val() + "비밀번호를 입력해주세요.");
+
+				event.preventDefault();
+
+			}  
+			else if (idLength > 10) {
+
+				alert("id는 10자이내로 입력해주세요.");
 
 				event.preventDefault();
 
@@ -75,11 +83,30 @@
 			else {
 
 				alert("회원가입에 성공하셨습니다.");
-				location.href="<%=request.getContextPath()%>/main_logined"
 
 			}
 
 	});
+ 		
+		$("#login").click(function() {
+
+			if ($("#email").val() == "") {
+
+				alert("아이디를 입력해주세요.");
+
+				event.preventDefault();
+
+			}
+			
+			else if ($("#pwd").val() == "") {
+
+				alert("비밀번호를 입력해주세요.");
+
+				event.preventDefault();
+
+			}
+
+	}); 
 		});
 </script>
 <title>메인 페이지</title>
@@ -103,12 +130,14 @@
 								<div class="content-style-form content-style-form-1">
 									<span class="icon icon-close">Close the dialog</span>
 									<h2>Login</h2>
-									<form>
-										<p><label>Email</label><input type="text" /></p>
-										<p><label>Password</label><input type="password" /></p>
-										<p><button>Login</button></p>
+									<c:url value="/login" var="action"></c:url>
+									
+									<form:form modelAttribute="log" method="post" action="${action }" name="loginform">
+										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
+										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>
+										<p><input type="submit" id="login" name="login" value="login"></p>
 										<p id="searchinfo"><a href="javascript:userInfo()">ID/비밀번호 찾기</a></p>
-									</form>
+									</form:form>
 								</div>
 							</div>
 						</div>
@@ -149,7 +178,6 @@
 		function userInfo(){
 			<c:url value="/find_user_info" var="url"></c:url>
 			 location.href="reservation_complete.jsp"       	    
-
 			window.open('${url}','client_window', 'resizable=no scrollbars=no width=400 height=550');
 		}
 		/* 비밀번호 유효성 체크 */

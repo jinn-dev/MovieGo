@@ -46,6 +46,7 @@
   	<result column="board_date" jdbcType="DATE" property="boardDate"/>
   	<collection property="comments" ofType="Comment">
   	<id column="comment_id" jdbcType="INTEGER" property="commentId"/>
+  	<result column="board_id" jdbcType="INTEGER" property="boardId"/>
   	<result column="user_id" jdbcType="VARCHAR" property="userId"/>
   	<result column="comment_content" jdbcType="VARCHAR" property="commentContent"/>
   	<result column="comment_date" jdbcType="DATE" property="commentDate"/>
