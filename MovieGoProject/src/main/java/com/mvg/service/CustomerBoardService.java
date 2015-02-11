@@ -9,6 +9,7 @@ public interface CustomerBoardService {
 	List<CustomerBoard> getAllBoardList();
 	
 	int addBoard(CustomerBoard board);
-
-	CustomerBoard getBoardByIdWithCmts(int boardId);
+	
+	CustomerBoard getBoardByBdId(int boardId);
+	CustomerBoard getBoardByBdIdWithCmts(int boardId);
 }

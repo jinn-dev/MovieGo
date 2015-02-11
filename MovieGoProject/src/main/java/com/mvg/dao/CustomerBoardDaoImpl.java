@@ -70,7 +70,6 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 	public CustomerBoard getBoardByBoardIdWithComments(int boardId) {
 		String stmt = namespace+"selectBoardByIdWithCmt";
 		CustomerBoard results = sqlSession.selectOne(stmt, boardId);
-		logger.trace("결과값!!"+results);
 		return results;
 	}
 

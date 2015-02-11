@@ -17,9 +17,12 @@
   </select>
   
   <select id="selectBoardByIdWithCmt" resultMap="ComplexBoardComment">
-  	select * from customerboards
-  	join comments using (board_id)
-  	where board_id = #{boardId}
+  	select b.board_id, b.user_id, b.board_title, b.board_content, b.board_date,
+  	c.comment_id, c.board_id, c.user_id, c.comment_content, c.comment_date
+  	from customerboards b
+  	left join comments c
+  	on(b.board_id = c.board_id)
+  	where b.board_id = #{boardId}
   
   </select>
   
@@ -43,10 +46,10 @@
   	<result column="board_date" jdbcType="DATE" property="boardDate"/>
   	<collection property="comments" ofType="Comment">
   	<id column="comment_id" jdbcType="INTEGER" property="commentId"/>
+  	<result column="user_id" jdbcType="VARCHAR" property="userId"/>
   	<result column="comment_content" jdbcType="VARCHAR" property="commentContent"/>
   	<result column="comment_date" jdbcType="DATE" property="commentDate"/>
   	</collection>
-  
   </resultMap>
   
   
