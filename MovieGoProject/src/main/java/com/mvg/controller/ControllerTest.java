@@ -3,6 +3,8 @@ package com.mvg.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +42,8 @@ public class ControllerTest {
 	UserService service;
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String mainTest() {
+	public String mainTest(Model model) {
+		model.addAttribute("log", new User());
 		return "main";
 	}
 
@@ -50,8 +53,10 @@ public class ControllerTest {
 	}
 
 	@RequestMapping(value="/login",  method=RequestMethod.POST)
-	public String login(Model model, @ModelAttribute("log") User log){
+	public String login(Model model, @ModelAttribute("log") User log, HttpSession session){
 		User user = service.getUserByUserId(log);
+		logger.trace("수업:" + session.getAttribute("log"));
+		
 		model.addAttribute("log", user);
 		return "user/main_logined";
 	}
