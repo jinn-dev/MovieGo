@@ -6,10 +6,10 @@
 	<select id="getUserCount" resultType="Integer">
 		select count(*) from users
 	</select>
-	<insert id="insertUser" parameterType="User">
-		insert into users (user_id, user_pwd, user_email, user_birthday) values
-		(#{userId}, #{userPwd}, #{userEmail}, #{userBirthday})
-	</insert>
+ <insert id = "insertUser" parameterType = "User">
+  	insert into users (user_id, user_pwd, user_email, user_birthday) values (#{userId}, #{userPwd}, #{userEmail}, #{userBirthday})
+  </insert>
+  
 
 	<select id="selectUser" parameterType="User" resultType="User">
 		select user_id, user_pwd
