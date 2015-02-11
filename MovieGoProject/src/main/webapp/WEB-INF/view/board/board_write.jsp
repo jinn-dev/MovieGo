@@ -9,8 +9,7 @@
 <title>고객센터</title>
 </head>
 <body>
-	<c:url value="/header" var="url"/>
-	<jsp:include page="${url }" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
 	<header>
 		<h3>1:1문의</h3>
 		<h5>

@@ -23,11 +23,13 @@
 				<nav>
 					<a href="#">RESERVATION</a> 
 					<a href="#">영화평가</a>
-					<a href="#">MY PAGE</a>
-					<a href="#">고객센터</a>   	        <c:out value="${log.userId}"/>님 반갑습니다.<br> 
 					
-					<c:url value="/board" var="url"/>
-					<a href="${url }">고객센터</a>
+					<c:url value="/mypage" var="url"/>    
+					<a href="${url }">MY PAGE</a> 
+					
+					<c:url value="/board" var="url"/>    
+					<a href="${url }">고객센터</a> 
+					<c:out value="${log.userId}"/>님 반갑습니다.<br> 
 				</nav>
 			</div>
 		</div>

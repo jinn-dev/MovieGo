@@ -139,6 +139,8 @@ function chk_seledVal(){
 </script>
 
 <body>
+	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+
 <form name="frm">
 <input type="reset" value="새로">
 

@@ -16,6 +16,8 @@ function chk_seledVal(){
 
 
 <body>
+	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+
 <table border="1">
 <tr><th>인원/좌석</th></tr>
 <tr>
