@@ -78,7 +78,8 @@ CREATE TABLE comments
 (
 	comment_id number NOT NULL,
 	board_id number NOT NULL,
-	comment_content varchar2(500),
+	user_id varchar2(10) NOT NULL,
+	comment_content varchar2(500) NOT NULL,
 	comment_date date DEFAULT sysdate NOT NULL,
 	PRIMARY KEY (comment_id)
 );
@@ -117,6 +118,7 @@ CREATE TABLE movies
 	movie_actor2 varchar2(20),
 	movie_actor3 varchar2(20),
 	movie_img_url varchar2(100) NOT NULL,
+	movie_story varchar2(4000),
 	PRIMARY KEY (movie_code)
 );
 
@@ -178,8 +180,8 @@ CREATE TABLE users
 	user_pwd varchar2(10) NOT NULL,
 	user_email varchar2(30) NOT NULL UNIQUE,
 	user_birthday date,
-	user_coupon char DEFAULT 'n' NOT NULL,
-	user_point number DEFAULT 0 NOT NULL,
+	user_coupon char NOT NULL,
+	user_point number NOT NULL,
 	PRIMARY KEY (user_id)
 );
 
@@ -202,6 +204,12 @@ ALTER TABLE comments
 ;
 
 
+ALTER TABLE evaluations
+	ADD FOREIGN KEY (movie_code)
+	REFERENCES movies (movie_code)
+;
+
+
 ALTER TABLE wishlists
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
@@ -209,12 +217,6 @@ ALTER TABLE wishlists
 
 
 ALTER TABLE nowmovies
-	ADD FOREIGN KEY (movie_code)
-	REFERENCES movies (movie_code)
-;
-
-
-ALTER TABLE evaluations
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
 ;
@@ -250,19 +252,7 @@ ALTER TABLE nowmovies
 ;
 
 
-ALTER TABLE reservationinfo
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
-ALTER TABLE evaluations
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
-ALTER TABLE cancellations
+ALTER TABLE comments
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
@@ -275,6 +265,24 @@ ALTER TABLE customerboards
 
 
 ALTER TABLE wishlists
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE cancellations
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE evaluations
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE reservationinfo
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
