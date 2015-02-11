@@ -11,6 +11,8 @@ public class Cancellation {
 	private String userId;
 	private int seatId;
 
+	public Cancellation() {}
+	
 	public Cancellation(int cancelId, Date cancelDate, String userId, int seatId) {
 		super();
 		this.cancelId = cancelId;

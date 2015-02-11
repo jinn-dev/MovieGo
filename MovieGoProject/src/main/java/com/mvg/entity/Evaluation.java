@@ -11,6 +11,8 @@ public class Evaluation {
 	private int evRating;
 	private String evComment;
 
+	public Evaluation() {}
+	
 	public Evaluation(int evId, String userId, String movieCode, int evRating,
 			String evComment) {
 		super();

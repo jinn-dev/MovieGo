@@ -9,6 +9,8 @@ public class SeatInfo {
 	private int nowmovieId;
 	private int seatNo;
 
+	public SeatInfo() {}
+	
 	public SeatInfo(int seatId, int nowmovieId, int seatNo) {
 		super();
 		this.seatId = seatId;

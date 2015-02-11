@@ -13,19 +13,20 @@ public class CustomerBoard {
 	private String boardTitle;
 	private String boardContent;
 	private Date boardDate;
+
 	private ArrayList<Comment> comments;
-	
-	public ArrayList<Comment> getComments(){
+
+	public CustomerBoard() {
+	}
+
+	public ArrayList<Comment> getComments() {
 		return comments;
 	}
-	
-	public void setComments(ArrayList<Comment> comments){
+
+	public void setComments(ArrayList<Comment> comments) {
 		this.comments = comments;
 	}
-	
-	
-	public CustomerBoard(){}
-	
+
 	public CustomerBoard(int boardId, String userId, String boardTitle,
 			String boardContent, Date boardDate) {
 		super();
