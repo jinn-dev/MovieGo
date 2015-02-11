@@ -5,12 +5,12 @@
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
 <title>고객센터</title>
 </head>
 <body>
-	<jsp:include page="/header.jsp" />
+	<c:url value="/header" var="url"/>
+	<jsp:include page="${url }" />
 	<header>
 		<h3>1:1문의</h3>
 		<h5>

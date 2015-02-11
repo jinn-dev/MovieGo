@@ -6,8 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -22,28 +21,29 @@
 		<h5>- 문의하시기 전 FAQ를 확인하시면 궁금증을 더욱 빠르게 해결하실 수 있습니다.<br>
 		- 1:1 문의 운영 시간 (09:00 ~ 20:00) </h5>
 		<c:url value="/board/write" var="url" />
-		<a href="${url }"><button>WRITE</button></a>
 	</header>
+	<a href="${url }"><button id="writeB">WRITE</button></a>
+	<div class="list-table">
 	<table id="list">
 		<tr >
 			<th>
 				<div>
-					<b>글번호</b>
+					<b>NO.</b>
 				</div>
 			</th>
-			<th width="318">
+			<th >
 				<div>
-					<b>제목</b>
+					<b>TITLE</b>
 				</div>
 			</th>
-			<th width="110">
+			<th>
 				<div>
-					<b>작성자</b>
+					<b>WRITER</b>
 				</div>
 			</th>
-			<th width="119">
+			<th>
 				<div>
-					<b>등록일</b>
+					<b>REG DATE</b>
 				</div>
 			</th>
 		</tr>
@@ -60,5 +60,6 @@
 		</tr>
 		</c:forEach>
 	</table>
+	</div>
 </body>
 </html>

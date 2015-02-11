@@ -7,8 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%-- <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/board.css" /> --%>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -26,10 +25,11 @@
 		</h5>
 	</header>
 	<section>
+		<div class="view-table">
 		<table border="1">
 			<tr>
-				<td id="title" colspan="4"><c:out
-						value="${content.boardTitle }" /></td>
+				<th id="title" colspan="4"><c:out
+						value="${content.boardTitle }" /></th>
 			</tr>
 			<tr>
 				<th>작성자</th>
@@ -43,6 +43,8 @@
 			</tr>
 			<tr>
 		</table>
+		</div>
+		<div class="view-table">
 		<table border="1">
 			<tr>
 				<td colspan="5">COMMENT</td>
@@ -63,15 +65,18 @@
 			</c:if>
 		</table><br>
 		
+		<div class="comment-form">		
 		<c:url value="/comment/write" var="url"></c:url>
-		
 		<form:form method="post" modelAttribute="comment" action="${url }">
+		<div class="comment-form-inner">
 		<input type="hidden" name="boardId" value="${content.boardId }"/><br>
 		<label>ID(test)</label><input type="text" name="userId"/>
 		<label>코멘트 쓰기</label><input type="text" name="commentContent"/>
 		<button type="submit">등록</button>
+		</div>
 		</form:form>
-
+		</div>
+	</div>
 	</section>
 </body>
 </html>
