@@ -10,7 +10,47 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script>
+window.onload = function(){
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange=function(){	
+		// 코멘트 뿌려주기
+		if(xhr.readyState==4 && xhr.status==200){
+			var data = xhr.responseText;
+			var obj = JSON.parse(data);
+			var output =
+			<c:if test="${detail.userId==log.userId }">	
+			for(var i=0;i<obj.length;i++){
+			
+			
+			
+			}
+			output+="</table><br>";
+			</c:if>
+			document.querySelector("#drophere").innerHTML+=output;
+		}
+	}
+	
+		var url ="${list}";
+		xhr.open("get",url, true); 
+		xhr.send();
+		
+document.querySelector("#send").addEventListener("click", function(){
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange=function(){	
+	if(xhr.readyState==4 && xhr.status==200){ 
+			var data = xhr.responseText;
+		}
+	}
+var url ="${list}";
+	xhr.open("post", url, true);
+	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	var message = document.querySelector("#content").value;
+	xhr.send("message="+message);
+});
+
+}
 	
 </script>
 <title>고객센터</title>
@@ -57,31 +97,37 @@
 		</table><p><p>
 		</div>
 		<div class="comment-table">
-		<table width="602" border="1">
+		<table width="602">
 			<tr>
 				<th colspan="5">COMMENT</th>
 
 			</tr>
-			<c:if test="${detail.comments[0].commentId!=0 }">
+			<tr>
+			<div id="drophere"></div>
+			<%-- <c:if test="${detail.comments[0].commentId!=0 }">
 				<c:forEach items="${detail.comments }" var="comments">
-				<tr>
-					<td><c:out value="${comments.userId }" /></td>
-					<fmt:formatDate value="${comments.commentDate }" type="date" var="date"/>		
-					<td align="left" colspan="3"><c:out value="${date }" />
-					</td>
 					<td>
-						<c:if test="${comments.userId==log.userId }">
-						<button class="div-button">MODIFY</button>&nbsp;
-						<c:url value="/comment/delete?commentId=${comments.commentId }" var="url"></c:url>
-						<a href="${url }"><button class="div-button">DELETE</button></a>
-						</c:if>
+					<c:out value="${comments.userId }" />
 					</td>
+					
+					<fmt:formatDate value="${comments.commentDate }" type="date" var="date"/>		
+					<td align="left" colspan="2">
+					<c:out value="${date }" />
+					</td>
+					
+					<c:if test="${comments.userId==log.userId }">
+					<td colspan="2" align="right">
+					<button>MODIFY</button>&nbsp;
+					<c:url value="/comment/delete?commentId=${comments.commentId }" var="url"></c:url>
+					<a href="${url }"><button>DELETE</button></a>
+					</td>
+					</c:if>
 				</tr>
 				<tr>
 					<td colspan="5" align="left" height="25"><c:out value="${comments.commentContent }" /></td>
-				</tr>
 				</c:forEach>
-			</c:if>
+			</c:if> --%>
+			</tr>
 			<tr>
 					<td colspan="5">
 					<div class="comment-form">		
