@@ -19,10 +19,14 @@
 <script>
 /* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */ 
 	$(document).ready(function() {
-		$("#signup").click(function() {
+		$("#signupB").click(function() {
 			var pwdLength = $("#userPwd").val().length;
 			var idLength = $("#userId").val().length;
-
+			
+			
+			for(var i = 0; i < idLength; i++) {
+				
+			}
 			if ($("#userId").val() == "") {
 
 				alert("아이디를 입력해주세요.");
@@ -85,7 +89,12 @@
 				alert("회원가입에 성공하셨습니다. 로그인해주세요");
 
 			}
-
+			for(var i = 0; i < idLength; i++) {
+				if($("#userId").val() > "A" && $("#userId").val() < "Z") {
+					alert("다시 입력해주세요.");
+					event.preventDefault();
+				}
+			}
 	});
  		
 		$("#login").click(function() {
@@ -106,8 +115,11 @@
 
 			}
 
-	}); 
-		});
+	});
+	});
+		
+	
+
 </script>
 <title>메인 페이지</title>
 </head>
@@ -160,8 +172,8 @@
  										<input type="password" id="pass2" name="pass2" onblur="javascript:passchk()"/></p>
 									<input type="text" name="chk" id="confirm"  
 										value="비밀번호를 입력하세요" readonly="readonly">
-										<p><label>생년월일</label><input type="date" id="userBirthday" name="userBirthday"/></p>
-										<p><input type="submit" id="signup" name="signup" value="signup"></p>
+										<p><label>생년월일</label><input type="date" id="userBirthday" name="userBirthday"/></p>										
+										<p><input type="submit" id="signupB" name="_event_confirmed" value="SIGNUP"></p>										
 									</form:form>
 								</div>
 							</div>

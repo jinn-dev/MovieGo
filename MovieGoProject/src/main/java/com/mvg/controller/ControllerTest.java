@@ -72,7 +72,7 @@ public class ControllerTest {
 		return "redirect:/main";
 	}
 	
-	@RequestMapping(value="/signup", method=RequestMethod.POST)
+	@RequestMapping(value="/signup", params ="_event_confirmed", method=RequestMethod.POST)
 	public String mainLogined(User user, Model model){
 	    service.insertUser(user);
 	    return "main";

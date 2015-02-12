@@ -163,6 +163,24 @@
 	outline: none;
 }
 
+#signupB{
+	display: block;
+	margin-top: 2.5em;
+	padding: 1.5em;
+	width: 100%;
+	border: none;
+	background: #A52127;
+	color: #F2F2F2;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 800;
+	font-size: 1.25em;
+}
+
+#signupB:focus{
+	outline: none;
+}
+
 .content-style-form button:focus{
 	outline: none;
 }
