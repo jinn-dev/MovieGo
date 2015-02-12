@@ -1,8 +1,7 @@
 -- 회원
-INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('a', 'a', 'a', '', 'n', '0');
-INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('b', 'b', 'b', '', 'n', '0');
-INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('c', 'c', 'c', '', 'y', '100');
-INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('d', 'd', 'd', '', 'y', '0');
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('a', 'a', '910326', '', 'n', '0');
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('b', 'b', '911029', '', 'n', '0');
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('c', 'c', '900922', '', 'n', '100');
 
 -- 극장
 INSERT INTO theaters (theater_name) VALUES ('건대');
@@ -18,11 +17,11 @@ INSERT INTO nowmovies (movie_code, theater_id, movie_time) VALUES ('20111686', '
 
 
 -- 좌석정보
-INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('1', '11', '1');
-INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('2', '11', '2');
-INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('3', '11', '3');
-INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('4', '12', '1');
-INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('5', '12', '2');
+INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('1', '1', '1');
+INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('2', '1', '2');
+INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('3', '1', '3');
+INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('4', '2', '1');
+INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('5', '2', '2');
 
 -- 예약정보
 INSERT INTO reservationinfo (reservationinfo_id, seat_id, reservation_id) VALUES ('1', '20', '1');
