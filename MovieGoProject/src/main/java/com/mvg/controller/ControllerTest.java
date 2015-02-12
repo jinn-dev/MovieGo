@@ -59,7 +59,7 @@ public class ControllerTest {
 		return "user/main_logined";
 	}*/
 	
-	@RequestMapping(value="/login",  method=RequestMethod.POST)
+	@RequestMapping(value="/login", params="_event_confirmed", method=RequestMethod.POST)
 	public String login(Model model, @ModelAttribute("log") User log, HttpSession session){
 		User u = service.getUserByUserId(log);
 		model.addAttribute("user", u);

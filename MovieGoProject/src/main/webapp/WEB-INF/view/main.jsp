@@ -134,7 +134,7 @@
 									<form:form modelAttribute="log" method="post" action="${action }" name="loginform">
 										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
 										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>
-										<p><button type="submit">Login</button></p>
+										<p><input id="loginB" type="submit" name="_event_confirmed" value="LOGIN"/></p>
 										<p id="searchinfo"><a href="javascript:userInfo()">ID/비밀번호 찾기</a></p>
 									</form:form>
 								</div>
