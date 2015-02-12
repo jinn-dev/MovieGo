@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mvg.entity.User;
 import com.mvg.service.UserService;
+
+@RequestMapping("/mypage")
 @Controller
 public class MyPageController {
 	private final static Logger logger;
@@ -47,10 +49,16 @@ public class MyPageController {
 		return "mypage/modify";
 	}
 	
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+/*	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(@ModelAttribute("user")User user) {
 	    service.updateUser(user);
 		return "mypage/mypage";
 	}
+	*/
 	
+	@RequestMapping(value="/update", params="_event_confirmed", method=RequestMethod.POST)
+	public String update(@ModelAttribute("user")User user) {
+	    service.updateUser(user);
+		return "redirect:/mypage/mypage";
+	}
 }

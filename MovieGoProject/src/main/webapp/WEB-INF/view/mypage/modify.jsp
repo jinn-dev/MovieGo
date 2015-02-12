@@ -42,7 +42,7 @@
 		<label>비밀번호</label><form:input path="userPwd" /> <br>
 		<label>EMAIL</label><form:input path="userEmail" /><br>
 		<label>생년월일</label><form:input path="userBirthday" /><br>
-		<input type="submit" id="update" name="update" value="수정 확인">
+		<input type="submit" id="update" name="_event_confirmed" value="수정 확인">
 		<input type="button" value="수정 취소">
 		<input type="button" onclick="deleteCheck();" value="회원탈퇴">
 		</form:form> 
