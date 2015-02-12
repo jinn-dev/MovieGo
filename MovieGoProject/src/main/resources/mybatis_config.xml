@@ -25,5 +25,7 @@
 		<mapper resource="mappers/userMapper.xml" />
 		<mapper resource="mappers/CustomerBoardMapper.xml"/>
 		<mapper resource="mappers/CommentMapper.xml"/>
+		<mapper resource="mappers/theaterMapper.xml" />
+		<mapper resource="mappers/reservationMapper.xml" />
 	</mappers>
 </configuration>

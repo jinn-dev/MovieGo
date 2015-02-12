@@ -24,15 +24,15 @@ public class TheaterController {
 	@Autowired
 	TheaterService service;
 	
-	int cnt = service.getTheaterCntService();
-	List<Theater> theaters = service.getAllTheatersService();
+	//int cnt = service.getTheaterCntService();
+	//List<Theater> theaters = service.getAllTheatersService();
 	
 	
 	@RequestMapping(value="/reservation1", method=RequestMethod.GET)
 	public String reservation(Model model) {
-		model.addAttribute("theaterCnt", cnt);
+		/*model.addAttribute("theaterCnt", cnt);
 		model.addAttribute("allTheaters", theaters);
-		logger.trace("수업: "+cnt+"(개수) , "+theaters+" (영화)");
+		logger.trace("수업: "+cnt+"(개수) , "+theaters+" (영화)");*/
 		return "reservation1";
 	}
 	
