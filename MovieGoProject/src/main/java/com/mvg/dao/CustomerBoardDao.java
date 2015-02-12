@@ -13,7 +13,7 @@ public interface CustomerBoardDao {
 	List<CustomerBoard> getAllBoard();
 	
 	//게시글 모두 + 댓글 포함
-	List<CustomerBoard> getAllBoardWithComments();
+	// List<CustomerBoard> getAllBoardWithComments();
 	
 	//게시글 등록
 	int insertCustomerBoard(CustomerBoard board);
@@ -34,6 +34,6 @@ public interface CustomerBoardDao {
 	List<CustomerBoard> getBoardByUserId(String userId);
 	
 	//내가쓴 게시물 가져오기+댓글
-	List<CustomerBoard> getBoardByUserIdWithComments(String userId);
+	// List<CustomerBoard> getBoardByUserIdWithComments(String userId);
 	
 }

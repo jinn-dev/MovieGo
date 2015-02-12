@@ -23,8 +23,8 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 	
 	@Override
 	public int getAllBoardCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace+"selectBoardCnt";
+		return sqlSession.selectOne(stmt);
 	}
 
 	@Override
@@ -32,12 +32,6 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 		String stmt = namespace+"selectAllBoard";
 		List<CustomerBoard> results = sqlSession.selectList(stmt);
 		return results;
-	}
-
-	@Override
-	public List<CustomerBoard> getAllBoardWithComments() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -79,14 +73,10 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 
 	@Override
 	public List<CustomerBoard> getBoardByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace+"selectBoardByUserId";
+		List<CustomerBoard> results = sqlSession.selectList(stmt, userId);
+		return results;
 	}
 
-	@Override
-	public List<CustomerBoard> getBoardByUserIdWithComments(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

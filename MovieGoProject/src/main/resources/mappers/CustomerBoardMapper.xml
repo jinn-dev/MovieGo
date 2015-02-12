@@ -2,80 +2,83 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.mvg.mappers.customerBoardMapper">
-  
-  <select id="selectBoardCnt" resultType="INTEGER">
-	select count(*) from customerboards
-</select>
-  
-  
-  <select id="selectAllBoard" resultMap="boardMap">
-  	select board_id, user_id, board_title, board_date
-    from customerboards 
-    order by board_id desc
-  </select>
-  
-  <select id="selectBoardByNo" resultMap="boardMap">
-  	select board_id, user_id, board_title, board_content, board_date
-  	from customerboards
-  	where board_id = #{boardId}
-  </select>
-  
-  <select id="selectBoardByIdWithCmt" resultMap="ComplexBoardComment">
-  	select b.board_id, b.user_id, b.board_title, b.board_content, b.board_date,
-  	c.comment_id, c.board_id, c.user_id, c.comment_content, c.comment_date
-  	from customerboards b
-  	left join comments c
-  	on(b.board_id = c.board_id)
-  	where b.board_id = #{boardId}
-  </select>
-  
-  <insert id="insertBoard" parameterType="CustomerBoard">
- 	insert into customerboards (user_id, board_title, board_content)
- 	values (#{userId}, #{boardTitle}, #{boardContent}) 
-  </insert>
-  
-  <update id="updateBoard" parameterType="CustomerBoard">
-  	update customerboards
-  	set board_title = #{boardTitle}, board_content = #{boardContent}
-  	where board_id=#{boardId} and user_id=#{userId}  
-  </update>
-  
-  <delete id="deleteBoard" parameterType="INTEGER">
-  	delete from customerboards 
-  	where board_id=#{boardId}
-  </delete>
-  
-  <delete id="deleteComment" parameterType="INTEGER">
+<mapper namespace="com.mvg.mappers.customerBoardMapper">
+	
+	<select id="selectBoardByUserId" parameterType="String" resultType="CustomerBoard">
+		select * from customerboards where user_id = #{userId}
+	</select> 
+
+	<select id="selectBoardCnt" resultType="INTEGER">
+		select count(*) from customerboards
+	</select>
+
+
+	<select id="selectAllBoard" resultMap="boardMap">
+		select board_id, user_id, board_title, board_date
+		from customerboards
+		order by board_id desc
+	</select>
+
+	<select id="selectBoardByNo" resultMap="boardMap">
+		select board_id, user_id, board_title, board_content, board_date
+		from customerboards
+		where board_id = #{boardId}
+	</select>
+
+	<select id="selectBoardByIdWithCmt" resultMap="ComplexBoardComment">
+		select b.board_id, b.user_id, b.board_title, b.board_content, b.board_date,
+		c.comment_id, c.board_id, c.user_id, c.comment_content, c.comment_date
+		from customerboards b
+		left join comments c
+		on(b.board_id = c.board_id)
+		where b.board_id = #{boardId}
+	</select>
+
+	<insert id="insertBoard" parameterType="CustomerBoard">
+		insert into customerboards (user_id, board_title, board_content)
+		values (#{userId}, #{boardTitle}, #{boardContent})
+	</insert>
+
+	<update id="updateBoard" parameterType="CustomerBoard">
+		update customerboards
+		set board_title = #{boardTitle}, board_content = #{boardContent}
+		where board_id=#{boardId} and user_id=#{userId}
+	</update>
+
+	<delete id="deleteBoard" parameterType="INTEGER">
+		delete from customerboards
+		where board_id=#{boardId}
+	</delete>
+
+	<delete id="deleteComment" parameterType="INTEGER">
 		delete from comments
 		where board_id = #{boardId}
-  </delete>
-	
-  
-  <resultMap type="CustomerBoard" id="ComplexBoardComment">
-  	<id column="board_id" jdbcType="INTEGER" property="boardId"/>
-  	<result column="user_id" jdbcType="VARCHAR" property="userId"/>
-  	<result column="board_title" jdbcType="VARCHAR" property="boardTitle"/>
-  	<result column="board_content" jdbcType="VARCHAR" property="boardContent"/>
-  	<result column="board_date" jdbcType="DATE" property="boardDate"/>
-  	<collection property="comments" ofType="Comment">
-  	<id column="comment_id" jdbcType="INTEGER" property="commentId"/>
-  	<result column="board_id" jdbcType="INTEGER" property="boardId"/>
-  	<result column="user_id" jdbcType="VARCHAR" property="userId"/>
-  	<result column="comment_content" jdbcType="VARCHAR" property="commentContent"/>
-  	<result column="comment_date" jdbcType="DATE" property="commentDate"/>
-  	</collection>
-  </resultMap>
-  
-  
-  <resultMap type="CustomerBoard" id="boardMap">
-  	<id column="board_id" jdbcType="INTEGER" property="boardId"/>
-  	<result column="user_id" jdbcType="VARCHAR" property="userId"/>
-  	<result column="board_title" jdbcType="VARCHAR" property="boardTitle"/>
-  	<result column="board_content" jdbcType="VARCHAR" property="boardContent"/>
-  	<result column="board_date" jdbcType="DATE" property="boardDate"/>
-  </resultMap>
-  
-  </mapper>
+	</delete>
+
+	<resultMap type="CustomerBoard" id="ComplexBoardComment">
+		<id column="board_id" jdbcType="INTEGER" property="boardId" />
+		<result column="user_id" jdbcType="VARCHAR" property="userId" />
+		<result column="board_title" jdbcType="VARCHAR" property="boardTitle" />
+		<result column="board_content" jdbcType="VARCHAR" property="boardContent" />
+		<result column="board_date" jdbcType="DATE" property="boardDate" />
+		<collection property="comments" ofType="Comment">
+			<id column="comment_id" jdbcType="INTEGER" property="commentId" />
+			<result column="board_id" jdbcType="INTEGER" property="boardId" />
+			<result column="user_id" jdbcType="VARCHAR" property="userId" />
+			<result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+			<result column="comment_date" jdbcType="DATE" property="commentDate" />
+		</collection>
+	</resultMap>
+
+
+	<resultMap type="CustomerBoard" id="boardMap">
+		<id column="board_id" jdbcType="INTEGER" property="boardId" />
+		<result column="user_id" jdbcType="VARCHAR" property="userId" />
+		<result column="board_title" jdbcType="VARCHAR" property="boardTitle" />
+		<result column="board_content" jdbcType="VARCHAR" property="boardContent" />
+		<result column="board_date" jdbcType="DATE" property="boardDate" />
+	</resultMap>
+
+</mapper>
   
   

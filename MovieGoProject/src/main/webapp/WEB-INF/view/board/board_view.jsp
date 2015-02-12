@@ -12,45 +12,6 @@
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script>
-window.onload = function(){
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange=function(){	
-		// 코멘트 뿌려주기
-		if(xhr.readyState==4 && xhr.status==200){
-			var data = xhr.responseText;
-			var obj = JSON.parse(data);
-			var output =
-			<c:if test="${detail.userId==log.userId }">	
-			for(var i=0;i<obj.length;i++){
-			
-			
-			
-			}
-			output+="</table><br>";
-			</c:if>
-			document.querySelector("#drophere").innerHTML+=output;
-		}
-	}
-	
-		var url ="${list}";
-		xhr.open("get",url, true); 
-		xhr.send();
-		
-document.querySelector("#send").addEventListener("click", function(){
-var xhr = new XMLHttpRequest();
-xhr.onreadystatechange=function(){	
-	if(xhr.readyState==4 && xhr.status==200){ 
-			var data = xhr.responseText;
-		}
-	}
-var url ="${list}";
-	xhr.open("post", url, true);
-	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	var message = document.querySelector("#content").value;
-	xhr.send("message="+message);
-});
-
-}
 	
 </script>
 <title>고객센터</title>
