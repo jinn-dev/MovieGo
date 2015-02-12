@@ -3,6 +3,7 @@ package com.mvg.dao;
 import java.util.List;
 
 import com.mvg.entity.Comment;
+import com.mvg.entity.CustomerBoard;
 
 public interface CommentDao {
 
@@ -23,5 +24,8 @@ public interface CommentDao {
 	
 	//댓글 가져오기
 	Comment getCommentByCommentId(int commentId);
+	
+	//댓글 번호로 글번호찾기
+	int getBoardByCmtId(int commentId);
 	
 }

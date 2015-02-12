@@ -2,6 +2,8 @@ package com.mvg.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.mvg.entity.CustomerBoard;
-import com.mvg.entity.User;
 import com.mvg.service.CustomerBoardService;
 
 @Controller
@@ -29,9 +30,12 @@ public class CustomerBoardController {
 	
 	/* 게시판 리스트 */
 	@RequestMapping(method=RequestMethod.GET)
-	public String boardList(Model model){
+	public String boardList(Model model, HttpServletRequest request){
 		List<CustomerBoard> list = service.getAllBoardList();
+		int recordCount = service.getBoardCnt();
+		request.setAttribute("recordCount", recordCount);
 		model.addAttribute("list", list);
+		
 		return "board/board_list";
 	}
 	

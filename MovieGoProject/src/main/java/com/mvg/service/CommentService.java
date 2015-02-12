@@ -9,4 +9,6 @@ public interface CommentService {
 	int updateComment(Comment comment);
 
 	int deleteComment(int commentId);
+	
+	int getBoardIdByCmtId(int commentId);
 }
