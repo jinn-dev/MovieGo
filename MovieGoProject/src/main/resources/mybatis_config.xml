@@ -19,6 +19,7 @@
 		<typeAlias type="com.mvg.entity.Theater" alias="Theater" />
 		<typeAlias type="com.mvg.entity.User" alias="User" />
 		<typeAlias type="com.mvg.entity.Wishlist" alias="Wishlist" />
+		<typeAlias type="com.mvg.entity.ReservationInfo" alias="ReservationInfo" />
 	</typeAliases>
 
 	<mappers>
