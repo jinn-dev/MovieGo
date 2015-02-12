@@ -23,7 +23,6 @@
 				<nav>
 					<a href="#">RESERVATION</a> 
 					<a href="#">영화평가</a>
-					<a href="#">MYPAGE</a>
 					<c:url value="/mypage" var="url" />
 					<a href="${url }">MY PAGE</a>
 					<c:url value="/board" var="url" />

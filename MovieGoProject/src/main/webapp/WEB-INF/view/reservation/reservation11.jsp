@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="com.mvg.entity.Theater" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -41,9 +43,20 @@
 <input type="button" onclick="tm_seledVal();" value="확인"></input>
 </td>
 </tr>
-
-
 </table>
 
+<%-- <table border="1">
+		<tr>
+			<th>극장 ID</th>
+			<th>극장이름</th>
+		</tr>
+		<c:forEach items="${allTheaters }" var="theater">
+			<tr>
+				<td><c:out value="${theater.theaterId }" /></td>
+				<td><c:out value="${theater.theaterName }" /></td>
+			</tr>
+		</c:forEach>
+	</table>
+ --%>
 </body>
 </html>

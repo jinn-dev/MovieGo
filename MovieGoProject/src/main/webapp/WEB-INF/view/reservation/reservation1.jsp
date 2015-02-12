@@ -15,9 +15,7 @@ table {
 th {
 	height: 70px;
 }
-td {
-	height: 400px;
-}
+
 td, th {
 	text-align: center;
 }
@@ -29,32 +27,7 @@ button {
 </style>
 <script type="text/javascript">
 
-/* function tm_seledVal(){
-    var form = document.frm;
-    var tmval = "";
-
-    if( frm.tmChk.length == null ){
-     if(frm.tmChk.checked){
-    	 tmval = frm.tmChk.value;
-        }else{
-        	tmval ="";
-     }
-
-    }else{
-     for(i =0 ;i < frm.tmChk.length;i++){
-         if(frm.tmChk[i].checked == true){
-        	 tmval = frm.tmChk[i].value;
-         }
-     }
-    }
-    if(tmval !=""){
-        alert("선택한 시간은  ::"+tmval);
-        return tmval;
-    }else{
-        alert("시간을 선택하세요");
-    }
-} */
-function chk_seledVal(){
+/* function chk_seledVal(){
     var form = document.frm;
 
     var thval = "";
@@ -94,11 +67,7 @@ function chk_seledVal(){
              }
          }
         }
-    /*     if(mvval ==""){
-           
-            alert("영화를 선택하세요");
-        } */
-        
+
         if( frm.dtChk.length == null ){
             if(frm.dtChk.checked){
            	 dtval = frm.dtChk.value;
@@ -113,10 +82,7 @@ function chk_seledVal(){
                 }
             }
            }
-         /*   if(dtval ==""){
-             
-               alert("날짜를 선택하세요");
-           } */
+
             if( frm.tmChk.length == null ){
         	     if(frm.tmChk.checked){
         	    	 tmval = frm.tmChk.value;
@@ -131,10 +97,7 @@ function chk_seledVal(){
         	         }
         	     }
         	    }
-        	  /*   if(tmval ==""){
-        	     
-        	        alert("시간을 선택하세요");
-        	    } */
+  
            if(thval ==""){
                alert("영화관을 선택하세요");
                
@@ -156,20 +119,20 @@ function chk_seledVal(){
         		location.href="reservation2.jsp"   
            }
         	    
-}
+} */
 </script>
 </head>
 
 
 <body>
-<jsp:include page="/header.jsp" />
+<jsp:include page="/WEB-INF/view/user/header.jsp" />
 <form name="frm">
 <input type="reset" value="새로" height="70">
 
 <table align="center">
 <tr><th>영화관</th><th>영화</th><th>날짜</th><th>시간</th></tr>
 <tr>
-<td>
+<td height="400px">
  <input type="radio" name ="thChk" value="건대입구점">건대입구점<br>
   <input type="radio" name ="thChk" value="군자점">강변점<br>
   <input type="radio" name ="thChk" value="강남점">군자점<br>
@@ -187,14 +150,17 @@ function chk_seledVal(){
 <td>
  <input type="radio" name ="tmChk" value="오전">오전<br>
   <input type="radio" name ="tmChk" value="오후">오후<br>
-<input type="button" onclick="tm_seledVal();" value="확인"></input>
+<!-- <input type="button" onclick="tm_seledVal();" value="확인"></input> -->
 </td>
 </tr>
-
+<tr>
+<td colspan="4" height="100px">
+<input type="submit" />
+</td>
 
 </table>
 
-<input type="button" onclick="chk_seledVal();" value="좌석선택"></input>
+<!-- <input type="button" onclick="chk_seledVal();" value="좌석선택"></input> -->
 
  </form>
 
