@@ -4,6 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="com.mvg.mappers.customerBoardMapper">
   
+  <select id="selectBoardCnt" resultType="INTEGER">
+	select count(*) from customerboards
+</select>
+  
+  
   <select id="selectAllBoard" resultMap="boardMap">
   	select board_id, user_id, board_title, board_date
     from customerboards 
@@ -23,7 +28,6 @@
   	left join comments c
   	on(b.board_id = c.board_id)
   	where b.board_id = #{boardId}
-  
   </select>
   
   <insert id="insertBoard" parameterType="CustomerBoard">

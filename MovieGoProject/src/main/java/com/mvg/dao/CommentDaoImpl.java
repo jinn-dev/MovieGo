@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mvg.entity.Comment;
+import com.mvg.entity.CustomerBoard;
 
 @Repository
 public class CommentDaoImpl implements CommentDao {
@@ -23,8 +24,8 @@ public class CommentDaoImpl implements CommentDao {
 	
 	@Override
 	public int getAllCommentCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace+"selectBoardCnt";
+		return sqlSession.selectOne(stmt);
 	}
 
 	@Override
@@ -58,6 +59,13 @@ public class CommentDaoImpl implements CommentDao {
 	public Comment getCommentByCommentId(int commentId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int getBoardByCmtId(int commentId) {
+		String stmt = namespace+"selectBoardIdByCommentId";
+		int result = sqlSession.selectOne(stmt, commentId);
+		return result;
 	}
 
 }

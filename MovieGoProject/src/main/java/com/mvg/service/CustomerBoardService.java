@@ -8,6 +8,8 @@ public interface CustomerBoardService {
 
 	List<CustomerBoard> getAllBoardList();
 
+	int getBoardCnt();
+	
 	int addBoard(CustomerBoard board);
 	
 	int modifyBoard(CustomerBoard board);

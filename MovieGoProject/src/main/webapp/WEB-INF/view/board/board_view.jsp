@@ -75,7 +75,7 @@
 						<c:if test="${comments.userId==log.userId }">
 						<button>수정</button>
 						<c:url value="/comment/delete?commentId=${comments.commentId }" var="url"></c:url>
-						<button>삭제</button>
+						<a href="${url }"><button>삭제</button></a>
 						</c:if>
 					</td>
 				</tr>
@@ -84,20 +84,23 @@
 				</tr>
 				</c:forEach>
 			</c:if>
-		</table><br>
-
-			<div class="comment-form">
-				<c:url value="/comment/write" var="url"></c:url>
-				<form:form method="post" modelAttribute="comment" action="${url }">
-					<div class="comment-form-inner">
-						<input type="hidden" name="boardId" value="${detail.boardId }" />
-						<input type="hidden" name="userId" value="${log.userId }" />
-						아이디:&nbsp;<c:out value="${log.userId }"></c:out>&nbsp;&nbsp;
-						<label>코멘트 쓰기</label><input type="text" name="commentContent" />
-						<button type="submit">등록</button>
+			<tr>
+					<td colspan="5">
+					<div class="comment-form">		
+					<c:url value="/comment/write" var="url"></c:url>
+						<form:form method="post" modelAttribute="comment" action="${url }">
+							<div class="comment-form-inner div-button">
+								<input type="hidden" name="boardId" value="${detail.boardId }" />
+								<input type="hidden" name="userId" value="${log.userId }" />
+								<%-- <label><c:out value="${log.userId }"></c:out></label> --%>
+								</div>
+								<input type="text" name="commentContent" />
+								<button type="submit">SUBMIT</button>
+						</form:form>
 					</div>
-				</form:form>
-			</div>
+					</td>
+				</tr>
+		</table><br>
 		</div>
 	</section>
 </body>
