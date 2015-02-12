@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.mvg.entity.Theater;
 import com.mvg.service.TheaterService;
 
+
 @Controller
 public class TheaterController {
 
@@ -24,16 +25,11 @@ public class TheaterController {
 	@Autowired
 	TheaterService service;
 	
-	//int cnt = service.getTheaterCntService();
-	//List<Theater> theaters = service.getAllTheatersService();
-	
-	
-	@RequestMapping(value="/reservation1", method=RequestMethod.GET)
-	public String reservation(Model model) {
-		/*model.addAttribute("theaterCnt", cnt);
+	@RequestMapping(value="/theater", method=RequestMethod.GET)
+	public String testMethod(Model model) {
+		List<Theater> theaters = service.getAllTheatersService();
 		model.addAttribute("allTheaters", theaters);
-		logger.trace("수업: "+cnt+"(개수) , "+theaters+" (영화)");*/
-		return "reservation1";
+		return "reservation/reservation1";
 	}
 	
 }

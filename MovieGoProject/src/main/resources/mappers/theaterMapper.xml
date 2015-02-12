@@ -5,11 +5,11 @@
 <mapper namespace="com.mvg.mappers.theaterMapper">
 	
 	<select id="getTheaterCount" resultType="Integer">
-		select count(*) from theaters;
+		select count(*) from theaters
 	</select>
 	
-	<select id="getAllTheaters" resultType="Map">
-		select theater_name from theaters;
+	<select id="getAllTheaters" resultType="Theater">
+		select * from theaters
 	</select>
 	
 	<select id="getTheaterById" resultType="Theater">
