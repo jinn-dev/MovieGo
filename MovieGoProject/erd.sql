@@ -12,18 +12,16 @@ DROP TRIGGER TRI_seatinfo_seat_id;
 DROP TRIGGER TRI_theaters_theater_id;
 DROP TRIGGER TRI_wishlists_wish_id;
 
-
-
 /* Drop Tables */
 
 DROP TABLE cancellations CASCADE CONSTRAINTS;
 DROP TABLE comments CASCADE CONSTRAINTS;
 DROP TABLE customerboards CASCADE CONSTRAINTS;
 DROP TABLE evaluations CASCADE CONSTRAINTS;
+DROP TABLE wishlists CASCADE CONSTRAINTS;
 DROP TABLE reservationinfo CASCADE CONSTRAINTS;
 DROP TABLE seatinfo CASCADE CONSTRAINTS;
 DROP TABLE nowmovies CASCADE CONSTRAINTS;
-DROP TABLE wishlists CASCADE CONSTRAINTS;
 DROP TABLE movies CASCADE CONSTRAINTS;
 DROP TABLE reservations CASCADE CONSTRAINTS;
 DROP TABLE theaters CASCADE CONSTRAINTS;
@@ -137,7 +135,6 @@ CREATE TABLE reservationinfo
 (
 	reservationinfo_id number NOT NULL,
 	seat_id number NOT NULL UNIQUE,
-	user_id varchar2(10) NOT NULL,
 	reservation_id number NOT NULL,
 	PRIMARY KEY (reservationinfo_id)
 );
@@ -146,6 +143,7 @@ CREATE TABLE reservationinfo
 CREATE TABLE reservations
 (
 	reservation_id number NOT NULL,
+	user_id varchar2(10) NOT NULL,
 	reservation_num number NOT NULL,
 	reservation_price number NOT NULL,
 	reservation_date date DEFAULT sysdate NOT NULL,
@@ -176,8 +174,8 @@ CREATE TABLE users
 	user_pwd varchar2(10) NOT NULL,
 	user_email varchar2(30) NOT NULL UNIQUE,
 	user_birthday date,
-	user_coupon char DEFAULT 'n' NOT NULL,
-	user_point number DEFAULT 0 NOT NULL,
+	user_coupon char NOT NULL,
+	user_point number NOT NULL,
 	PRIMARY KEY (user_id)
 );
 
@@ -200,6 +198,12 @@ ALTER TABLE comments
 ;
 
 
+ALTER TABLE wishlists
+	ADD FOREIGN KEY (movie_code)
+	REFERENCES movies (movie_code)
+;
+
+
 ALTER TABLE nowmovies
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
@@ -207,12 +211,6 @@ ALTER TABLE nowmovies
 
 
 ALTER TABLE evaluations
-	ADD FOREIGN KEY (movie_code)
-	REFERENCES movies (movie_code)
-;
-
-
-ALTER TABLE wishlists
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
 ;
@@ -230,13 +228,13 @@ ALTER TABLE reservationinfo
 ;
 
 
-ALTER TABLE cancellations
+ALTER TABLE reservationinfo
 	ADD FOREIGN KEY (seat_id)
 	REFERENCES seatinfo (seat_id)
 ;
 
 
-ALTER TABLE reservationinfo
+ALTER TABLE cancellations
 	ADD FOREIGN KEY (seat_id)
 	REFERENCES seatinfo (seat_id)
 ;
@@ -248,25 +246,13 @@ ALTER TABLE nowmovies
 ;
 
 
-ALTER TABLE cancellations
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
-ALTER TABLE comments
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
-ALTER TABLE reservationinfo
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
 ALTER TABLE wishlists
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE cancellations
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
@@ -279,6 +265,18 @@ ALTER TABLE evaluations
 
 
 ALTER TABLE customerboards
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE comments
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE reservations
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;

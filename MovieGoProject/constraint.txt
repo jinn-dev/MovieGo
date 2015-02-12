@@ -3,4 +3,4 @@ add constraint nowmovies_uq unique (theater_id, movie_code, movie_time);
 
 
 alter table seatinfo
-add constraint seatinfo_uq unique(nowmovie_id, seat_no)
+add constraint seatinfo_uq unique(nowmovie_id, seat_no);

@@ -11,8 +11,8 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
-	<x>78</x>
-	<y>37</y>
+	<x>236</x>
+	<y>4</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2015-02-09 19:44:26</creation_date>
-			<updated_date>2015-02-11 15:38:33</updated_date>
+			<updated_date>2015-02-12 13:50:29</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -871,18 +871,40 @@
 		</table>
 		<table>
 			<id>1</id>
-			<height>128</height>
+			<height>149</height>
 			<width>226</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>771</x>
-			<y>201</y>
+			<x>758</x>
+			<y>24</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
 				<b>192</b>
 			</color>
 			<connections>
+				<relation>
+					<id>0</id>
+					<source>6</source>
+					<target>1</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
 			</connections>
 			<physical_name>reservations</physical_name>
 			<logical_name>예약디테일</logical_name>
@@ -925,17 +947,18 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>27</word_id>
 					<id>3</id>
+					<referenced_column>26</referenced_column>
+					<relation>0</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>decimal</type>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
+					<foreign_key>true</foreign_key>
 					<not_null>true</not_null>
 					<primary_key>false</primary_key>
 					<unique_key>false</unique_key>
@@ -958,7 +981,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>28</word_id>
+					<word_id>27</word_id>
 					<id>4</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -991,8 +1014,41 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>25</word_id>
+					<word_id>28</word_id>
 					<id>5</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>decimal</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>25</word_id>
+					<id>6</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1047,11 +1103,11 @@
 			</color>
 			<connections>
 				<relation>
-					<id>0</id>
-					<source>0</source>
+					<id>1</id>
+					<source>10</source>
 					<target>2</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
+						<source_xp>100</source_xp>
+						<source_yp>88</source_yp>
 						<target_xp>-1</target_xp>
 						<target_yp>-1</target_yp>
 						<color>
@@ -1069,11 +1125,11 @@
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
 				</relation>
 				<relation>
-					<id>1</id>
-					<source>11</source>
+					<id>2</id>
+					<source>0</source>
 					<target>2</target>
-						<source_xp>100</source_xp>
-						<source_yp>88</source_yp>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
 						<target_yp>-1</target_yp>
 						<color>
@@ -1100,7 +1156,7 @@
 			<columns>
 				<normal_column>
 					<word_id>23</word_id>
-					<id>6</id>
+					<id>7</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1132,8 +1188,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>7</id>
-					<referenced_column>45</referenced_column>
+					<id>8</id>
+					<referenced_column>42</referenced_column>
 					<relation>1</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -1166,9 +1222,9 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>8</id>
+					<id>9</id>
 					<referenced_column>0</referenced_column>
-					<relation>0</relation>
+					<relation>2</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1201,7 +1257,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>20</word_id>
-					<id>9</id>
+					<id>10</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1243,12 +1299,12 @@
 		</table>
 		<table>
 			<id>3</id>
-			<height>107</height>
-			<width>208</width>
+			<height>149</height>
+			<width>239</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>1104</x>
-			<y>87</y>
+			<x>408</x>
+			<y>276</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -1256,8 +1312,30 @@
 			</color>
 			<connections>
 				<relation>
-					<id>2</id>
-					<source>2</source>
+					<id>3</id>
+					<source>10</source>
+					<target>3</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+				<relation>
+					<id>4</id>
+					<source>6</source>
 					<target>3</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -1278,16 +1356,16 @@
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
 				</relation>
 			</connections>
-			<physical_name>seatinfo</physical_name>
-			<logical_name>좌석정보</logical_name>
+			<physical_name>evaluations</physical_name>
+			<logical_name>평가</logical_name>
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name></primary_key_name>
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>29</word_id>
-					<id>10</id>
+					<word_id>10</word_id>
+					<id>11</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1319,14 +1397,14 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>11</id>
-					<referenced_column>6</referenced_column>
-					<relation>2</relation>
+					<id>12</id>
+					<referenced_column>26</referenced_column>
+					<relation>4</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>decimal</type>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -1353,13 +1431,80 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>30</word_id>
-					<id>12</id>
+					<id>13</id>
+					<referenced_column>42</referenced_column>
+					<relation>3</relation>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>11</word_id>
+					<id>14</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
 					<type>decimal</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>9</word_id>
+					<id>15</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -1397,11 +1542,11 @@
 		<table>
 			<id>4</id>
 			<height>149</height>
-			<width>239</width>
+			<width>247</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>408</x>
-			<y>276</y>
+			<x>24</x>
+			<y>260</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -1409,30 +1554,8 @@
 			</color>
 			<connections>
 				<relation>
-					<id>3</id>
-					<source>11</source>
-					<target>4</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
-						<color>
-							<r>0</r>
-							<g>0</g>
-							<b>0</b>
-						</color>
-					<child_cardinality>1..n</child_cardinality>
-					<parent_cardinality>1</parent_cardinality>
-					<reference_for_pk>true</reference_for_pk>
-					<name></name>
-					<on_delete_action>RESTRICT</on_delete_action>
-					<on_update_action>RESTRICT</on_update_action>
-					<referenced_column>null</referenced_column>
-					<referenced_complex_unique_key>null</referenced_complex_unique_key>
-				</relation>
-				<relation>
-					<id>4</id>
-					<source>7</source>
+					<id>5</id>
+					<source>6</source>
 					<target>4</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -1453,16 +1576,16 @@
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
 				</relation>
 			</connections>
-			<physical_name>evaluations</physical_name>
-			<logical_name>평가</logical_name>
+			<physical_name>customerboards</physical_name>
+			<logical_name>게시판</logical_name>
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name></primary_key_name>
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>10</word_id>
-					<id>13</id>
+					<word_id>2</word_id>
+					<id>16</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1494,9 +1617,9 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>14</id>
-					<referenced_column>28</referenced_column>
-					<relation>4</relation>
+					<id>17</id>
+					<referenced_column>26</referenced_column>
+					<relation>5</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1528,47 +1651,13 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>15</id>
-					<referenced_column>45</referenced_column>
-					<relation>3</relation>
+					<word_id>3</word_id>
+					<id>18</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
 					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>11</word_id>
-					<id>16</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>decimal</type>
 					<constraint></constraint>
 					<default_value></default_value>
 					<auto_increment>false</auto_increment>
@@ -1595,8 +1684,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>9</word_id>
-					<id>17</id>
+					<word_id>0</word_id>
+					<id>19</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1604,6 +1693,39 @@
 					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>1</word_id>
+					<id>20</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>date</type>
+					<constraint></constraint>
+					<default_value>sysdate</default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>true</not_null>
@@ -1638,12 +1760,12 @@
 		</table>
 		<table>
 			<id>5</id>
-			<height>149</height>
-			<width>247</width>
+			<height>128</height>
+			<width>268</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>24</x>
-			<y>260</y>
+			<x>60</x>
+			<y>504</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -1651,8 +1773,30 @@
 			</color>
 			<connections>
 				<relation>
-					<id>5</id>
-					<source>7</source>
+					<id>6</id>
+					<source>6</source>
+					<target>5</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+				<relation>
+					<id>7</id>
+					<source>4</source>
 					<target>5</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -1673,16 +1817,16 @@
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
 				</relation>
 			</connections>
-			<physical_name>customerboards</physical_name>
-			<logical_name>게시판</logical_name>
+			<physical_name>comments</physical_name>
+			<logical_name>댓글</logical_name>
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name></primary_key_name>
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>2</word_id>
-					<id>18</id>
+					<word_id>8</word_id>
+					<id>21</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1714,9 +1858,43 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>19</id>
-					<referenced_column>28</referenced_column>
-					<relation>5</relation>
+					<id>22</id>
+					<referenced_column>16</referenced_column>
+					<relation>7</relation>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>decimal</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<id>23</id>
+					<referenced_column>26</referenced_column>
+					<relation>6</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1748,8 +1926,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>3</word_id>
-					<id>20</id>
+					<word_id>6</word_id>
+					<id>24</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1781,41 +1959,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>0</word_id>
-					<id>21</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>1</word_id>
-					<id>22</id>
+					<word_id>7</word_id>
+					<id>25</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1857,81 +2002,37 @@
 		</table>
 		<table>
 			<id>6</id>
-			<height>128</height>
-			<width>268</width>
+			<height>170</height>
+			<width>227</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
-			<x>60</x>
-			<y>504</y>
+			<x>396</x>
+			<y>24</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
 				<b>192</b>
 			</color>
 			<connections>
-				<relation>
-					<id>6</id>
-					<source>5</source>
-					<target>6</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
-						<color>
-							<r>0</r>
-							<g>0</g>
-							<b>0</b>
-						</color>
-					<child_cardinality>1..n</child_cardinality>
-					<parent_cardinality>1</parent_cardinality>
-					<reference_for_pk>true</reference_for_pk>
-					<name></name>
-					<on_delete_action>RESTRICT</on_delete_action>
-					<on_update_action>RESTRICT</on_update_action>
-					<referenced_column>null</referenced_column>
-					<referenced_complex_unique_key>null</referenced_complex_unique_key>
-				</relation>
-				<relation>
-					<id>7</id>
-					<source>7</source>
-					<target>6</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
-						<color>
-							<r>0</r>
-							<g>0</g>
-							<b>0</b>
-						</color>
-					<child_cardinality>1..n</child_cardinality>
-					<parent_cardinality>1</parent_cardinality>
-					<reference_for_pk>true</reference_for_pk>
-					<name></name>
-					<on_delete_action>RESTRICT</on_delete_action>
-					<on_update_action>RESTRICT</on_update_action>
-					<referenced_column>null</referenced_column>
-					<referenced_complex_unique_key>null</referenced_complex_unique_key>
-				</relation>
 			</connections>
-			<physical_name>comments</physical_name>
-			<logical_name>댓글</logical_name>
+			<physical_name>users</physical_name>
+			<logical_name>회원</logical_name>
 			<description></description>
 			<constraint></constraint>
 			<primary_key_name></primary_key_name>
 			<option></option>
 			<columns>
 				<normal_column>
-					<word_id>8</word_id>
-					<id>23</id>
+					<word_id>36</word_id>
+					<id>26</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
-					<type>decimal</type>
+					<type>varchar(n)</type>
 					<constraint></constraint>
 					<default_value></default_value>
-					<auto_increment>true</auto_increment>
+					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>true</not_null>
 					<primary_key>true</primary_key>
@@ -1955,76 +2056,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>24</id>
-					<referenced_column>18</referenced_column>
-					<relation>6</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>decimal</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<id>25</id>
-					<referenced_column>28</referenced_column>
-					<relation>7</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>6</word_id>
-					<id>26</id>
+					<word_id>38</word_id>
+					<id>27</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2056,15 +2089,114 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>7</word_id>
-					<id>27</id>
+					<word_id>35</word_id>
+					<id>28</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>varchar(n)</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>true</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>33</word_id>
+					<id>29</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
 					<physical_name></physical_name>
 					<type>date</type>
 					<constraint></constraint>
-					<default_value>sysdate</default_value>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>34</word_id>
+					<id>30</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>char</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>37</word_id>
+					<id>31</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>decimal</type>
+					<constraint></constraint>
+					<default_value></default_value>
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>true</not_null>
@@ -2099,241 +2231,12 @@
 		</table>
 		<table>
 			<id>7</id>
-			<height>170</height>
-			<width>227</width>
-				<font_name>맑은 고딕</font_name>
-				<font_size>9</font_size>
-			<x>396</x>
-			<y>24</y>
-			<color>
-				<r>128</r>
-				<g>128</g>
-				<b>192</b>
-			</color>
-			<connections>
-			</connections>
-			<physical_name>users</physical_name>
-			<logical_name>회원</logical_name>
-			<description></description>
-			<constraint></constraint>
-			<primary_key_name></primary_key_name>
-			<option></option>
-			<columns>
-				<normal_column>
-					<word_id>36</word_id>
-					<id>28</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>true</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>38</word_id>
-					<id>29</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>35</word_id>
-					<id>30</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>true</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>33</word_id>
-					<id>31</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>date</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>false</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>34</word_id>
-					<id>32</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>char</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<word_id>37</word_id>
-					<id>33</id>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>decimal</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>false</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-			</columns>
-			<indexes>
-			</indexes>
-			<complex_unique_key_list>
-			</complex_unique_key_list>
-			<table_properties>
-				<schema></schema>
-			</table_properties>
-		</table>
-		<table>
-			<id>8</id>
 			<height>128</height>
 			<width>231</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>768</x>
-			<y>24</y>
+			<y>228</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -2343,7 +2246,7 @@
 				<relation>
 					<id>8</id>
 					<source>1</source>
-					<target>8</target>
+					<target>7</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -2364,34 +2267,12 @@
 				</relation>
 				<relation>
 					<id>9</id>
-					<source>3</source>
-					<target>8</target>
+					<source>11</source>
+					<target>7</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>100</target_xp>
-						<target_yp>55</target_yp>
-						<color>
-							<r>0</r>
-							<g>0</g>
-							<b>0</b>
-						</color>
-					<child_cardinality>1..n</child_cardinality>
-					<parent_cardinality>1</parent_cardinality>
-					<reference_for_pk>true</reference_for_pk>
-					<name></name>
-					<on_delete_action>RESTRICT</on_delete_action>
-					<on_update_action>RESTRICT</on_update_action>
-					<referenced_column>null</referenced_column>
-					<referenced_complex_unique_key>null</referenced_complex_unique_key>
-				</relation>
-				<relation>
-					<id>10</id>
-					<source>7</source>
-					<target>8</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
+						<target_yp>15</target_yp>
 						<color>
 							<r>0</r>
 							<g>0</g>
@@ -2416,7 +2297,7 @@
 			<columns>
 				<normal_column>
 					<word_id>24</word_id>
-					<id>34</id>
+					<id>32</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2448,8 +2329,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>35</id>
-					<referenced_column>10</referenced_column>
+					<id>33</id>
+					<referenced_column>52</referenced_column>
 					<relation>9</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -2482,41 +2363,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>36</id>
-					<referenced_column>28</referenced_column>
-					<relation>10</relation>
-					<description></description>
-					<unique_key_name></unique_key_name>
-					<logical_name></logical_name>
-					<physical_name></physical_name>
-					<type>varchar(n)</type>
-					<constraint></constraint>
-					<default_value></default_value>
-					<auto_increment>false</auto_increment>
-					<foreign_key>true</foreign_key>
-					<not_null>true</not_null>
-					<primary_key>false</primary_key>
-					<unique_key>false</unique_key>
-					<character_set></character_set>
-					<collation></collation>
-					<sequence>
-						<name></name>
-						<schema></schema>
-						<increment></increment>
-						<min_value></min_value>
-						<max_value></max_value>
-						<start></start>
-						<cache></cache>
-						<nocache>false</nocache>
-						<cycle>false</cycle>
-						<order>false</order>
-						<description></description>
-						<data_type></data_type>
-						<decimal_size>0</decimal_size>
-					</sequence>
-				</normal_column>
-				<normal_column>
-					<id>37</id>
+					<id>34</id>
 					<referenced_column>2</referenced_column>
 					<relation>8</relation>
 					<description></description>
@@ -2559,13 +2406,13 @@
 			</table_properties>
 		</table>
 		<table>
-			<id>9</id>
+			<id>8</id>
 			<height>128</height>
 			<width>200</width>
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>784</x>
-			<y>384</y>
+			<y>424</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -2573,9 +2420,9 @@
 			</color>
 			<connections>
 				<relation>
-					<id>11</id>
-					<source>3</source>
-					<target>9</target>
+					<id>10</id>
+					<source>11</source>
+					<target>8</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -2595,9 +2442,9 @@
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
 				</relation>
 				<relation>
-					<id>12</id>
-					<source>7</source>
-					<target>9</target>
+					<id>11</id>
+					<source>6</source>
+					<target>8</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -2626,7 +2473,7 @@
 			<columns>
 				<normal_column>
 					<word_id>5</word_id>
-					<id>38</id>
+					<id>35</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2658,9 +2505,9 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>39</id>
-					<referenced_column>28</referenced_column>
-					<relation>12</relation>
+					<id>36</id>
+					<referenced_column>26</referenced_column>
+					<relation>11</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2692,9 +2539,9 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>40</id>
-					<referenced_column>10</referenced_column>
-					<relation>11</relation>
+					<id>37</id>
+					<referenced_column>52</referenced_column>
+					<relation>10</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2727,7 +2574,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>4</word_id>
-					<id>41</id>
+					<id>38</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2768,7 +2615,7 @@
 			</table_properties>
 		</table>
 		<table>
-			<id>10</id>
+			<id>9</id>
 			<height>107</height>
 			<width>220</width>
 				<font_name>맑은 고딕</font_name>
@@ -2782,9 +2629,9 @@
 			</color>
 			<connections>
 				<relation>
-					<id>13</id>
-					<source>7</source>
-					<target>10</target>
+					<id>12</id>
+					<source>10</source>
+					<target>9</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -2804,9 +2651,9 @@
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
 				</relation>
 				<relation>
-					<id>14</id>
-					<source>11</source>
-					<target>10</target>
+					<id>13</id>
+					<source>6</source>
+					<target>9</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
 						<target_xp>-1</target_xp>
@@ -2835,7 +2682,7 @@
 			<columns>
 				<normal_column>
 					<word_id>39</word_id>
-					<id>42</id>
+					<id>39</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2867,9 +2714,9 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>43</id>
-					<referenced_column>45</referenced_column>
-					<relation>14</relation>
+					<id>40</id>
+					<referenced_column>42</referenced_column>
+					<relation>12</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2901,8 +2748,8 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<id>44</id>
-					<referenced_column>28</referenced_column>
+					<id>41</id>
+					<referenced_column>26</referenced_column>
 					<relation>13</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -2944,7 +2791,7 @@
 			</table_properties>
 		</table>
 		<table>
-			<id>11</id>
+			<id>10</id>
 			<height>254</height>
 			<width>301</width>
 				<font_name>맑은 고딕</font_name>
@@ -2967,7 +2814,7 @@
 			<columns>
 				<normal_column>
 					<word_id>15</word_id>
-					<id>45</id>
+					<id>42</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3000,7 +2847,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>22</word_id>
-					<id>46</id>
+					<id>43</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3033,7 +2880,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>21</word_id>
-					<id>47</id>
+					<id>44</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3066,7 +2913,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>17</word_id>
-					<id>48</id>
+					<id>45</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3099,7 +2946,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>16</word_id>
-					<id>49</id>
+					<id>46</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3132,7 +2979,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>12</word_id>
-					<id>50</id>
+					<id>47</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3165,7 +3012,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>13</word_id>
-					<id>51</id>
+					<id>48</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3198,7 +3045,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>14</word_id>
-					<id>52</id>
+					<id>49</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3231,7 +3078,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>18</word_id>
-					<id>53</id>
+					<id>50</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3264,7 +3111,7 @@
 				</normal_column>
 				<normal_column>
 					<word_id>19</word_id>
-					<id>54</id>
+					<id>51</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -3275,6 +3122,159 @@
 					<auto_increment>false</auto_increment>
 					<foreign_key>false</foreign_key>
 					<not_null>false</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+			</columns>
+			<indexes>
+			</indexes>
+			<complex_unique_key_list>
+			</complex_unique_key_list>
+			<table_properties>
+				<schema></schema>
+			</table_properties>
+		</table>
+		<table>
+			<id>11</id>
+			<height>107</height>
+			<width>208</width>
+				<font_name>맑은 고딕</font_name>
+				<font_size>9</font_size>
+			<x>1104</x>
+			<y>87</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relation>
+					<id>14</id>
+					<source>2</source>
+					<target>11</target>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
+						<color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+						</color>
+					<child_cardinality>1..n</child_cardinality>
+					<parent_cardinality>1</parent_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<name></name>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+					<referenced_column>null</referenced_column>
+					<referenced_complex_unique_key>null</referenced_complex_unique_key>
+				</relation>
+			</connections>
+			<physical_name>seatinfo</physical_name>
+			<logical_name>좌석정보</logical_name>
+			<description></description>
+			<constraint></constraint>
+			<primary_key_name></primary_key_name>
+			<option></option>
+			<columns>
+				<normal_column>
+					<word_id>29</word_id>
+					<id>52</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>decimal</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>true</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<id>53</id>
+					<referenced_column>7</referenced_column>
+					<relation>14</relation>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>decimal</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>true</foreign_key>
+					<not_null>true</not_null>
+					<primary_key>false</primary_key>
+					<unique_key>false</unique_key>
+					<character_set></character_set>
+					<collation></collation>
+					<sequence>
+						<name></name>
+						<schema></schema>
+						<increment></increment>
+						<min_value></min_value>
+						<max_value></max_value>
+						<start></start>
+						<cache></cache>
+						<nocache>false</nocache>
+						<cycle>false</cycle>
+						<order>false</order>
+						<description></description>
+						<data_type></data_type>
+						<decimal_size>0</decimal_size>
+					</sequence>
+				</normal_column>
+				<normal_column>
+					<word_id>30</word_id>
+					<id>54</id>
+					<description></description>
+					<unique_key_name></unique_key_name>
+					<logical_name></logical_name>
+					<physical_name></physical_name>
+					<type>decimal</type>
+					<constraint></constraint>
+					<default_value></default_value>
+					<auto_increment>false</auto_increment>
+					<foreign_key>false</foreign_key>
+					<not_null>true</not_null>
 					<primary_key>false</primary_key>
 					<unique_key>false</unique_key>
 					<character_set></character_set>
@@ -3316,91 +3316,91 @@
 					<direct_test_data>
 						<data>
 							<column_data>
-								<column_id>6</column_id>
-								<value>1</value>
-							</column_data>
-							<column_data>
 								<column_id>7</column_id>
-								<value>20124070</value>
+								<value>1</value>
 							</column_data>
 							<column_data>
 								<column_id>8</column_id>
-								<value>1</value>
+								<value>20124070</value>
 							</column_data>
 							<column_data>
 								<column_id>9</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>10</column_id>
 								<value>2015-02-20</value>
 							</column_data>
 						</data>
 						<data>
 							<column_data>
-								<column_id>6</column_id>
-								<value>2</value>
-							</column_data>
-							<column_data>
 								<column_id>7</column_id>
-								<value>20124400</value>
+								<value>2</value>
 							</column_data>
 							<column_data>
 								<column_id>8</column_id>
-								<value>2</value>
+								<value>20124400</value>
 							</column_data>
 							<column_data>
 								<column_id>9</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>10</column_id>
 								<value>2015-02-21</value>
 							</column_data>
 						</data>
 						<data>
 							<column_data>
-								<column_id>6</column_id>
-								<value>3</value>
-							</column_data>
-							<column_data>
 								<column_id>7</column_id>
-								<value>20124032</value>
+								<value>3</value>
 							</column_data>
 							<column_data>
 								<column_id>8</column_id>
-								<value>3</value>
+								<value>20124032</value>
 							</column_data>
 							<column_data>
 								<column_id>9</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>10</column_id>
 								<value>2015-02-22</value>
 							</column_data>
 						</data>
 						<data>
 							<column_data>
-								<column_id>6</column_id>
+								<column_id>7</column_id>
 								<value>4</value>
 							</column_data>
 							<column_data>
-								<column_id>7</column_id>
+								<column_id>8</column_id>
 								<value>20128687</value>
 							</column_data>
 							<column_data>
-								<column_id>8</column_id>
+								<column_id>9</column_id>
 								<value>1</value>
 							</column_data>
 							<column_data>
-								<column_id>9</column_id>
+								<column_id>10</column_id>
 								<value>2015-02-23</value>
 							</column_data>
 						</data>
 						<data>
 							<column_data>
-								<column_id>6</column_id>
+								<column_id>7</column_id>
 								<value>5</value>
 							</column_data>
 							<column_data>
-								<column_id>7</column_id>
+								<column_id>8</column_id>
 								<value>20111686</value>
 							</column_data>
 							<column_data>
-								<column_id>8</column_id>
+								<column_id>9</column_id>
 								<value>2</value>
 							</column_data>
 							<column_data>
-								<column_id>9</column_id>
+								<column_id>10</column_id>
 								<value>2015-02-24</value>
 							</column_data>
 						</data>
@@ -3409,7 +3409,7 @@
 						<test_data_num>0</test_data_num>
 						<data_def_list>
 							<data_def>
-								<column_id>6</column_id>
+								<column_id>7</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>%</template>
@@ -3424,7 +3424,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>7</column_id>
+								<column_id>8</column_id>
 								<type>foreign.key</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_%</template>
@@ -3439,7 +3439,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>8</column_id>
+								<column_id>9</column_id>
 								<type>foreign.key</type>
 								<repeat_num>1</repeat_num>
 								<template>%</template>
@@ -3454,7 +3454,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>9</column_id>
+								<column_id>10</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>2000-01-% 12:00:00.000</template>
@@ -3473,1216 +3473,352 @@
 				</table_test_data>
 			</test_data>
 			<test_data>
-				<name>모든영화테스트용</name>
+				<name>reservationinfo</name>
+				<export_order>0</export_order>
+				<table_test_data>
+					<table_id>1</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value>10000</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>b</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value>50000</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>2</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>3</column_id>
+								<value>c</value>
+							</column_data>
+							<column_data>
+								<column_id>4</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>5</column_id>
+								<value>5000</value>
+							</column_data>
+							<column_data>
+								<column_id>6</column_id>
+								<value></value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>2</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>3</column_id>
+								<type>foreign.key</type>
+								<repeat_num>1</repeat_num>
+								<template>user_id_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>user_id_1</select>
+								<select>user_id_2</select>
+								<select>user_id_3</select>
+								<select>user_id_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>4</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>5</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>6</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>2000-01-% 12:00:00.000</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>2000-01-01 12:00:00.000</select>
+								<select>2000-01-02 12:00:00.000</select>
+								<select>2000-01-03 12:00:00.000</select>
+								<select>2000-01-04 12:00:00.000</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+			</test_data>
+			<test_data>
+				<name>reservations</name>
+				<export_order>0</export_order>
+				<table_test_data>
+					<table_id>7</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>32</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>33</column_id>
+								<value>1</value>
+							</column_data>
+							<column_data>
+								<column_id>34</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>32</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>33</column_id>
+								<value>2</value>
+							</column_data>
+							<column_data>
+								<column_id>34</column_id>
+								<value>1</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>32</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>33</column_id>
+								<value>3</value>
+							</column_data>
+							<column_data>
+								<column_id>34</column_id>
+								<value>2</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>32</column_id>
+								<value>4</value>
+							</column_data>
+							<column_data>
+								<column_id>33</column_id>
+								<value>4</value>
+							</column_data>
+							<column_data>
+								<column_id>34</column_id>
+								<value></value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>32</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>33</column_id>
+								<type>foreign.key</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>34</column_id>
+								<type>foreign.key</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+			</test_data>
+			<test_data>
+				<name>seatinfo</name>
 				<export_order>0</export_order>
 				<table_test_data>
 					<table_id>11</table_id>
 					<direct_test_data>
 						<data>
 							<column_data>
-								<column_id>45</column_id>
-								<value>20124070</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>강철대오:구국의 철가방</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Almost Che</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>코미디</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=육상효}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>a</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
 								<column_id>52</column_id>
-								<value></value>
+								<value>1</value>
 							</column_data>
 							<column_data>
 								<column_id>53</column_id>
-								<value></value>
+								<value>1</value>
 							</column_data>
 							<column_data>
 								<column_id>54</column_id>
-								<value></value>
+								<value>1</value>
 							</column_data>
 						</data>
 						<data>
 							<column_data>
-								<column_id>45</column_id>
-								<value>20124400</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>간첩</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>The Spies</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마,코미디,액션</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=우민호}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>b</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
 								<column_id>52</column_id>
-								<value></value>
+								<value>2</value>
 							</column_data>
 							<column_data>
 								<column_id>53</column_id>
-								<value></value>
+								<value>1</value>
 							</column_data>
 							<column_data>
 								<column_id>54</column_id>
-								<value></value>
+								<value>2</value>
 							</column_data>
 						</data>
 						<data>
 							<column_data>
-								<column_id>45</column_id>
-								<value>20124032</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>간기남</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>The Scent</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>코미디,스릴러</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=김형준}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>a</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
 								<column_id>52</column_id>
-								<value></value>
+								<value>3</value>
 							</column_data>
 							<column_data>
 								<column_id>53</column_id>
-								<value></value>
+								<value>1</value>
 							</column_data>
 							<column_data>
 								<column_id>54</column_id>
-								<value></value>
+								<value>3</value>
 							</column_data>
 						</data>
 						<data>
 							<column_data>
-								<column_id>45</column_id>
-								<value>20128687</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>가문의 영광5 - 가문의 귀환</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Return of The Mafia</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>코미디</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=정용기}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>a</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
 								<column_id>52</column_id>
-								<value></value>
+								<value>4</value>
 							</column_data>
 							<column_data>
 								<column_id>53</column_id>
-								<value></value>
+								<value>2</value>
 							</column_data>
 							<column_data>
 								<column_id>54</column_id>
-								<value></value>
+								<value>1</value>
 							</column_data>
 						</data>
 						<data>
 							<column_data>
-								<column_id>45</column_id>
-								<value>20111686</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>U.F.O.</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>U.F.O.</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마,미스터리</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=공귀현}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>a</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
 								<column_id>52</column_id>
-								<value></value>
+								<value>5</value>
 							</column_data>
 							<column_data>
 								<column_id>53</column_id>
-								<value></value>
+								<value>2</value>
 							</column_data>
 							<column_data>
 								<column_id>54</column_id>
-								<value></value>
+								<value>2</value>
 							</column_data>
 						</data>
 						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20090248</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>마더</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Mother</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=봉준호}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>a</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20128271</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>577 프로젝트</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Project 577</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>코미디,드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=이근우}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>a</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20088506</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>26년</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>26 Years</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>액션,드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=조근현}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>a</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20124058</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>5백만불의 사나이</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>A Millionaire on the Run</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>코미디</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=김익로}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>b</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20149796</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>메밀꽃, 운수 좋은 날, 그리고 봄봄</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>The Road Called Life</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>애니메이션</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=안재훈}, {peopleNm=한혜진}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>b</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20050342</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>청연</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Blue Swallow</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=윤종찬}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>b</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20050111</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>녹색의자</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Green Chair</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=박철수}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>b</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20050332</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>파랑주의보</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>My Girl And I</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=전윤수}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>b</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20040682</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>역도산</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Rikidozan: A Hero Extraordinary</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=송해성}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>d</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20050011</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>파송송 계란탁</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Cracked Eggs And Noodles</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>코미디</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=오상훈}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>d</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20050110</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>연애의 목적</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Rules Of Dating</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마,코미디,멜로/로맨스</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=한재림}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>d</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20050239</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>너는 내 운명</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>You Are My Sunshine</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>멜로/로맨스</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=박진표}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>d</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20040778</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>마파도</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Mapado: Island of Fortunes</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>코미디</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=추창민}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>d</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20050118</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>릴리 슈슈의 모든 것</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>All About Lily Chou-Chou</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=이와이 슌지}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>c</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20040704</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>하나와 앨리스</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Hana And Alice</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=이와이 슌지}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>c</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20060356</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>싸이보그지만 괜찮아</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>I&apos;m a Cyborg, but That&apos;s OK</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>SF,멜로/로맨스,판타지</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=박찬욱}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>c</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20050015</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>태풍태양</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>The Aggressives</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=정재은}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>c</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20050276</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>사랑해, 말순씨</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Bravo, My Life</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=박흥식 }]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>c</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20050306</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>애인</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>The Intimate</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>멜로/로맨스</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=김태은}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>c</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20060412</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>허브</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Herb</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=허인무}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>d</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20060417</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>최강로맨스</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>The Perfect Couple</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>멜로/로맨스,코미디</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=김정우 }]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>d</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20070021</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>김관장 대 김관장 대 김관장</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Master KIMs</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>코미디</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=박성균}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>d</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20070010</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>마강호텔</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Hotel M : Gangster’s Last Draw</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>코미디,드라마</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=최성철}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>d</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>52</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>53</column_id>
-								<value></value>
-							</column_data>
-							<column_data>
-								<column_id>54</column_id>
-								<value></value>
-							</column_data>
-						</data>
-						<data>
-							<column_data>
-								<column_id>45</column_id>
-								<value>20060420</value>
-							</column_data>
-							<column_data>
-								<column_id>46</column_id>
-								<value>쏜다</value>
-							</column_data>
-							<column_data>
-								<column_id>47</column_id>
-								<value>Big Bang</value>
-							</column_data>
-							<column_data>
-								<column_id>48</column_id>
-								<value>코미디</value>
-							</column_data>
-							<column_data>
-								<column_id>49</column_id>
-								<value>[{peopleNm=박정우}]</value>
-							</column_data>
-							<column_data>
-								<column_id>50</column_id>
-								<value>d</value>
-							</column_data>
-							<column_data>
-								<column_id>51</column_id>
-								<value></value>
-							</column_data>
 							<column_data>
 								<column_id>52</column_id>
 								<value></value>
@@ -4701,7 +3837,1492 @@
 						<test_data_num>0</test_data_num>
 						<data_def_list>
 							<data_def>
+								<column_id>52</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>53</column_id>
+								<type>foreign.key</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>54</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+			</test_data>
+			<test_data>
+				<name>user</name>
+				<export_order>0</export_order>
+				<table_test_data>
+					<table_id>6</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>26</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>27</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>28</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>29</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>30</column_id>
+								<value>n</value>
+							</column_data>
+							<column_data>
+								<column_id>31</column_id>
+								<value>0</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>26</column_id>
+								<value>b</value>
+							</column_data>
+							<column_data>
+								<column_id>27</column_id>
+								<value>b</value>
+							</column_data>
+							<column_data>
+								<column_id>28</column_id>
+								<value>b</value>
+							</column_data>
+							<column_data>
+								<column_id>29</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>30</column_id>
+								<value>n</value>
+							</column_data>
+							<column_data>
+								<column_id>31</column_id>
+								<value>0</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>26</column_id>
+								<value>c</value>
+							</column_data>
+							<column_data>
+								<column_id>27</column_id>
+								<value>c</value>
+							</column_data>
+							<column_data>
+								<column_id>28</column_id>
+								<value>c</value>
+							</column_data>
+							<column_data>
+								<column_id>29</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>30</column_id>
+								<value>y</value>
+							</column_data>
+							<column_data>
+								<column_id>31</column_id>
+								<value>100</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>26</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>27</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>28</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>29</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>30</column_id>
+								<value>y</value>
+							</column_data>
+							<column_data>
+								<column_id>31</column_id>
+								<value></value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>26</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>user_id_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>user_id_1</select>
+								<select>user_id_2</select>
+								<select>user_id_3</select>
+								<select>user_id_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>27</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>user_pw_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>user_pw_1</select>
+								<select>user_pw_2</select>
+								<select>user_pw_3</select>
+								<select>user_pw_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>28</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>user_email_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>user_email_1</select>
+								<select>user_email_2</select>
+								<select>user_email_3</select>
+								<select>user_email_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>29</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>2000-01-% 12:00:00.000</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>2000-01-01 12:00:00.000</select>
+								<select>2000-01-02 12:00:00.000</select>
+								<select>2000-01-03 12:00:00.000</select>
+								<select>2000-01-04 12:00:00.000</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>30</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>user_coupon%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>user_coupon1</select>
+								<select>user_coupon2</select>
+								<select>user_coupon3</select>
+								<select>user_coupon4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>31</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>1</select>
+								<select>2</select>
+								<select>3</select>
+								<select>4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+			</test_data>
+			<test_data>
+				<name>모든영화테스트용</name>
+				<export_order>0</export_order>
+				<table_test_data>
+					<table_id>10</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20124070</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>강철대오:구국의 철가방</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Almost Che</value>
+							</column_data>
+							<column_data>
 								<column_id>45</column_id>
+								<value>코미디</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=육상효}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20124400</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>간첩</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>The Spies</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마,코미디,액션</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=우민호}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>b</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20124032</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>간기남</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>The Scent</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>코미디,스릴러</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=김형준}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20128687</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>가문의 영광5 - 가문의 귀환</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Return of The Mafia</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>코미디</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=정용기}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20111686</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>U.F.O.</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>U.F.O.</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마,미스터리</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=공귀현}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20090248</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>마더</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Mother</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=봉준호}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20128271</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>577 프로젝트</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Project 577</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>코미디,드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=이근우}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20088506</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>26년</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>26 Years</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>액션,드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=조근현}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>a</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20124058</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>5백만불의 사나이</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>A Millionaire on the Run</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>코미디</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=김익로}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>b</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20149796</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>메밀꽃, 운수 좋은 날, 그리고 봄봄</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>The Road Called Life</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>애니메이션</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=안재훈}, {peopleNm=한혜진}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>b</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20050342</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>청연</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Blue Swallow</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=윤종찬}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>b</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20050111</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>녹색의자</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Green Chair</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=박철수}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>b</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20050332</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>파랑주의보</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>My Girl And I</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=전윤수}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>b</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20040682</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>역도산</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Rikidozan: A Hero Extraordinary</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=송해성}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20050011</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>파송송 계란탁</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Cracked Eggs And Noodles</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>코미디</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=오상훈}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20050110</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>연애의 목적</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Rules Of Dating</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마,코미디,멜로/로맨스</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=한재림}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20050239</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>너는 내 운명</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>You Are My Sunshine</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>멜로/로맨스</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=박진표}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20040778</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>마파도</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Mapado: Island of Fortunes</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>코미디</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=추창민}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20050118</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>릴리 슈슈의 모든 것</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>All About Lily Chou-Chou</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=이와이 슌지}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>c</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20040704</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>하나와 앨리스</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Hana And Alice</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=이와이 슌지}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>c</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20060356</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>싸이보그지만 괜찮아</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>I&apos;m a Cyborg, but That&apos;s OK</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>SF,멜로/로맨스,판타지</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=박찬욱}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>c</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20050015</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>태풍태양</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>The Aggressives</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=정재은}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>c</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20050276</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>사랑해, 말순씨</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Bravo, My Life</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=박흥식 }]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>c</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20050306</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>애인</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>The Intimate</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>멜로/로맨스</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=김태은}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>c</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20060412</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>허브</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Herb</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=허인무}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20060417</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>최강로맨스</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>The Perfect Couple</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>멜로/로맨스,코미디</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=김정우 }]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20070021</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>김관장 대 김관장 대 김관장</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Master KIMs</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>코미디</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=박성균}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20070010</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>마강호텔</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Hotel M : Gangster’s Last Draw</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>코미디,드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=최성철}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>42</column_id>
+								<value>20060420</value>
+							</column_data>
+							<column_data>
+								<column_id>43</column_id>
+								<value>쏜다</value>
+							</column_data>
+							<column_data>
+								<column_id>44</column_id>
+								<value>Big Bang</value>
+							</column_data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>코미디</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>[{peopleNm=박정우}]</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>d</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value></value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>42</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_%</template>
@@ -4716,7 +5337,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>46</column_id>
+								<column_id>43</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_title_kr_%</template>
@@ -4731,7 +5352,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>47</column_id>
+								<column_id>44</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_title_eng_%</template>
@@ -4746,7 +5367,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>48</column_id>
+								<column_id>45</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_genre_%</template>
@@ -4761,7 +5382,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>49</column_id>
+								<column_id>46</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_directior_%</template>
@@ -4776,7 +5397,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>50</column_id>
+								<column_id>47</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_actor1_%</template>
@@ -4791,7 +5412,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>51</column_id>
+								<column_id>48</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_actor2_%</template>
@@ -4806,7 +5427,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>52</column_id>
+								<column_id>49</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_actor3_%</template>
@@ -4821,7 +5442,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>53</column_id>
+								<column_id>50</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_img_url_%</template>
@@ -4836,7 +5457,7 @@
 								</modified_values>
 							</data_def>
 							<data_def>
-								<column_id>54</column_id>
+								<column_id>51</column_id>
 								<type>format</type>
 								<repeat_num>1</repeat_num>
 								<template>movie_story_%</template>
