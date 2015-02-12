@@ -24,7 +24,7 @@ import com.mvg.entity.User;
 import com.mvg.service.UserService;
 
 @Controller
-@SessionAttributes("log")
+@SessionAttributes({"log", "user"})
 public class ControllerTest {
 	private final static Logger logger;
 	static {
@@ -41,7 +41,6 @@ public class ControllerTest {
 
 	@Autowired
 	UserService service;
-
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String mainTest(Model model) {
 		model.addAttribute("log", new User());
@@ -53,11 +52,17 @@ public class ControllerTest {
 		return "user/find_user_info";
 	}
 
+/*	@RequestMapping(value="/login",  method=RequestMethod.POST)
+	public String login(Model model, @ModelAttribute("user") User user, HttpSession session){
+		User u = service.getUserByUserId(user);
+		model.addAttribute("user", session.getAttribute("user"));
+		return "user/main_logined";
+	}*/
+	
 	@RequestMapping(value="/login",  method=RequestMethod.POST)
 	public String login(Model model, @ModelAttribute("log") User log, HttpSession session){
-		User user = service.getUserByUserId(log);
-		logger.trace("수업:" + session.getAttribute("log"));
-		model.addAttribute("log", user);
+		User u = service.getUserByUserId(log);
+		model.addAttribute("user", u);
 		return "user/main_logined";
 	}
 	
@@ -67,7 +72,7 @@ public class ControllerTest {
 		return "redirect:/main";
 	}
 	
-	@RequestMapping(value="/main_logined", method=RequestMethod.POST)
+	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	public String mainLogined(User user, Model model){
 	    service.insertUser(user);
 	    return "main";
