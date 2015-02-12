@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+
 영화정보페이지
 </body>
 </html>

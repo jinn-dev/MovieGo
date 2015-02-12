@@ -19,6 +19,8 @@ function mypage(){
 	}
 </script>
 <body>
+	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+
 예매 완료
 
 <input type="button" onclick="main();" value="메인페이지로"></input>

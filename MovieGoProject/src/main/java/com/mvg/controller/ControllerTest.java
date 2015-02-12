@@ -3,22 +3,28 @@ package com.mvg.controller;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.mvg.entity.User;
 import com.mvg.service.UserService;
 
 @Controller
+@SessionAttributes("log")
 public class ControllerTest {
 	private final static Logger logger;
 	static {
@@ -37,7 +43,8 @@ public class ControllerTest {
 	UserService service;
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public String mainTest() {
+	public String mainTest(Model model) {
+		model.addAttribute("log", new User());
 		return "main";
 	}
 
@@ -47,17 +54,23 @@ public class ControllerTest {
 	}
 
 	@RequestMapping(value="/login",  method=RequestMethod.POST)
-	public String login(@ModelAttribute("log") User log){
-		String userId = log.getUserId();
-		service.getUserByUserId(userId);
+	public String login(Model model, @ModelAttribute("log") User log, HttpSession session){
+		User user = service.getUserByUserId(log);
+		logger.trace("수업:" + session.getAttribute("log"));
+		model.addAttribute("log", user);
 		return "user/main_logined";
 	}
+	
+	@RequestMapping(value="/logout",  method=RequestMethod.GET)
+	public String logout(@ModelAttribute("log") User log, SessionStatus sessionStatus){
+		sessionStatus.setComplete();
+		return "redirect:/main";
+	}
+	
 	@RequestMapping(value="/main_logined", method=RequestMethod.POST)
-	public String mainLogined(User user){
+	public String mainLogined(User user, Model model){
 	    service.insertUser(user);
-	    
-		logger.trace("수업 " + user);
-		return "user/main_logined";
+	    return "main";
 	}
 
 	@RequestMapping(value = "/board_view", method = RequestMethod.GET)
@@ -77,5 +90,6 @@ public class ControllerTest {
 	public String InsertMovie(Model model) {
 		return "restService2";
 	}
+	
 
 }

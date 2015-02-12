@@ -14,7 +14,7 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/component.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/content.css" />
-<script src="<%=request.getContextPath()%>/main/js/modernizr.custom.js"></script>
+<script src="<%=request.getContextPath ()%>/main/js/modernizr.custom.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 /* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */ 
@@ -82,7 +82,7 @@
 			
 			else {
 
-				alert("회원가입에 성공하셨습니다.");
+				alert("회원가입에 성공하셨습니다. 로그인해주세요");
 
 			}
 
@@ -131,7 +131,6 @@
 									<span class="icon icon-close">Close the dialog</span>
 									<h2>Login</h2>
 									<c:url value="/login" var="action"></c:url>
-									
 									<form:form modelAttribute="log" method="post" action="${action }" name="loginform">
 										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
 										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>

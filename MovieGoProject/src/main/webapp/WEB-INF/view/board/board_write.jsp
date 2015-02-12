@@ -5,12 +5,11 @@
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
 <title>고객센터</title>
 </head>
 <body>
-	<jsp:include page="/header.jsp" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
 	<header>
 		<h3>1:1문의</h3>
 		<h5>
@@ -23,7 +22,7 @@
 	<c:url value="/board/submit" var="url"/>
 	<div id="writeform">
 	<form:form method="POST" action="${url }" modelAttribute="board">
-	<label>아이디(test) </label><input type="text" name="userId" id="userId" /><br>
+	<input type="hidden" name="userId" value="${log.userId }"/><br>
 	<label>제목 </label><input type="text" name="boardTitle" id="boardTitle" value="제목을 입력해주세요."/><br>
 	<label>내용 </label><textarea rows="5" cols="80" name="boardContent" id="boardContent"></textarea><br>
 	<button type="submit" name="proceed">완료</button>

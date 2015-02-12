@@ -7,8 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%-- <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/board.css" /> --%>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -17,7 +16,7 @@
 <title>고객센터</title>
 </head>
 <body>
-	<jsp:include page="/header.jsp" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
 	<header>
 		<h3>1:1문의</h3>
 		<h5>
@@ -26,10 +25,11 @@
 		</h5>
 	</header>
 	<section>
+		<div class="view-table">
 		<table border="1">
 			<tr>
-				<td id="title" colspan="4"><c:out
-						value="${content.boardTitle }" /></td>
+				<th id="title" colspan="4"><c:out
+						value="${content.boardTitle }" /></th>
 			</tr>
 			<tr>
 				<th>작성자</th>
@@ -43,6 +43,8 @@
 			</tr>
 			<tr>
 		</table>
+		</div>
+		<div class="comment-table">
 		<table border="1">
 			<tr>
 				<td colspan="5">COMMENT</td>
@@ -59,19 +61,31 @@
 				<tr>
 					<td colspan="5"><c:out value="${comments.commentContent }" /></td>
 				</tr>
+				<tr>
+					<td colspan="5">
+					<c:if test="${comment.userId}==${log.userId }">
+					<button>수정</button>
+					<button>삭제</button>
+					</c:if>
+					</td>
+				</tr>
 				</c:forEach>
 			</c:if>
 		</table><br>
-		
-		<c:url value="/comment/write" var="url"></c:url>
-		
-		<form:form method="post" modelAttribute="comment" action="${url }">
-		<input type="hidden" name="boardId" value="${content.boardId }"/><br>
-		<label>ID(test)</label><input type="text" name="userId"/>
-		<label>코멘트 쓰기</label><input type="text" name="commentContent"/>
-		<button type="submit">등록</button>
-		</form:form>
 
+			<div class="comment-form">
+				<c:url value="/comment/write" var="url"></c:url>
+				<form:form method="post" modelAttribute="comment" action="${url }">
+					<div class="comment-form-inner">
+						<input type="hidden" name="boardId" value="${content.boardId }" />
+						<input type="hidden" name="userId" value="${log.userId }" />
+						<c:out value="${log.userId }"></c:out>
+						<label>코멘트 쓰기</label><input type="text" name="commentContent" />
+						<button type="submit">등록</button>
+					</div>
+				</form:form>
+			</div>
+		</div>
 	</section>
 </body>
 </html>
