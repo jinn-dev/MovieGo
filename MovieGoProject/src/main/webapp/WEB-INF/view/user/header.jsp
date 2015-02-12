@@ -29,7 +29,7 @@
 					<a href="${url }">고객센터</a>
 					<c:url value="/logout" var="url" />
 					<a href="${url }"><button>LOGOUT</button></a>
-					<c:out value="${log.userId}" />
+					<c:out value="${log.userId}" />님 반갑습니다.
 				</nav>
 			</div>
 		</div>
