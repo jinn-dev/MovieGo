@@ -16,23 +16,23 @@ public interface ReservationDao {
 	
 	//모든 예약에 예약정보 붙인거 가져오기
 	List<Reservation> getAllReservationsWithInfo();
+
+	//예약 정보 없는 예약 하나 가져오기
+	Reservation getReservationByRId(int reservationId);
 	
 	//예약 정보 붙인 예약 하나 가져오기
 	Reservation getReservationByRIdWithInfo(int reservationId);
 	
-	//예약 정보 없는 예약 하나 가져오기
-	Reservation getReservationById(int reservationId);
+	//회원별 예약정보 
+	List<Reservation> getReservationByUserId(String userId);
 	
-	//예약 추가..impl안에서 info까지 모두 추가되도록 할것.
+	//회원별 예약+정보붙인거
+	List<Reservation> getReservationByUserIdWithInfo(String userId);
+	
+	//예약 추가
 	int insertReservation(Reservation reservation);
 	
-	//예약 수정
-	int updateReservation(Reservation reservation);
-	
-	//예약 삭제..impl안에서 info까지 모두 삭제하도록 할것.
+	//예약 삭제
 	int deleteReservation(int reservationId);
-	
-	//예약 하나 가져오기
-	Reservation getReservationByRId(int reservationId);
 	
 }

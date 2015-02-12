@@ -11,7 +11,34 @@
 		select * from reservations
 	</select>
 	
-	<select id="getReservationByRIdWithInfo"></select>
+	<select id="getAllReservationsWithInfo" resultType="Reservation">
+		select * from reservations join reservationinfo using(reservation_id)
+	</select>
+	
+	<select id="getReservationByRId" parameterType="Integer" resultType="Reservation">
+		select * from reservation where reservation_id=#{reservationId}
+	</select>
 
+	<select id="getReservationByRIdWithInfo" parameterType="Integer" resultType="Reservation">
+		select * from reservations join reservationinfo using(reservation_id)
+		where reservation_id=#{reservationId}
+	</select>
+	
+	<select id="getReservationByUserId" parameterType="String" resultType="Reservation">
+		select * from reservations where user_id=#{userId}
+	</select>
+	
+	<select id="getReservationByUserIdWithInfo" parameterType="String" resultType="Reservation">
+		select * from reservations join reservationinfo using(reservation_id) where user_id=#{userId}
+	</select>
+	
+	<insert id="insertReservation" parameterType="Reservation">
+		insert into reservations(reservation_num, reservation_price)
+		values (#{reservationNum}, #{reservationPrice})
+	</insert>
+	
+	<update id="deleteReservation" parameterType="Integer">
+		delete from reservations where reservation_id=#{reservationId}
+	</update>
 
 </mapper>

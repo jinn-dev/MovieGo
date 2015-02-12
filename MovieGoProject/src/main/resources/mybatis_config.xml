@@ -27,5 +27,6 @@
 		<mapper resource="mappers/CommentMapper.xml"/>
 		<mapper resource="mappers/theaterMapper.xml" />
 		<mapper resource="mappers/reservationMapper.xml" />
+		<mapper resource="mappers/reservationInfoMapper.xml" />
 	</mappers>
 </configuration>

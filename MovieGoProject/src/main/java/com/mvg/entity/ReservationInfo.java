@@ -6,17 +6,15 @@ import org.springframework.stereotype.Repository;
 public class ReservationInfo {
 	private int reservationinfoId;
 	private int seatId;
-	private String userId;
 	private int reservationId;
 
-	public ReservationInfo() {}
-	
-	public ReservationInfo(int reservationinfoId, int seatId, String userId,
-			int reservationId) {
+	public ReservationInfo() {
+	}
+
+	public ReservationInfo(int reservationinfoId, int seatId, int reservationId) {
 		super();
 		this.reservationinfoId = reservationinfoId;
 		this.seatId = seatId;
-		this.userId = userId;
 		this.reservationId = reservationId;
 	}
 
@@ -36,14 +34,6 @@ public class ReservationInfo {
 		this.seatId = seatId;
 	}
 
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
 	public int getReservationId() {
 		return reservationId;
 	}
@@ -55,8 +45,8 @@ public class ReservationInfo {
 	@Override
 	public String toString() {
 		return "ReservationInfo [reservationinfoId=" + reservationinfoId
-				+ ", seatId=" + seatId + ", userId=" + userId
-				+ ", reservationId=" + reservationId + "]";
+				+ ", seatId=" + seatId + ", reservationId=" + reservationId
+				+ "]";
 	}
 
 }
