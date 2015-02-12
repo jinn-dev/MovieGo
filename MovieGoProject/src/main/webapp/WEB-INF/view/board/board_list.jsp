@@ -25,10 +25,8 @@
 	<table id="list">
 		<tr>
 		<td colspan="4" align="right">
-		<div class="div-button">
 			<c:url value="/board/write" var="url" />
-			<a href="${url }"><button >WRITE</button></a>
-		</div>
+			<a href="${url }"><button class="div-button">WRITE</button></a>
 		</td>
 		</tr>
 		<tr>

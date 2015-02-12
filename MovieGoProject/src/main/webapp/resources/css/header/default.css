@@ -2,7 +2,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 /* main css */
 
-/* @font-face {
+@font-face {
 	font-family: 'bpicons';
 	src: url('../fonts/bpicons/bpicons.eot');
 	src: url('../fonts/bpicons/bpicons.eot?#iefix')
@@ -12,7 +12,7 @@
 	font-weight: normal;
 	font-style: normal;
 }
- */
+
  
 *, *:after, *:before {
 	-webkit-box-sizing: border-box; /* width는 padding, border를 포함한 크기 */
