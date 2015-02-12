@@ -47,7 +47,7 @@
 				</div>
 			</th>
 		</tr>
-		<c:forEach items="${lists }" var="list">
+		<c:forEach items="${list }" var="list">
 		<tr>
 			<td width="55">
 			<c:out value="${list.boardId}"/></td>

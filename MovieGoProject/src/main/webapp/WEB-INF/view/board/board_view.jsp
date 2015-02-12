@@ -29,19 +29,28 @@
 		<table border="1">
 			<tr>
 				<th id="title" colspan="4"><c:out
-						value="${content.boardTitle }" /></th>
+						value="${detail.boardTitle }" /></th>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td><c:out value="${content.userId}" /></td>
+				<td><c:out value="${detail.userId}" /></td>
 				<th>작성일자</th>
-				<fmt:formatDate value="${content.boardDate}" type="date" var="date" />
+				<fmt:formatDate value="${detail.boardDate}" type="date" var="date" />
 				<td><c:out value="${date}" /></td>
 			</tr>
 			<tr>
-				<td colspan="4"><c:out value="${content.boardContent }" /></td>
+				<td colspan="4"><c:out value="${detail.boardContent }" /></td>
 			</tr>
-			<tr>
+				<tr>
+					<td colspan="4">
+						<c:if test="${detail.userId==log.userId }">
+							<c:url value="/board/modify?boardId=${detail.boardId }" var="url"></c:url>
+							<a href="${url }"><button>수정</button></a>
+							<button>삭제</button>
+						</c:if>
+					</td>
+				</tr>
+				<tr>
 		</table>
 		</div>
 		<div class="comment-table">
@@ -50,8 +59,8 @@
 				<td colspan="5">COMMENT</td>
 
 			</tr>
-			<c:if test="${content.comments.size()!=0 }">
-				<c:forEach items="${content.comments }" var="comments">
+			<c:if test="${detail.comments.size()!=0 }">
+				<c:forEach items="${detail.comments }" var="comments">
 				<tr>
 					<td><c:out value="${comments.commentId }" /></td>
 					<td><c:out value="${comments.userId }" /></td>
@@ -60,14 +69,6 @@
 				</tr>
 				<tr>
 					<td colspan="5"><c:out value="${comments.commentContent }" /></td>
-				</tr>
-				<tr>
-					<td colspan="5">
-					<c:if test="${comment.userId}==${log.userId }">
-					<button>수정</button>
-					<button>삭제</button>
-					</c:if>
-					</td>
 				</tr>
 				</c:forEach>
 			</c:if>

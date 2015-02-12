@@ -42,15 +42,16 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 
 	@Override
 	public int insertCustomerBoard(CustomerBoard board) {
-		String stmt= namespace+"insertBoard";
+		String stmt = namespace+"insertBoard";
 		int result = sqlSession.insert(stmt, board);
 		return result;
 	}
 
 	@Override
 	public int updateCustomerBoard(CustomerBoard board) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace+"updateBoard";
+		int result = sqlSession.update(stmt, board);
+		return result;
 	}
 
 	@Override

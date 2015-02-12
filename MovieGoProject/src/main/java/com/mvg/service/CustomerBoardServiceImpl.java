@@ -25,6 +25,12 @@ public class CustomerBoardServiceImpl implements CustomerBoardService {
 		int result = dao.insertCustomerBoard(board);
 		return result;
 	}
+	
+	@Override
+	public int modifyBoard(CustomerBoard board) {
+		int result = dao.updateCustomerBoard(board);
+		return result;
+	}
 
 	@Override
 	public CustomerBoard getBoardByBdIdWithCmts(int boardId) {
@@ -37,6 +43,7 @@ public class CustomerBoardServiceImpl implements CustomerBoardService {
 		CustomerBoard result = dao.getBoardByBoardId(boardId);
 		return result;
 	}
+
 	
 	// 게시글 수정, 게시글 삭제, 게시글 검색
 

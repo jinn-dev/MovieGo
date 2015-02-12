@@ -10,6 +10,8 @@ public interface CustomerBoardService {
 
 	int addBoard(CustomerBoard board);
 	
+	int modifyBoard(CustomerBoard board);
+	
 	CustomerBoard getBoardByBdId(int boardId);
 	
 	CustomerBoard getBoardByBdIdWithCmts(int boardId);
