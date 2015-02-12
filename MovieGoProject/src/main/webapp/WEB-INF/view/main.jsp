@@ -22,79 +22,91 @@
 		$("#signupB").click(function() {
 			var pwdLength = $("#userPwd").val().length;
 			var idLength = $("#userId").val().length;
-			
-			
+			var c = [];
 			for(var i = 0; i < idLength; i++) {
-				
-			}
-			if ($("#userId").val() == "") {
+				c[i] = $("#userId").val().charCodeAt(i);
+	
+			var c = $("#userId").val().charCodeAt(i);
 
-				alert("아이디를 입력해주세요.");
-
-				event.preventDefault();
-
-			}
-			
-			  else if ($("#userPwd").val() == "") {
-
-				alert("pwd:" +$("#userPwd").val() + "비밀번호를 입력해주세요.");
-
-				event.preventDefault();
-
-			}  
-			else if (idLength > 10) {
-
-				alert("id는 10자이내로 입력해주세요.");
-
-				event.preventDefault();
-
-			}
-			else if (pwdLength > 10) {
-
-				alert("비밀번호는 10자이내로 입력해주세요.");
-
-				event.preventDefault();
-
-			}
-			else if ($("#pass2").val() == "") {
-
-				alert("비밀번호확인 입력해주세요.");
-
-				event.preventDefault();
-
-			}
-
-			else if ($("#userPwd").val() != $("#pass2").val()) {
-
-				alert("비밀번호와 확인 비밀번호가 일치하지 않습니다.");
-
-				$("#pass2").focus();
-
-				event.preventDefault();
-
-			}
-			
-			
-			
-			else if ($("#userEmail").val() == "") {
-
-				alert("이메일을 입력해주세요.");
-
-				event.preventDefault();
-
-			}
-			
-			else {
-
-				alert("회원가입에 성공하셨습니다. 로그인해주세요");
-
-			}
-			for(var i = 0; i < idLength; i++) {
-				if($("#userId").val() > "A" && $("#userId").val() < "Z") {
+				if(!((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c>= 97 && c <= 122))) {
 					alert("다시 입력해주세요.");
 					event.preventDefault();
+					break;
 				}
+				else if($("#userId").val() == "") {
+
+					alert("아이디를 입력해주세요.");
+
+					event.preventDefault();
+					break;
+
+				}
+				  else if ($("#userPwd").val() == "") {
+
+						alert("pwd:" +$("#userPwd").val() + "비밀번호를 입력해주세요.");
+
+						event.preventDefault();
+						break;
+
+					}  
+					else if (idLength > 10) {
+
+						alert("id는 10자이내로 입력해주세요.");
+
+						event.preventDefault();
+						break;
+
+					}
+					else if (pwdLength > 10) {
+
+						alert("비밀번호는 10자이내로 입력해주세요.");
+
+						event.preventDefault();
+						break;
+
+					}
+					else if ($("#pass2").val() == "") {
+
+						alert("비밀번호확인 입력해주세요.");
+
+						event.preventDefault();
+						break;
+
+					}
+
+					else if ($("#userPwd").val() != $("#pass2").val()) {
+
+						alert("비밀번호와 확인 비밀번호가 일치하지 않습니다.");
+
+						$("#pass2").focus();
+
+						event.preventDefault();
+						break;
+
+					}
+					
+					
+					
+					else if ($("#userEmail").val() == "") {
+
+						alert("이메일을 입력해주세요.");
+
+						event.preventDefault();
+						break;
+
+					}
+					
+					else {
+
+						alert("회원가입에 성공하셨습니다. 로그인해주세요");
+						break;
+
+					}
 			}
+
+			
+			
+		
 	});
  		
 		$("#login").click(function() {
@@ -118,7 +130,6 @@
 	});
 	});
 		
-	
 
 </script>
 <title>메인 페이지</title>
