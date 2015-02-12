@@ -8,20 +8,21 @@ public class Theater {
 	private int theaterId;
 	private String theaterName;
 
-	public Theater() {}
-	
-	public Theater(int theaterNumber, String theaterName) {
+	public Theater() {
+	}
+
+	public Theater(int theaterId, String theaterName) {
 		super();
-		this.theaterId = theaterNumber;
+		this.theaterId = theaterId;
 		this.theaterName = theaterName;
 	}
 
-	public int getTheaterNumber() {
+	public int getTheaterId() {
 		return theaterId;
 	}
 
-	public void setTheaterNumber(int theaterNumber) {
-		this.theaterId = theaterNumber;
+	public void setTheaterId(int theaterId) {
+		this.theaterId = theaterId;
 	}
 
 	public String getTheaterName() {
@@ -34,7 +35,7 @@ public class Theater {
 
 	@Override
 	public String toString() {
-		return "Theater [theaterNumber=" + theaterId + ", theaterName="
+		return "Theater [theaterId=" + theaterId + ", theaterName="
 				+ theaterName + "]";
 	}
 

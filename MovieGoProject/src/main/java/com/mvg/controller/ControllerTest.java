@@ -78,18 +78,4 @@ public class ControllerTest {
 		return "board/board_view";
 	}
 
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public String testMethod(Model model) {
-		int result = service.getUserCntService();
-		model.addAttribute("cnt", result);
-		return "test";
-	}
-
-	// api이용한 페이지로 가게하는 requestMapping
-	@RequestMapping(value = "/api", method = RequestMethod.GET)
-	public String InsertMovie(Model model) {
-		return "restService2";
-	}
-	
-
 }
