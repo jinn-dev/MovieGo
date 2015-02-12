@@ -41,35 +41,35 @@ public class TheaterDaoImpl implements TheaterDao {
 	@Override
 	public int insertTheater(Theater theater) {
 		String stmt = namespace + "insertTheater";
-		int result = sqlSession.insert(stmt);
+		int result = sqlSession.insert(stmt, theater);
 		return result;
 	}
 
 	@Override
 	public int updateTheater(Theater theater) {
 		String stmt = namespace + "updateTheater";
-		int result = sqlSession.update(stmt);
+		int result = sqlSession.update(stmt, theater);
 		return result;
 	}
 
 	@Override
 	public int deleteTheater(int theaterId) {
 		String stmt = namespace + "insertTheater";
-		int result = sqlSession.delete(stmt);
+		int result = sqlSession.delete(stmt, theaterId);
 		return result;
 	}
 
 	@Override
 	public Theater getTheaterById(int theaterId) {
 		String stmt = namespace + "getTheaterById";
-		Theater theater = sqlSession.selectOne(stmt);
+		Theater theater = sqlSession.selectOne(stmt, theaterId);
 		return theater;
 	}
 
 	@Override
 	public Theater getTheaterByName(String theaterName) {
 		String stmt = namespace + "getTheaterByName";
-		Theater theater = sqlSession.selectOne(stmt);
+		Theater theater = sqlSession.selectOne(stmt, theaterName);
 		return theater;
 	}
 

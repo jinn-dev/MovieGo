@@ -1,5 +1,6 @@
 -- 회원
 INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('a', '1', 'a', '', 'n', '0');
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('b', '1', 'b', '', 'n', '0');
 
 
 -- 게시판

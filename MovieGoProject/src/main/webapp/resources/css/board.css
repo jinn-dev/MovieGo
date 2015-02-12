@@ -71,7 +71,13 @@ header{
 
 .comment-form-inner{
 	text-align: center;
+	margin: 0 auto;
 	width: 700px;
+}
+
+.comment-form-inner input[type="text"]{
+	width:500px;
+	padding: 0.4em;
 }
 
 .writeform div{

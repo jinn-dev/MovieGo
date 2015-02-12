@@ -19,10 +19,14 @@
 <script>
 /* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */ 
 	$(document).ready(function() {
-		$("#signup").click(function() {
+		$("#signupB").click(function() {
 			var pwdLength = $("#userPwd").val().length;
 			var idLength = $("#userId").val().length;
-
+			
+			
+			for(var i = 0; i < idLength; i++) {
+				
+			}
 			if ($("#userId").val() == "") {
 
 				alert("아이디를 입력해주세요.");
@@ -85,7 +89,12 @@
 				alert("회원가입에 성공하셨습니다. 로그인해주세요");
 
 			}
-
+			for(var i = 0; i < idLength; i++) {
+				if($("#userId").val() > "A" && $("#userId").val() < "Z") {
+					alert("다시 입력해주세요.");
+					event.preventDefault();
+				}
+			}
 	});
  		
 		$("#login").click(function() {
@@ -106,8 +115,11 @@
 
 			}
 
-	}); 
-		});
+	});
+	});
+		
+	
+
 </script>
 <title>메인 페이지</title>
 </head>
@@ -134,7 +146,7 @@
 									<form:form modelAttribute="log" method="post" action="${action }" name="loginform">
 										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
 										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>
-										<p><button type="submit" name="_main_login">Login</button></p>
+										<p><input id="loginB" type="submit" name="_event_confirmed" value="LOGIN"/></p>
 										<p id="searchinfo"><a href="javascript:userInfo()">ID/비밀번호 찾기</a></p>
 									</form:form>
 								</div>
@@ -161,7 +173,7 @@
 									<input type="text" name="chk" id="confirm"  
 										value="비밀번호를 입력하세요" readonly="readonly">
 										<p><label>생년월일</label><input type="date" id="userBirthday" name="userBirthday"/></p>										
-										<p><input type="submit" id="signup" name="signup" value="signup"></p>
+										<p><input type="submit" id="signupB" name="_event_confirmed" value="SIGNUP"></p>										
 									</form:form>
 								</div>
 							</div>

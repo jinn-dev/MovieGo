@@ -30,4 +30,10 @@ public class CommentServiceImpl implements CommentService {
 		return result;
 	}
 
+	@Override
+	public int getBoardIdByCmtId(int commentId) {
+		int result = dao.getBoardByCmtId(commentId);
+		return result;
+	}
+
 }

@@ -16,6 +16,12 @@
 
 	<delete id="deleteComment" parameterType="INTEGER">
 		delete from comments
-		where board_id = #{boardId} and comment_id = #{commentId} 
+		where comment_id = #{commentId} 
 	</delete>
+	
+	<select id="selectBoardIdByCommentId" parameterType="INTEGER" resultType="INTEGER">
+		select board_id 
+		from  comments
+		where comment_id = #{commentId}
+	</select>
 </mapper>
