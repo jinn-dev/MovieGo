@@ -18,4 +18,16 @@ public class CommentServiceImpl implements CommentService {
 		return result;
 	}
 
+	@Override
+	public int updateComment(Comment comment) {
+		int result = dao.updateComment(comment);
+		return result;
+	}
+
+	@Override
+	public int deleteComment(int commentId) {
+		int result = dao.deleteComment(commentId);
+		return result;
+	}
+
 }

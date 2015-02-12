@@ -27,4 +27,11 @@ public class CommentController {
 		String Path ="redirect:/board/view?boardId="+comment.getBoardId();
 		return Path;
 	}
+	
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String commentDelete(@RequestParam int commentId){
+		service.deleteComment(commentId);
+		return "/";
+	}
+
 }
