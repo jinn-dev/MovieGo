@@ -14,7 +14,8 @@
 <script type="text/javascript">
  function deleteCheck() {
 	 if(confirm("회원탈퇴하시겠습니까??")) {
-		 location.href="<%=request.getContextPath()%>/main";
+		 location.href="<%=request.getContextPath()%>/mypage/del?userId=${user.userId }";
+		 
 		}
 
 	}
@@ -38,24 +39,16 @@
 		개인정보수정<br>
 		<c:url value="/update" var="action"></c:url>
 		 <form:form modelAttribute="user" method="post" action="${action }">
-		<label>아이디</label><form:input path="userId"/><br>
-		<label>비밀번호</label><form:input path="userPwd" /> <br>
-		<label>EMAIL</label><form:input path="userEmail" /><br>
-		<label>생년월일</label><form:input path="userBirthday" /><br>
-		<input type="submit" id="update" name="_event_confirmed" value="수정 확인">
-		<input type="button" value="수정 취소">
-		<input type="button" onclick="deleteCheck();" value="회원탈퇴">
+		<label>아이디</label><form:input type="text" path="userId" readonly="true" /><br>
+		<label>비밀번호</label><form:input type="password" path="userPwd" /> <br>
+		<label>EMAIL</label><form:input type="email" path="userEmail" /><br>
+		<label>생년월일</label><form:input type="date" path="userBirthday" /><br>
+		<button type="submit" name="_event_confirmed">수정확인</button>
+		<button type="submit" name="_event_reverse">재입력</button>
+<!-- 		<input type="button" onclick="deleteCheck();" value="회원탈퇴">
+ -->			
 		</form:form> 
-		
- 		<%--<form:form modelAttribute="user" method="post" action="${action }">
-		<label>아이디</label><form:input path="userId" /><br>
-		<label>비밀번호</label><form:input path="userPwd"/> <br>
-		<label>EMAIL</label><form:input path="userEmail" /><br>
-		<label>생년월일</label><form:input path="userBirthday" /><br>
-		<input type="button" value="수정 확인">
-		<input type="button" value="수정 취소">
-		<input type="button" onclick="deleteCheck();" value="회원탈퇴">
-		</form:form> --%>
+	<button onclick="deleteCheck()">회원탈퇴</button>
 </div>
 	<div id="submenu">
 		<jsp:include page="submenu.jsp"></jsp:include>

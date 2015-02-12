@@ -40,8 +40,10 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int deleteUser(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = -1;
+		String stmt = namespace + "deleteUser";
+		result= sqlSession.delete(stmt, userId);
+		return result;
 	}
 
 	@Override

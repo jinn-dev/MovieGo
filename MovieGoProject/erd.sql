@@ -174,7 +174,7 @@ CREATE TABLE users
 	user_pwd varchar2(10) NOT NULL,
 	user_email varchar2(30) NOT NULL UNIQUE,
 	user_birthday date,
-	user_coupon char  default 'n' NOT NULL,
+	user_coupon char default 'n' NOT NULL,
 	user_point number default 0 NOT NULL,
 	PRIMARY KEY (user_id)
 );

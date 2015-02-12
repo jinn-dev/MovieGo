@@ -7,5 +7,5 @@ public interface UserService {
 	public int insertUser(User user);
 	public User getUserByUserId(User user);
 	public int updateUser(User user);
-
+	public int deleteUser(String userId);
 }
