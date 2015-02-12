@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.mvg.entity.CustomerBoard;
 import com.mvg.entity.User;
@@ -19,34 +20,59 @@ import com.mvg.service.CustomerBoardService;
 
 @Controller
 @RequestMapping("/board")
+@SessionAttributes("content")
 public class CustomerBoardController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(CustomerBoardController.class);
 	@Autowired
 	CustomerBoardService service;
 	
+	/* 게시판 리스트 */
 	@RequestMapping(method=RequestMethod.GET)
 	public String boardList(Model model){
-		List<CustomerBoard> lists = service.getAllBoardList();
-		model.addAttribute("lists", lists);
+		List<CustomerBoard> list = service.getAllBoardList();
+		model.addAttribute("list", list);
 		return "board/board_list";
 	}
 	
+	/* 게시판 글쓰기 */
 	@RequestMapping(value="/write", method=RequestMethod.GET)
 	public String boardWrite(){
 		return "board/board_write";
 	}
-	
-	@RequestMapping(value="/submit", method=RequestMethod.POST)
+	@RequestMapping(value="/submit", params="_event_confirmed", method=RequestMethod.POST)
 	public String boardSubmit(@ModelAttribute("board") CustomerBoard board){
 		service.addBoard(board);
 		return "redirect:/board";
 	}
 	
+	/* 게시판 글수정 */
+	@RequestMapping(value="/modify", method=RequestMethod.GET)
+	public String redirToEntryForm(@RequestParam int boardId, Model model){
+		CustomerBoard content = service.getBoardByBdId(boardId);
+		model.addAttribute("content", content);
+		return "board/board_modify";
+	}
+	@RequestMapping(value="/modified", method=RequestMethod.POST)
+	public String boardmodified(@ModelAttribute("content") CustomerBoard board){
+		service.modifyBoard(board);
+		String path="redirect:/board/review?boardId="+board.getBoardId();
+		return path;
+	}
+	
+	@RequestMapping(value="/review", method=RequestMethod.GET)
+	public String redirToList(@RequestParam int boardId, Model model, SessionStatus sessionStatus){
+		sessionStatus.setComplete(); // sesseion에서 content 객체 삭제
+		CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
+		model.addAttribute("detail", board);
+		return "board/board_view";
+	}
+	
+	/* 게시판 글보기 */
 	@RequestMapping(value="/view", method=RequestMethod.GET)
 	public String showContent(@RequestParam int boardId, Model model){
-		CustomerBoard content = service.getBoardByBdIdWithCmts(boardId);
-		model.addAttribute("content", content);
+		CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
+		model.addAttribute("detail", board);
 		return "board/board_view";
 	}
 }

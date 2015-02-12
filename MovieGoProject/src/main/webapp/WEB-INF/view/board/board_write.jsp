@@ -25,11 +25,10 @@
 	<input type="hidden" name="userId" value="${log.userId }"/><br>
 	<label>제목 </label><input type="text" name="boardTitle" id="boardTitle" value="제목을 입력해주세요."/><br>
 	<label>내용 </label><textarea rows="5" cols="80" name="boardContent" id="boardContent"></textarea><br>
-	<button type="submit" name="proceed">완료</button>
+	<button type="submit" name="_event_confirmed">완료</button>
 	<input type="reset"/>
 	</form:form>
 	</div>
 	</section>
-	
 </body>
 </html>
