@@ -15,6 +15,7 @@
 		<typeAlias type="com.mvg.entity.Movie" alias="Movie" />
 		<typeAlias type="com.mvg.entity.NowMovie" alias="NowMovie" />
 		<typeAlias type="com.mvg.entity.Reservation" alias="Reservation" />
+		<typeAlias type="com.mvg.entity.ReservationInfo" alias="ReservationInfo" />
 		<typeAlias type="com.mvg.entity.SeatInfo" alias="SeatInfo" />
 		<typeAlias type="com.mvg.entity.Theater" alias="Theater" />
 		<typeAlias type="com.mvg.entity.User" alias="User" />

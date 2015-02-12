@@ -47,7 +47,7 @@ public class ReservationDaoImpl implements ReservationDao {
 	@Override
 	public Reservation getReservationByRId(int reservationId) {
 		String stmt = namespace + "getReservationByRId";
-		Reservation reservation = sqlSession.selectOne(stmt);
+		Reservation reservation = sqlSession.selectOne(stmt, reservationId);
 		return reservation;
 	}
 
