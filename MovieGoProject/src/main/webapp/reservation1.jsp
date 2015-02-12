@@ -5,7 +5,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-</head>
+<style>
+table, td, th {
+	border: 1px solid black;
+}
+table {
+	width: 75%;
+}
+th {
+	height: 70px;
+}
+td {
+	height: 400px;
+}
+td, th {
+	text-align: center;
+}
+
+button {
+	color: pink;
+}
+
+</style>
 <script type="text/javascript">
 
 /* function tm_seledVal(){
@@ -137,18 +158,21 @@ function chk_seledVal(){
         	    
 }
 </script>
+</head>
+
 
 <body>
+<jsp:include page="/header.jsp" />
 <form name="frm">
-<input type="reset" value="새로">
+<input type="reset" value="새로" height="70">
 
-<table border="1">
+<table align="center">
 <tr><th>영화관</th><th>영화</th><th>날짜</th><th>시간</th></tr>
 <tr>
 <td>
  <input type="radio" name ="thChk" value="건대입구점">건대입구점<br>
-  <input type="radio" name ="thChk" value="군자점">군자점<br>
-  <input type="radio" name ="thChk" value="강남점">강남점<br>
+  <input type="radio" name ="thChk" value="군자점">강변점<br>
+  <input type="radio" name ="thChk" value="강남점">군자점<br>
 </td>
 <td>
  <input type="radio" name ="mvChk" value="쎼씨봉">쎼씨봉<br>
@@ -163,8 +187,8 @@ function chk_seledVal(){
 <td>
  <input type="radio" name ="tmChk" value="오전">오전<br>
   <input type="radio" name ="tmChk" value="오후">오후<br>
-<!--  <input type="button" onclick="tm_seledVal();" value="확인"></input>
- --></td>
+<input type="button" onclick="tm_seledVal();" value="확인"></input>
+</td>
 </tr>
 
 

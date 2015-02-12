@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mvg.mappers.theaterMapper">
+	
+	<select id="getTheaterCount" resultType="Integer">
+		select count(*) from theaters;
+	</select>
+	
+	<select id="getAllTheaters" resultType="Map">
+		select theater_name from theaters;
+	</select>
+	
+	<select id="getTheaterById" resultType="Theater">
+		select * from theaters where theater_id=#{theaterId}
+	</select>
+	
+	<select id="getTheaterByName" resultType="Theater">
+		select * from theaters where theater_name=#{theaterName}
+	</select>
+	
+	<insert id="insertTheater" parameterType="Theater">
+		insert into theaters(theater_name) values(#{theaterName})
+	</insert>
+	
+	<update id="updateTheater" parameterType="Theater">
+		update theaters set theater_id=#{theaterId}, theater_name=#{theaterName} where theater_id=#{theaterId}
+	</update>
+	
+	<delete id="deleteTheater" parameterType="Integer">
+		delete from theaters where theater_id=#{theaterId}
+	</delete>
+
+</mapper>

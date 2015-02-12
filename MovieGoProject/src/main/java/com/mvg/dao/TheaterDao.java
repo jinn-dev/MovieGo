@@ -21,6 +21,8 @@ public interface TheaterDao {
 	int deleteTheater(int theaterId);
 	
 	//하나의 극장 불러오기
-	Theater getTheater(int theaterId);
+	Theater getTheaterById(int theaterId);
+	
+	Theater getTheaterByName(String theaterName);
 	
 }
