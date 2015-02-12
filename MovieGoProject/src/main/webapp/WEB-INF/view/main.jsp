@@ -134,7 +134,7 @@
 									<form:form modelAttribute="log" method="post" action="${action }" name="loginform">
 										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
 										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>
-										<p><button type="submit">Login</button></p>
+										<p><button type="submit" name="_main_login">Login</button></p>
 										<p id="searchinfo"><a href="javascript:userInfo()">ID/비밀번호 찾기</a></p>
 									</form:form>
 								</div>
@@ -160,7 +160,7 @@
  										<input type="password" id="pass2" name="pass2" onblur="javascript:passchk()"/></p>
 									<input type="text" name="chk" id="confirm"  
 										value="비밀번호를 입력하세요" readonly="readonly">
-										<p><label>생년월일</label><input type="date" id="userBirthday" name="userBirthday"/></p>
+										<p><label>생년월일</label><input type="date" id="userBirthday" name="userBirthday"/></p>										
 										<p><input type="submit" id="signup" name="signup" value="signup"></p>
 									</form:form>
 								</div>

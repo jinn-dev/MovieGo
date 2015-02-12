@@ -59,7 +59,7 @@ public class ControllerTest {
 		return "user/main_logined";
 	}*/
 	
-	@RequestMapping(value="/login",  method=RequestMethod.POST)
+	@RequestMapping(value="/login", params ="_main_login", method=RequestMethod.POST)
 	public String login(Model model, @ModelAttribute("log") User log, HttpSession session){
 		User u = service.getUserByUserId(log);
 		model.addAttribute("user", u);
@@ -72,7 +72,7 @@ public class ControllerTest {
 		return "redirect:/main";
 	}
 	
-	@RequestMapping(value="/signup", method=RequestMethod.POST)
+	@RequestMapping(value="/signup", params ="main_signup", method=RequestMethod.POST)
 	public String mainLogined(User user, Model model){
 	    service.insertUser(user);
 	    return "main";
