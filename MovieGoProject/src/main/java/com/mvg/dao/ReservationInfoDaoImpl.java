@@ -13,7 +13,7 @@ public class ReservationInfoDaoImpl implements ReservationInfoDao {
 
 	private final static Logger logger;
 	static {
-		logger = LoggerFactory.getLogger(UserDaoImpl.class);
+		logger = LoggerFactory.getLogger(ReservationInfoDaoImpl.class);
 	}
 
 	private final String namespace = "com.mvg.mappers.reservationInfoMapper.";
@@ -58,8 +58,9 @@ public class ReservationInfoDaoImpl implements ReservationInfoDao {
 
 	@Override
 	public int deleteReservationInfo(int reservationId) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace + "deleteReservationInfo";
+		int result = sqlSession.delete(stmt, reservationId);
+		return result;
 	}
 
 }
