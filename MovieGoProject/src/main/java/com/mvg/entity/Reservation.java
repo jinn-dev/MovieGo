@@ -1,5 +1,6 @@
 package com.mvg.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.stereotype.Repository;
@@ -8,27 +9,31 @@ import org.springframework.stereotype.Repository;
 public class Reservation {
 
 	private int reservationId;
+	private String userId;
 	private int reservationNum;
 	private int reservationPrice;
 	private Date reservationDate;
-
-	public Reservation() {}
+	private ArrayList<ReservationInfo> reservationInfo;
 	
-	public Reservation(int reservationId, int reservationNum,
+	public Reservation() {
+	}
+
+	public Reservation(int reservationId, String userId, int reservationNum,
 			int reservationPrice, Date reservationDate) {
 		super();
 		this.reservationId = reservationId;
+		this.userId = userId;
 		this.reservationNum = reservationNum;
 		this.reservationPrice = reservationPrice;
 		this.reservationDate = reservationDate;
 	}
-
-	public Date getReservationDate() {
-		return reservationDate;
+	
+	public ArrayList<ReservationInfo> getReservationInfo() {
+		return reservationInfo;
 	}
-
-	public void setReservationDate(Date reservationDate) {
-		this.reservationDate = reservationDate;
+	
+	public void setReservationInfo(ArrayList<ReservationInfo> reservationInfo) {
+		this.reservationInfo = reservationInfo;
 	}
 
 	public int getReservationId() {
@@ -37,6 +42,14 @@ public class Reservation {
 
 	public void setReservationId(int reservationId) {
 		this.reservationId = reservationId;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public int getReservationNum() {
@@ -55,12 +68,23 @@ public class Reservation {
 		this.reservationPrice = reservationPrice;
 	}
 
+	public Date getReservationDate() {
+		return reservationDate;
+	}
+
+	public void setReservationDate(Date reservationDate) {
+		this.reservationDate = reservationDate;
+	}
+
 	@Override
 	public String toString() {
-		return "Reservation [reservationId=" + reservationId
-				+ ", reservationNum=" + reservationNum + ", reservationPrice="
-				+ reservationPrice + ", reservationDate=" + reservationDate
-				+ "]";
+		return "Reservation [reservationId=" + reservationId + ", userId="
+				+ userId + ", reservationNum=" + reservationNum
+				+ ", reservationPrice=" + reservationPrice
+				+ ", reservationDate=" + reservationDate + ", reservationInfo="
+				+ reservationInfo + "]";
 	}
+	
+	
 
 }

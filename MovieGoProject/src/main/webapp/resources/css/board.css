@@ -3,13 +3,17 @@
 header{
 	text-align: center;
 }
-#writeB{
+.list-table{
+	margin: 0 auto;
+}
+
+
+.div-button button{
 	background: #a52127;
 	color: #F2F2F2;
 	border: none;
 	letter-spacing: 1px;
 	padding: 0.5em;
-	margin: 0 605px;
 }
 
 .list-table table{

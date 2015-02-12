@@ -37,6 +37,16 @@
   	where board_id=#{boardId} and user_id=#{userId}  
   </update>
   
+  <delete id="deleteBoard" parameterType="INTEGER">
+  	delete from customerboards 
+  	where board_id=#{boardId}
+  </delete>
+  
+  <delete id="deleteComment" parameterType="INTEGER">
+		delete from comments
+		where board_id = #{boardId}
+  </delete>
+	
   
   <resultMap type="CustomerBoard" id="ComplexBoardComment">
   	<id column="board_id" jdbcType="INTEGER" property="boardId"/>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mvg.mappers.reservationInfoMapper">
+	<select id="getAllReservationInfoCount" resultType="Integer">
+		select count(*) from reservationinfo
+	</select>
+	
+	<select id="getAllReservationInfo" resultType="ReservationInfo">
+		select * from reservationinfo
+	</select>
+	
+	<select id="getReservationInfoByRId" parameterType="Integer" resultType="ReservationInfo">
+		select * from reservationinfo where reservation_id=#{reservationId}
+	</select>
+	
+	<select id="getReservationInfoBySeatId" parameterType="Integer" resultType="ReservationInfo">
+		select * from reservationInfo where seat_id=#{seatId}
+	</select>
+	
+	<insert id="insertReservationInfo" parameterType="ReservationInfo">
+		insert into reservationinfo(seat_id, reservation_id)
+		values(#{seatId}, #{reservationId})
+	</insert>
+	
+	<delete id="deleteReservationInfo" parameterType="Integer">
+		delete from reservationInfo where reservation_id=#{reservationId}
+	</delete>
+	
+</mapper>

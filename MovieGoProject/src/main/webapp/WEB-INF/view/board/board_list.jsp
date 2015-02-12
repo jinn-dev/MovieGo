@@ -20,12 +20,18 @@
 		<h3>1:1문의</h3>
 		<h5>- 문의하시기 전 FAQ를 확인하시면 궁금증을 더욱 빠르게 해결하실 수 있습니다.<br>
 		- 1:1 문의 운영 시간 (09:00 ~ 20:00) </h5>
-		<c:url value="/board/write" var="url" />
 	</header>
-	<a href="${url }"><button id="writeB">WRITE</button></a>
 	<div class="list-table">
 	<table id="list">
-		<tr >
+		<tr>
+		<td colspan="4" align="right">
+		<div class="div-button">
+			<c:url value="/board/write" var="url" />
+			<a href="${url }"><button >WRITE</button></a>
+		</div>
+		</td>
+		</tr>
+		<tr>
 			<th>
 				<div>
 					<b>NO.</b>
