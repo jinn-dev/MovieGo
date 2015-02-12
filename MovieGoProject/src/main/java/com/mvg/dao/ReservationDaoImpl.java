@@ -1,5 +1,6 @@
 package com.mvg.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,18 +9,25 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mvg.entity.Reservation;
+import com.mvg.entity.ReservationInfo;
 
 public class ReservationDaoImpl implements ReservationDao {
 
 	private final static Logger logger;
 	static {
-		logger = LoggerFactory.getLogger(UserDaoImpl.class);
+		logger = LoggerFactory.getLogger(ReservationDaoImpl.class);
 	}
 
 	private final String namespace = "com.mvg.mappers.reservationMapper.";
 
 	@Autowired
+	ReservationInfoDao infoDao;
+	
+	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
+	@Autowired
+	private ReservationInfoDao dao;
 	
 	@Override
 	public int getAllReservationCount() {
@@ -39,8 +47,13 @@ public class ReservationDaoImpl implements ReservationDao {
 	@Override
 	public List<Reservation> getAllReservationsWithInfo() {
 		String stmt = namespace + "getAllReservationsWithInfo";
-		String stmt2 = namespace + "get";
 		List<Reservation> reservations = sqlSession.selectList(stmt);
+		for (int i=0;i<reservations.size();i++) {
+			int rid = reservations.get(i).getReservationId();
+			dao.getReservationInfoByRId(rid);
+		}
+		
+		
 		return reservations;
 	}
 
@@ -51,34 +64,50 @@ public class ReservationDaoImpl implements ReservationDao {
 		return reservation;
 	}
 
+	//////////안되면 getReservationByRId를 getReservationByRIdWithInfo로 고치기
 	@Override
 	public Reservation getReservationByRIdWithInfo(int reservationId) {
-		// TODO Auto-generated method stub
-		return null;
+		Reservation r = this.getReservationByRId(reservationId);
+		ArrayList<ReservationInfo> info = (ArrayList<ReservationInfo>) infoDao.getReservationInfoByRId(reservationId);
+		r.setReservationInfo(info);
+		return r;
 	}
 
 	@Override
 	public List<Reservation> getReservationByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace + "getReservationByUserId";
+		List<Reservation> reservations = sqlSession.selectList(stmt, userId);
+		return reservations;
 	}
 
 	@Override
 	public List<Reservation> getReservationByUserIdWithInfo(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		//아이디로 reservation 모두 조회
+		List<Reservation> reservations = this.getReservationByUserId(userId);
+		
+		//reservation마다 가지고 있는 reservation_id로 reservationinfo조회함
+		//reservation에 붙임
+		for (int i=0;i<reservations.size();i++) {
+			Reservation r = reservations.get(i);
+			int rid = r.getReservationId();
+			r.setReservationInfo((ArrayList<ReservationInfo>)infoDao.getReservationInfoByRId(rid));
+		}
+		return reservations;
 	}
 
 	@Override
 	public int insertReservation(Reservation reservation) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace + "insertReservation";
+		int result = sqlSession.insert(stmt, reservation);
+		return result;
 	}
 
 	@Override
 	public int deleteReservation(int reservationId) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace + "deleteReservation";
+		infoDao.deleteReservationInfo(reservationId);
+		int result = sqlSession.delete(stmt, reservationId);
+		return result;
 	}
 
 }
