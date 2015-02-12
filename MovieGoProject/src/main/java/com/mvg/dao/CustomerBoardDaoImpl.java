@@ -55,9 +55,12 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 	}
 
 	@Override
-	public int deleteCustomerBoard(int boardId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void deleteCustomerBoard(int boardId) {
+		
+		String stmt = namespace+"deleteComment";
+		sqlSession.delete(stmt, boardId);
+		String stmt2 = namespace+"deleteBoard";
+		sqlSession.delete(stmt2, boardId);
 	}
 
 	@Override

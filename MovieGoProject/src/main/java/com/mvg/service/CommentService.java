@@ -6,4 +6,7 @@ public interface CommentService {
 	
 	int addComment(Comment comment);
 
+	int updateComment(Comment comment);
+
+	int deleteComment(int commentId);
 }

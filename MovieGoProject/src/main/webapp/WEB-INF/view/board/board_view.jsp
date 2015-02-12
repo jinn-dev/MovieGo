@@ -26,7 +26,7 @@
 	</header>
 	<section>
 		<div class="view-table">
-		<table border="1">
+		<table width="602">
 			<tr>
 				<th id="title" colspan="4"><c:out
 						value="${detail.boardTitle }" /></th>
@@ -36,39 +36,51 @@
 				<td><c:out value="${detail.userId}" /></td>
 				<th>작성일자</th>
 				<fmt:formatDate value="${detail.boardDate}" type="date" var="date" />
-				<td><c:out value="${date}" /></td>
+				<td align="left"><c:out value="${date}" /></td>
 			</tr>
 			<tr>
-				<td colspan="4"><c:out value="${detail.boardContent }" /></td>
+				<td colspan="4" align="left"><hr><c:out value="${detail.boardContent }" /></td>
 			</tr>
 				<tr>
-					<td colspan="4">
-						<c:if test="${detail.userId==log.userId }">
-							<c:url value="/board/modify?boardId=${detail.boardId }" var="url"></c:url>
-							<a href="${url }"><button>수정</button></a>
-							<button>삭제</button>
+				<td colspan="4" align="right">
+				<div class="div-button">
+					<c:if test="${detail.userId==log.userId }">
+						<c:url value="/board/modify?boardId=${detail.boardId }" var="url"></c:url>
+						<a href="${url }"><button>MODIFY</button></a>
+						<c:url value="/board/delete?boardId=${detail.boardId }" var="url"></c:url>
+						<a href="${url }"><button>DELETE</button></a>
+					</c:if>
+					<c:url value="/board" var="url"></c:url>
+					<a href="${url }"><button class="buttonB">LIST</button></a>
+					</div>
+				</td>
+				</tr>
+				<tr>
+		</table><p><p>
+		</div>
+		<div class="comment-table">
+		<table width="602" border="1">
+			<tr>
+				<th colspan="5">COMMENT</th>
+
+			</tr>
+			<c:if test="${detail.comments[0].commentId!=0 }">
+				<c:forEach items="${detail.comments }" var="comments">
+				<tr>
+					<td><c:out value="${comments.userId }" /></td>
+					<fmt:formatDate value="${comments.commentDate }" type="date" var="date"/>		
+					<td align="left" colspan="3"><c:out value="${date }" />
+					</td>
+					<td>
+						<c:if test="${comments.userId==log.userId }">
+						<button>수정</button>
+						<c:url value="/comment/delete?commentId=${comments.commentId }" var="url"></c:url>
+						<button>삭제</button>
 						</c:if>
 					</td>
 				</tr>
 				<tr>
-		</table>
-		</div>
-		<div class="comment-table">
-		<table border="1">
-			<tr>
-				<td colspan="5">COMMENT</td>
-
-			</tr>
-			<c:if test="${detail.comments.size()!=0 }">
-				<c:forEach items="${detail.comments }" var="comments">
-				<tr>
-					<td><c:out value="${comments.commentId }" /></td>
-					<td><c:out value="${comments.userId }" /></td>
-					<fmt:formatDate value="${comments.commentDate }" type="both" var="date"/>		
-					<td colspan="3"><c:out value="${date }" /></td>
-				</tr>
-				<tr>
-					<td colspan="5"><c:out value="${comments.commentContent }" /></td>
+					<td colspan="5" align="left"><hr><c:out value="${comments.commentContent }" /></td>
 				</tr>
 				</c:forEach>
 			</c:if>
@@ -78,9 +90,9 @@
 				<c:url value="/comment/write" var="url"></c:url>
 				<form:form method="post" modelAttribute="comment" action="${url }">
 					<div class="comment-form-inner">
-						<input type="hidden" name="boardId" value="${content.boardId }" />
+						<input type="hidden" name="boardId" value="${detail.boardId }" />
 						<input type="hidden" name="userId" value="${log.userId }" />
-						<c:out value="${log.userId }"></c:out>
+						아이디:&nbsp;<c:out value="${log.userId }"></c:out>&nbsp;&nbsp;
 						<label>코멘트 쓰기</label><input type="text" name="commentContent" />
 						<button type="submit">등록</button>
 					</div>

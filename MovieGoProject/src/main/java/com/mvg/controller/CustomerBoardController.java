@@ -68,6 +68,13 @@ public class CustomerBoardController {
 		return "board/board_view";
 	}
 	
+	/* 게시판 글삭제 */
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public String boardDelete(@RequestParam int boardId){
+		service.deleteBoard(boardId);
+		return "redirect:/board";
+	}
+	
 	/* 게시판 글보기 */
 	@RequestMapping(value="/view", method=RequestMethod.GET)
 	public String showContent(@RequestParam int boardId, Model model){

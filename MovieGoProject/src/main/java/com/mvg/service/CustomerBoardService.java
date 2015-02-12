@@ -12,7 +12,10 @@ public interface CustomerBoardService {
 	
 	int modifyBoard(CustomerBoard board);
 	
+	void deleteBoard(int boardId);
+	
 	CustomerBoard getBoardByBdId(int boardId);
 	
 	CustomerBoard getBoardByBdIdWithCmts(int boardId);
+
 }

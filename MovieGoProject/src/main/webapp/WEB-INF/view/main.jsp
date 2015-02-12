@@ -148,7 +148,7 @@
 								<div class="content-style-form content-style-form-2">
 									<span class="icon icon-close">Close the dialog</span>
 									<h2>Sign Up</h2>
-									<c:url value="/main_logined" var="action"></c:url>
+									<c:url value="/signup" var="action"></c:url>
 									
 									<form:form modelAttribute="user" method="post" action="${action }" name="joinform">
 										<p><label>아이디 (영문/숫자 혼합 10자리)</label><input type="text" id="userId" name="userId"/></p>

@@ -46,8 +46,10 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public int updateUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = -1;
+		String stmt = namespace + "updateUser";
+		result = sqlSession.update(stmt, user);
+		return result;
 	}
 
 	@Override
