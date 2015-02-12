@@ -9,7 +9,7 @@ header{
 
 
 .div-button {
-	background: #a52127;
+	background: #2c3e50;
 	color: #F2F2F2;
 	border: none;
 	letter-spacing: 1px;
@@ -25,7 +25,7 @@ header{
 }
 
 .list-table th{
-	background: #0e0e0e;
+	background: #bdc3c7;
 	color: white;
 	text-align: center;
 	width: 55px;
@@ -41,7 +41,7 @@ header{
 }
 
 .view-table th{
-	background: #0e0e0e;
+	background: #bdc3c7;
 	color: white;
 	text-align: center;
 	padding: 0.25em;
@@ -56,7 +56,7 @@ header{
 }
 
 .comment-table th{
-	background: #0e0e0e;
+	background: #bdc3c7;
 	color: white;
 	text-align: center;
 	padding: 0.25em;
@@ -75,8 +75,11 @@ header{
 }
 
 .comment-form-inner input[type="text"]{
-	width:500px;
+	width:505px;
 	padding: 0.4em;
+}
+.comment-form-inner input[type="text"].focus{
+	outline: none;
 }
 
 .writeform div{

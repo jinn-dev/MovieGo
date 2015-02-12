@@ -90,6 +90,15 @@
 	font-size: 0.7em;
 	
 }
+
+#searchinfoB:link, #searchinfoB:visited, #searchinfoB:active{
+	text-decoration: none;
+	color: #424143;
+}
+#searchinfoB:hover{
+	text-decoration: none;
+	color: A52127;
+}
 .content-style-form form p {
 	margin: 0 0 5px 0;
 	font-size: 0.7em;

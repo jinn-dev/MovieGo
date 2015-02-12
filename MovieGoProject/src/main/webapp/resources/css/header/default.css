@@ -39,11 +39,13 @@ body, html {
 	font-family:'Lato';
 }
 .cbp-af-inner>nav{
-	font-family:'나눔바른고딕';
+	font-family:'Lato','맑은고딕';
+	font-size: 18px;
+	
 }
 
 body {
-	font-family: '나눔바른고딕';
+	font-family: 'Lato';
 	color: #0e0e0e;
 }
 

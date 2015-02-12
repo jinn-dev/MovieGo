@@ -22,12 +22,13 @@ body {
 
 /* Text */
 h1{
-    margin: 0;
+    margin: -20px 0 0 0;
     padding: 0;
-    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    color: rgba(245,243,240,0.5);
 	font-family: Arial;
 	font-weight: 300;
-    font-size: 1em;
+    font-size: 1.25em;
 }
 
 /* Header */
@@ -43,6 +44,14 @@ header {
     height: 200px;
     margin: -200px 0 0 -400px;
     text-align: center;
+}
+
+header h1 span {
+    font-weight: 200;
+}
+
+header p {
+    font-family: Cambria, Georgia;
 }
 
 /* Video Pages */
@@ -65,7 +74,7 @@ header {
     position: absolute;
     top: 15%;
     right: 33%;
-    opacity: .5;
+    opacity: 0.7;
     margin: 40px 0 0 0;
     padding: 0;
     line-height: .65;

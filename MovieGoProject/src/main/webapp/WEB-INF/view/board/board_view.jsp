@@ -61,43 +61,40 @@
 		<table width="602">
 			<tr>
 				<th colspan="5">COMMENT</th>
-
 			</tr>
 			<tr>
-			<div id="drophere"></div>
-			<%-- <c:if test="${detail.comments[0].commentId!=0 }">
+			<c:if test="${detail.comments[0].commentId!=0 }">
 				<c:forEach items="${detail.comments }" var="comments">
 					<td>
 					<c:out value="${comments.userId }" />
 					</td>
-					
 					<fmt:formatDate value="${comments.commentDate }" type="date" var="date"/>		
 					<td align="left" colspan="2">
 					<c:out value="${date }" />
 					</td>
-					
 					<c:if test="${comments.userId==log.userId }">
-					<td colspan="2" align="right">
-					<button>MODIFY</button>&nbsp;
-					<c:url value="/comment/delete?commentId=${comments.commentId }" var="url"></c:url>
-					<a href="${url }"><button>DELETE</button></a>
-					</td>
+						<td colspan="2" align="right">
+						<button>MODIFY</button>&nbsp;
+						<c:url value="/comment/delete?commentId=${comments.commentId }" var="url"></c:url>
+						<a href="${url }"><button>DELETE</button></a>
+						</td>
 					</c:if>
-				</tr>
-				<tr>
-					<td colspan="5" align="left" height="25"><c:out value="${comments.commentContent }" /></td>
+					<tr>
+					<td colspan="5" align="left" height="25">
+					<c:out value="${comments.commentContent }" /></td>
+					</tr>
 				</c:forEach>
-			</c:if> --%>
+			</c:if>
 			</tr>
 			<tr>
-					<td colspan="5">
+					<td colspan="5" align="left">
 					<div class="comment-form">		
 					<c:url value="/comment/write" var="url"></c:url>
 						<form:form method="post" modelAttribute="comment" action="${url }">
 							<div class="comment-form-inner">
+								<input type="text" name="commentContent"/>
 								<input type="hidden" name="boardId" value="${detail.boardId }" />
 								<input type="hidden" name="userId" value="${log.userId }" />
-								<input type="text" name="commentContent"/>
 								<button class="div-button" type="submit">SUBMIT</button>
 							</div>
 						</form:form>

@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <!-- video css -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/style.css">
 <!-- content css -->
@@ -145,9 +146,10 @@
 		</div>
 		<!-- 로그인/회원가입 -->
 		<header>
+			<h1>Please Login or Sign up for using our services</h1>
 				<div class="mockup-content">
 					<div class="morph-button morph-button-modal morph-button-modal-1 morph-button-fixed">
-						<button type="button">LOGIN</button>
+						<button type="button" id="loginEnter">LOGIN</button>
 						<div class="morph-content">
 							<div>
 								<div class="content-style-form content-style-form-1">
@@ -158,14 +160,14 @@
 										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
 										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>
 										<p><input id="loginB" type="submit" name="_event_confirmed" value="LOGIN"/></p>
-										<p id="searchinfo"><a href="javascript:userInfo()">ID/비밀번호 찾기</a></p>
+										<p id="searchinfo"><a href="javascript:userInfo()" id="searchinfoB">ID/비밀번호 찾기</a></p>
 									</form:form>
 								</div>
 							</div>
 						</div>
 					</div><!-- morph-button -->
 					<div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
-						<button type="button">SIGN UP</button>
+						<button type="button" id="joinEnter">SIGN UP</button>
 						<div class="morph-content">
 							<div>
 								<div class="content-style-form content-style-form-2">

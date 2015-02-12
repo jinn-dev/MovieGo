@@ -73,6 +73,11 @@ public class ControllerTest {
 		model.addAttribute("user", u);
 		return "user/main_logined";
 	}
+	
+	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
+	public String goMain() {
+		return "user/main_logined";
+	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(@ModelAttribute("log") User log,
