@@ -38,20 +38,22 @@ public class ReservationInfoDaoImpl implements ReservationInfoDao {
 	@Override
 	public List<ReservationInfo> getReservationInfoByRId(int reservationId) {
 		String stmt = namespace + "getReservationInfoByRId";
-		List<ReservationInfo> info = sqlSession.selectList(stmt);
+		List<ReservationInfo> info = sqlSession.selectList(stmt, reservationId);
 		return info;
 	}
 
 	@Override
 	public ReservationInfo getReservationInfoBySeatId(int seatId) {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace + "getReservationInfoBySeatId";
+		ReservationInfo info = sqlSession.selectOne(stmt, seatId);
+		return info;
 	}
 
 	@Override
 	public int insertReservationInfo(ReservationInfo reservationInfo) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace + "insertReservationInfo";
+		int result = sqlSession.insert(stmt, reservationInfo);
+		return result;
 	}
 
 	@Override
