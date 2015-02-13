@@ -8,4 +8,6 @@ public interface UserService {
 	public User getUserByUserId(User user);
 	public int updateUser(User user);
 	public int deleteUser(String userId);
+	public void serviceCheckDuplicatedId(String userId);
+
 }

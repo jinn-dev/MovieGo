@@ -31,8 +31,10 @@ body {
 						<label>이메일</label><input type="text" id="email">
 					</p>
 					<p>
-						<button>FIND ID</button>
+						<button onclick="javascript:find()">FIND ID</button>
 					</p>
+				<input type="text" name="chk" id="confirm" value="" readonly="readonly">  
+					
 				</form>
 			</div>
 				<div class="content-style-form content-style-form-3">

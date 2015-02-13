@@ -50,6 +50,12 @@ public class UserServiceImpl implements UserService {
 		int result = dao.deleteUser(userId);
 		return result;
 	}
+
+	@Override
+	public void serviceCheckDuplicatedId(String userId) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
