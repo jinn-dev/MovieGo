@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -96,7 +98,11 @@ public class ControllerTest {
 	public String boardview() {
 		return "board/board_view";
 	}
-
+	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
+	public String idCheck(@RequestParam String userId) {
+		service.selectUserById(userId);
+		return "main";
+	}
 	/*@RequestMapping(value = "/test/SessionCheck")
 	@ResponseBody
 	public void selectDetail3(HttpSession session,

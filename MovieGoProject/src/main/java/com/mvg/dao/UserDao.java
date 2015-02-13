@@ -23,4 +23,6 @@ public interface UserDao {
 	
 	//한명의 정보 불러오기
 	User getUserByUserId(User user);
+	
+	User selectUserById(String userId);
 }

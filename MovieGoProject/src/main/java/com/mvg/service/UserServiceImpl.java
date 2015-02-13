@@ -51,10 +51,12 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
+	
+
 	@Override
-	public void serviceCheckDuplicatedId(String userId) {
-		// TODO Auto-generated method stub
-		
+	public User selectUserById(String userId) {
+		User result = dao.selectUserById(userId);
+		return result;
 	}
 	
 	

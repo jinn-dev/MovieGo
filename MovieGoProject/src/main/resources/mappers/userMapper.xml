@@ -15,8 +15,8 @@
 		select user_id, user_pwd, user_email, user_birthday
 		from users where user_id=#{userId}
 	</select>
-	<select id="selectUser" parameterType="String" resultType="User">
-		select user_id, user_pwd, user_email, user_birthday
+	<select id="selectUserById" parameterType="String" resultType="User">
+		select user_id
 		from users where user_id=#{userId}
 	</select>
 <update id="updateUser" parameterType="User">
