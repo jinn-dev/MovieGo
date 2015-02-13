@@ -50,7 +50,6 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 
 	@Override
 	public void deleteCustomerBoard(int boardId) {
-		
 		String stmt = namespace+"deleteComment";
 		sqlSession.delete(stmt, boardId);
 		String stmt2 = namespace+"deleteBoard";

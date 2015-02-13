@@ -1,8 +1,9 @@
 @CHARSET "UTF-8";
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 /* main css */
 
-@font-face {
+/* @font-face {
 	font-family: 'bpicons';
 	src: url('../fonts/bpicons/bpicons.eot');
 	src: url('../fonts/bpicons/bpicons.eot?#iefix')
@@ -12,6 +13,7 @@
 	font-weight: normal;
 	font-style: normal;
 }
+ */
 
  
 *, *:after, *:before {
@@ -36,16 +38,16 @@ body, html {
 }
 
 .cbp-af-inner>h1{
-	font-family:'Lato';
+	font-family:'나눔고딕';
 }
 .cbp-af-inner>nav{
-	font-family:'Lato','맑은고딕';
+	font-family: '나눔고딕';
 	font-size: 18px;
 	
 }
 
 body {
-	font-family: 'Lato';
+	font-family: '나눔고딕';
 	color: #0e0e0e;
 }
 

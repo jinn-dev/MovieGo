@@ -1,5 +1,7 @@
 package com.mvg.service;
 
+import java.util.List;
+
 import com.mvg.entity.Comment;
 
 public interface CommentService {
@@ -11,4 +13,6 @@ public interface CommentService {
 	int deleteComment(int commentId);
 	
 	int getBoardIdByCmtId(int commentId);
+	
+	List<Comment> getCommentByBoardId(int boardId);
 }

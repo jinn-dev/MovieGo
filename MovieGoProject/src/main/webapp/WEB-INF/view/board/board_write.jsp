@@ -6,6 +6,24 @@
 <html>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script>
+$(document).ready(function() {
+	$("#write_submit").click(function(){
+		if($("#boardTitle").val()==""){
+			alert("제목을 입력해주세요.");
+			event.preventDefault();
+		}
+		
+		else if($("#boardContent").val()=="" ){
+			alert("내용을 입력해주세요.");
+			event.preventDefault();
+		}
+	});
+	
+});
+</script>
 <title>고객센터</title>
 </head>
 <body>
@@ -19,16 +37,28 @@
 	</header>
 
 	<section>
+	<table class="write-table">
+	<tr>
 	<c:url value="/board/submit" var="url"/>
-	<div id="writeform">
 	<form:form method="POST" action="${url }" modelAttribute="board">
+	<td align="left">
 	<input type="hidden" name="userId" value="${log.userId }"/><br>
-	<label>제목 </label><input type="text" name="boardTitle" id="boardTitle" value="제목을 입력해주세요."/><br>
-	<label>내용 </label><textarea rows="5" cols="80" name="boardContent" id="boardContent"></textarea><br>
-	<button type="submit" name="_event_confirmed">완료</button>
-	<input type="reset"/>
+	<input type="text" name="boardTitle" id="boardTitle" value="제목을 입력해주세요."/><br>
+	</td>
+	<tr>
+	<td>
+	<textarea rows="5" cols="80" name="boardContent" id="boardContent"></textarea><br>
+	</td>
+	</tr>
+	<tr>
+	<td>
+	<button class="div-button" type="submit" id="write_submit" name="_event_confirmed">SUBMIT</button>
+	<input class="div-button" type="reset" value="RESET"/>
+	</td>
 	</form:form>
-	</div>
+	</tr>
+	</table>
 	</section>
+	
 </body>
 </html>

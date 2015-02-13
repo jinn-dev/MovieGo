@@ -28,4 +28,6 @@ public interface CommentDao {
 	//댓글 번호로 글번호찾기
 	int getBoardByCmtId(int commentId);
 	
+	// 글 번호로 댓글 찾기 
+	List<Comment> getCommentByBoardId(int boardId);
 }
