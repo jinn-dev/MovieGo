@@ -34,7 +34,7 @@ public class ReservationController {
 	public String reserve(Model model){
 		List<Theater> theaters = tservice.getAllTheatersService();
 		model.addAttribute("theaters", theaters);
-		
+		 
 		return "reservation/reservation1";
 	}
 	
