@@ -6,7 +6,7 @@ import com.mvg.entity.Movie;
 
 public interface MovieDao {
 	//총 영화의 개수
-	Integer getMovieCount();
+	Integer getAllMovieCount();
 	
 	//모든 영화 얻어오기
 	List<Movie> getAllMovies();
@@ -22,6 +22,4 @@ public interface MovieDao {
 	
 	//영화 하나 불러오기
 	Movie getMovieByMovieCode(String movieCode);
-	
-	//영화 여러개 불러오기
 }

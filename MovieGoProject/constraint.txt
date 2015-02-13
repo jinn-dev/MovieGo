@@ -1,13 +1,19 @@
-alter table nowmovies
-add constraint nowmovies_uq unique (theater_id, movie_code, movie_time);
-
-
-alter table seatinfo
-add constraint seatinfo_uq unique(nowmovie_id, seat_no);
-
-
-
+nowmovies -  unique (theater_id, movie_code, movie_time)
+seatinfo -  unique(nowmovie_id, seat_no)
 <check>
 ev_rating은 1,2,3,4,5만 가능
 movie_time에서 오전은  6:00으로 설정
 		오후는  18:00으로 설정
+
+=========testdata설정==============================================
+서버 끄고 오라클에
+
+conn system/sys
+drop user test cascade;
+
+create user test identified by tiger;
+grant connect, resource to test;
+
+erd.sql 실행
+
+test.sql 실행
