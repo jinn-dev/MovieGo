@@ -20,7 +20,7 @@
 /* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */ 
 	$(document).ready(function() {
 		
-		$(document).ready(function() {
+		/* $(document).ready(function() {
 			$("#joinFormUserId").keyup(IdDuplicateCheck);
 
 			$("#joinForm").submit(function() {
@@ -34,7 +34,7 @@
 				}
 				return false;
 			})
-		})
+		}) */
 		$("#signupB").click(function() {
 			var pwdLength = $("#userPwd").val().length;
 			var idLength = $("#userId").val().length;

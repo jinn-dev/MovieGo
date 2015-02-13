@@ -13,6 +13,9 @@
 <script>
 	/* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */
 	$(document).ready(function() {
+		$("#chk").click(function() {
+			document.findform.chk.value = "이메일을 입력하세요";
+
 	});
 </script>
 <style>
@@ -26,14 +29,14 @@ body {
 	<div class="mockup-content">
 			<div class="content-style-form content-style-form-3">
 				<h3>아이디 찾기</h3>
-				<form>
+				<form name="findform">
 					<p>
 						<label>이메일</label><input type="text" id="email">
 					</p>
 					<p>
 						<button onclick="javascript:find()">FIND ID</button>
 					</p>
-				<input type="text" name="chk" id="confirm" value="" readonly="readonly">  
+				<input type="text" name="chk" id="chk" value="" readonly="readonly">  
 					
 				</form>
 			</div>
