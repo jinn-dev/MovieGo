@@ -14,19 +14,21 @@
 	
 	<context:property-placeholder location="classpath:/oracle.properties"/>
 	
+	<!-- @MVC와 관련없는 번들만 scanning -->
 	<context:component-scan base-package="com.mvg.dao, com.mvg.service"></context:component-scan>
 	
-	<jee:jndi-lookup id="dataSource" jndi-name="${jndi.name}"></jee:jndi-lookup>
+	<jee:jndi-lookup id="dataSource" jndi-name="${jndi.name}"/>
 	
+	<!-- myBatis 연동을 위한 Bean 선언 -->
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis_config.xml" />
 	</bean>
-
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean" />
 	</bean>
 	
+	<!-- TransactionManager의 등록 -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.google.gson.Gson;
 import com.mvg.entity.CustomerBoard;
 import com.mvg.service.CommentService;
 import com.mvg.service.CustomerBoardService;
@@ -47,9 +46,6 @@ public class CustomerBoardController {
 	public String showContent(@RequestParam int boardId, Model model){
 		CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
 		model.addAttribute("detail", board);
-		
-		String json = new Gson().toJson(board);
-		logger.trace("json 변환"+json);
 		return "board/board_view";
 	}
 	
