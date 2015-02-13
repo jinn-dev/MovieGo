@@ -24,5 +24,4 @@ public interface ReservationInfoDao {
 	//디테일 삭제
 	int deleteReservationInfo(int reservationId);
 	
-
 }
