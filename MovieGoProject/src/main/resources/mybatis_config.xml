@@ -30,5 +30,6 @@
 		<mapper resource="mappers/theaterMapper.xml" />
 		<mapper resource="mappers/reservationMapper.xml" />
 		<mapper resource="mappers/reservationInfoMapper.xml" />
+		<mapper resource="mappers/movieMapper.xml" />
 	</mappers>
 </configuration>
