@@ -90,6 +90,15 @@
 	font-size: 0.7em;
 	
 }
+
+#searchinfoB:link, #searchinfoB:visited, #searchinfoB:active{
+	text-decoration: none;
+	color: #424143;
+}
+#searchinfoB:hover{
+	text-decoration: none;
+	color: A52127;
+}
 .content-style-form form p {
 	margin: 0 0 5px 0;
 	font-size: 0.7em;
@@ -160,6 +169,24 @@
 }
 
 #loginB:focus{
+	outline: none;
+}
+
+#signupB{
+	display: block;
+	margin-top: 2.5em;
+	padding: 1.5em;
+	width: 100%;
+	border: none;
+	background: #A52127;
+	color: #F2F2F2;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 800;
+	font-size: 1.25em;
+}
+
+#signupB:focus{
 	outline: none;
 }
 

@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script>
 	
 </script>
@@ -39,63 +40,63 @@
 				<td align="left"><c:out value="${date}" /></td>
 			</tr>
 			<tr>
-				<td colspan="4" align="left"><hr><c:out value="${detail.boardContent }" /></td>
+				<td colspan="4" align="left" height="300"><c:out value="${detail.boardContent }" /></td>
 			</tr>
 				<tr>
 				<td colspan="4" align="right">
-				<div class="div-button">
 					<c:if test="${detail.userId==log.userId }">
 						<c:url value="/board/modify?boardId=${detail.boardId }" var="url"></c:url>
-						<a href="${url }"><button>MODIFY</button></a>
+						<a href="${url }"><button class="div-button">MODIFY</button></a>
 						<c:url value="/board/delete?boardId=${detail.boardId }" var="url"></c:url>
-						<a href="${url }"><button>DELETE</button></a>
+						<a href="${url }"><button class="div-button">DELETE</button></a>
 					</c:if>
 					<c:url value="/board" var="url"></c:url>
-					<a href="${url }"><button class="buttonB">LIST</button></a>
-					</div>
+					<a href="${url }"><button class="div-button">LIST</button></a>
 				</td>
 				</tr>
 				<tr>
 		</table><p><p>
 		</div>
 		<div class="comment-table">
-		<table width="602" border="1">
+		<table width="602">
 			<tr>
 				<th colspan="5">COMMENT</th>
-
 			</tr>
+			<tr>
 			<c:if test="${detail.comments[0].commentId!=0 }">
 				<c:forEach items="${detail.comments }" var="comments">
-				<tr>
-					<td><c:out value="${comments.userId }" /></td>
-					<fmt:formatDate value="${comments.commentDate }" type="date" var="date"/>		
-					<td align="left" colspan="3"><c:out value="${date }" />
-					</td>
 					<td>
-						<c:if test="${comments.userId==log.userId }">
-						<button>수정</button>
-						<c:url value="/comment/delete?commentId=${comments.commentId }" var="url"></c:url>
-						<a href="${url }"><button>삭제</button></a>
-						</c:if>
+					<c:out value="${comments.userId }" />
 					</td>
-				</tr>
-				<tr>
-					<td colspan="5" align="left"><hr><c:out value="${comments.commentContent }" /></td>
-				</tr>
+					<fmt:formatDate value="${comments.commentDate }" type="date" var="date"/>		
+					<td align="left" colspan="2">
+					<c:out value="${date }" />
+					</td>
+					<c:if test="${comments.userId==log.userId }">
+						<td colspan="2" align="right">
+						<button>MODIFY</button>&nbsp;
+						<c:url value="/comment/delete?commentId=${comments.commentId }" var="url"></c:url>
+						<a href="${url }"><button>DELETE</button></a>
+						</td>
+					</c:if>
+					<tr>
+					<td colspan="5" align="left" height="25">
+					<c:out value="${comments.commentContent }" /></td>
+					</tr>
 				</c:forEach>
 			</c:if>
+			</tr>
 			<tr>
-					<td colspan="5">
+					<td colspan="5" align="left">
 					<div class="comment-form">		
 					<c:url value="/comment/write" var="url"></c:url>
 						<form:form method="post" modelAttribute="comment" action="${url }">
-							<div class="comment-form-inner div-button">
+							<div class="comment-form-inner">
+								<input type="text" name="commentContent"/>
 								<input type="hidden" name="boardId" value="${detail.boardId }" />
 								<input type="hidden" name="userId" value="${log.userId }" />
-								<%-- <label><c:out value="${log.userId }"></c:out></label> --%>
-								</div>
-								<input type="text" name="commentContent" />
-								<button type="submit">SUBMIT</button>
+								<button class="div-button" type="submit">SUBMIT</button>
+							</div>
 						</form:form>
 					</div>
 					</td>

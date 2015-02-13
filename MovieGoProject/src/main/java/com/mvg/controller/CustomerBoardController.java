@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.google.gson.Gson;
 import com.mvg.entity.CustomerBoard;
+import com.mvg.service.CommentService;
 import com.mvg.service.CustomerBoardService;
 
 @Controller
@@ -27,6 +29,7 @@ public class CustomerBoardController {
 			.getLogger(CustomerBoardController.class);
 	@Autowired
 	CustomerBoardService service;
+	CommentService cmtservice;
 	
 	/* 게시판 리스트 */
 	@RequestMapping(method=RequestMethod.GET)
@@ -37,6 +40,17 @@ public class CustomerBoardController {
 		model.addAttribute("list", list);
 		
 		return "board/board_list";
+	}
+	
+	/* 게시판 글보기 */
+	@RequestMapping(value="/view", method=RequestMethod.GET)
+	public String showContent(@RequestParam int boardId, Model model){
+		CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
+		model.addAttribute("detail", board);
+		
+		String json = new Gson().toJson(board);
+		logger.trace("json 변환"+json);
+		return "board/board_view";
 	}
 	
 	/* 게시판 글쓰기 */
@@ -77,13 +91,5 @@ public class CustomerBoardController {
 	public String boardDelete(@RequestParam int boardId){
 		service.deleteBoard(boardId);
 		return "redirect:/board";
-	}
-	
-	/* 게시판 글보기 */
-	@RequestMapping(value="/view", method=RequestMethod.GET)
-	public String showContent(@RequestParam int boardId, Model model){
-		CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
-		model.addAttribute("detail", board);
-		return "board/board_view";
 	}
 }

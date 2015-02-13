@@ -18,19 +18,19 @@
 		<div class="cbp-af-header">
 			<div class="cbp-af-inner">
 				<h1>
-					<font color="#0e0e0e">MOVIE</font><font color="#a52127">GO</font>
+					<c:url value="/main.do" var="url"/>
+					<a href="${url }" id="logo"><font color="#0e0e0e">MOVIE</font><font color="#a52127">GO</font></a>
 				</h1>
 				<nav>
-					<a href="#">RESERVATION</a> 
-					<a href="#">영화평가</a>
+					<a href="#">RESERVATION</a>&nbsp;&nbsp;&nbsp;&nbsp;    
+					<a href="#">영화평가하기</a>&nbsp; &nbsp;&nbsp;&nbsp;  
 					<c:url value="/mypage" var="url" />
-					<a href="${url }">MY PAGE</a>
+					<a href="${url }">MY PAGE</a>&nbsp;&nbsp;&nbsp;&nbsp;   
 					<c:url value="/board" var="url" />
 					<a href="${url }">고객센터</a>
 					<c:url value="/logout" var="url" />
-					<a href="${url }"><button>LOGOUT</button></a>
-					<c:out value="${log.userId}" />님 반갑습니다.
 				</nav>
+
 			</div>
 		</div>
 	</div>

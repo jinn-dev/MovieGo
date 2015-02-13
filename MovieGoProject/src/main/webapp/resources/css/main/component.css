@@ -137,6 +137,10 @@
 	color: #A52127;
 }
 
+#loginEnter, #joinEnter{
+	font-size: 20px;
+	background: rgba(242,242,242,0.8);
+}
 .morph-button-modal-1.open .morph-content {
 	margin: -210px 0 0 -170px;
 	width: 340px;

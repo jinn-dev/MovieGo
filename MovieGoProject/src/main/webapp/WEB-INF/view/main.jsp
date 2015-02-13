@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <!-- video css -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/style.css">
 <!-- content css -->
@@ -19,73 +20,94 @@
 <script>
 /* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */ 
 	$(document).ready(function() {
-		$("#signup").click(function() {
+		$("#signupB").click(function() {
 			var pwdLength = $("#userPwd").val().length;
 			var idLength = $("#userId").val().length;
+			var c = [];
+			for(var i = 0; i < idLength; i++) {
+				c[i] = $("#userId").val().charCodeAt(i);
+	
+			var c = $("#userId").val().charCodeAt(i);
 
-			if ($("#userId").val() == "") {
+				if(!((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c>= 97 && c <= 122))) {
+					alert("다시 입력해주세요.");
+					event.preventDefault();
+					break;
+				}
+				else if($("#userId").val() == "") {
 
-				alert("아이디를 입력해주세요.");
+					alert("아이디를 입력해주세요.");
 
-				event.preventDefault();
+					event.preventDefault();
+					break;
 
+				}
+				  else if ($("#userPwd").val() == "") {
+
+						alert("pwd:" +$("#userPwd").val() + "비밀번호를 입력해주세요.");
+
+						event.preventDefault();
+						break;
+
+					}  
+					else if (idLength > 10) {
+
+						alert("id는 10자이내로 입력해주세요.");
+
+						event.preventDefault();
+						break;
+
+					}
+					else if (pwdLength > 10) {
+
+						alert("비밀번호는 10자이내로 입력해주세요.");
+
+						event.preventDefault();
+						break;
+
+					}
+					else if ($("#pass2").val() == "") {
+
+						alert("비밀번호확인 입력해주세요.");
+
+						event.preventDefault();
+						break;
+
+					}
+
+					else if ($("#userPwd").val() != $("#pass2").val()) {
+
+						alert("비밀번호와 확인 비밀번호가 일치하지 않습니다.");
+
+						$("#pass2").focus();
+
+						event.preventDefault();
+						break;
+
+					}
+					
+					
+					
+					else if ($("#userEmail").val() == "") {
+
+						alert("이메일을 입력해주세요.");
+
+						event.preventDefault();
+						break;
+
+					}
+					
+					else {
+
+						alert("회원가입에 성공하셨습니다. 로그인해주세요");
+						break;
+
+					}
 			}
+
 			
-			  else if ($("#userPwd").val() == "") {
-
-				alert("pwd:" +$("#userPwd").val() + "비밀번호를 입력해주세요.");
-
-				event.preventDefault();
-
-			}  
-			else if (idLength > 10) {
-
-				alert("id는 10자이내로 입력해주세요.");
-
-				event.preventDefault();
-
-			}
-			else if (pwdLength > 10) {
-
-				alert("비밀번호는 10자이내로 입력해주세요.");
-
-				event.preventDefault();
-
-			}
-			else if ($("#pass2").val() == "") {
-
-				alert("비밀번호확인 입력해주세요.");
-
-				event.preventDefault();
-
-			}
-
-			else if ($("#userPwd").val() != $("#pass2").val()) {
-
-				alert("비밀번호와 확인 비밀번호가 일치하지 않습니다.");
-
-				$("#pass2").focus();
-
-				event.preventDefault();
-
-			}
 			
-			
-			
-			else if ($("#userEmail").val() == "") {
-
-				alert("이메일을 입력해주세요.");
-
-				event.preventDefault();
-
-			}
-			
-			else {
-
-				alert("회원가입에 성공하셨습니다. 로그인해주세요");
-
-			}
-
+		
 	});
  		
 		$("#login").click(function() {
@@ -106,8 +128,10 @@
 
 			}
 
-	}); 
-		});
+	});
+	});
+		
+
 </script>
 <title>메인 페이지</title>
 </head>
@@ -122,9 +146,10 @@
 		</div>
 		<!-- 로그인/회원가입 -->
 		<header>
+			<h1>Please Login or Sign up for using our services</h1>
 				<div class="mockup-content">
 					<div class="morph-button morph-button-modal morph-button-modal-1 morph-button-fixed">
-						<button type="button">LOGIN</button>
+						<button type="button" id="loginEnter">LOGIN</button>
 						<div class="morph-content">
 							<div>
 								<div class="content-style-form content-style-form-1">
@@ -135,14 +160,14 @@
 										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
 										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>
 										<p><input id="loginB" type="submit" name="_event_confirmed" value="LOGIN"/></p>
-										<p id="searchinfo"><a href="javascript:userInfo()">ID/비밀번호 찾기</a></p>
+										<p id="searchinfo"><a href="javascript:userInfo()" id="searchinfoB">ID/비밀번호 찾기</a></p>
 									</form:form>
 								</div>
 							</div>
 						</div>
 					</div><!-- morph-button -->
 					<div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">
-						<button type="button">SIGN UP</button>
+						<button type="button" id="joinEnter">SIGN UP</button>
 						<div class="morph-content">
 							<div>
 								<div class="content-style-form content-style-form-2">
@@ -160,8 +185,8 @@
  										<input type="password" id="pass2" name="pass2" onblur="javascript:passchk()"/></p>
 									<input type="text" name="chk" id="confirm"  
 										value="비밀번호를 입력하세요" readonly="readonly">
-										<p><label>생년월일</label><input type="date" id="userBirthday" name="userBirthday"/></p>
-										<p><input type="submit" id="signup" name="signup" value="signup"></p>
+										<p><label>생년월일</label><input type="date" id="userBirthday" name="userBirthday"/></p>										
+										<p><input type="submit" id="signupB" name="_event_confirmed" value="SIGNUP"></p>										
 									</form:form>
 								</div>
 							</div>
