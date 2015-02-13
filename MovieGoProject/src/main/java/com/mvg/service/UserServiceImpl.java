@@ -50,6 +50,14 @@ public class UserServiceImpl implements UserService {
 		int result = dao.deleteUser(userId);
 		return result;
 	}
+
+	
+
+	@Override
+	public User selectUserById(String userId) {
+		User result = dao.selectUserById(userId);
+		return result;
+	}
 	
 	
 }

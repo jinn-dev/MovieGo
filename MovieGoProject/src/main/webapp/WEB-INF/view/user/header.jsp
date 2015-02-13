@@ -22,7 +22,8 @@
 					<a href="${url }" id="logo"><font color="#0e0e0e">MOVIE</font><font color="#a52127">GO</font></a>
 				</h1>
 				<nav>
-					<a href="#">RESERVATION</a>&nbsp;&nbsp;&nbsp;&nbsp;    
+					<c:url value="/reserve" var = "url"/>
+					<a href="${url }">RESERVATION</a>&nbsp;&nbsp;&nbsp;&nbsp;    
 					<a href="#">영화평가하기</a>&nbsp; &nbsp;&nbsp;&nbsp;  
 					<c:url value="/mypage" var="url" />
 					<a href="${url }">MY PAGE</a>&nbsp;&nbsp;&nbsp;&nbsp;   

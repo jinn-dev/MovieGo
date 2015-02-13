@@ -8,10 +8,13 @@ import com.mvg.entity.NowMovie;
 public interface NowMovieDao {
 
 	//현재 상영중인 영화의 수
-	int getAllNowMovie();
+	int getAllNowMovieCnt();
 	
 	//상영중인 영화 모두 얻어오기
 	List<NowMovie> getAllNowMovies();
+	
+	//상영 영화 하나 얻어오기
+	NowMovie getNowMovieByMovieCode(String movieCode);
 	
 	//상영하려는 영화 추가
 	int insertNowMovie(Movie movie);
@@ -21,8 +24,5 @@ public interface NowMovieDao {
 	
 	//상영 종료 영화 삭제
 	int deleteNowMovie(String movieCode);
-	
-	//상영 영화 하나 얻어오기
-	NowMovie getNowMovieByMovieCode(String movieCode);
 	
 }
