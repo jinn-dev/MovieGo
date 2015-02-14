@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.mvg.entity.User;
 import com.mvg.service.UserService;
@@ -99,11 +100,25 @@ public class ControllerTest {
 		return "board/board_view";
 	}
 	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
-	public String idCheck(@RequestParam String userId) {
-		service.selectUserById(userId);
-		return "main";
+	public ModelAndView idCheck(@RequestParam String userId) {
+		  ModelAndView mav = new ModelAndView();
+		  String result = service.selectUserById(userId);
+			mav.addObject("result", result);
+			mav.setViewName("main");
+			logger.trace("controller에서" + result);
+			return mav;
+		
+		
 	}
-	/*@RequestMapping(value = "/test/SessionCheck")
+	/*
+	  ModelAndView mav = new ModelAndView();
+		mav.setViewName("main");
+		int result = service.selectUserById(userId);
+		mav.addObject("result", result);
+		logger.trace("controller에서" + result);
+		return mav;
+	}
+	 @RequestMapping(value = "/test/SessionCheck")
 	@ResponseBody
 	public void selectDetail3(HttpSession session,
 			@ModelAttribute("SessionVO") SessionVO sessionVO,
