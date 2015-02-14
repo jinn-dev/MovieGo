@@ -48,7 +48,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<welcome-file>main</welcome-file>
 	</welcome-file-list>
 	
-	<!-- 한글 인코딩 필터 설정 -->
+ 	<!-- 한글 인코딩 필터 설정 -->
 	<filter>
 		<filter-name>encodingfilter</filter-name>
 		<filter-class>

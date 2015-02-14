@@ -24,4 +24,10 @@
 		from  comments
 		where comment_id = #{commentId}
 	</select>
+	
+	<select id="selectCommentByBoardId" parameterType="INTEGER" resultType="Comment">
+		select *
+		from comments
+		where board_id = #{boardId}
+	</select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.mvg.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,12 @@ public class CommentServiceImpl implements CommentService {
 	public int getBoardIdByCmtId(int commentId) {
 		int result = dao.getBoardByCmtId(commentId);
 		return result;
+	}
+
+	@Override
+	public List<Comment> getCommentByBoardId(int boardId) {
+		List<Comment> results = dao.getCommentByBoardId(boardId);
+		return results;
 	}
 
 }

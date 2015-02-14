@@ -1,41 +1,29 @@
 @CHARSET "UTF-8";
-.main{
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	vertical-align: middle;
-	padding: 5px;
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+
+*{
+	font-family:'나눔고딕';
 }
 
-#video{
-	border: 1px dashed #BDBDBD;
-	width:700px;
-	height:350px;
+header, section{
 	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
+	width: 100%;
+	height: 100%;
+}
+
+.main-div-1{
+	margin: 0 300px;
+	width: 700px;
+	hegiht: 360px;
+	padding:50px 10px;
+	border: 1px solid;
 	
 }
-
-#box{
-	border: 1px dashed #BDBDBD;
-	witdh: 700px;
-	height: 350px;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#rating1{
-	border: 1px dashed #BDBDBD;
-	witdh: 350px;
-	height: 350px;
-	text-align: center;
-}
-
-#rating2{
-	border: 1px dashed #BDBDBD;
-	witdh: 350px;
-	height: 350px;
-	text-align: center;
+.main-div-2{
+	background: #e67e22;
+	width: 350px;
+	heghit: 360px;
+	position: relative;
+	border: 1px;		
+	
 }

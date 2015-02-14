@@ -22,7 +22,7 @@ import com.mvg.service.CustomerBoardService;
 
 @Controller
 @RequestMapping("/board")
-@SessionAttributes("content")
+@SessionAttributes({"content","detail"})
 public class CustomerBoardController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(CustomerBoardController.class);
@@ -32,20 +32,26 @@ public class CustomerBoardController {
 	
 	/* 게시판 리스트 */
 	@RequestMapping(method=RequestMethod.GET)
-	public String boardList(Model model, HttpServletRequest request){
+	public String boardList(Model model){
 		List<CustomerBoard> list = service.getAllBoardList();
-		int recordCount = service.getBoardCnt();
-		request.setAttribute("recordCount", recordCount);
-		model.addAttribute("list", list);
-		
+		model.addAttribute("list", list); // list는 게시판 글 전체 객체 
 		return "board/board_list";
 	}
+	
+	@RequestMapping(value="/list.do",method=RequestMethod.GET)
+	public String boardList(Model model, SessionStatus sessionStatus){
+		List<CustomerBoard> list = service.getAllBoardList();
+		model.addAttribute("list", list); // list는 게시판 글 전체 객체 
+		sessionStatus.setComplete(); //  sesseion에서 detail 객체 삭제
+		return "board/board_list";
+	}
+	
 	
 	/* 게시판 글보기 */
 	@RequestMapping(value="/view", method=RequestMethod.GET)
 	public String showContent(@RequestParam int boardId, Model model){
 		CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
-		model.addAttribute("detail", board);
+		model.addAttribute("detail", board); // detail은 게시판 글+코멘트 하나 객체 
 		return "board/board_view";
 	}
 	
@@ -64,7 +70,7 @@ public class CustomerBoardController {
 	@RequestMapping(value="/modify", method=RequestMethod.GET)
 	public String redirToEntryForm(@RequestParam int boardId, Model model){
 		CustomerBoard content = service.getBoardByBdId(boardId);
-		model.addAttribute("content", content);
+		model.addAttribute("content", content); // content는 게시판 글 수정한거 객체 
 		return "board/board_modify";
 	}
 	@RequestMapping(value="/modified", method=RequestMethod.POST)
@@ -78,7 +84,7 @@ public class CustomerBoardController {
 	public String redirToList(@RequestParam int boardId, Model model, SessionStatus sessionStatus){
 		sessionStatus.setComplete(); // sesseion에서 content 객체 삭제
 		CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
-		model.addAttribute("detail", board);
+		model.addAttribute("detail", board); // detail은 게시판 글+코멘트 하나 객체 
 		return "board/board_view";
 	}
 	

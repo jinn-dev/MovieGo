@@ -72,4 +72,12 @@ public class UserDaoImpl implements UserDao {
 		return null;
 	}
 
+	@Override
+	public User selectUserById(String userId) {
+		String stmt = namespace + "selectUserById";
+		User result = sqlSession.selectOne(stmt, userId);
+	
+		return result;
+	}
+
 }

@@ -68,4 +68,11 @@ public class CommentDaoImpl implements CommentDao {
 		return result;
 	}
 
+	@Override
+	public List<Comment> getCommentByBoardId(int boardId) {
+		String stmt = namespace+"selectCommentByBoardId";
+		List<Comment> results = sqlSession.selectList(stmt, boardId);
+		return results;
+	}
+
 }

@@ -1,8 +1,14 @@
 @CHARSET "UTF-8";
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+
+*{
+	font-family:'나눔고딕';
+}
 
 header{
 	text-align: center;
 }
+
 .list-table{
 	margin: 0 auto;
 }
@@ -14,6 +20,7 @@ header{
 	border: none;
 	letter-spacing: 1px;
 	padding: 0.5em;
+	outline: none;
 }
 
 .list-table table{
@@ -45,6 +52,36 @@ header{
 	color: white;
 	text-align: center;
 	padding: 0.25em;
+}
+
+.write-table{
+	margin: 0 auto;
+	table-layout:fixed;
+	witdh: 740px;
+	border: 1px;
+	text-align: center;	
+	
+}
+
+.write-table input[type="text"]{
+	float:left;
+	width: 600px;
+}
+
+.write-table input[type="text"]:focus,
+textarea:focus {
+	outline: none;
+}
+
+
+.write-table input[type="text"]{
+	float:left;
+	width: 600px;
+}
+
+.write-table textarea{
+	width: 600px;
+	
 }
 
 .comment-table table{
