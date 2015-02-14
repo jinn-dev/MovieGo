@@ -44,6 +44,8 @@ public class ReservationController {
 		model.addAttribute("theaters", theaters);
 		List<String> movieNames = nservice.getAllNMovieNamesService();
 		model.addAttribute("nowmovies", movieNames);
+		List<Movie> movies = mservice.getAllMoviesService();
+		logger.trace("수업: "+movies);
 		return "reservation/reservation1";
 	}
 	

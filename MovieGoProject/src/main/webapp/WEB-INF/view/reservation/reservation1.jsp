@@ -152,7 +152,9 @@ td, th {
 </tr>
 <tr>
 <td colspan="4" height="100px">
+아이디: ${log.userId }
 <input type="submit" />
+
 </td>
 
 </table>
