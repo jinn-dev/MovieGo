@@ -30,7 +30,6 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public List<Movie> getAllMoviesService() {
 		List<Movie> movies = dao.getAllMovies();
-		logger.trace("수업: "+movies);
 		return movies;
 	}
 
