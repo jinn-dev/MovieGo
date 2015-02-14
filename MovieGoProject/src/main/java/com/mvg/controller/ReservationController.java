@@ -33,18 +33,18 @@ public class ReservationController {
 	TheaterService tservice;
 	
 	@Autowired
-	NowMovieService nService;
+	NowMovieService nservice;
 	
 	@Autowired
-	MovieService mService;
+	MovieService mservice;
 	
 	@RequestMapping(value="/reserve",  method=RequestMethod.GET)
 	public String reserve(Model model){
 		List<Theater> theaters = tservice.getAllTheatersService();
 		model.addAttribute("theaters", theaters);
-		List<String> movieNames = nService.getAllNMovieNamesService();
+		List<String> movieNames = nservice.getAllNMovieNamesService();
 		model.addAttribute("nowmovies", movieNames);
-		return "reservation/reservation11";
+		return "reservation/reservation1";
 	}
 	
 	

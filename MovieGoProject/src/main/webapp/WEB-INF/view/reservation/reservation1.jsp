@@ -20,9 +20,6 @@ td, th {
 	text-align: center;
 }
 
-button {
-	color: pink;
-}
 
 </style>
 <script type="text/javascript">

@@ -70,17 +70,13 @@ public class NowMovieDaoImpl implements NowMovieDao {
 	@Override
 	public List<String> getAllNowMovieNames() {
 		String stmt = namespace + "getAllNowMovieCodes";
+		String stmt2 = namespace2 + "getMovieByMovieCode";
 		List<String> movieCodes = sqlSession.selectList(stmt);
 		for (int i=0;i<movieCodes.size();i++) {
 			String code = movieCodes.get(i);
-			String stmt2 = namespace + "getMovieByMovieCode";
-			sqlSession.selectOne(stmt, code);
+			Movie movie = sqlSession.selectOne(stmt2, code);
+			movieCodes.set(i, movie.getMovieTitleKr());
 		}
-		
-		
-		
-		//List<String> movieNames
-		logger.trace("수업: "+movieCodes);
 		return movieCodes;
 	}
 	

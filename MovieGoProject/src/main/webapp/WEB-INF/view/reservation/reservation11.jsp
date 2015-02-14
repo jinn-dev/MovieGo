@@ -48,12 +48,12 @@
 <table border="1">
 		<tr>
 			<th>상영영화코드</th>
-		</tr>
+		</tr><tr>
 		<c:forEach items="${nowmovies }" var="nowmovies">
-			<tr>
+			
 				<td><c:out value="${nowmovies}" />
-			</tr>
+			
 		</c:forEach>
-	</table>
+	</tr></table>
 </body>
 </html>
