@@ -14,7 +14,10 @@ public interface NowMovieService {
 
 	// 영화별 상영영화 얻어오기
 	List<NowMovie> getNMovieByMCodeService(String movieCode);
-
+	
+	//상영영화이름
+	List<String> getAllNMovieNamesService();
+	
 	// 상영하려는 영화 추가
 	int insertNMovieService(Movie movie);
 

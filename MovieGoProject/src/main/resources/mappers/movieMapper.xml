@@ -11,8 +11,24 @@
 		select * from movies
 	</select>
 	
+	<select id="getMovieByMovieCode" parameterType="String" resultType="Movie">
+		select * from movies where movie_code=#{movieCode}
+	</select>
+	
 	<insert id="insertMovie" parameterType="Movie">
 		insert into movies()
 	</insert>
+	
+	<update id="updateMovie" parameterType="Movie">
+		update movies set movie_code=#{movieCode},
+		movie_title_kr=#{movieTitleKr}, movie_title_eng=#{movieTitleEng},
+		movie_genre=#{movieGenre}, movie_director=#{movieDirector},
+		movie_actor1=#{movieActor1}, movie_actor2=#{movieActor2},
+		movie_actor3=#{movieActor3}, movie_img_url=#{movieImgUrl}
+	</update>
+	
+	<delete id="deleteMovie" parameterType="String">
+		delete from movies where movie_code=#{movieCode}
+	</delete>
 
 </mapper>

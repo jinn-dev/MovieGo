@@ -25,38 +25,46 @@ public class MovieDaoImpl implements MovieDao{
 	
 	@Override
 	public Integer getAllMovieCount() {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace + "getAllMovieCount";
+		int result = sqlSession.selectOne(stmt);
+		return result;
 	}
 
 	@Override
 	public List<Movie> getAllMovies() {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace + "getAllMovies";
+		List<Movie> movies = sqlSession.selectList(stmt);
+		return movies;
+	}
+	
+	@Override
+	public Movie getMovieByMovieCode(String movieCode) {
+		String stmt = namespace + "getMovieByMovieCode";
+		Movie movie = sqlSession.selectOne(stmt, movieCode);
+		return movie;
 	}
 
 	@Override
 	public int insertMovie(Movie movie) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace + "insertMovie";
+		int result = sqlSession.insert(stmt, movie);
+		return result;
 	}
 
 	@Override
 	public int updateMovie(Movie movie) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace + "updateMovie";
+		int result = sqlSession.update(stmt, movie);
+		return result;
 	}
 
 	@Override
 	public int deleteMovie(String movieCode) {
-		// TODO Auto-generated method stub
-		return 0;
+		String stmt = namespace + "deleteMovie";
+		int result = sqlSession.delete(stmt, movieCode);
+		return result;
 	}
 
-	@Override
-	public Movie getMovieByMovieCode(String movieCode) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

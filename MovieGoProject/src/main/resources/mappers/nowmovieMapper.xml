@@ -11,6 +11,10 @@
 		select * from nowmovies
 	</select>
 	
+	<select id="getAllNowMovieCodes" resultType="String">
+		select distinct movie_code from nowmovies
+	</select>
+	
 	<select id="getNowMovieByMovieCode" parameterType="String" resultType="NowMovie">
 		select * from nowmovies where movie_code=#{movieCode}
 	</select>

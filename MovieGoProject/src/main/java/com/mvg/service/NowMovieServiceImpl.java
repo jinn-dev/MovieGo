@@ -58,4 +58,10 @@ public class NowMovieServiceImpl implements NowMovieService {
 		return result;
 	}
 
+	@Override
+	public List<String> getAllNMovieNamesService() {
+		List<String> movieNames = dao.getAllNowMovieNames();
+		return movieNames;
+	}
+
 }

@@ -45,18 +45,15 @@
 </tr>
 </table>
 
-<%-- <table border="1">
+<table border="1">
 		<tr>
-			<th>극장 ID</th>
-			<th>극장이름</th>
+			<th>상영영화코드</th>
 		</tr>
-		<c:forEach items="${allTheaters }" var="theater">
+		<c:forEach items="${nowmovies }" var="nowmovies">
 			<tr>
-				<td><c:out value="${theater.theaterId }" /></td>
-				<td><c:out value="${theater.theaterName }" /></td>
+				<td><c:out value="${nowmovies}" />
 			</tr>
 		</c:forEach>
 	</table>
- --%>
 </body>
 </html>

@@ -16,6 +16,9 @@ public interface NowMovieDao {
 	//영화별 상영정보 얻어오기
 	List<NowMovie> getNowMovieByMovieCode(String movieCode);
 	
+	//상영중인 영화의 이름 얻어오기
+	List<String> getAllNowMovieNames();
+	
 	//상영하려는 영화 추가
 	int insertNowMovie(Movie movie);
 	
