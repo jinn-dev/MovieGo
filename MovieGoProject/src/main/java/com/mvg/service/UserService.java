@@ -8,5 +8,5 @@ public interface UserService {
 	public User getUserByUserId(User user);
 	public int updateUser(User user);
 	public int deleteUser(String userId);
-	public User selectUserById(String userId);
+	public String selectUserById(String userId);
 }

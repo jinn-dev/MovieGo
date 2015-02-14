@@ -29,7 +29,6 @@
 		<section>
 			<div class="main-div-2"></div>
 		</section>
-
 	</header>
 </body>
 </html>

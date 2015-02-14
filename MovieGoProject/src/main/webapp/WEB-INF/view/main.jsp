@@ -190,15 +190,7 @@
 						break;
 
 
-
-
 					}
-
-					
-
-					
-
-					
 
 					else if ($("#userEmail").val() == "") {
 
@@ -236,16 +228,6 @@
 					}
 
 			}
-
-
-
-
-			
-
-			
-
-		
-
 	});
 
  		
@@ -296,46 +278,41 @@
 
 	});
 		
-		$("#idCheck").click(function() { 
+ 		$("#idCheck").click(function() { 
 			var userId = $("#userId").val();
-
+			var param="userId" +"="+ $("#userId").val();
 			alert("id:" + userId);
 			$.ajax({
 
-			url:'http://localhost:9090/MovieGoProject/idcheck',
- 			type:'get',	
- 			/* 			data:'userId=' +userId,*/
- 			data : ({"userId" : userId}), 
-  		 	dataType : 
-/* 				   success : function(data, status, xhr) { 
- */			    
-			 success : function(data) { 
-
-/* 				    var result = data.result;
- */				        
-				    alert(data.result);
-				    
-				    if(result == "true"){
-				     alert("가입 가능한 ID 입니다.");
-				    }else if(result == "false"){
-				     alert("이미 가입된 ID가 있습니다.");
-				    }				  
-				    
-				   },
-				   error : function(xhr, status, error) { 
-				    alert("error\nxhr : " + xhr + ", status : " + status + ", error : " + error);
-				   }
-				  }); 
-
+				url:'http://localhost:9090/MovieGoProject/idcheck',
+ 				type:'GET',	
+ 				data : param,
+ 				
+ 				dataType : 'text',
+			    success : function(responseData) {
+			    	var a = responseData.result;
+					if(a == '0') {
+						alert="아이디 중복 x";	
+					}
 				
-			/* 	success:function(data) {
-					check.innerHTML=data;
-				} */
-			});
-
-		
+					else {
+						alert("중복" + a);
+						return false;
+				
+					}
+				
+				},
+			
+				error : function(request, status, error) {
+					if(request.status != '0') {
+						alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+					}	
+				}
+				
+			 }); 
 
 	});
+ 		});
 
 		
 
