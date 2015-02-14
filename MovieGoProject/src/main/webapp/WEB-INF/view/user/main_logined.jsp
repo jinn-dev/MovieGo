@@ -11,12 +11,18 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	<div class="main">
+<!-- 	<div class="main">
 		<div id="video">동영상 넣기</div>
 		<div id="box">
 		<div id="rating1">무비고 사이트내 영화 인기순위</div>
 		<div id="rating2">전날 박스 오피스 순위</div>
 		</div>
+	</div> -->
+	<div id="content" style="background-color:#EEEEEE"; height: 200px; width:100px;float:left;">
+		show	
+	</div>
+	<div id="footer" style="background-color:#FFA500;clear:both;">
+		footer
 	</div>
 </body>
 </html>
