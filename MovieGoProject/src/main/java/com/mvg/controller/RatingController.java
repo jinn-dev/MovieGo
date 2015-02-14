@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mvg.entity.Movie;
+import com.mvg.entity.Wishlist;
 import com.mvg.service.MovieService;
+import com.mvg.service.WishlistService;
 
 @Controller
 @SessionAttributes("movies")
 public class RatingController {
 	@Autowired
 	MovieService service;
+	WishlistService wService;
+	
 	private static final Logger logger = LoggerFactory
 			.getLogger(RatingController.class);
 
@@ -26,6 +30,12 @@ public class RatingController {
 	public String rating(Model model) {
 		List<Movie> movies = service.getAllMoviesService();
 		model.addAttribute("movies", movies);
+		return "rating/rating";
+	}
+	
+	@RequestMapping(value = "/addwishlist", method = RequestMethod.GET)
+	public String addWishlist(Model model, Wishlist wishlist) {
+		int result = wService.insertWishlist(wishlist);
 		return "rating/rating";
 	}
 }

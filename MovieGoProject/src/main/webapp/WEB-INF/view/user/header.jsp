@@ -33,7 +33,7 @@
 					<c:url value="/logout" var="url" />
 					
 				</nav>
-			 <c:out value="${log.userId}"/>님 반갑습니다.<br> 
+			 <c:out value="${user.userId}"/>님 반갑습니다.<br> 
 			</div>
 		</div>
 	</div>

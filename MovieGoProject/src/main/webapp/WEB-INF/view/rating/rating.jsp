@@ -18,12 +18,11 @@ $(document).ready(function() {
 	/*var url = "$(idchk)?userId="+$("#userId").val(); */	
  window.open(url,"_blank", "width=400px height=400px");
 });
+	
+	$("#wishlist").click(function() {
+	       alert("위시리스트에 추가되었습니다");
+	});
 });
-function wishlist(){
-/*  위시리스트 db에 추가
- */	
-       alert("위시리스트에 추가되었습니다");
-}
 
 
 </script>
@@ -33,6 +32,7 @@ function wishlist(){
 영화평가하기
 포스터 or 리스트 형태
 별점 추가<br>
+<form>
   <table id="ratingList">
       <tr>
          <th>
@@ -61,14 +61,15 @@ function wishlist(){
          <td>
          <c:out value="${movies.movieTitleKr}"/></td>
   <td >별점</td>
-          <td>코멘트</td>
-          <td>위시리스트</td>
+          <td>코멘트</td>    
+          <td>
+            <input type="hidden" name="userId" value="${log.userId }"/>
+           <input type="hidden" name="movieCode" value="${movies.movieCode }"/>
+          <a href="<%=request.getContextPath() %>/addwishlist"><input type="button" id="wishlist" name="wishlist" value="위시리스트"></a>
+          </td>
       </tr>
       </c:forEach>
    </table>
-
-<input type="button" value="코멘트" id="comment" name="comment"></input>
-<input type="button" onclick="javascript:wishlist();" value="보고싶어요"></input>
-
+</form>
 </body>
 </html>
