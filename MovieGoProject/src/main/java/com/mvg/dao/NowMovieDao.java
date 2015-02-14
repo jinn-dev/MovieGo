@@ -13,8 +13,8 @@ public interface NowMovieDao {
 	//상영중인 영화 모두 얻어오기
 	List<NowMovie> getAllNowMovies();
 	
-	//상영 영화 하나 얻어오기
-	NowMovie getNowMovieByMovieCode(String movieCode);
+	//영화별 상영정보 얻어오기
+	List<NowMovie> getNowMovieByMovieCode(String movieCode);
 	
 	//상영하려는 영화 추가
 	int insertNowMovie(Movie movie);
