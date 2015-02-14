@@ -20,9 +20,6 @@ td, th {
 	text-align: center;
 }
 
-button {
-	color: pink;
-}
 
 </style>
 <script type="text/javascript">
@@ -155,7 +152,9 @@ button {
 </tr>
 <tr>
 <td colspan="4" height="100px">
+아이디: ${log.userId }
 <input type="submit" />
+
 </td>
 
 </table>

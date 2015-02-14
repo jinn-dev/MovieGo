@@ -24,14 +24,16 @@
 				<nav>
 					<c:url value="/reserve" var = "url"/>
 					<a href="${url }">RESERVATION</a>&nbsp;&nbsp;&nbsp;&nbsp;    
-					<a href="#">영화평가하기</a>&nbsp; &nbsp;&nbsp;&nbsp;  
+					<c:url value="/rating" var="url" />
+					<a href="${url }">영화 평가하기</a>&nbsp;&nbsp;&nbsp;&nbsp;  
 					<c:url value="/mypage" var="url" />
 					<a href="${url }">MY PAGE</a>&nbsp;&nbsp;&nbsp;&nbsp;   
 					<c:url value="/board" var="url" />
 					<a href="${url }">고객센터</a>
 					<c:url value="/logout" var="url" />
+					
 				</nav>
-
+			 <c:out value="${user.userId}"/>님 반갑습니다.<br> 
 			</div>
 		</div>
 	</div>

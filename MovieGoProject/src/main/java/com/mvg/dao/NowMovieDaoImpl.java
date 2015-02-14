@@ -20,6 +20,7 @@ public class NowMovieDaoImpl implements NowMovieDao {
 	}
 	
 	private final String namespace = "com.mvg.mappers.nowmovieMapper.";
+	private final String namespace2 = "com.mvg.mappers.movieMapper.";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -64,6 +65,19 @@ public class NowMovieDaoImpl implements NowMovieDao {
 		String stmt = namespace + "deleteNowMovie";
 		int result = sqlSession.delete(stmt, movieCode);
 		return result;
+	}
+
+	@Override
+	public List<String> getAllNowMovieNames() {
+		String stmt = namespace + "getAllNowMovieCodes";
+		String stmt2 = namespace2 + "getMovieByMovieCode";
+		List<String> movieCodes = sqlSession.selectList(stmt);
+		for (int i=0;i<movieCodes.size();i++) {
+			String code = movieCodes.get(i);
+			Movie movie = sqlSession.selectOne(stmt2, code);
+			movieCodes.set(i, movie.getMovieTitleKr());
+		}
+		return movieCodes;
 	}
 	
 }

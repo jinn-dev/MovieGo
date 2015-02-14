@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,28 +14,62 @@ $(document).ready(function() {
 
 /* 		<c:url value="/FrontServlet" var="idchk"></c:url>
  */ 		
-    var url = "http://localhost:9090/MovieGoProject/write_comment.jsp";
+    var url = "http://localhost:9090/MovieGoProject/rating/write_comment.jsp";
 	/*var url = "$(idchk)?userId="+$("#userId").val(); */	
  window.open(url,"_blank", "width=400px height=400px");
 });
+	
+	$("#wishlist").click(function() {
+	       alert("위시리스트에 추가되었습니다");
+	});
 });
-function wishlist(){
-/*  위시리스트 db에 추가
- */	
-       alert("위시리스트에 추가되었습니다");
-}
 
 
 </script>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 
 영화평가하기
 포스터 or 리스트 형태
-별점 추가
-
-<input type="button" value="코멘트" id="comment" name="comment"></input>
-<input type="button" onclick="javascript:wishlist();" value="보고싶어요"></input>
-
+별점 추가<br>
+<form>
+  <table id="ratingList">
+      <tr>
+         <th>
+            <div>
+               <b>영화제목</b>
+            </div>
+         </th>
+         <th >
+            <div>
+               <b>별점</b>
+            </div>
+         </th>
+         <th>
+            <div>
+               <b>코멘트</b>
+            </div>
+         </th>
+         <th>
+            <div>
+               <b>위시리스트</b>
+            </div>
+         </th>
+      </tr>
+      <c:forEach items="${movies }" var="movies">
+      <tr>
+         <td>
+         <c:out value="${movies.movieTitleKr}"/></td>
+  <td >별점</td>
+          <td>코멘트</td>    
+          <td>
+            <input type="hidden" name="userId" value="${log.userId }"/>
+           <input type="hidden" name="movieCode" value="${movies.movieCode }"/>
+          <a href="<%=request.getContextPath() %>/addwishlist"><input type="button" id="wishlist" name="wishlist" value="위시리스트"></a>
+          </td>
+      </tr>
+      </c:forEach>
+   </table>
+</form>
 </body>
 </html>
