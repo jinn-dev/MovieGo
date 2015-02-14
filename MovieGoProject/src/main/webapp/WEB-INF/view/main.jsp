@@ -360,7 +360,7 @@
 
 					class="big-image" />
 
-				<h1 class="main-title">MOVIE<font color="#A52127">GO</font></h1>
+				<h1 class="main-title">MOVIE<font color="#C75C5C">GO</font></h1>
 
 			</div>
 

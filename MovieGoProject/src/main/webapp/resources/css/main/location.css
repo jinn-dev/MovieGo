@@ -1,29 +1,51 @@
 @CHARSET "UTF-8";
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 
-*{
-	font-family:'나눔고딕';
+* {
+	font-family: '나눔고딕';
 }
 
-header, section{
-	text-align: center;
-	width: 100%;
+.wrap {
+	margin: 0 auto;
+	width: 75%;
 	height: 100%;
 }
 
-.main-div-1{
-	margin: 0 300px;
-	width: 700px;
-	hegiht: 360px;
-	padding:50px 10px;
-	border: 1px solid;
-	
+.main-box-1 {
+	position: fixed;
+	top: 25%;
+	left: 15%;
+	width : 650px;
+	height: 360px;
+	padding: 0 0 0 25px;
+	background: #393939;
 }
-.main-div-2{
-	background: #e67e22;
-	width: 350px;
-	heghit: 360px;
-	position: relative;
-	border: 1px;		
-	
+.main-box-2 {
+	position: fixed;
+	top: 25%;
+	left: 55%;
+	text-align: center;
+	width: 450px;
+	height: 360px;
+	background: #DF995E;
+}
+
+.main-box-3{
+	position: fixed;
+	top: 65%;
+	left: 15%;
+	text-align: center;
+	width : 650px;
+	height: 360px;
+	background: #274557;
+}
+
+.main-box-4 {
+	position: fixed;
+	top: 65%;
+	left: 55%;
+	text-align: center;
+	width: 450px;
+	height: 360px;
+	background: #C75D5C;
 }
