@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mvg.mappers.nowmovieMapper">
+	<select id="getAllNowMovieCnt" resultType="Integer">
+		select count(*) from nowmovies
+	</select>
+	
+	<select id="getAllNowMovies" resultType="NowMovie">
+		select * from nowmovies
+	</select>
+	
+	<select id="getAllNowMovieCodes" resultType="String">
+		select distinct movie_code from nowmovies
+	</select>
+	
+	<select id="getNowMovieByMovieCode" parameterType="String" resultType="NowMovie">
+		select * from nowmovies where movie_code=#{movieCode}
+	</select>
+	
+	<insert id="insertNowMovie" parameterType="NowMovie">
+		insert into nowmovies(theater_id, movie_code, movie_date)
+		values(#{theaterId}, #{movieCode}, #{movieDate})
+	</insert>
+	
+	<update id="updateNowMovie" parameterType="NowMovie">
+		update nowmovies set theater_id=#{theaterId}, movie_code=#{movieCode},
+		movie_date=#{movieDate} where nowmovie_id=#{nowmovieId}
+	</update>
+	
+	<delete id="deleteNowMovie" parameterType="String">
+		delete from nowmovies where movie_code=#{movieCode}
+	</delete>
+
+</mapper>

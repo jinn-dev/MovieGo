@@ -10,7 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.mvg.entity.Movie;
+import com.mvg.entity.NowMovie;
 import com.mvg.entity.Theater;
+import com.mvg.service.MovieService;
+import com.mvg.service.NowMovieService;
 import com.mvg.service.ReservationService;
 import com.mvg.service.TheaterService;
 
@@ -28,13 +32,20 @@ public class ReservationController {
 	@Autowired
 	TheaterService tservice;
 	
+	@Autowired
+	NowMovieService nservice;
 	
+	@Autowired
+	MovieService mservice;
 	
 	@RequestMapping(value="/reserve",  method=RequestMethod.GET)
 	public String reserve(Model model){
 		List<Theater> theaters = tservice.getAllTheatersService();
 		model.addAttribute("theaters", theaters);
-		 
+		List<String> movieNames = nservice.getAllNMovieNamesService();
+		model.addAttribute("nowmovies", movieNames);
+		List<Movie> movies = mservice.getAllMoviesService();
+		logger.trace("수업: "+movies);
 		return "reservation/reservation1";
 	}
 	
