@@ -1,6 +1,7 @@
 package com.mvg.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,9 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.mvg.entity.Movie;
-import com.mvg.entity.NowMovie;
 import com.mvg.entity.Theater;
 import com.mvg.service.MovieService;
 import com.mvg.service.NowMovieService;
@@ -19,6 +19,7 @@ import com.mvg.service.ReservationService;
 import com.mvg.service.TheaterService;
 
 @Controller
+@SessionAttributes("rsv, rsvInfo")
 public class ReservationController {
 	
 	private final static Logger logger;
@@ -38,15 +39,18 @@ public class ReservationController {
 	@Autowired
 	MovieService mservice;
 	
-	@RequestMapping(value="/reserve",  method=RequestMethod.GET)
-	public String reserve(Model model){
+	@RequestMapping(value="/reserve/movie",  method=RequestMethod.GET)
+	public String reserveMovie(Model model){
 		List<Theater> theaters = tservice.getAllTheatersService();
 		model.addAttribute("theaters", theaters);
-		List<String> movieNames = nservice.getAllNMovieNamesService();
-		model.addAttribute("nowmovies", movieNames);
-		List<Movie> movies = mservice.getAllMoviesService();
-		logger.trace("수업: "+movies);
+		Map<String, String> codesAndNames = nservice.getAllNMovieNamesService();
+		model.addAttribute("nowmovies", codesAndNames);
 		return "reservation/reservation1";
+	}
+	
+	@RequestMapping(value="/reserve/seat", method=RequestMethod.POST)
+	public String reserveSeat() {
+		return "reservation/reservation2";
 	}
 	
 	

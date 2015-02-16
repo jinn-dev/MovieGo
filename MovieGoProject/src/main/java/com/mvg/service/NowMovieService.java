@@ -1,6 +1,7 @@
 package com.mvg.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.mvg.entity.Movie;
 import com.mvg.entity.NowMovie;
@@ -16,7 +17,7 @@ public interface NowMovieService {
 	List<NowMovie> getNMovieByMCodeService(String movieCode);
 	
 	//상영영화이름
-	List<String> getAllNMovieNamesService();
+	Map<String, String> getAllNMovieNamesService();
 	
 	// 상영하려는 영화 추가
 	int insertNMovieService(Movie movie);

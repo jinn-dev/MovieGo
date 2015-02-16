@@ -1,6 +1,7 @@
 package com.mvg.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,9 +60,9 @@ public class NowMovieServiceImpl implements NowMovieService {
 	}
 
 	@Override
-	public List<String> getAllNMovieNamesService() {
-		List<String> movieNames = dao.getAllNowMovieNames();
-		return movieNames;
+	public Map<String, String> getAllNMovieNamesService() {
+		Map<String, String> codesAndNames = dao.getAllNowMovieNames();
+		return codesAndNames;
 	}
 
 }
