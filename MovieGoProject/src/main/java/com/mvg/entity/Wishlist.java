@@ -10,6 +10,7 @@ public class Wishlist {
 	private String movieCode;
 
 	public Wishlist() {}
+
 	
 	public Wishlist(int wishId, String userId, String movieCode) {
 		super();

@@ -1,6 +1,12 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ page import="com.mvg.entity.User"%>
+  <%@ page import="com.mvg.entity.Wishlist"%>
+   <%@ page import="com.mvg.entity.Movie"%>
+  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +38,7 @@ $(document).ready(function() {
 영화평가하기
 포스터 or 리스트 형태
 별점 추가<br>
-<form>
+
   <table id="ratingList">
       <tr>
          <th>
@@ -56,20 +62,32 @@ $(document).ready(function() {
             </div>
          </th>
       </tr>
+
       <c:forEach items="${movies }" var="movies">
       <tr>
-         <td>
-         <c:out value="${movies.movieTitleKr}"/></td>
-  <td >별점</td>
-          <td>코멘트</td>    
-          <td>
-            <input type="hidden" name="userId" value="${log.userId }"/>
-           <input type="hidden" name="movieCode" value="${movies.movieCode }"/>
-          <a href="<%=request.getContextPath() %>/addwishlist"><input type="button" id="wishlist" name="wishlist" value="위시리스트"></a>
-          </td>
+         <td><c:out value="${movies.movieTitleKr}"/></td>
+  		<td >별점</td>
+        <td>코멘트</td>    
+        <td>
+
+<%--	<c:url value="/addwishlist?userId=${log.userId }&movieCode=${movies.movieCode }" var="url"/>
+			
+ 	<a href="${url }"><button>위시리스트</button></a>  --%>
+ 	 	 <c:url value="/addwishlist" var="action"></c:url>
+ 	
+		<form:form method="post" modelAttribute="wishlists" action="${action }">
+  	<input type="hidden" name="movieCode" value="${movies.movieCode }"/>
+ 	<input type="hidden" name="userId" value="${log.userId }"/>
+ 	<button type="submit" id="wishlist" name="wishlist">위시리스트</button> 
+ 	  </form:form>
+          </td> 
+          
+   
       </tr>
+        
       </c:forEach>
+      
    </table>
-</form>
+ 
 </body>
 </html>

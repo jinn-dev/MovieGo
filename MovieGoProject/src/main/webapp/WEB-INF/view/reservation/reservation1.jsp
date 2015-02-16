@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
 <style>
 table, td, th {
@@ -20,11 +23,18 @@ td, th {
 	text-align: center;
 }
 
-
 </style>
 <script type="text/javascript">
 
-/* function chk_seledVal(){
+function selectedVal() {
+	alert(" >???");
+	var theater = $(":input:radio[name=thChk]:checked").val(); 
+	var movie = $(":input:radio[name=mvChk]:checked").val();
+	alert("극장선택값 : "+theater);
+	alert("영화선택값 : "+movie);
+}
+
+function chk_seledVal(){
     var form = document.frm;
 
     var thval = "";
@@ -46,9 +56,6 @@ td, th {
              }
          }
         }
-       
-    
-        
 
         if( frm.mvChk.length == null ){
          if(frm.mvChk.checked){
@@ -116,52 +123,56 @@ td, th {
         		location.href="reservation2.jsp"   
            }
         	    
-} */
+}
 </script>
 </head>
 
 
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
+<h1> '아이디: ${log.userId }' 영화 예매 </h1>
 <form name="frm">
+<%-- <c:url value="/reserve/seat" var="action"></c:url>
+<form:form modelAttribute="rsv" method="post" action="${action }"> --%>
 <input type="reset" value="새로" height="70">
 
 <table align="center">
 <tr><th>영화관</th><th>영화</th><th>날짜</th><th>시간</th></tr>
 <tr>
 <td height="400px">
- <input type="radio" name ="thChk" value="건대입구점">건대입구점<br>
-  <input type="radio" name ="thChk" value="군자점">강변점<br>
-  <input type="radio" name ="thChk" value="강남점">군자점<br>
+  <c:forEach items="${theaters }" var="theater">`	
+  <input type="radio" name="thChk" value="${theater.theaterId }"> 
+  <c:out value="${theater.theaterName }"/><br>
+  </c:forEach>
 </td>
 <td>
- <input type="radio" name ="mvChk" value="쎼씨봉">쎼씨봉<br>
-  <input type="radio" name ="mvChk" value="강남">강남<br>
-  <input type="radio" name ="mvChk" value="군도">군도<br>
+   <c:forEach items="${nowmovies }" var="nowmovie">
+  <input type="radio" name="mvChk" value="${nowmovie.key }"> 
+  <c:out value="${nowmovie.value }"/><br>
+  </c:forEach>
 </td>
 <td>
- <input type="radio" name ="dtChk" value="1일">1일<br>
-  <input type="radio" name ="dtChk" value="2일">2일<br>
-  <input type="radio" name ="dtChk" value="3일">3일<br>
+  <input type="radio" name ="dtChk" value="1">+1(내일)<br>
+  <input type="radio" name ="dtChk" value="2">+2<br>
+  <input type="radio" name ="dtChk" value="3">+3<br>
+  <input type="radio" name ="dtChk" value="4">+4<br>
+  <input type="radio" name ="dtChk" value="5">+5<br>
+  <input type="radio" name ="dtChk" value="6">+6<br>
 </td>
 <td>
- <input type="radio" name ="tmChk" value="오전">오전<br>
-  <input type="radio" name ="tmChk" value="오후">오후<br>
-<!-- <input type="button" onclick="tm_seledVal();" value="확인"></input> -->
+<!-- 6은 오전6시/ 18은 오후6시로 가정 -->
+ <input type="radio" name ="tmChk" value="6">오전<br>
+  <input type="radio" name ="tmChk" value="18">오후<br>
 </td>
 </tr>
 <tr>
 <td colspan="4" height="100px">
-아이디: ${log.userId }
-<input type="submit" />
 
+<input type="button" value="좌석선택" name="seat" onclick="javascript:selectedVal();" />
 </td>
-
 </table>
-
-<!-- <input type="button" onclick="chk_seledVal();" value="좌석선택"></input> -->
-
- </form>
+<%-- </form:form> --%>
+</form>
 
 <body>
 
