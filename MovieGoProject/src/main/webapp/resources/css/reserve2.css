@@ -1,0 +1,146 @@
+@CHARSET "UTF-8";
+
+.reserve-seat {
+	margin: 0 auto;
+	width: 75%;
+	border-color: #bdc3c7;
+}
+
+#seat-first{
+	background: #4F5D73;
+	padding: 10px auto;
+	border: 1px solid;
+	color: #fff;
+	font-size: 1.5em;
+}
+
+.reserve-seat td {
+	padding: 10px 10px;
+	border: 1px solid;
+	border-color: #bdc3c7;
+	background: #E0E0D2;
+}
+
+.reserve-seat th {
+	padding: 10px auto;
+	border: 1px solid;
+	border-color: #bdc3c7;
+	background: #E0E0D2;
+}
+
+label {
+	display: inline-block;
+	width: 20%;
+}
+
+.theaterMap .mapWrap {
+	width: 450px;
+	margin: 0 auto;
+}
+
+.theaterMap .screen {
+	width: 480px;
+	margin: 0 auto 10px;
+	padding: 10px 0;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+	border: 1px solid #aaa;
+	background: #eee;
+	cursor: default;
+}
+
+.theaterMap {
+	padding: 10px 0 0 10px;
+}
+
+.map {
+	padding: 5px 0;
+}
+
+/* ex) A,B,C,D,E,F,G,H */
+.theaterMap .map .row {
+	float: left;
+	width: 20px;
+	margin-right: 10px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 1.8em;
+	color: #34495E;
+}
+
+/* ex) 1,2... */
+.theaterMap .map .arrayNum {
+	float: left;
+	width: 420px;
+}
+
+.theaterMap .map .arrayNum button {
+	padding: 4px 8px;
+	margin: 0 1px;
+	border: 1px solid #cacaca;
+	background: #eee;
+}
+
+.theaterMap .map .arrayNum button:hover {
+	background: #C75C5C;
+}
+
+.theaterMap .map .arrayNum button.selected {
+	background: #C75C5C;
+}
+
+.theaterMap .map .arrayNum button.clicked {
+	background: #C75C5C;
+}
+
+.theaterMap .map .arrayNum button:nth-of-type(4) {
+	margin-right: 20px;
+}
+
+.result {
+	display: none;
+	position: absolute;
+	top: 90%;
+	left: 50%;
+	width: 300px;
+	margin-left: -201px;
+	padding: 30px 50px;
+	text-align: center;
+	background: #fff;
+	border: 5px solid #0094d9;
+}
+
+.result table {
+	margin: 0 auto;
+	width: 75%;
+	border-color: #bdc3c7;
+}
+
+.result th, .result td {
+	padding: 10px 0;
+	text-align: center;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+.result th {
+	background: #eee;
+}
+
+.result td {
+	padding: 10px 5px;
+}
+
+.result button {
+	margin-top: 20px;
+	padding: 10px 20px;
+	font-weight: bold;
+	border: 1px solid #09567a;
+	background: #0094d9;
+	color: #fff;
+}
+
+.result .seatResult td {
+	padding: 10px 40px;
+}
