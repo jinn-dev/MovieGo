@@ -35,8 +35,11 @@
 	<!-- header resource -->
 	<mvc:resources location="/resources/js/header/" mapping="/header/js/**" />  
 	<mvc:resources location="/resources/css/header/" mapping="/header/css/**" />
-	<!-- header resource -->
+	<!-- board resource -->
 	<mvc:resources location="/resources/css/board/" mapping="/board/css/**" />
+	<!-- mypage resource -->
+	<mvc:resources location="/resources/css/mypage/" mapping="/mypage/css/**" />
+	<mvc:resources location="/resources/js/mypage/" mapping="/mypage/js/**" />
 	
 
 </beans>

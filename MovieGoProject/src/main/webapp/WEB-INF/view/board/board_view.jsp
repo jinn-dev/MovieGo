@@ -18,35 +18,13 @@ $(document).ready(function() {
 			event.preventDefault();
 		}
 	});
-	
-	function getComment(){
-   	var data = ${detail.boardId};
-		$.ajax({
-		type: "GET",
-		url: "/comment/list?boardId="+boardId,
-		data: data,
-		dataType: 'json', // 받아올 데이터 타입을 설정 
-		sucess: function(response){
-			// json 형태로 받아옴 
-			var data = jQuery.parseJSON(response);
-			// 여기서 수신된 데이터를 세팅해서 뿌려주면 됨
-			output = 
-			$('#commentDrop').html(output);
-			console.log(data);
-		},error:function(jqXHR){
-			console.log(jqXHR);
+	$("#comment_delete").click(function(){
+		var result = window.confirm("코멘트를 삭제하시겠습니까?");
+		if(result){
+			<c:url value="/comment/drop" var="url"></c:url>
+			location.href="${url}?commentId=${comments.commentId }";
 		}
 	});
-		return false;
-	}
-	
-	
-	function loadComment(msg, boardId){
-		msg = decodeURIComponent(msg);
-		var data = jQuery.parseJSON(msg);
-		var commentCount = data.commentCount;
-		if(commentCount<=boardId)
-	}
 });
 </script>
 <title>고객센터</title>
@@ -98,8 +76,7 @@ $(document).ready(function() {
 				<th colspan="5">COMMENT</th>
 			</tr>
 		  	<tr>
-		  	<div id="commentDrop"></div>
-		  <%--   <c:if test="${detail.comments[0].commentId!=0 }">
+		    <c:if test="${detail.comments[0].commentId!=0 }">
 				<c:forEach items="${detail.comments }" var="comments">
 					<td>
 					<c:out value="${comments.userId }" />
@@ -110,9 +87,9 @@ $(document).ready(function() {
 					</td>
 					<c:if test="${comments.userId==log.userId }">
 						<td colspan="2" align="right">
-						<button class="div-button">MODIFY</button>&nbsp;
-						<c:url value="/comment/delete?commentId=${comments.commentId }" var="url"></c:url>
-						<a href="${url }"><button class="div-button">DELETE</button></a>
+						<button class="div-button" id="comment_modify">MODIFY</button>&nbsp;
+						<c:url value="/comment/drop?commentId=${comments.commentId }" var="url"></c:url>
+						<a href="${url }"><button class="div-button" id="comment_delete">DELETE</button></a>
 						</td>
 					</c:if>
 					<tr>
@@ -120,7 +97,7 @@ $(document).ready(function() {
 					<c:out value="${comments.commentContent }" /></td>
 					</tr>
 				</c:forEach>
-			</c:if> --%>
+			</c:if>
 			</tr>  
 			<tr>
 					<td colspan="5" align="left">

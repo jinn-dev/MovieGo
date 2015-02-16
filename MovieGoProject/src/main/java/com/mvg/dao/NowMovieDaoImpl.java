@@ -1,6 +1,8 @@
 package com.mvg.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -68,16 +70,17 @@ public class NowMovieDaoImpl implements NowMovieDao {
 	}
 
 	@Override
-	public List<String> getAllNowMovieNames() {
+	public Map<String, String> getAllNowMovieNames() {
 		String stmt = namespace + "getAllNowMovieCodes";
 		String stmt2 = namespace2 + "getMovieByMovieCode";
 		List<String> movieCodes = sqlSession.selectList(stmt);
+		HashMap<String, String> codesAndNames = new HashMap<String, String>();
 		for (int i=0;i<movieCodes.size();i++) {
 			String code = movieCodes.get(i);
 			Movie movie = sqlSession.selectOne(stmt2, code);
-			movieCodes.set(i, movie.getMovieTitleKr());
+			codesAndNames.put(code, movie.getMovieTitleKr());
 		}
-		return movieCodes;
+		return codesAndNames;
 	}
 	
 }

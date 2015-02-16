@@ -19,10 +19,10 @@
 			<div class="cbp-af-inner">
 				<h1>
 					<c:url value="/main.do" var="url"/>
-					<a href="${url }" id="logo"><font color="#0e0e0e">MOVIE</font><font color="#a52127">GO</font></a>
+					<a href="${url }" id="logo"><font color="#4F5D73">MOVIE</font><font color="#C75C5C">GO</font></a>
 				</h1>
 				<nav>
-					<c:url value="/reserve" var = "url"/>
+					<c:url value="/reserve/movie" var = "url"/>
 					<a href="${url }">RESERVATION</a>&nbsp;&nbsp;&nbsp;&nbsp;    
 					<c:url value="/rating" var="url" />
 					<a href="${url }">영화 평가하기</a>&nbsp;&nbsp;&nbsp;&nbsp;  
