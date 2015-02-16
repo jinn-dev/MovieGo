@@ -1,18 +1,18 @@
 @CHARSET "UTF-8";
+
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 
-*{
-	font-family:'나눔고딕';
+* {
+	font-family: '나눔고딕';
 }
 
-header{
+header {
 	text-align: center;
 }
 
-.list-table{
+.list-table {
 	margin: 0 auto;
 }
-
 
 .div-button {
 	background: #C75C5C;
@@ -23,15 +23,15 @@ header{
 	outline: none;
 }
 
-.list-table table{
+.list-table table {
 	margin: 0 auto;
-	table-layout:fixed;
+	table-layout: fixed;
 	witdh: 740px;
 	border: 1px;
-	text-align: center;	
+	text-align: center;
 }
 
-.list-table th{
+.list-table th {
 	background: #4F5D73;
 	color: white;
 	text-align: center;
@@ -39,88 +39,83 @@ header{
 	padding: 0.25em;
 }
 
-.view-table table{
+.view-table table {
 	margin: 0 auto;
-	table-layout:fixed;
+	table-layout: fixed;
 	witdh: 740px;
 	border: 1px;
-	text-align: center;	
+	text-align: center;
 }
 
-.view-table th{
+.view-table th {
 	background: #4F5D73;
 	color: white;
 	text-align: center;
 	padding: 0.25em;
 }
 
-.write-table{
+.write-table {
 	margin: 0 auto;
-	table-layout:fixed;
+	table-layout: fixed;
 	witdh: 740px;
 	border: 1px;
-	text-align: center;	
-	
+	text-align: center;
 }
 
-.write-table input[type="text"]{
-	float:left;
+.write-table input[type="text"] {
+	float: left;
 	width: 600px;
 }
 
-.write-table input[type="text"]:focus,
-textarea:focus {
+.write-table input[type="text"]:focus, textarea:focus {
 	outline: none;
 }
 
-
-.write-table input[type="text"]{
-	float:left;
+.write-table input[type="text"] {
+	float: left;
 	width: 600px;
 }
 
-.write-table textarea{
+.write-table textarea {
 	width: 600px;
 	overflow: scroll;
-	
 }
 
-.comment-table table{
+.comment-table table {
 	margin: 0 auto;
-	table-layout:fixed;
+	table-layout: fixed;
 	witdh: 740px;
 	border: 1px;
-	text-align: center;	
+	text-align: center;
 }
 
-.comment-table th{
+.comment-table th {
 	background: #4F5D73;
 	color: white;
 	text-align: center;
 	padding: 0.25em;
 }
 
-
-.comment-form form{
+.comment-form form {
 	margin: 0px auto;
 	text-align: left;
 	width: 740px;
 }
 
-.comment-form-inner{
+.comment-form-inner {
 	margin: 0 auto;
 	width: 700px;
 }
 
-.comment-form-inner input[type="text"]{
-	width:505px;
+.comment-form-inner input[type="text"] {
+	width: 505px;
 	padding: 0.4em;
 }
-.comment-form-inner input[type="text"].focus{
+
+.comment-form-inner input[type="text"].focus {
 	outline: none;
 }
 
-.writeform div{
+.writeform div {
 	align: center;
 }
-

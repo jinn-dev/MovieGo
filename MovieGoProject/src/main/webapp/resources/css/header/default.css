@@ -20,6 +20,7 @@
 	-webkit-box-sizing: border-box; /* width는 padding, border를 포함한 크기 */
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+	font-family: '나눔고딕';
 }
 
 body, html {
@@ -38,16 +39,13 @@ body, html {
 }
 
 .cbp-af-inner>h1{
-	font-family:'나눔고딕';
 }
 .cbp-af-inner>nav{
-	font-family: '나눔고딕';
 	font-size: 18px;
 	
 }
 
 body {
-	font-family: '나눔고딕';
 	color: #0e0e0e;
 }
 

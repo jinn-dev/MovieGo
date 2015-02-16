@@ -82,5 +82,22 @@ header p {
     text-transform: uppercase;
 }
 
+.main-title {
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
 
-
+@media screen and (max-width: 55em) {
+	.main-title {
+		position: absolute;
+		top: 15%;
+		right: 16.5%;
+		opacity: 0.7;
+		margin: 40px 0 0 0;
+		padding: 0;
+		line-height: .65;
+		font-size: 7em;
+		text-transform: uppercase;
+	}
+}
