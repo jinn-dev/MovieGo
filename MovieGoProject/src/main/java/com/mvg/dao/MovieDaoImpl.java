@@ -38,6 +38,13 @@ public class MovieDaoImpl implements MovieDao{
 	}
 	
 	@Override
+	public List<Movie> randomGetAllMovies(int page) {
+		String stmt = namespace+ "randomGetAllMovies";
+		List<Movie> movies = sqlSession.selectList(stmt, page);
+		return movies;
+	}
+	
+	@Override
 	public Movie getMovieByMovieCode(String movieCode) {
 		String stmt = namespace + "getMovieByMovieCode";
 		Movie movie = sqlSession.selectOne(stmt, movieCode);
@@ -64,6 +71,7 @@ public class MovieDaoImpl implements MovieDao{
 		int result = sqlSession.delete(stmt, movieCode);
 		return result;
 	}
+
 
 
 
