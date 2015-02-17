@@ -24,6 +24,7 @@
 	max-width: 80em;
 	margin: 0 auto;
 	padding: 0 1.875em;
+	border: 1px solid;
 }
 
 .cbp-af-header h1, .cbp-af-header nav {
@@ -58,6 +59,7 @@
 	font-weight: 700;
 	margin: 0 0 0 0px;
 	font-size: 1.4em;
+	text-decoration: none;
 }
 
 .cbp-af-header nav a:hover {
