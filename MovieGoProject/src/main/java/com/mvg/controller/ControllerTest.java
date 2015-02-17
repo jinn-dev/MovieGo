@@ -100,8 +100,21 @@ public class ControllerTest {
 			mav.setViewName("main");
 			logger.trace("controller에서" + result);
 			return mav;
-		
-		
+	}
+	
+	@RequestMapping(value="/apitest")
+	public String apiTest(){
+		return "apitest/restService";
+	}
+	
+	@RequestMapping(value="/apitest2")
+	public String apiTest2(){
+		return "apitest/restService2";
+	}
+	
+	@RequestMapping(value="/apitest3")
+	public String apiTest3(){
+		return "apitest/restService3";
 	}
 	/*
 	  ModelAndView mav = new ModelAndView();

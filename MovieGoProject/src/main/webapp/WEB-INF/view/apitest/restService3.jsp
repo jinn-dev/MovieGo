@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page
 	import="kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService"%>
 <%@ page import="org.codehaus.jackson.map.ObjectMapper"%>
@@ -7,9 +6,10 @@
 <%@ page import="net.sf.json.JSONObject"%>
 <%@ page import="net.sf.json.util.JSONBuilder"%>
 <%@ page import="net.sf.json.JSONArray"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,16 +17,25 @@
 </head>
 <body>
 	<%	
-	
+	// 현재 페이지를 지정
 	String curPage = request.getParameter("curPage")==null?"1":request.getParameter("curPage");
-	String itemPerPage = request.getParameter("itemPerPage")==null?"100":request.getParameter("itemPerPage");
+	// 결과 ROW의 개수를 지정 
+	String itemPerPage = request.getParameter("itemPerPage")==null?"500":request.getParameter("itemPerPage");
+	// 영화명으로 조회
 	String movieNm = request.getParameter("movieNm")==null?"":request.getParameter("movieNm");
+	// 감독명으로 조회
 	String directorNm = request.getParameter("directorNm")==null?"":request.getParameter("directorNm");
-	String openStartDt = request.getParameter("openStartDt")==null?"":request.getParameter("openStartDt");
-	String openEndDt = request.getParameter("openEndDt")==null?"2014":request.getParameter("openEndDt");
+	// YYYY형식의 조회시작 개봉연도 입력
+	String openStartDt = request.getParameter("openStartDt")==null?"1960":request.getParameter("openStartDt");
+	// YYYY형식의 조회종료 개봉연도 입력
+	String openEndDt = request.getParameter("openEndDt")==null?"2015":request.getParameter("openEndDt");
+	// YYYY형식의 조회시작 제작연도 입력
 	String prdtStartYear = request.getParameter("prdtStartYear")==null?"":request.getParameter("prdtStartYear");
+	// YYYY형식의 조회종료 제작연도 입력
 	String prdtEndYear = request.getParameter("prdtEndYear")==null?"":request.getParameter("prdtEndYear");
+	// N개의 국적 조회할 수 있음 (default: 전체)
 	String repNationCd = request.getParameter("repNationCd")==null?"":request.getParameter("repNationCd");
+	// N개의 영화유형코드로 조회할 수 있음 (default: 전체)
 	String[] movieTypeCds = {""};
 	String[] movieTypeCdArr = request.getParameterValues("movieTypeCdArr")==null?movieTypeCds:request.getParameterValues("movieTypeCdArr");
 
@@ -55,20 +64,43 @@
 		<td>영화명(영문)</td>
 		<td>영화장르</td>
 		<td>영화감독</td>
+		<td>배우</td>
 	</tr>
 
-
-	<c:if test="${not empty movieResult.movieListResult.movieList }">
-		<c:forEach items="${movieResult.movieListResult.movieList }"
-			var="movie">
+	<c:if test="${not empty movieResult.movieListResult.movieList }"><!--  linked hash map -->
+		<c:forEach items="${movieResult.movieListResult.movieList }" var="movie"> <!--  map 안에 있는 movie linked hash map -->
+		<%
+			System.out.println("영화"+pageContext.getAttribute("movie").getClass()); 
+		%>
 			<tr>
 				<td><c:out value="${movie.movieCd }" /></td>
 				<td><c:out value="${movie.movieNm }" /></td>
 				<td><c:out value="${movie.movieNmEn }" /></td>
 				<td><c:out value="${movie.genreAlt }" /></td>
 				<td><c:out value="${movie.directors }" /></td>
-			</tr>
-		</c:forEach>
+			
+			<% 
+			/* System.out.println("영화"+pageContext.getAttribute("movie").getClass()); */
+			LinkedHashMap map = (LinkedHashMap)pageContext.getAttribute("movie");
+			String code = (String)map.get("movieCd");			
+			String movieCd = request.getParameter("movieCd")==null?code:request.getParameter("movieCd");
+			
+			String movieInfoItem = service.getMovieInfo(true, movieCd);
+			ObjectMapper InfoMapper = new ObjectMapper();
+			
+			HashMap<String, Object> movieResult2 = InfoMapper.readValue(movieInfoItem, HashMap.class);
+			Map<String, Object> moviInfoResult = (Map)movieResult2.get("movieInfoResult");
+			Map<String, Object> moviInfo = (Map)moviInfoResult.get("movieInfo");
+			ArrayList actors = (ArrayList)moviInfo.get("actors");
+			request.setAttribute("actors", actors);  
+			%>
+				<c:if test="${not empty actors }">
+					<c:forEach items="${actors }" var="actorInfo">
+						<td><c:out value="${actorInfo.peopleNm }" /></td>
+						</c:forEach>
+				</c:if>
+		</tr>
+	</c:forEach>
 	</c:if>
 </table>
 </html>

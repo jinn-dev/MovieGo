@@ -1,10 +1,13 @@
 @CHARSET "UTF-8";
 
 /** reservation1.jsp **/
+
 .reserve-first {
 	margin: 0 auto;
 	width: 75%;
 	border-color: #bdc3c7;
+	position: absolute;
+	top: 30%;
 }
 
 .reserve-first th {

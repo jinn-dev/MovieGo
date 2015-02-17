@@ -88,7 +88,7 @@ header p {
 	transition: all 0.3s;
 }
 
-@media screen and (max-width: 55em) {
+@media screen and (max-width: 60em) {
 	.main-title {
 		position: absolute;
 		top: 15%;
