@@ -11,6 +11,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import com.mvg.dao.CustomerBoardDao;
 import com.mvg.dao.MovieDao;
 import com.mvg.dao.NowMovieDao;
+import com.mvg.dao.WishlistDao;
 
 public class DaoTest {
 
@@ -30,5 +31,7 @@ public class DaoTest {
 		
 		MovieDao dao2 = ctx.getBean(MovieDao.class);
 		logger.trace("수업: 모든영화 불러오기 "+dao2.getAllMovies());
+		
+	
 	}
 }

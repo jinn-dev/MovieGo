@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
@@ -54,13 +55,6 @@ public class ControllerTest {
 		return "user/find_user_info";
 	}
 
-	/*
-	 * @RequestMapping(value="/login", method=RequestMethod.POST) public String
-	 * login(Model model, @ModelAttribute("user") User user, HttpSession
-	 * session){ User u = service.getUserByUserId(user);
-	 * model.addAttribute("user", session.getAttribute("user")); return
-	 * "user/main_logined"; }
-	 */
 
 	@RequestMapping(value = "/login", params = "_event_confirmed", method = RequestMethod.POST)
 	public String login(Model model, @ModelAttribute("log") User log,
@@ -92,16 +86,29 @@ public class ControllerTest {
 	public String boardview() {
 		return "board/board_view";
 	}
-	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
-	public ModelAndView idCheck(@RequestParam String userId) {
-		  ModelAndView mav = new ModelAndView();
+	@RequestMapping(value = "/duplicate", method = RequestMethod.GET)
+	@ResponseBody
+	public String duplicate(@RequestParam String userId) {
 		  String result = service.selectUserById(userId);
-			mav.addObject("result", result);
-			mav.setViewName("main");
-			logger.trace("controller에서" + result);
-			return mav;
+			return result;
 		
 		
+	}
+	
+	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
+	@ResponseBody
+	public String idcheck(@RequestParam String userEmail) {
+		  String result = service.selectUserByEmail(userEmail);
+		  logger.trace("수업:" + result);
+			return result;
+	}
+	
+	@RequestMapping(value = "/passwordCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public String emailCheck(@RequestParam String userEmail) {
+		  String result = service.selectUserByEmail(userEmail);
+		  logger.trace("수업:" + result);
+			return result;
 	}
 	/*
 	  ModelAndView mav = new ModelAndView();
