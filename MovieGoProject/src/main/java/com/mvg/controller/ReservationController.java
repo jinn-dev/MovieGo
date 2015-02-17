@@ -48,7 +48,7 @@ public class ReservationController {
 		return "reservation/reservation1";
 	}
 	
-	@RequestMapping(value="/reserve/seat", method=RequestMethod.POST)
+	@RequestMapping(value="/reserve/seat", method=RequestMethod.GET)
 	public String reserveSeat() {
 		return "reservation/reservation2";
 	}

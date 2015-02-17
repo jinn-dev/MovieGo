@@ -31,9 +31,10 @@
 					<c:url value="/board" var="url" />
 					<a href="${url }">고객센터</a>
 					<c:url value="/logout" var="url" />
+					<a href="${url }">LOGOUT</a>
 					
 				</nav>
-			 <c:out value="${user.userId}"/>님 반갑습니다.<br> 
+			 <div id="userInfo"><c:out value="${user.userId}"/>님 반갑습니다.<br></div>
 			</div>
 		</div>
 	</div>
