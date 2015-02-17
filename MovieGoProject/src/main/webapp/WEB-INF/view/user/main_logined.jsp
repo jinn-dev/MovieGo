@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/main/css/location.css" />
 <link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/main/video-js.css">
+	href="<%=request.getContextPath()%>/main/css/video-js.css">
 <title>MOVIE GO 메인 페이지</title>
 </head>
 <body>
