@@ -9,4 +9,6 @@ public interface UserService {
 	public int updateUser(User user);
 	public int deleteUser(String userId);
 	public String selectUserById(String userId);
+	public String selectUserByEmail(String userEmail);
+	public String selectUserByIdAndEmail(String userId, String userEmail);
 }

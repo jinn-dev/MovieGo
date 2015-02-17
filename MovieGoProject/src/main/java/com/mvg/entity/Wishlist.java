@@ -1,5 +1,7 @@
 package com.mvg.entity;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -8,10 +10,20 @@ public class Wishlist {
 	private int wishId;
 	private String userId;
 	private String movieCode;
-
+	private ArrayList<Movie> movies;
 	public Wishlist() {}
 
 	
+	public ArrayList<Movie> getMovies() {
+		return movies;
+	}
+
+
+	public void setMovies(ArrayList<Movie> movies) {
+		this.movies = movies;
+	}
+
+
 	public Wishlist(int wishId, String userId, String movieCode) {
 		super();
 		this.wishId = wishId;
@@ -43,10 +55,11 @@ public class Wishlist {
 		this.movieCode = movieCode;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Wishlist [wishId=" + wishId + ", userId=" + userId
-				+ ", movieCode=" + movieCode + "]";
+				+ ", movieCode=" + movieCode + ", movies=" + movies + "]";
 	}
 
 }

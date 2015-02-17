@@ -64,21 +64,8 @@ public class MyPageController {
 	@RequestMapping(value="/wishlist", method=RequestMethod.GET)
 	public String wishlist(@RequestParam String userId, Model model){
 		List<Wishlist> wishlist = wService.getWishlistByUserId(userId);
-	
-/*		
- * 	Movie wishmovie = null;
-		for(int i = 0; i < wishlist.size(); i++) {
-			String movieCode = wishlist.get(i).getMovieCode();
-			wishmovie = mService.getMovieByMCodeService(movieCode);
-		}		
- * Movie wishmovie = mService.getMovieByMCodeService(movieCode);
-		model.addAttribute("wishmovie", wishmovie);
-
- *  mService.getMovieByMCodeService(movieCode);
- *  model.addAttribute("wishmovie", wishmovie);
-
+/*		logger.trace("수업:" + wishlist.getMovies());
 */		model.addAttribute("wishlist", wishlist);
-
 		return "mypage/wishlist";
 	}
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
