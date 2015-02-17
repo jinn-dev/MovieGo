@@ -2,6 +2,8 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="com.mvg.entity.User" %>
+<%@ page import="com.mvg.entity.Movie" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,9 +32,10 @@
 			<li><a href="#" class="icon-archive">영화취향분석</a></li>
 			<li><a href="#" class="icon-search">개인정보수정</a></li>
 			<li><a href="#" class="icon-pencil">MY예매내역</a></li>
-			<li><a href="#" class="icon-location">위시리스트</a></li>
+			<li><a href="<%=request.getContextPath() %>/wishlist?userId=${log.userId }" class="icon-location">위시리스트</a></li>
 			<li><a href="#" class="icon-images">영화평가목록</a></li>
 		</ul>
+
 	</div>
 </body>
 </html>

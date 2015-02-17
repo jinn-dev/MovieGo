@@ -16,6 +16,9 @@
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	$("#wishlist").click(function() {
+	       alert("위시리스트에 추가되었습니다");
+	});
 	$("#comment").click(function() {
 
 /* 		<c:url value="/FrontServlet" var="idchk"></c:url>
@@ -25,9 +28,7 @@ $(document).ready(function() {
  window.open(url,"_blank", "width=400px height=400px");
 });
 	
-	$("#wishlist").click(function() {
-	       alert("위시리스트에 추가되었습니다");
-	});
+
 });
 
 
@@ -74,17 +75,14 @@ $(document).ready(function() {
 			
  	<a href="${url }"><button>위시리스트</button></a>  --%>
  	 	 <c:url value="/addwishlist" var="action"></c:url>
- 	
 		<form:form method="post" modelAttribute="wishlists" action="${action }">
   	<input type="hidden" name="movieCode" value="${movies.movieCode }"/>
  	<input type="hidden" name="userId" value="${log.userId }"/>
- 	<button type="submit" id="wishlist" name="wishlist">위시리스트</button> 
+ 	<input type="submit" id="wishlist" name="_event_confirmed" value="위시리스트"></input> 
  	  </form:form>
           </td> 
-          
-   
-      </tr>
-        
+
+      </tr>  
       </c:forEach>
       
    </table>

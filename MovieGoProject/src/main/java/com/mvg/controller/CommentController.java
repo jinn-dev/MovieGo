@@ -49,4 +49,14 @@ public class CommentController {
 		String path ="redirect:/board/view?boardId="+comment.getBoardId();
 		return path;
 	}
+
+/*	@RequestMapping(value="/list", method=RequestMethod.GET)
+	public String commentList(@RequestParam int boardId, @ModelAttribute("detail") CustomerBoard board,
+			SessionStatus sessionStatus){
+		List<Comment> lists = service.getCommentByBoardId(boardId);
+		String json = new Gson().toJson(lists);
+		logger.trace("제이슨"+json);
+		sessionStatus.setComplete();
+		return  json;
+	}*/
 }

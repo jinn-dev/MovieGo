@@ -22,6 +22,7 @@ import com.mvg.service.WishlistService;
 public class RatingController {
 	@Autowired
 	MovieService service;
+	@Autowired
 	WishlistService wService;
 	
 	private static final Logger logger = LoggerFactory
@@ -62,12 +63,10 @@ public class RatingController {
 		return "redirect:/rating/rating";
 	}*/
 
-	@RequestMapping(value = "/addwishlist", method = RequestMethod.POST)
+	@RequestMapping(value = "/addwishlist", params="_event_confirmed", method = RequestMethod.POST)
 		public String addWishlist(Model model, @ModelAttribute("wishlists") Wishlist wishlists) {
-		logger.trace("수업;" + wishlists.getMovieCode());
-		logger.trace("수업:" + wishlists.getUserId());
 		wService.insertWishlist(wishlists);
-		return "redirect:/rating/rating";
+		return "rating/rating";
 	}
 
 
