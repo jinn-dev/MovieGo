@@ -18,7 +18,7 @@
 	}
 </style>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 <div id="cancellist">
 예매취소내역
 <table>

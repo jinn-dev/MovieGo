@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.google.gson.Gson;
 import com.mvg.entity.Comment;
 import com.mvg.entity.CustomerBoard;
 import com.mvg.service.CommentService;
@@ -45,7 +44,7 @@ public class CommentController {
 		return path;
 	}
 
-	@RequestMapping(value="/list", method=RequestMethod.GET)
+/*	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String commentList(@RequestParam int boardId, @ModelAttribute("detail") CustomerBoard board,
 			SessionStatus sessionStatus){
 		List<Comment> lists = service.getCommentByBoardId(boardId);
@@ -53,5 +52,5 @@ public class CommentController {
 		logger.trace("제이슨"+json);
 		sessionStatus.setComplete();
 		return  json;
-	}
+	}*/
 }
