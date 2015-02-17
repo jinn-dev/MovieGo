@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="text/html;charset=euc-kr">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<%-- <link href="<%=request.getContextPath() %>/header/css/default.css" rel="stylesheet"/> --%>
 <link href="<%=request.getContextPath() %>/header/css/component.css" rel="stylesheet" />
 <script src="<%=request.getContextPath() %>/header/js/modernizr.custom.js"></script>
 <title>MOVIE GO</title>

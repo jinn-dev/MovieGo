@@ -11,15 +11,40 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 
-function selectedVal() {
-	alert(" >???");
-	var theater = $(":input:radio[name=thChk]:checked").val(); 
-	var movie = $(":input:radio[name=mvChk]:checked").val();
-	alert("극장선택값 : "+theater);
-	alert("영화선택값 : "+movie);
+
+
+//var theater = $(":input:radio[name=thChk]:checked").val(); 
+
+
+window.onload=function() {
+	
+	var xhr = new XMLHttpRequest();
+	document.querySelector("#thSelected").addEventListener("click", function() {
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState==4&&xhr.status==200) {
+				//document.querySelector("#movielist").innerHTML = xhr.responseText+"<br>";
+				var movieArr = JSON.parse(xhr.responseText);
+				myFunction(movieArr);
+			}
+		}
+		var url = "<%=request.getContextPath()%>/reserve/movie";
+		xhr.open("post", url, true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		var theater = $(":input:radio[name=thChk]:checked").val();
+		//var movie = $(":input:radio[name=mvChk]:checked").val();
+		xhr.send("theaterId="+theater);
+	});	
 }
 
-function chk_seledVal(){
+function myFunction(movieArr) {
+	var out = "이수연";
+	document.querySelector("#movielist").innerHTML = out;
+
+}
+
+//극장선택값
+
+/* function chk_seledVal(){
     var form = document.frm;
 
     var thval = "";
@@ -106,9 +131,9 @@ function chk_seledVal(){
    	    }
            else {
         		location.href="reservation2.jsp"   
-           }
+           } 
         	    
-}
+}*/
 </script>
 </head>
 
@@ -116,26 +141,29 @@ function chk_seledVal(){
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
 <h1> '아이디: ${log.userId }' 영화 예매 </h1>
 <form name="frm" id="frm">
-<%-- <c:url value="/reserve/seat" var="action"></c:url>
-<form:form modelAttribute="rsv" method="post" action="${action }"> --%>
+<input type="reset" value="새로" height="70">
 <table class="reserve-first">
 <tr><td colspan="4" align="right" id="first-td">
 <!-- 추가: form reset image button  -->
 <a href="#" onclick="frm.reset();"><img src="<%=request.getContextPath() %>/img/reserveReset.png"/></a> 
 </td></tr>
-<tr><th>영화관</th><th>영화</th><th>날짜</th><th>시간</th></tr>
+<tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
+
 <tr>
-<td>
+
+<td height="400px">
   <c:forEach items="${theaters }" var="theater">	
   <input type="radio" name="thChk" value="${theater.theaterId }"> 
   <c:out value="${theater.theaterName }"/><br>
   </c:forEach>
+  <input type="button" id="thSelected" value="영화선택"/>
 </td>
 <td>
-   <c:forEach items="${nowmovies }" var="nowmovie">
+   <%-- <c:forEach items="${nowmovies }" var="nowmovie">
   <input type="radio" name="mvChk" value="${nowmovie.key }"> 
   <c:out value="${nowmovie.value }"/><br>
-  </c:forEach>
+  </c:forEach> --%>
+  <div id="movielist"></div>
 </td>
 <td>
   <input type="radio" name ="dtChk" value="1">+1(내일)<br>
@@ -145,23 +173,17 @@ function chk_seledVal(){
   <input type="radio" name ="dtChk" value="5">+5<br>
   <input type="radio" name ="dtChk" value="6">+6<br>
 </td>
-<td>
-<!-- 6은 오전6시/ 18은 오후6시로 가정 -->
- <input type="radio" name ="tmChk" value="6">오전<br>
-  <input type="radio" name ="tmChk" value="18">오후<br>
-</td>
 </tr>
 <tr>
+<td colspan="3" height="100px">
+<input type="button" value="좌석선택" id="seat" name="seat" />
 <td colspan="4" align="right">
 <!-- 추가: 좌석선택 image button  -->
 <input type="image" name="seat" src="<%=request.getContextPath() %>/img/seatSelect.png" onclick="javascript:selectedVal();" />
 </td>
+</tr>
 </table>
-<%-- </form:form> --%>
 </form>
-
-<body>
-
 
 </body>
 </html>
