@@ -32,7 +32,14 @@ public class MovieServiceImpl implements MovieService {
 		List<Movie> movies = dao.getAllMovies();
 		return movies;
 	}
-
+	
+	/*@Override
+	public List<Movie> randomGetAllMovies() {
+	//	List<Movie> movies = dao.randomGetAllMovies();
+		return movies;
+	}
+	 */
+	
 	@Override
 	public Movie getMovieByMCodeService(String movieCode) {
 		Movie movie = dao.getMovieByMovieCode(movieCode);
@@ -56,5 +63,6 @@ public class MovieServiceImpl implements MovieService {
 		int result = dao.deleteMovie(movieCode);
 		return result;
 	}
+
 
 }

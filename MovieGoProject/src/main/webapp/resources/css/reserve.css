@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+/** reservation1.jsp **/
+.reserve-first {
+	margin: 0 auto;
+	width: 75%;
+	border-color: #bdc3c7;
+}
+
+.reserve-first th {
+	padding: 10px 10px;
+	background: #4F5D73;
+	color: #fff;
+	font-size: 1.5em;
+}
+
+#first-td {
+	background: #ffffff;
+	border: 0px;
+}
+
+.reserve-first td {
+	padding: 10px auto;
+	border: 1px solid;
+	border-color: #bdc3c7;
+	background: #E0E0D2;
+}
+
+

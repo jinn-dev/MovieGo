@@ -1,29 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reserve.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
-<style>
-table, td, th {
-	border: 1px solid black;
-}
-table {
-	width: 75%;
-}
-th {
-	height: 70px;
-}
-
-td, th {
-	text-align: center;
-}
-
-</style>
 <script type="text/javascript">
 
 function selectedVal() {
@@ -127,20 +112,21 @@ function chk_seledVal(){
 </script>
 </head>
 
-
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
 <h1> '아이디: ${log.userId }' 영화 예매 </h1>
-<form name="frm">
+<form name="frm" id="frm">
 <%-- <c:url value="/reserve/seat" var="action"></c:url>
 <form:form modelAttribute="rsv" method="post" action="${action }"> --%>
-<input type="reset" value="새로" height="70">
-
-<table align="center">
+<table class="reserve-first">
+<tr><td colspan="4" align="right" id="first-td">
+<!-- 추가: form reset image button  -->
+<a href="#" onclick="frm.reset();"><img src="<%=request.getContextPath() %>/img/reserveReset.png"/></a> 
+</td></tr>
 <tr><th>영화관</th><th>영화</th><th>날짜</th><th>시간</th></tr>
 <tr>
-<td height="400px">
-  <c:forEach items="${theaters }" var="theater">`	
+<td>
+  <c:forEach items="${theaters }" var="theater">	
   <input type="radio" name="thChk" value="${theater.theaterId }"> 
   <c:out value="${theater.theaterName }"/><br>
   </c:forEach>
@@ -166,9 +152,9 @@ function chk_seledVal(){
 </td>
 </tr>
 <tr>
-<td colspan="4" height="100px">
-
-<input type="button" value="좌석선택" name="seat" onclick="javascript:selectedVal();" />
+<td colspan="4" align="right">
+<!-- 추가: 좌석선택 image button  -->
+<input type="image" name="seat" src="<%=request.getContextPath() %>/img/seatSelect.png" onclick="javascript:selectedVal();" />
 </td>
 </table>
 <%-- </form:form> --%>

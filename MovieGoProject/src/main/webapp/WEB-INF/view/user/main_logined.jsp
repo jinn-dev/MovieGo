@@ -17,7 +17,7 @@
 		<div class="main-box-1">
 			<video id="example_video_1" class="video-js vjs-default-skin"
 				controls preload="none"
-				poster="<%=request.getContextPath()%>/img/main_poster.PNG"
+				poster="<%=request.getContextPath()%>/img/main_poster.png"
 				data-setup="{}" width="600" height="360">
 				<source
 					src="<%=request.getContextPath()%>/vid/Despicable_Me_Trailer.mp4"

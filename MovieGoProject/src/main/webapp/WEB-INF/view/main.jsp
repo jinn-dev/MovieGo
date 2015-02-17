@@ -1,40 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <%@ page trimDirectiveWhitespaces="true"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <%@ page import="com.mvg.entity.User" %>
 
-
-
-
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
 <!-- video css -->
-
 <link rel="stylesheet" href="<%=request.getContextPath()%>/main/css/style.css">
-
 <!-- content css -->
-
 <link rel="shortcut icon" href="../favicon.ico">
-
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/component.css" />
-
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/content.css" />
-
 <script src="<%=request.getContextPath ()%>/main/js/modernizr.custom.js"></script>
-
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 
 <script>
@@ -58,22 +40,15 @@
 	
 
 			var c = $("#userId").val().charCodeAt(i);
-
 				if(!((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c>= 97 && c <= 122))) {
-
 					alert("다시 입력해주세요.");
-
 					event.preventDefault();
-
 					break;
 
 				}
 
 				else if($("#userId").val() == "") {
-
 					alert("아이디를 입력해주세요.");
-
-					event.preventDefault();
 
 					break;
 
@@ -89,70 +64,40 @@
 					}  
 
 					else if (idLength > 10) {
-
 						alert("id는 10자이내로 입력해주세요.");
-
 						event.preventDefault();
-
 						break;
-
 					}
 
 					else if (pwdLength > 10) {
-
-
 						alert("비밀번호는 10자이내로 입력해주세요.");
-
 						event.preventDefault();
-
 						break;
-
-
 					}
 
 					else if ($("#pass2").val() == "") {
-
 						alert("비밀번호확인 입력해주세요.");
-
 						event.preventDefault();
-
 						break;
-
 					}
-
 					else if ($("#userPwd").val() != $("#pass2").val()) {
-
-
 						alert("비밀번호와 확인 비밀번호가 일치하지 않습니다.");
 
 						$("#pass2").focus();
 						event.preventDefault();
-
 						break;
-
-
 					}
 
 					else if ($("#userEmail").val() == "") {
-
 						alert("이메일을 입력해주세요.");
-
 						event.preventDefault();
-
 						break;
-
 					}
-
-					
 
 					else {
-
 						alert("회원가입에 성공하셨습니다. 로그인해주세요");
-
 						break;
-
 					}
-
 			}
 	});
 

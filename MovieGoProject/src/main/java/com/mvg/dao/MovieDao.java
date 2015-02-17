@@ -10,6 +10,9 @@ public interface MovieDao {
 
 	// 모든 영화 얻어오기
 	List<Movie> getAllMovies();
+	
+	// 모든 영화 얻어오기 (랜덤)
+	List<Movie> randomGetAllMovies(int page);
 
 	// 영화 하나 불러오기
 	Movie getMovieByMovieCode(String movieCode);

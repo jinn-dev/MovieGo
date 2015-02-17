@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mvg.entity.Movie;
@@ -35,6 +34,24 @@ public class RatingController {
 		model.addAttribute("movies", movies);
 		return "rating/rating";
 	}
+
+	/*@RequestMapping(value="/test", method = RequestMethod.GET)
+	public String ratingList(Model model){
+		List<Movie> movies = service.randomGetAllMovies();
+		model.addAttribute("movies", movies);
+		return "rating/test";
+		
+	}
+	
+	@RequestMapping(value="/test", method = RequestMethod.GET,
+			produces = "text/plain;charset=utf-8")
+	public  String ajaxList(@RequestParam int page, Model model){
+		int p = 0;
+		p = page;
+		List<Movie> movies = service.randomGetAllMovies();
+		model.addAttribute("movies", movies);
+		return "rating/test";
+	}*/
 	
 	/*@RequestMapping(value = "/addwishlist", method = RequestMethod.GET)
 	public String addWishlist(Model model, @RequestParam String userId, String movieCode) {
