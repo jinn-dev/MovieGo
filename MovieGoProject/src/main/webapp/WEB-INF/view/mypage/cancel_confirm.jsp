@@ -18,7 +18,7 @@
 	}
 </style>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 <div id="cancelconfirm">
 예매가 성공적으로 취소되었습니다.<br>
 <a href="cancel_list.jsp"><input type="button" value="예매취소확인"></a>

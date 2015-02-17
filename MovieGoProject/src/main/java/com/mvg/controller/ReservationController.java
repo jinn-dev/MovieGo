@@ -55,8 +55,9 @@ public class ReservationController {
 		model.addAttribute("nowmovies", codesAndNames);
 		return codesAndNames.toString();
 	}
-	
-	@RequestMapping(value="/reserve/seat", method=RequestMethod.POST)
+
+
+	@RequestMapping(value="/reserve/seat", method=RequestMethod.GET)
 	public String reserveSeat() {
 		return "reservation/reservation2";
 	}

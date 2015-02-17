@@ -17,7 +17,7 @@
 	}
 </style>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 <div id="ratinglist">
 영화평가목록
 </div>

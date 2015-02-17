@@ -25,7 +25,7 @@
 	}
 </style>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 <div id="reservationlist">
 <table>
 <tr>

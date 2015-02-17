@@ -6,16 +6,19 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import com.mvg.entity.Movie;
 import com.mvg.entity.Wishlist;
-
+@Repository
 public class WishlistDaoImpl implements WishlistDao {
-	private final String namespace = "com.mvg.mappers.wishlistMapper";
 	
 	private final static Logger logger;
 	static {
 		logger = LoggerFactory.getLogger(WishlistDaoImpl.class);
 	}
+	private final String namespace = "com.mvg.mappers.wishlistMapper.";
+
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
@@ -30,6 +33,8 @@ public class WishlistDaoImpl implements WishlistDao {
 		int result = -1;
 		String stmt = namespace + "insertWishlist";
 		result = sqlSession.insert(stmt, wishlist);
+		logger.trace("위시리스트" + wishlist);
+
 		return result;
 	}
 
@@ -42,7 +47,9 @@ public class WishlistDaoImpl implements WishlistDao {
 	@Override
 	public List<Wishlist> getWishlistByUserId(String userId) {
 		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace + "getWishlistByUserId";
+		List<Wishlist> wishlist = sqlSession.selectList(stmt, userId);
+		return wishlist;
 	}
 
 	@Override

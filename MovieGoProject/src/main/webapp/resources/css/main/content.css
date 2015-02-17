@@ -97,7 +97,7 @@
 }
 #searchinfoB:hover{
 	text-decoration: none;
-	color: A52127;
+	color: #C75C5C;
 }
 .content-style-form form p {
 	margin: 0 0 5px 0;
@@ -134,7 +134,7 @@
 
 .content-style-form input[type="text"]:focus,
 .content-style-form input[type="password"]:focus {
-	border-color: #A52127;
+	border-color: #C75C5C;
 	outline: none;
 	color: #585353;
 }
@@ -145,7 +145,7 @@
 	padding: 1.5em;
 	width: 100%;
 	border: none;
-	background: #A52127;
+	background: #C75C5C;
 	color: #F2F2F2;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -160,7 +160,7 @@
 	padding: 1.5em;
 	width: 100%;
 	border: none;
-	background: #A52127;
+	background: #C75C5C;
 	color: #F2F2F2;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -178,7 +178,7 @@
 	padding: 1.5em;
 	width: 100%;
 	border: none;
-	background: #A52127;
+	background: #C75C5C;
 	color: #F2F2F2;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -223,7 +223,7 @@
 }
 
 .content-style-form .icon-close:hover {
-	color: #A52127;
+	color: #C75C5C;
 }
 
 .js .content-style-form-1 h2,

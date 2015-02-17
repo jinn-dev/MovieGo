@@ -29,11 +29,11 @@
 					<c:url value="/mypage" var="url" />
 					<a href="${url }">MY PAGE</a>&nbsp;&nbsp;&nbsp;&nbsp;   
 					<c:url value="/board" var="url" />
-					<a href="${url }">고객센터</a>
+					<a href="${url }">고객센터</a>&nbsp;&nbsp;&nbsp;&nbsp;   
 					<c:url value="/logout" var="url" />
-					
+					<a href="${url }">LOGOUT</a>	
 				</nav>
-			 <c:out value="${user.userId}"/>님 반갑습니다.<br> 
+			 <div id="userInfo"><c:out value="${user.userId}"/>님 반갑습니다.<br></div>
 			</div>
 		</div>
 	</div>

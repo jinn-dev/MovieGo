@@ -7,7 +7,7 @@
 	width: 100%;
 	background: #E0E0D2; /* 헤더 배경색 */
 	z-index: 10000;
-	height: 230px;  
+	height: 300px;
 	overflow: hidden;
 	-webkit-transition: height 0.3s;
 	-moz-transition: height 0.3s;
@@ -16,20 +16,18 @@
 
 .cbp-af-header .cbp-af-inner {
 	width: 90%;
-	max-width: 69em;
+	max-width: 80em;
 	margin: 0 auto;
 	padding: 0 1.875em;
 }
 
-.cbp-af-header h1,
-.cbp-af-header nav {
+.cbp-af-header h1, .cbp-af-header nav {
 	display: inline-block;
 	position: relative;
 }
 
- /* We just have one-lined elements, so we'll center the elements with the line-height set to the height of the header */
-.cbp-af-header h1,
-.cbp-af-header nav a {
+/* We just have one-lined elements, so we'll center the elements with the line-height set to the height of the header */
+.cbp-af-header h1, .cbp-af-header nav a {
 	line-height: 230px;
 }
 
@@ -46,7 +44,7 @@
 	float: right;
 }
 
-#logo:link, #logo:visited, #logo:active, #logo:hover{
+#logo:link, #logo:visited, #logo:active, #logo:hover {
 	text-decoration: none;
 }
 
@@ -55,16 +53,18 @@
 	font-weight: 700;
 	margin: 0 0 0 0px;
 	font-size: 1.4em;
-	
 }
 
 .cbp-af-header nav a:hover {
 	color: #C75C5C;
 }
 
+#userInfo {
+	position: absolute;
+}
+
 /* Transitions and class for reduced height */
-.cbp-af-header h1,
-.cbp-af-header nav a {
+.cbp-af-header h1, .cbp-af-header nav a {
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
@@ -74,8 +74,8 @@
 	height: 90px;
 }
 
-.cbp-af-header.cbp-af-header-shrink h1,
-.cbp-af-header.cbp-af-header-shrink nav a {
+.cbp-af-header.cbp-af-header-shrink h1, .cbp-af-header.cbp-af-header-shrink nav a
+	{
 	line-height: 90px;
 }
 
@@ -93,14 +93,14 @@
 	.cbp-af-header h1,
 	.cbp-af-header nav {
 		display: block;
-		margin: 0 auto;  /*0 auto*/
+		margin: 0 auto;
 		text-align: center;
 		float: none;
 	}
 
 	.cbp-af-header h1,
 	.cbp-af-header nav a {
-		line-height: 115px; /*115px*/
+		line-height: 115px;
 	}
 
 	.cbp-af-header nav a {
@@ -123,7 +123,7 @@
 
 @media screen and (max-width: 32.25em) {
 	.cbp-af-header nav a {
-		font-size: 0.8em;
+		font-size: 1em;
 	}
 }
 

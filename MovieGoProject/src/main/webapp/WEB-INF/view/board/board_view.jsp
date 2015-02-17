@@ -25,6 +25,19 @@ $(document).ready(function() {
 			location.href="${url}?commentId=${comments.commentId }";
 		}
 	});
+	$(".content").click(function(){
+		var commentId = $("#id1").val();
+		var userId = $("#id2").val();
+		if(commentId ==  userId){
+			$(".content").attr("readonly",false);
+		}
+		else{
+			return false;
+		}
+	})
+	$("#comment_modify").click(function(){
+		$("#commentForm").submit();
+	});
 });
 </script>
 <title>고객센터</title>
@@ -59,7 +72,7 @@ $(document).ready(function() {
 				<td colspan="4" align="right">
 					<c:if test="${detail.userId==log.userId }">
 						<c:url value="/board/modify?boardId=${detail.boardId }" var="url"></c:url>
-						<a href="${url }"><button class="div-button">MODIFY</button></a>
+						<a href="${url }"><button class="div-button" id="comment_modify">MODIFY</button></a>
 						<c:url value="/board/delete?boardId=${detail.boardId }" var="url"></c:url>
 						<a href="${url }"><button class="div-button">DELETE</button></a>
 					</c:if>
@@ -75,11 +88,17 @@ $(document).ready(function() {
 			<tr>
 				<th colspan="5">COMMENT</th>
 			</tr>
+			<tr>
+			<td colspan="5" align="center">*댓글을 수정하려면 글을 클릭하세요.</td>
+			</tr>
 		  	<tr>
 		    <c:if test="${detail.comments[0].commentId!=0 }">
 				<c:forEach items="${detail.comments }" var="comments">
+				<c:url value="/comment/modify" var="url"/>
+				<form:form method="POST" modelAttribute="comment" id="commentForm" action="${url }">
 					<td>
 					<c:out value="${comments.userId }" />
+					<input type="hidden" id="id1" value="${comments.userId }"/>
 					</td>
 					<fmt:formatDate value="${comments.commentDate }" type="date" var="date"/>		
 					<td align="left" colspan="2">
@@ -87,15 +106,19 @@ $(document).ready(function() {
 					</td>
 					<c:if test="${comments.userId==log.userId }">
 						<td colspan="2" align="right">
-						<button class="div-button" id="comment_modify">MODIFY</button>&nbsp;
+						<input type="hidden" name="boardId" value="${detail.boardId }" />
+						<input type="submit" class="div-button" id="comment_modify" value="MODIFY">&nbsp;
 						<c:url value="/comment/drop?commentId=${comments.commentId }" var="url"></c:url>
 						<a href="${url }"><button class="div-button" id="comment_delete">DELETE</button></a>
 						</td>
 					</c:if>
 					<tr>
 					<td colspan="5" align="left" height="25">
-					<c:out value="${comments.commentContent }" /></td>
+					<input type="text" name="commentContent" class="content" value="${comments.commentContent }" style='border: 0px;'
+					 readonly/>
+					</td>
 					</tr>
+					</form:form>
 				</c:forEach>
 			</c:if>
 			</tr>  
@@ -103,11 +126,11 @@ $(document).ready(function() {
 					<td colspan="5" align="left">
 					<div class="comment-form">		
 					<c:url value="/comment/write" var="url"></c:url>
-						<form:form method="post" modelAttribute="comment" action="${url }">
+						<form:form method="post" modelAttribute="comment" action="${url }" name="comment-form">
 							<div class="comment-form-inner">
 								<input type="text" name="commentContent" id="commentContent"/>
 								<input type="hidden" name="boardId" value="${detail.boardId }" />
-								<input type="hidden" name="userId" value="${log.userId }" />
+								<input type="hidden" name="userId" id="id2" value="${log.userId }" />
 								<button class="div-button" type="submit" id="comment_submit" onclick="javascript:getComment()">SUBMIT</button>
 							</div>
 						</form:form>
