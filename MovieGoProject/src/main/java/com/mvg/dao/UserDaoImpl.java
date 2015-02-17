@@ -1,5 +1,6 @@
 package com.mvg.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -77,6 +78,26 @@ public class UserDaoImpl implements UserDao {
 		String stmt = namespace + "selectUserById";
 		String result = sqlSession.selectOne(stmt, userId);
 	
+		return result;
+	}
+
+	@Override
+	public String selectUserByEmail(String userEmail) {
+		String stmt = namespace + "selectUserByEmail";
+		String result = sqlSession.selectOne(stmt, userEmail);
+
+		return result;
+	}
+
+	@Override
+	public String selectUserByIdAndEmail(String userId, String userEmail) {
+		String stmt = namespace + "selectUserByIdAndEmail";
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("userId", userId);
+		map.put("userEmail", userEmail);
+
+		String result = sqlSession.selectOne(stmt, map);
+
 		return result;
 	}
 

@@ -25,4 +25,8 @@ public interface UserDao {
 	User getUserByUserId(User user);
 	
 	String selectUserById(String userId);
+	
+	String selectUserByEmail(String userEmail);
+	
+	String selectUserByIdAndEmail(String userId, String userEmail);
 }

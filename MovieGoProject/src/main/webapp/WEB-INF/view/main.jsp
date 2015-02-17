@@ -124,22 +124,21 @@
  		$("#idCheck").click(function() { 
 			var userId = $("#userId").val();
 			var param="userId" +"="+ $("#userId").val();
-			alert("id:" + userId);
 			$.ajax({
 
-				url:'http://localhost:9090/MovieGoProject/idcheck',
+				url:'http://localhost:9090/MovieGoProject/duplicate',
  				type:'GET',	
  				data : param,
- 				
+ 				cache : false,
+				async : false,
  				dataType : 'text',
-			    success : function(responseData) {
-			    	var a = responseData.result;
-					if(a == '0') {
-						alert="아이디 중복 x";	
+			    success : function(data) {
+					if(data == '1') {
+						alert("이미 사용중인 아이디입니다. 다른 아이디를 사용하세요.");	
 					}
 				
 					else {
-						alert("중복" + a);
+						alert("사용가능한 아이디입니다.");
 						return false;
 				
 					}
@@ -283,19 +282,10 @@
 
 	<script>
 
-	
-
-
-
-
 		function userInfo(){
-
-			<c:url value="/find_user_info" var="url"></c:url>
-
-			 location.href="reservation_complete.jsp"       	    
-
-			window.open('${url}','client_window', 'resizable=no scrollbars=no width=400 height=550');
-
+			<c:url value="/find_user_info" var="url"></c:url>    	    
+			window.open('${url}','_blank', "width=500, height=500, toolbar=no, menubar=no, resizable=no");
+		
 		}
 
 		/* 비밀번호 유효성 체크 */
