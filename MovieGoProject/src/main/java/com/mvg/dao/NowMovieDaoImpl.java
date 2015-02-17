@@ -70,10 +70,10 @@ public class NowMovieDaoImpl implements NowMovieDao {
 	}
 
 	@Override
-	public Map<String, String> getAllNowMovieNames() {
+	public Map<String, String> getAllNowMovieNames(int theaterId) {
 		String stmt = namespace + "getAllNowMovieCodes";
 		String stmt2 = namespace2 + "getMovieByMovieCode";
-		List<String> movieCodes = sqlSession.selectList(stmt);
+		List<String> movieCodes = sqlSession.selectList(stmt, theaterId);
 		HashMap<String, String> codesAndNames = new HashMap<String, String>();
 		for (int i=0;i<movieCodes.size();i++) {
 			String code = movieCodes.get(i);
@@ -82,5 +82,6 @@ public class NowMovieDaoImpl implements NowMovieDao {
 		}
 		return codesAndNames;
 	}
+
 	
 }

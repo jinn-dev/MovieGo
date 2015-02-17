@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mvg.entity.Theater;
@@ -40,12 +42,18 @@ public class ReservationController {
 	MovieService mservice;
 	
 	@RequestMapping(value="/reserve/movie",  method=RequestMethod.GET)
-	public String reserveMovie(Model model){
+	public String reserveMovieCall(Model model){
 		List<Theater> theaters = tservice.getAllTheatersService();
 		model.addAttribute("theaters", theaters);
-		Map<String, String> codesAndNames = nservice.getAllNMovieNamesService();
-		model.addAttribute("nowmovies", codesAndNames);
 		return "reservation/reservation1";
+	}
+	
+	@RequestMapping(value="reserve/movie", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
+	public @ResponseBody String theaterReceive(Model model, @RequestParam int theaterId) {
+		logger.trace("수업: 극장아이디: "+theaterId);
+		Map<String, String> codesAndNames = nservice.getAllNMovieNamesService(theaterId);
+		model.addAttribute("nowmovies", codesAndNames);
+		return codesAndNames.toString();
 	}
 	
 	@RequestMapping(value="/reserve/seat", method=RequestMethod.POST)

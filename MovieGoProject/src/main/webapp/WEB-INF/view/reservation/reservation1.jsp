@@ -26,15 +26,40 @@ td, th {
 </style>
 <script type="text/javascript">
 
-function selectedVal() {
-	alert(" >???");
-	var theater = $(":input:radio[name=thChk]:checked").val(); 
-	var movie = $(":input:radio[name=mvChk]:checked").val();
-	alert("극장선택값 : "+theater);
-	alert("영화선택값 : "+movie);
+
+
+//var theater = $(":input:radio[name=thChk]:checked").val(); 
+
+
+window.onload=function() {
+	
+	var xhr = new XMLHttpRequest();
+	document.querySelector("#thSelected").addEventListener("click", function() {
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState==4&&xhr.status==200) {
+				//document.querySelector("#movielist").innerHTML = xhr.responseText+"<br>";
+				var movieArr = JSON.parse(xhr.responseText);
+				myFunction(movieArr);
+			}
+		}
+		var url = "<%=request.getContextPath()%>/reserve/movie";
+		xhr.open("post", url, true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		var theater = $(":input:radio[name=thChk]:checked").val();
+		//var movie = $(":input:radio[name=mvChk]:checked").val();
+		xhr.send("theaterId="+theater);
+	});	
 }
 
-function chk_seledVal(){
+function myFunction(movieArr) {
+	var out = "이수연";
+	document.querySelector("#movielist").innerHTML = out;
+
+}
+
+//극장선택값
+
+/* function chk_seledVal(){
     var form = document.frm;
 
     var thval = "";
@@ -121,9 +146,9 @@ function chk_seledVal(){
    	    }
            else {
         		location.href="reservation2.jsp"   
-           }
+           } 
         	    
-}
+}*/
 </script>
 </head>
 
@@ -137,19 +162,21 @@ function chk_seledVal(){
 <input type="reset" value="새로" height="70">
 
 <table align="center">
-<tr><th>영화관</th><th>영화</th><th>날짜</th><th>시간</th></tr>
+<tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
 <tr>
 <td height="400px">
-  <c:forEach items="${theaters }" var="theater">`	
-  <input type="radio" name="thChk" value="${theater.theaterId }"> 
+  <c:forEach items="${theaters }" var="theater">	
+<input type="radio" name="thChk" value="${theater.theaterId }"> 
   <c:out value="${theater.theaterName }"/><br>
   </c:forEach>
+  <input type="button" id="thSelected" value="영화선택"/>
 </td>
 <td>
-   <c:forEach items="${nowmovies }" var="nowmovie">
+   <%-- <c:forEach items="${nowmovies }" var="nowmovie">
   <input type="radio" name="mvChk" value="${nowmovie.key }"> 
   <c:out value="${nowmovie.value }"/><br>
-  </c:forEach>
+  </c:forEach> --%>
+  <div id="movielist"></div>
 </td>
 <td>
   <input type="radio" name ="dtChk" value="1">+1(내일)<br>
@@ -159,16 +186,11 @@ function chk_seledVal(){
   <input type="radio" name ="dtChk" value="5">+5<br>
   <input type="radio" name ="dtChk" value="6">+6<br>
 </td>
-<td>
-<!-- 6은 오전6시/ 18은 오후6시로 가정 -->
- <input type="radio" name ="tmChk" value="6">오전<br>
-  <input type="radio" name ="tmChk" value="18">오후<br>
-</td>
 </tr>
 <tr>
-<td colspan="4" height="100px">
+<td colspan="3" height="100px">
 
-<input type="button" value="좌석선택" name="seat" onclick="javascript:selectedVal();" />
+<input type="button" value="좌석선택" id="seat" name="seat" />
 </td>
 </table>
 <%-- </form:form> --%>

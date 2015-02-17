@@ -17,7 +17,7 @@ public interface NowMovieService {
 	List<NowMovie> getNMovieByMCodeService(String movieCode);
 	
 	//상영영화이름
-	Map<String, String> getAllNMovieNamesService();
+	Map<String, String> getAllNMovieNamesService(int theaterId);
 	
 	// 상영하려는 영화 추가
 	int insertNMovieService(Movie movie);
