@@ -58,6 +58,18 @@ public class UserServiceImpl implements UserService {
 		String result = dao.selectUserById(userId);
 		return result;
 	}
+
+	@Override
+	public String selectUserByEmail(String userEmail) {
+		String result = dao.selectUserByEmail(userEmail);
+		return result;
+	}
+
+	@Override
+	public String selectUserByIdAndEmail(String userId, String userEmail) {
+		String result = dao.selectUserByIdAndEmail(userId, userEmail);
+		return result;
+	}
 	
 	
 }

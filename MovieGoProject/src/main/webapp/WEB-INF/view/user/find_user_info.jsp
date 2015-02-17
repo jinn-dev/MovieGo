@@ -14,11 +14,61 @@
 	/* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */
 	$(document).ready(function() {
 			$("#findId").click(function() {
-				<c:url value="/user/IdCheck" var="idchk"></c:url>
-				var url = "${idchk}?id="+$("#joinid").val();
-				alert("이메일");
-			document.findform.chk.value = "이메일을 입력하세요";
+				var email = $("#email").val();
+				var param="userEmail" +"="+ $("#email").val();
+				$.ajax({
+					url:'http://localhost:9090/MovieGoProject/idcheck',
+	 				type:'GET',	
+	 				data : param,
+	 				cache : false,
+					async : false,
+	 				dataType : 'text',
+				    success : function(data) {
+				    	if(data) {
+					    	  $("#idCheckResultView").html("<b>아이디는 " + data + " 입니다.<b>"); 
+						}
+				    	else {
+				    		$("#idCheckResultView").html("<b>찾는 아이디는가 없습니다.<b>"); 
+				    	}
 
+					},
+				
+					error : function(request, status, error) {
+						if(request.status != '0') {
+							alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+						}	
+					}
+					
+				 }); 
+				
+				$("#findPassword").click(function() {
+					var email = $("#email").val();
+					var id = $("#email").val();
+					var param="userEmail" +"="+ $("#email").val();
+					$.ajax({
+						url:'http://localhost:9090/MovieGoProject/idcheck',
+		 				type:'GET',	
+		 				data : param,
+		 				cache : false,
+						async : false,
+		 				dataType : 'text',
+					    success : function(data) {
+					    	if(data) {
+						    	  $("#idCheckResultView").html("<b>아이디는 " + data + " 입니다.<b>"); 
+							}
+					    	else {
+					    		$("#idCheckResultView").html("<b>찾는 아이디는가 없습니다.<b>"); 
+					    	}
+
+						},
+					
+						error : function(request, status, error) {
+							if(request.status != '0') {
+								alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+							}	
+						}
+						
+					 }); 
 	});
 		
 	});
@@ -36,28 +86,28 @@ body {
 				<h3>아이디 찾기</h3>
 				<form name="findform">
 					<p>
-						<label>이메일</label><input type="text" id="email">
+						<label>이메일</label><input type="text" id="email" name="email">
 					</p>
 					<p>
-					</p>
-				
-				
+					<input type="button" id="findId" value="FIND ID"/></p>
+					<span class="style4" id="idCheckResultView"></span> 					
+	
 				</form>
 				
 			</div>
-			<input type="text" name="chk" id="chk" value="" readonly="readonly">  
-				<input type="button" id="findId" value="FIND ID"/>
+			
 				<div class="content-style-form content-style-form-3">
 					<h3>비밀번호 찾기</h3>
 					<form>
 						<p>
-							<label>아이디</label><input type="text" id="id">
+							<label>아이디</label><input type="text" id="id" name="id">
 						</p>
 						<p>
-							<label>이메일</label><input type="text" id="email">
+							<label>이메일</label><input type="text" id="email" name="email">
 						</p>
 						<p>
-							<button>FIND PASSWORDDD</button>
+						<input type="button" id="findPassword" value="FIND ID"/></p>
+						<span class="style4" id="passwordCheckResultView"></span> 		
 						</p>
 					</form>
 				</div>

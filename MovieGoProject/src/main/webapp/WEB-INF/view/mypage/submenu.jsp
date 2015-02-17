@@ -4,10 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="com.mvg.entity.User" %>
 <%@ page import="com.mvg.entity.Movie" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <meta name="author" content="Codrops" />
@@ -15,9 +12,6 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/default.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/component.css" />
 <script src="<%=request.getContextPath()%>/js/mypage/modernizr.custom.js"></script>
-<title>Insert title here</title>
-</head>
-<body>
 <%-- <c:url value="/mypage" var="url"/>    
 <a href="${url }"><input type="button" value="영화취향분석"></a><br>
 <c:url value="/modify" var="url"/>    
@@ -37,5 +31,3 @@
 		</ul>
 
 	</div>
-</body>
-</html>
