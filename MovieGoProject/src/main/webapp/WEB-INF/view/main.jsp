@@ -25,6 +25,7 @@
 
 	$(document).ready(function() {
 
+		
 		$("#signupB").click(function() {
 
 			var pwdLength = $("#userPwd").val().length;

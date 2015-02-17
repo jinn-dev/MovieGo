@@ -6,10 +6,20 @@
 <insert id="insertWishlist" parameterType="Wishlist">
   	insert into wishlists (movie_code, user_id) values (#{movieCode}, #{userId})
 	</insert>
-	
-	<select id="getWishlistByUserId" resultType="Wishlist">
-	select m.movie_code, m.movie_title_kr, m.movie_directior, 
-	m.movie_genre, w.user_id, w.movie_code, w.wish_id from movies m join wishlists w on(m.movieCode = w.movieCode) where user_id= #{userId}
+	<select id="getWishlistByUserId" resultMap="ComplexMovieWish">
+	select m.movieCode, m.movie_title_kr, m.movie_directior, 
+	m.movie_genre, w.user_id, w.movie_code from movies m join wishlists w on(m.movieCode = w.movieCode) where user_id= #{userId}
 	</select>
+	<resultMap type="Wishlist" id="ComplexMovieWish">
+		<id column="wish_id" jdbcType="INTEGER" property="wishId" />
+		<result column="user_id" jdbcType="VARCHAR" property="userId" />
+		<result column="movie_code" jdbcType="VARCHAR" property="movieCode" />
+		<collection property="movies" ofType="Movie">
+			<id column="movie_code" jdbcType="VARCHAR" property="movieCode" />
+			<result column="movie_title_kr" jdbcType="VARCHAR" property="movieTitleKr" />
+			<result column="movie_director" jdbcType="VARCHAR" property="movieDirectort" />
+			<result column="movie_genre" jdbcType="VARCHAR" property="movieGenre" />	
+		</collection>
+	</resultMap>
 </mapper>
 
