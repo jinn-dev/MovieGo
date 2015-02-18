@@ -23,6 +23,15 @@
 		select * from nowmovies where theater_id=#{theaterId}
 	</select>
 	
+	<select id="getNowMovieByThAndMovie" parameterType="NowMovie" resultType="String">
+		select to_char(movie_time, 'mm"월" dd"일" hh24') from nowmovies where theater_id=#{theaterId} and movie_code=#{movieCode}
+	</select>
+	
+	<select id="getNowMovieByNMovie" parameterType="NowMovie" resultType="Integer">
+		select nowmovie_id from nowmovies where theater_id=#{theaterId} and movie_code=#{movieCode}
+		 and to_char(movie_time, 'mmddhh24')=#{movieTime};
+	</select>
+	
 	<insert id="insertNowMovie" parameterType="NowMovie">
 		insert into nowmovies(theater_id, movie_code, movie_date)
 		values(#{theaterId}, #{movieCode}, #{movieDate})

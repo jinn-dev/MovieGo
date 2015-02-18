@@ -1,5 +1,6 @@
 package com.mvg.dao;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,6 +83,39 @@ public class NowMovieDaoImpl implements NowMovieDao {
 		}
 		return codesAndNames;
 	}
+	
+	@Override
+	public List<NowMovie> getNowMovieByTheaterId(int theaterId) {
+		String stmt = namespace + "getNowMovieByTheaterId";
+		List<NowMovie> nowmovies = sqlSession.selectList(stmt, theaterId);
+		return nowmovies;
+	}
+
+	@Override
+	public Map<String, String> getNowMovieByThAndMovie(int theaterId, String movieCode) {
+		NowMovie n = new NowMovie();
+		n.setTheaterId(theaterId);
+		n.setMovieCode(movieCode);
+		String stmt = namespace + "getNowMovieByThAndMovie";
+		List<String> tlist = sqlSession.selectList(stmt, n);
+		HashMap<String, String> mtimes = new HashMap<String, String>();
+		for (int i=0;i<tlist.size();i++) {
+			String value = tlist.get(i);
+			int strlen = value.length();
+			String key = value.substring(strlen-1);
+			if ((value.substring(strlen-2)).equals("06")) {
+				value = value.replace("06", "오전");
+			}
+			else if ((value.substring(strlen-2)).equals("18")) {
+				value = value.replace("18", "오후");
+			}
+			mtimes.put(key, value);	
+		}
+		logger.trace("수업: "+mtimes);
+		return mtimes;
+	}
+
+	
 
 	
 }
