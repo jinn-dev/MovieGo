@@ -4,7 +4,6 @@ import java.util.Date;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
 public class User {
 	private String userId;
 	private String userPwd;

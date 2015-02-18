@@ -2,7 +2,6 @@ package com.mvg.entity;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
 public class Evaluation {
 
 	private int evId;

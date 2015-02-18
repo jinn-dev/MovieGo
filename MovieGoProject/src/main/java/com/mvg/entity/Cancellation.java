@@ -4,7 +4,6 @@ import java.util.Date;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
 public class Cancellation {
 	private int cancelId;
 	private Date cancelDate;

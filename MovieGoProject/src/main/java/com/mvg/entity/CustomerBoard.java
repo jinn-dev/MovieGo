@@ -5,7 +5,6 @@ import java.util.Date;
 
 import org.springframework.stereotype.Repository;
 
-@Repository
 public class CustomerBoard {
 
 	private int boardId;
