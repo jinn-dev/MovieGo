@@ -2,8 +2,6 @@ package com.mvg.entity;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Repository;
-
 public class Cancellation {
 	private int cancelId;
 	private Date cancelDate;

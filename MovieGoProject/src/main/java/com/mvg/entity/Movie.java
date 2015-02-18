@@ -1,6 +1,5 @@
 package com.mvg.entity;
 
-import org.springframework.stereotype.Repository;
 
 public class Movie {
 

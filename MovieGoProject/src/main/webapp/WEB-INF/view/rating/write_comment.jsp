@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>코멘트쓰기</title>
 </head>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -20,11 +20,8 @@
 	});
 </script>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
-
-코멘트쓰기
-영화제목
+별점<input type="text" id="star" name="star" value="별점 입력하세요. ">
 코멘트<input type="text" id="comment" name="comment" value="코멘트를 입력하세요. ">
-
+<input type="submit" value="입력"/>
 </body>
 </html>

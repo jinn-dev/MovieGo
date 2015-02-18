@@ -103,8 +103,9 @@ public class ControllerTest {
 	
 	@RequestMapping(value = "/passwordCheck", method = RequestMethod.GET)
 	@ResponseBody
-	public String emailCheck(@RequestParam String userEmail) {
-		  String result = service.selectUserByEmail(userEmail);
+	public String emailCheck(@RequestParam String userId, @RequestParam String userEmail) {
+		  logger.trace("수업:" + userId + userEmail);
+		  String result = service.selectUserByIdAndEmail(userId, userEmail);
 		  logger.trace("수업:" + result);
 			return result;
 	}

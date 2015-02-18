@@ -1,7 +1,5 @@
 package com.mvg.entity;
 
-import org.springframework.stereotype.Repository;
-
 public class ReservationInfo {
 	private int reservationinfoId;
 	private int seatId;
