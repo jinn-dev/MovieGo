@@ -1,8 +1,8 @@
 package com.mvg.entity;
 
-import org.springframework.stereotype.Repository;
 
-@Repository
+
+
 public class Movie {
 
 	private String movieCode;

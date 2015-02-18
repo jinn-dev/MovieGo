@@ -8,9 +8,14 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
+<style>
+table {
+	width:70%;
+}
+</style>
 <script type="text/javascript">
 
-function clickMovieName(code) {
+function clickMovie(movie) {
 	/* var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState==4&&xhr.status==200) {
@@ -19,10 +24,10 @@ function clickMovieName(code) {
 			for (var i=0;i<jsonobj2.)
 		}
 	} */
-	alert(code);
+	alert(movie);
 }
 
-function check(s) {
+function clickTheater(theater) {
 	//alert(id);
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
@@ -31,17 +36,15 @@ function check(s) {
 			var jsonobj = JSON.parse(xhr.responseText);
 			$("#movielist").empty();
 			for(var i = 0; i < jsonobj.movies.length; i++) {
-				var appendText = "<a href='javascript:clickMovieName(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>";
+				var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>";
 				$("#movielist").append(appendText);
 			}
-			//$("#movielist").val("");
-			//document.querySelector("#movielist").innerHTML ="수연";
+			
 		}
 	}
 	var url = "<%=request.getContextPath()%>/reserve/movie";
 	xhr.open("post", url, true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	var theater = s;
 	xhr.send("theaterId="+theater);
 }
 
@@ -146,12 +149,12 @@ function check(s) {
 <h1> '아이디: ${log.userId }' 영화 예매 </h1>
 <form name="frm" id="frm">
 <input type="reset" value="새로" height="70">
-<table>
+<table border=1  >
 <tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
 <tr>
 <td height="400px">
   <c:forEach items="${theaters }" var="theater">
-  <a href="javascript:check(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br>
+  <a href="javascript:clickTheater(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br>
   </c:forEach>
   <input type="button" id="thSelected" value="영화선택"/>
 </td>

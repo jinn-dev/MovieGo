@@ -4,7 +4,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.mvg.entity.NowMovie;
 import com.mvg.entity.Theater;
 import com.mvg.service.MovieService;
 import com.mvg.service.NowMovieService;
@@ -30,7 +30,7 @@ public class ReservationController {
 	static {
 		logger = LoggerFactory.getLogger(ControllerTest.class);
 	}
-
+	
 	@Autowired
 	ReservationService rservice;
 	
@@ -47,6 +47,10 @@ public class ReservationController {
 	public String reserveMovieCall(Model model){
 		List<Theater> theaters = tservice.getAllTheatersService();
 		model.addAttribute("theaters", theaters);
+		
+		List<NowMovie> nowmovies = nservice.getAllNMoviesService();
+		logger.trace("수업: "+nowmovies);
+		
 		return "reservation/reservation1";
 	}
 	
@@ -85,15 +89,13 @@ public class ReservationController {
 		}
 		jsonBuilder.append("]}");
 		
-		String json = JSONValue.toJSONString(codesAndNames);
-		logger.trace("수업: "+json);
 		return jsonBuilder.toString();
 
 	}
 	
 	/*@RequestMapping(value="reserve/movie", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public @ResponseBody String movieReceive(@RequestParam String movieCode, Model model) {
-		logger.trace("수업: 극장아이디: "+movieCode);
+		logger.trace("수업: 영화코드: "+movieCode);
 		StringBuilder jsonBuilder = new StringBuilder();
 		
 		Map<String, String> codesAndNames = nservice.getAllNMovieNamesService(theaterId);
@@ -130,8 +132,8 @@ public class ReservationController {
 		logger.trace("수업: "+json);
 		return jsonBuilder.toString();
 
-	}*/
-
+	}
+*/
 
 	@RequestMapping(value="/reserve/seat", method=RequestMethod.GET)
 	public String reserveSeat() {
