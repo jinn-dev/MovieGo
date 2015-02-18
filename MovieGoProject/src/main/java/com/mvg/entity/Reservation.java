@@ -1,8 +1,9 @@
 package com.mvg.entity;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 
+import org.springframework.stereotype.Repository;
 
 public class Reservation {
 
@@ -11,8 +12,6 @@ public class Reservation {
 	private int reservationNum;
 	private int reservationPrice;
 	private Date reservationDate;
-	
-		
 	private ArrayList<ReservationInfo> reservationInfo;
 	
 	public Reservation() {

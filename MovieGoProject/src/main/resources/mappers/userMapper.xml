@@ -6,40 +6,41 @@
 	<select id="getUserCount" resultType="Integer">
 		select count(*) from users
 	</select>
-	
-	<insert id = "insertUser" parameterType = "User">
+ <insert id = "insertUser" parameterType = "User">
   	insert into users (user_id, user_pwd, user_email, user_birthday) values (#{userId}, #{userPwd}, #{userEmail}, #{userBirthday})
-  	</insert>
+  </insert>
   
+
 	<select id="selectUser" parameterType="User" resultType="User">
 		select user_id, user_pwd, user_email, user_birthday
 		from users where user_id=#{userId}
 	</select>
-	
 	<select id="selectUserById" parameterType="String" resultType="String">
 		select count(user_id)
 		from users where user_id=#{userId}
 	</select>
-	
+		<select id="selectUserByEmail" parameterType="String" resultType="String">
+		select user_id
+		from users where user_email=#{userEmail}
+	</select>
 	<select id="selectUserByEmail" parameterType="String" resultType="String">
 		select user_id
 		from users where user_email=#{userEmail}
 	</select>
-	
 	<select id="selectUserByIdAndEmail" parameterType="String" resultType="String">
 		select user_pwd
 		from users where user_id=#{userId} and user_email=#{userEmail}
 	</select>
-	
-	<update id="updateUser" parameterType="User">
+<update id="updateUser" parameterType="User">
 	update users set user_pwd=#{userPwd}, user_email=#{userEmail}, user_birthday=#{userBirthday} where user_id=#{userId}
-	</update>
-	
-	<delete id="deleteUser" parameterType="String">
+</update>
+<delete id="deleteUser" parameterType="String">
   	delete from users 
   	where user_id=#{userId}
-  	</delete>
+  </delete>
 </mapper>
+
+
 
 
 <!-- 	<select id="selectUserById" parameterType="String" resultType="User">

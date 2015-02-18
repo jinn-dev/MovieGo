@@ -2,24 +2,23 @@ package com.mvg.entity;
 
 import java.util.Date;
 
-
-
+import org.springframework.stereotype.Repository;
 
 public class NowMovie {
 	private int nowmovieId;
 	private int theaterId;
 	private String movieCode;
-	private String movieTime;
+	private Date movieDate;
 
 	public NowMovie() {}
-
+	
 	public NowMovie(int nowmovieId, int theaterId, String movieCode,
-			String movieTime) {
+			Date movieDate) {
 		super();
 		this.nowmovieId = nowmovieId;
 		this.theaterId = theaterId;
 		this.movieCode = movieCode;
-		this.movieTime = movieTime;
+		this.movieDate = movieDate;
 	}
 
 	public int getNowmovieId() {
@@ -46,21 +45,19 @@ public class NowMovie {
 		this.movieCode = movieCode;
 	}
 
-	public String getMovieTime() {
-		return movieTime;
+	public Date getMovieDate() {
+		return movieDate;
 	}
 
-	public void setMovieTime(String movieTime) {
-		this.movieTime = movieTime;
+	public void setMovieDate(Date movieDate) {
+		this.movieDate = movieDate;
 	}
 
 	@Override
 	public String toString() {
 		return "NowMovie [nowmovieId=" + nowmovieId + ", theaterId="
-				+ theaterId + ", movieCode=" + movieCode + ", movieTime="
-				+ movieTime + "]";
+				+ theaterId + ", movieCode=" + movieCode + ", movieDate="
+				+ movieDate + "]";
 	}
-	
-	
 
 }

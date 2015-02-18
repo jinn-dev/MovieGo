@@ -2,6 +2,7 @@ package com.mvg.entity;
 
 import java.util.ArrayList;
 
+import org.springframework.stereotype.Repository;
 
 public class Wishlist {
 
