@@ -8,6 +8,11 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
+<style>
+table {
+	width:70%;
+}
+</style>
 <script type="text/javascript">
 
 
@@ -45,13 +50,11 @@ function clickMovie(movie) {
 	xhr.send("movieCode="+movie);
 
 	} 
-}
 
 
 function clickTheater(theater) {
 	$("#timelist").empty();
 	$("#movielist").empty();
-
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState==4&&xhr.status==200) {
@@ -66,7 +69,6 @@ function clickTheater(theater) {
 	var url = "<%=request.getContextPath()%>/reserve/theater";
 	xhr.open("post", url, true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	var theater = s;
 	xhr.send("theaterId="+theater);
 }
 
@@ -170,7 +172,7 @@ function clickTheater(theater) {
 <h1> '아이디: ${log.userId }' 영화 예매 </h1>
 <form name="frm" id="frm">
 <input type="reset" value="새로" height="70">
-<table>
+<table border=1>
 <tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
 <tr>
 <td height="400px">
