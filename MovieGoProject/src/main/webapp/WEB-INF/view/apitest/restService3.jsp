@@ -6,6 +6,8 @@
 <%@ page import="net.sf.json.JSONObject"%>
 <%@ page import="net.sf.json.util.JSONBuilder"%>
 <%@ page import="net.sf.json.JSONArray"%>
+<%@ page import="org.xml.sax.SAXException" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page trimDirectiveWhitespaces="true"%>

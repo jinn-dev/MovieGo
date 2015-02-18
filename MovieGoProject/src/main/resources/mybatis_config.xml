@@ -34,6 +34,5 @@
 		<mapper resource="mappers/movieMapper.xml" />
 		<mapper resource="mappers/nowmovieMapper.xml" />
 		<mapper resource="mappers/wishlistMapper.xml" />
-		
 	</mappers>
 </configuration>

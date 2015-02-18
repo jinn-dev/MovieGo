@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mvg.entity.Comment;
-import com.mvg.entity.CustomerBoard;
 
 @Repository
 public class CommentDaoImpl implements CommentDao {

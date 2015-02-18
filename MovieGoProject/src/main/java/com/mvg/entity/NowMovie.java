@@ -2,9 +2,7 @@ package com.mvg.entity;
 
 import java.util.Date;
 
-import org.springframework.stereotype.Repository;
 
-@Repository
 public class NowMovie {
 	private int nowmovieId;
 	private int theaterId;
