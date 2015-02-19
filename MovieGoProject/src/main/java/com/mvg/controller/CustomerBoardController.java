@@ -26,8 +26,11 @@ import com.mvg.service.CustomerBoardService;
 public class CustomerBoardController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(CustomerBoardController.class);
+	
 	@Autowired
 	CustomerBoardService service;
+	
+	@Autowired
 	CommentService cmtservice;
 	
 	/* 게시판 리스트 */

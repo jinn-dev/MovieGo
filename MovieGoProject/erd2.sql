@@ -20,10 +20,10 @@ DROP TABLE cancellations CASCADE CONSTRAINTS;
 DROP TABLE comments CASCADE CONSTRAINTS;
 DROP TABLE customerboards CASCADE CONSTRAINTS;
 DROP TABLE evaluations CASCADE CONSTRAINTS;
-DROP TABLE wishlists CASCADE CONSTRAINTS;
 DROP TABLE reservationinfo CASCADE CONSTRAINTS;
 DROP TABLE seatinfo CASCADE CONSTRAINTS;
 DROP TABLE nowmovies CASCADE CONSTRAINTS;
+DROP TABLE wishlists CASCADE CONSTRAINTS;
 DROP TABLE movies CASCADE CONSTRAINTS;
 DROP TABLE reservations CASCADE CONSTRAINTS;
 DROP TABLE theaters CASCADE CONSTRAINTS;
@@ -102,7 +102,7 @@ CREATE TABLE evaluations
 	user_id varchar2(10) NOT NULL,
 	movie_code varchar2(8) NOT NULL,
 	ev_rating number NOT NULL,
-	ev_comment varchar2(100),
+	ev_comment varchar2(200),
 	PRIMARY KEY (ev_id)
 );
 
@@ -110,16 +110,16 @@ CREATE TABLE evaluations
 CREATE TABLE movies
 (
 	movie_code varchar2(8) NOT NULL,
-	movie_title_kr varchar2(50) NOT NULL,
-	movie_title_eng varchar2(50) NOT NULL,
-	movie_genre varchar2(30) NOT NULL,
-	movie_nation varchar2(30) NOT NULL,
-	movie_director varchar2(100) NOT NULL,
-	movie_actor1 varchar2(20) NOT NULL,
-	movie_actor2 varchar2(20),
-	movie_actor3 varchar2(20),
-	movie_img_url varchar2(100),
+	movie_title_kr varchar2(400) NOT NULL,
+	movie_title_eng varchar2(400) NOT NULL,
+	movie_genre varchar2(400) NOT NULL,
+	movie_nation varchar2(400) NOT NULL,
+	movie_director varchar2(400) NOT NULL,
+	movie_img_url varchar2(4000),
 	movie_story varchar2(4000),
+	movie_actor1 varchar2(200),
+	movie_actor2 varchar2(200),
+	movie_actor3 varchar2(200),
 	PRIMARY KEY (movie_code)
 );
 
@@ -166,7 +166,7 @@ CREATE TABLE seatinfo
 CREATE TABLE theaters
 (
 	theater_id number NOT NULL,
-	theater_name varchar2(10) NOT NULL UNIQUE,
+	theater_name varchar2(50) NOT NULL UNIQUE,
 	PRIMARY KEY (theater_id)
 );
 
@@ -201,6 +201,12 @@ ALTER TABLE comments
 ;
 
 
+ALTER TABLE nowmovies
+	ADD FOREIGN KEY (movie_code)
+	REFERENCES movies (movie_code)
+;
+
+
 ALTER TABLE evaluations
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
@@ -208,12 +214,6 @@ ALTER TABLE evaluations
 
 
 ALTER TABLE wishlists
-	ADD FOREIGN KEY (movie_code)
-	REFERENCES movies (movie_code)
-;
-
-
-ALTER TABLE nowmovies
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
 ;
@@ -231,13 +231,13 @@ ALTER TABLE reservationinfo
 ;
 
 
-ALTER TABLE cancellations
+ALTER TABLE reservationinfo
 	ADD FOREIGN KEY (seat_id)
 	REFERENCES seatinfo (seat_id)
 ;
 
 
-ALTER TABLE reservationinfo
+ALTER TABLE cancellations
 	ADD FOREIGN KEY (seat_id)
 	REFERENCES seatinfo (seat_id)
 ;
@@ -249,7 +249,7 @@ ALTER TABLE nowmovies
 ;
 
 
-ALTER TABLE comments
+ALTER TABLE wishlists
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
@@ -267,13 +267,13 @@ ALTER TABLE reservations
 ;
 
 
-ALTER TABLE wishlists
+ALTER TABLE cancellations
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
 
 
-ALTER TABLE cancellations
+ALTER TABLE comments
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
@@ -285,12 +285,6 @@ ALTER TABLE evaluations
 ;
 
 
-alter table nowmovies
-add constraint nowmovies_uq unique (theater_id, movie_code, movie_time);
-
-
-alter table seatinfo
-add constraint seatinfo_uq unique(nowmovie_id, seat_no);
 
 /* Create Triggers */
 
@@ -393,7 +387,6 @@ BEGIN
 END;
 
 /
-
 
 
 

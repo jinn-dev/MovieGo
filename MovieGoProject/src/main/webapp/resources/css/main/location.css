@@ -7,22 +7,17 @@
 
 .wrap {
 	margin: 0 auto;
-	width: 75%;
+	width: 68%;
 	height: 100%;
 }
 
 .main-box-1 {
-	position: absolute;
-	top: 25%;
-	left: 15%;
-	width : 650px;
-	height: 360px;
-	background: #393939;
+	margin: 0 auto;
+	float: left;
 }
 .main-box-2 {
-	position: absolute;
-	top: 25%;
-	left: 55%;
+	margin: 0 auto;
+	float: right;
 	text-align: center;
 	width: 450px;
 	height: 360px;
@@ -30,56 +25,19 @@
 }
 
 .main-box-3{
-	position: absolute;
-	top: 65%;
-	left: 15%;
+	float: left;
 	text-align: center;
-	width : 700px;;
+	width : 600px;
 	height: 360px;
 	background: #274557;
 }
 
 .main-box-4 {
-	position: fixed;
-	top: 65%;
-	left: 55%;
-	text-align: center;
-	width: 450px;
-	height: 360px;
-	background: #C75D5C;
-}
-
-@media screen and (max-width: 60em) {
-
-.main-box-2 {
-	position: fixed;
-	top: 25%;
-	left: 55%;
-	text-align: center;
-	width: 450px;
-	height: 360px;
-	background: #DF995E;
-}
-
-.main-box-3{
-	position: fixed;
-	top: 65%;
-	left: 15%;
-	text-align: center;
-	width : 650px;
-	height: 360px;
-	background: #274557;
-}
-
-.main-box-4 {
-	position: fixed;
-	top: 65%;
-	left: 55%;
+	margin: 0 auto;
+	float: right;
 	text-align: center;
 	width: 450px;
 	height: 360px;
 	background: #C75D5C;
 }
 	
-	
-	}

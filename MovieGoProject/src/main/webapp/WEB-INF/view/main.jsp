@@ -167,61 +167,35 @@
 	<!-- 메인 배경화면 -->
 
 		<div class="wrapper">
-
 			<div class="screen" id="screen-3" data-video="vid/camera.mp4">
-
 				<img src="<%=request.getContextPath()%>/img/camera.jpg"
-
 					class="big-image" />
-
-				<h1 class="main-title">MOVIE<font color="#C75C5C">GO</font></h1>
-
 			</div>
-
 		</div>
 
 		<!-- 로그인/회원가입 -->
 
 		<header>
-
-			<h1>Please Login or Sign up for using our services</h1>
-
+			<h1 class="main-title">MOVIE<font color="#C75C5C">GO</font></h1>
+			<h2>Please Login or Sign up for using our services</h2>
 				<div class="mockup-content">
-
 					<div class="morph-button morph-button-modal morph-button-modal-1 morph-button-fixed">
-
 						<button type="button" id="loginEnter">LOGIN</button>
-
 						<div class="morph-content">
-
 							<div>
-
 								<div class="content-style-form content-style-form-1">
-
 									<span class="icon icon-close">Close the dialog</span>
-
 									<h2>Login</h2>
-
 									<c:url value="/login" var="action"></c:url>
-
 									<form:form modelAttribute="log" method="post" action="${action }" name="loginform">
-
 										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
-
 										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>
-
 										<p><input id="loginB" type="submit" name="_event_confirmed" value="LOGIN"/></p>
-
 										<p id="searchinfo"><a href="javascript:userInfo()" id="searchinfoB">ID/비밀번호 찾기</a></p>
-
 									</form:form>
-
 								</div>
-
 							</div>
-
 						</div>
-
 					</div><!-- morph-button -->
 
 					<div class="morph-button morph-button-modal morph-button-modal-2 morph-button-fixed">

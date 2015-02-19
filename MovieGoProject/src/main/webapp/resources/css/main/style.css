@@ -33,16 +33,14 @@ h1{
 
 /* Header */
 header {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+   
     z-index: 999;
     color: #fff;
     background: rgba(255,255,255,0.1);
     padding: 60px;
     width: 800px;
     height: 200px;
-    margin: -200px 0 0 -400px;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -70,12 +68,9 @@ header p {
     width: auto;
 }
 
-.main-title {
-    position: absolute;
-    top: 15%;
-    left: 36%;
+header .main-title {
     opacity: 0.7;
-    margin: 40px 0 0 0;
+    margin: 0 auto;
     padding: 0;
     line-height: .65;
     font-size: 7em;
@@ -88,16 +83,3 @@ header p {
 	transition: all 0.3s;
 }
 
-@media screen and (max-width: 60em) {
-	.main-title {
-		position: absolute;
-		top: 15%;
-		left: 18%;
-		opacity: 0.7;
-		margin: 40px 0 0 0;
-		padding: 0;
-		line-height: .65;
-		font-size: 7em;
-		text-transform: uppercase;
-	}
-}

@@ -12,6 +12,15 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script>
 $(document).ready(function() {
+	
+	$("#board_delete").click(function(){
+		var result = window.confirm("글을 삭제하시겠습니까?")
+		if(result){
+			<c:url value="/board/delete" var="url"></c:url>
+			location.href="${url}?boardId=${detail.boardId }";
+		}
+	});
+	
 	$("#comment_submit").click(function(){
 		if($("#commentContent").val()==""){
 			alert("코멘트 내용을 입력해주세요.");
@@ -52,7 +61,7 @@ $(document).ready(function() {
 		</h5>
 	</header>
 	<section>
-		<div class="view-table">
+	<div class="view-table">
 		<table width="602">
 			<tr>
 				<th id="title" colspan="4"><c:out
@@ -72,9 +81,8 @@ $(document).ready(function() {
 				<td colspan="4" align="right">
 					<c:if test="${detail.userId==log.userId }">
 						<c:url value="/board/modify?boardId=${detail.boardId }" var="url"></c:url>
-						<a href="${url }"><button class="div-button" id="comment_modify">MODIFY</button></a>
-						<c:url value="/board/delete?boardId=${detail.boardId }" var="url"></c:url>
-						<a href="${url }"><button class="div-button">DELETE</button></a>
+						<a href="${url }"><button class="div-button">MODIFY</button></a>
+						<button class="div-button" id="board_delete">DELETE</button>
 					</c:if>
 					<c:url value="/board/list.do" var="url"></c:url>
 					<a href="${url }"><button class="div-button">LIST</button></a>
@@ -82,7 +90,7 @@ $(document).ready(function() {
 				</tr>
 				<tr>
 		</table><p><p>
-		</div>
+	</div>
 		<div class="comment-table">
 		<table width="602">
 			<tr>
@@ -107,7 +115,7 @@ $(document).ready(function() {
 					<c:if test="${comments.userId==log.userId }">
 						<td colspan="2" align="right">
 						<input type="hidden" name="boardId" value="${detail.boardId }" />
-						<input type="submit" class="div-button" id="comment_modify" value="MODIFY">&nbsp;
+						<input type="submit" class="div-button" id="comment_modify" value="MODIFY">
 						<c:url value="/comment/drop?commentId=${comments.commentId }" var="url"></c:url>
 						<a href="${url }"><button class="div-button" id="comment_delete">DELETE</button></a>
 						</td>
@@ -123,14 +131,14 @@ $(document).ready(function() {
 			</c:if>
 			</tr>  
 			<tr>
-					<td colspan="5" align="left">
+					<td colspan="5">
 					<div class="comment-form">		
 					<c:url value="/comment/write" var="url"></c:url>
 						<form:form method="post" modelAttribute="comment" action="${url }" name="comment-form">
 							<div class="comment-form-inner">
 								<input type="text" name="commentContent" id="commentContent"/>
 								<input type="hidden" name="boardId" value="${detail.boardId }" />
-								<input type="hidden" name="userId" id="id2" value="${log.userId }" />
+								<input type="hidden" name="userId" id="id2" value="${log.userId }" />&nbsp;&nbsp;
 								<button class="div-button" type="submit" id="comment_submit" onclick="javascript:getComment()">SUBMIT</button>
 							</div>
 						</form:form>
