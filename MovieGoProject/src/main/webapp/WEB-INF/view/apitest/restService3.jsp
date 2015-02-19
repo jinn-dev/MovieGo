@@ -26,7 +26,7 @@
 	// 결과 ROW의 개수를 지정 
 	String itemPerPage = request.getParameter("itemPerPage")==null?"20":request.getParameter("itemPerPage");
 	// 영화명으로 조회
-	String movieNm = request.getParameter("movieNm")==null?"명탐정코난":request.getParameter("movieNm");
+	String movieNm = request.getParameter("movieNm")==null?"살인의뢰":request.getParameter("movieNm");
 	// 감독명으로 조회
 	String directorNm = request.getParameter("directorNm")==null?"":request.getParameter("directorNm");
 	// YYYY형식의 조회시작 개봉연도 입력
