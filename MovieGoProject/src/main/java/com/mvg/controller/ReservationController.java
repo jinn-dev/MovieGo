@@ -1,7 +1,5 @@
 package com.mvg.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -10,11 +8,8 @@ import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,17 +44,6 @@ public class ReservationController {
 	MovieService mservice;
 	
 	
-	
-	@InitBinder
-	public void initBinder(WebDataBinder binder) throws Exception {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-		binder.registerCustomEditor(Date.class, "times",
-				new CustomDateEditor(simpleDateFormat, true));
-	}
-	
-	
-	
 	private int thId;
 	private String mCode;
 	private String mTime;
@@ -76,6 +60,7 @@ public class ReservationController {
 	public @ResponseBody String theaterReceive(@RequestParam int theaterId, Model model) {
 		
 		thId = theaterId;
+		logger.trace("수업: 극장아이디: "+thId);
 		
 		Map<String, String> codesAndNames = nservice.getAllNMovieNamesService(thId);
 		Iterator<String> iter = codesAndNames.keySet().iterator();
@@ -123,8 +108,9 @@ public class ReservationController {
 
 		
 		mCode = movieCode;
+		logger.trace("수업: 영화코드: "+mCode);
 		
-		Map<String, String> times = nservice.getNowMovieByThAndMovieService(thId, mCode);
+		Map<String, String> times = nservice.getNMovieTimeByThAndMovieService(thId, mCode);
 		Iterator<String> iter = times.keySet().iterator();
 		
 		StringBuilder jsonBuilder = new StringBuilder();
@@ -165,7 +151,7 @@ public class ReservationController {
 	@RequestMapping(value="reserve/time", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public @ResponseBody String timeReceive(@RequestParam String time, Model model) {
 		mTime = time;
-		logger.trace("수업: 영화시간: "+time);
+		logger.trace("수업: 영화시간: "+mTime);
 
 		return "tndus";
 	}

@@ -92,11 +92,11 @@ public class NowMovieDaoImpl implements NowMovieDao {
 	}
 
 	@Override
-	public Map<String, String> getNowMovieByThAndMovie(int theaterId, String movieCode) {
+	public Map<String, String> getNMovieTimeByThAndMovie(int theaterId, String movieCode) {
 		NowMovie n = new NowMovie();
 		n.setTheaterId(theaterId);
 		n.setMovieCode(movieCode);
-		String stmt = namespace + "getNowMovieByThAndMovie";
+		String stmt = namespace + "getNMovieTimeByThAndMovie";
 		List<String> tlist = sqlSession.selectList(stmt, n);
 		HashMap<String, String> mtimes = new HashMap<String, String>();
 		for (int i=0;i<tlist.size();i++) {
@@ -113,6 +113,13 @@ public class NowMovieDaoImpl implements NowMovieDao {
 		}
 		logger.trace("수업: "+mtimes);
 		return mtimes;
+	}
+
+	/***********************************************************/
+	@Override
+	public int getNMovieIdByNMovie(NowMovie nowmovie) {
+		String stmt = namespace + "getNMovieIdByNMovie";
+		return 0;
 	}
 
 	

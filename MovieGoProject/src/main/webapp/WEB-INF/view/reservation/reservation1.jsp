@@ -10,8 +10,9 @@
 <title>Insert title here</title>
 <style>
 table {
-	width:70%;
+	width:800px;
 }
+
 </style>
 <script type="text/javascript">
 
@@ -52,7 +53,7 @@ function clickMovie(movie) {
 	} 
 
 
-function clickTheater(theater) {
+function clickTheater(theater) {	
 	$("#timelist").empty();
 	$("#movielist").empty();
 	var xhr = new XMLHttpRequest();
@@ -61,7 +62,7 @@ function clickTheater(theater) {
 			var jsonobj = JSON.parse(xhr.responseText);
 			$("#movielist").empty();
 			for(var i = 0; i < jsonobj.movies.length; i++) {
-				var appendText = "<a href='javascript:clickMovieName(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>";
+				var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>";
 				$("#movielist").append(appendText);
 			}
 		}
@@ -70,6 +71,7 @@ function clickTheater(theater) {
 	xhr.open("post", url, true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.send("theaterId="+theater);
+	
 }
 
 //극장선택값
@@ -175,9 +177,9 @@ function clickTheater(theater) {
 <table border=1>
 <tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
 <tr>
-<td height="400px">
+<td height="400px" >
   <c:forEach items="${theaters }" var="theater">
-  <a href="javascript:check(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br>
+  <a href="javascript:clickTheater(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br>
   </c:forEach>
   <input type="button" id="thSelected" value="영화선택"/>
 </td>
