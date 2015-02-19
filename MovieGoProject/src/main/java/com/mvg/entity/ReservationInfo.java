@@ -1,6 +1,5 @@
 package com.mvg.entity;
 
-
 public class ReservationInfo {
 	private int reservationinfoId;
 	private int seatId;

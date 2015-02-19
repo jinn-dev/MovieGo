@@ -1,5 +1,6 @@
 package com.mvg.service;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -63,6 +64,12 @@ public class NowMovieServiceImpl implements NowMovieService {
 	public Map<String, String> getAllNMovieNamesService(int theaterId) {
 		Map<String, String> codesAndNames = dao.getAllNowMovieNames(theaterId);
 		return codesAndNames;
+	}
+
+	@Override
+	public Map<String, String> getNowMovieByThAndMovieService(int theaterId, String movieCode) {
+		Map<String, String> times = dao.getNowMovieByThAndMovie(theaterId, movieCode);
+		return times;
 	}
 
 }

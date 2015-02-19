@@ -8,45 +8,71 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
+<style>
+table {
+	width:70%;
+}
+</style>
 <script type="text/javascript">
 
-function clickMovieName(code) {
-	/* var xhr = new XMLHttpRequest();
+
+function clickTime(time) {
+	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
-		if (xhr.readyState==4&&xhr.status==200) {
+		if (xhr.readyState==4 && xhr.status==200) {
+			document.querySelector("#result").innerHTML = xhr.responseText;
+		}
+	}
+	var url = "<%=request.getContextPath()%>/reserve/time";
+	xhr.open("post", url, true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.send("time="+time);
+} 
+
+	
+function clickMovie(movie) {
+	$("#timelist").empty();
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState==4 && xhr.status==200) {
+			//document.querySelector("#timelist").innerHTML = xhr.responseText;
 			var jsonobj2 = JSON.parse(xhr.responseText);
 			$("#timelist").empty();
-			for (var i=0;i<jsonobj2.)
+			for (var i=0;i<jsonobj2.times.length;i++){
+				var appendTxt = "<a href='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>" + jsonobj2.times[i].time +"</a><br>";
+				$("#timelist").append(appendTxt);
+			}
 		}
-	} */
-	alert(code);
-}
+	}
+	var url = "<%=request.getContextPath()%>/reserve/movie";
+	xhr.open("post", url, true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.send("movieCode="+movie);
 
-function check(s) {
-	//alert(id);
+	} 
+
+
+function clickTheater(theater) {
+	$("#timelist").empty();
+	$("#movielist").empty();
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState==4&&xhr.status==200) {
-			//document.querySelector("#movielist").innerHTML = xhr.responseText;
 			var jsonobj = JSON.parse(xhr.responseText);
 			$("#movielist").empty();
 			for(var i = 0; i < jsonobj.movies.length; i++) {
 				var appendText = "<a href='javascript:clickMovieName(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>";
 				$("#movielist").append(appendText);
 			}
-			//$("#movielist").val("");
-			//document.querySelector("#movielist").innerHTML ="수연";
 		}
 	}
-	var url = "<%=request.getContextPath()%>/reserve/movie";
+	var url = "<%=request.getContextPath()%>/reserve/theater";
 	xhr.open("post", url, true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	var theater = s;
 	xhr.send("theaterId="+theater);
 }
 
 //극장선택값
-
 /* function chk_seledVal(){
     var form = document.frm;
 
@@ -146,7 +172,7 @@ function check(s) {
 <h1> '아이디: ${log.userId }' 영화 예매 </h1>
 <form name="frm" id="frm">
 <input type="reset" value="새로" height="70">
-<table>
+<table border=1>
 <tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
 <tr>
 <td height="400px">
@@ -170,6 +196,6 @@ function check(s) {
 </tr>
 </table>
 </form> 
-
+<div id="result"></div>
 </body>
 </html>

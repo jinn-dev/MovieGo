@@ -3,7 +3,6 @@ package com.mvg.entity;
 import java.util.ArrayList;
 import java.util.Date;
 
-
 public class CustomerBoard {
 
 	private int boardId;

@@ -2,7 +2,6 @@ package com.mvg.entity;
 
 import java.util.ArrayList;
 
-
 public class Wishlist {
 
 	private int wishId;

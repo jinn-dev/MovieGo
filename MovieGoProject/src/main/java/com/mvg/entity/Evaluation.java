@@ -1,6 +1,5 @@
 package com.mvg.entity;
 
-
 public class Evaluation {
 
 	private int evId;

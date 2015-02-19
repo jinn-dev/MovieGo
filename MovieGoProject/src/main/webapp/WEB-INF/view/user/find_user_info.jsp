@@ -13,40 +13,41 @@
 <script>
 	/* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */
 	$(document).ready(function() {
-			$("#findId").click(function() {
-				var email = $("#email").val();
-				var param="userEmail" +"="+ $("#email").val();
-				$.ajax({
-					url:'http://localhost:9090/MovieGoProject/idcheck',
-	 				type:'GET',	
-	 				data : param,
-	 				cache : false,
-					async : false,
-	 				dataType : 'text',
-				    success : function(data) {
-				    	if(data) {
-					    	  $("#idCheckResultView").html("<b>아이디는 " + data + " 입니다.<b>"); 
-						}
-				    	else {
-				    		$("#idCheckResultView").html("<b>찾는 아이디는가 없습니다.<b>"); 
-				    	}
+		$("#findId").click(function() {
+			var email = $("#email").val();
+			var param="userEmail" +"="+ $("#email").val();
+			$.ajax({
+				url:'http://localhost:9090/MovieGoProject/idcheck',
+ 				type:'GET',	
+ 				data : param,
+ 				cache : false,
+				async : false,
+ 				dataType : 'text',
+			    success : function(data) {
+			    	if(data) {
+			    		  $("#idCheckResultView").html("<b>아이디는 " + data + " 입니다.<b>"); 
+					}				   
+				    
+			    	else {
+			    		$("#idCheckResultView").html("<b>찾는 아이디는가 없습니다.<b>"); 
+			    	}
 
-					},
+				},
+			
+				error : function(request, status, error) {
+					if(request.status != '0') {
+						alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+					}	
+				}
 				
-					error : function(request, status, error) {
-						if(request.status != '0') {
-							alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
-						}	
-					}
-					
-				 }); 
-				
+			 });
+		})
 				$("#findPassword").click(function() {
 					var email = $("#email").val();
-					var id = $("#email").val();
-					var param="userEmail" +"="+ $("#email").val();
+					var id = $("#id").val();
+					var param="userId" +"="+ $("#id").val() +"&userEmail" +"="+ $("#em").val();
 					$.ajax({
-						url:'http://localhost:9090/MovieGoProject/idcheck',
+						url:'http://localhost:9090/MovieGoProject/passwordCheck',
 		 				type:'GET',	
 		 				data : param,
 		 				cache : false,
@@ -54,10 +55,10 @@
 		 				dataType : 'text',
 					    success : function(data) {
 					    	if(data) {
-						    	  $("#idCheckResultView").html("<b>아이디는 " + data + " 입니다.<b>"); 
+						    	  $("#passwordCheckResultView").html("<b>비밀번호는" + data + " 입니다.<b>"); 
 							}
 					    	else {
-					    		$("#idCheckResultView").html("<b>찾는 아이디는가 없습니다.<b>"); 
+					    		$("#passwordCheckResultView").html("<b>찾는 비밀번호가 없습니다.<b>"); 
 					    	}
 
 						},
@@ -69,8 +70,8 @@
 						}
 						
 					 }); 
-	});
 		
+	});
 	});
 </script>
 <style>
@@ -103,12 +104,12 @@ body {
 							<label>아이디</label><input type="text" id="id" name="id">
 						</p>
 						<p>
-							<label>이메일</label><input type="text" id="email" name="email">
+							<label>이메일</label><input type="text" id="em" name="em">
 						</p>
 						<p>
-						<input type="button" id="findPassword" value="FIND ID"/></p>
+						<input type="button" id="findPassword" value="FIND PASSWORD"/></p>
 						<span class="style4" id="passwordCheckResultView"></span> 		
-						</p>
+						
 					</form>
 				</div>
 			</div>

@@ -6,6 +6,7 @@
  <%@ page import="com.mvg.entity.User"%>
   <%@ page import="com.mvg.entity.Wishlist"%>
    <%@ page import="com.mvg.entity.Movie"%>
+   
   <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
@@ -13,23 +14,80 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<link href="<%=request.getContextPath() %>/mypage/css/component.css" rel="stylesheet" />
+
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
 <script type="text/javascript">
-$(document).ready(function() {
-	$("#wishlist").click(function() {
-	       alert("위시리스트에 추가되었습니다");
-	});
-	$("#comment").click(function() {
+var flag = "n";
 
-/* 		<c:url value="/FrontServlet" var="idchk"></c:url>
- */ 		
-    var url = "http://localhost:9090/MovieGoProject/rating/write_comment.jsp";
-	/*var url = "$(idchk)?userId="+$("#userId").val(); */	
- window.open(url,"_blank", "width=400px height=400px");
-});
+function ratingInfo(s){c
 	
+	<%-- var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+	if (xhr.readyState==4&&xhr.status==200) {
+if(flag == "y") {
+	<c:url value="/evcomment" var="url"></c:url>    	    
+	window.open('${url}','_blank', "width=500, height=500, toolbar=no, menubar=no, resizable=no");
+	flag = "n";
 
-});
+}
+else {
+	alert("별점 먼저 선택하세요.");
+
+
+}	
+var url = "<%=request.getContextPath()%>/reserve/movie";
+xhr.open("post", url, true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+var theater = s;
+xhr.send("theaterId="+theater); --%>
+
+	flag = "y";
+	alert(s + "점 추가");
+	
+}
+
+function evcomment() {
+	if(flag == "y") {
+		<c:url value="/evcomment" var="url"></c:url>    	    
+		window.open('${url}','_blank', "width=500, height=500, toolbar=no, menubar=no, resizable=no");
+		flag = "n";
+
+	}
+	else {
+		alert("별점 먼저 선택하세요.");
+
+
+	}	
+
+}
+
+
+ function wishlist() {
+	   alert("위시리스트에 추가되었습니다");
+
+}
+/* 
+function wishlist() {
+	   alert("위시리스트에 추가되었습니다");
+}
+$( "wishlist" ).click(function() {
+		   alert("위시리스트에 추가되었습니다");
+
+	})
+ */
+
+	
+	$( ".star_rating a" ).click(function() {
+	     $(this).parent().children("a").removeClass("on");
+	     $(this).addClass("on").prevAll("a").addClass("on");
+
+
+	     return false;
+	});
+
+
 
 
 </script>
@@ -67,8 +125,36 @@ $(document).ready(function() {
       <c:forEach items="${movies }" var="movies">
       <tr>
          <td><c:out value="${movies.movieTitleKr}"/></td>
-  		<td >별점</td>
-        <td>코멘트</td>    
+  		<td > 
+  		<%-- <c:url value="/evrating" var="action"></c:url>
+  		<form:form method="post" modelAttribute="evrating" action="${action }">
+  		 <a href="javascript:ratingInfo(1)" class="on">★</a>
+    <a href="javascript:ratingInfo(2)" class="on">★</a>
+    <a href="javascript:ratingInfo(3)" class="on" id="three">★</a>
+    <a href="javascript:ratingInfo(4)" id="four">★</a>
+    <a href="javascript:ratingInfo(5)" id="five">★</a>
+    	<input type="hidden" name="movieCode" value="${movies.movieCode }"/> 
+     	<input type="hidden" name="userId" value="${log.userId }"/>
+    </form:form> --%>
+ <!--    	
+ p태그안에 들어가면 a태그 안먹힘
+ <p class="star_rating">
+</p> -->
+ </td>
+        <td>
+        <c:url value="/evcomment" var="action"></c:url>
+		<form:form method="post" modelAttribute="evcomment" action="${action }">
+		 <input type="hidden" name="movieTitleKr" value="${movies.movieTitleKr }"/> 
+		 <input type="hidden" name="userId" value="${log.userId }"/> 
+		 
+<!--         <input type="submit" id="evcomment" name="evcomment" value="한줄평"></input>
+ -->                <input type="button" id="evcomment" name="evcomment" value="한줄평" onclick="javascript:evcomment()"/>
+        
+          </form:form>
+        
+        
+      
+        </td>    
         <td>
 
 <%--	<c:url value="/addwishlist?userId=${log.userId }&movieCode=${movies.movieCode }" var="url"/>
@@ -78,7 +164,7 @@ $(document).ready(function() {
 		<form:form method="post" modelAttribute="wishlists" action="${action }">
   	<input type="hidden" name="movieCode" value="${movies.movieCode }"/>
  	<input type="hidden" name="userId" value="${log.userId }"/>
- 	<input type="submit" id="wishlist" name="_event_confirmed" value="위시리스트"></input> 
+ 	<input type="submit" id="wishlist" name="_event_confirmed" onclick="javascript:return wishlist();" value="위시리스트"></input> 
  	  </form:form>
           </td> 
 

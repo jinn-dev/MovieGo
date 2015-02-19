@@ -30,8 +30,7 @@
 		from users where user_email=#{userEmail}
 	</select>
 	
-	<select id="selectUserByIdAndEmail" parameterType="String"
-		resultType="String">
+	<select id="selectUserByIdAndEmail" parameterType="String" resultType="String">
 		select user_pwd
 		from users where user_id=#{userId} and
 		user_email=#{userEmail}

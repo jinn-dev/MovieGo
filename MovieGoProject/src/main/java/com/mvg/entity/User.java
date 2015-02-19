@@ -2,7 +2,6 @@ package com.mvg.entity;
 
 import java.util.Date;
 
-
 public class User {
 	private String userId;
 	private String userPwd;
