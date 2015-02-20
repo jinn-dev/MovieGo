@@ -9,6 +9,12 @@ public class Evaluation {
 	private String evComment;
 
 	public Evaluation() {}
+	public Evaluation(String userId, String movieCode, int evRating) {
+		super();
+		this.userId = userId;
+		this.movieCode = movieCode;
+		this.evRating = evRating;
+	}
 	
 	public Evaluation(int evId, String userId, String movieCode, int evRating,
 			String evComment) {
@@ -20,6 +26,7 @@ public class Evaluation {
 		this.evComment = evComment;
 	}
 
+	
 	public int getEvId() {
 		return evId;
 	}
