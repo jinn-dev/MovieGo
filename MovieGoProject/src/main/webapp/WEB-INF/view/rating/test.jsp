@@ -6,37 +6,36 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
+<style>
+</style>
+<script type="text/javascript">
+
+	$(document).ready(function() {
+	$("#button").click(function(){
+		<c:url value="/ajax" var="url"/>
+		var url = "${url}";
+		$.ajax({
+			type : "get",
+			url : url,
+			dataType : "JSON",
+			contentType: "application/json; charset=utf-8",
+			success : function(data) {
+				for (var idx = 0; idx < data.length; idx++) { 
+					$("#moives").append(data[idx]+ "<br>")
+				}  
+			},
+			error : function(XHR, textStatus) {
+				alert("Error: "+ textStatus);
+			}
+		});
+	});	
+	});
+</script>
 </head>
 <body>
-	<table>
-		<c:forEach items="${movies }" var="movies">
-			<tr>
-				<td>${movies.movieTitleKr }</td>
-			</tr>
-		</c:forEach>
-	</table>
-	<input type="hidden" name="page" id="page" value="${page}" />
-	<a href="#" onclick="loadNextPage()">더보기</a>
-	<script>
-		function loadNextPage(page) {
-			<c:url value="/test" var="url"/>
-			var page = $('#page').val();
-			page = parseInt(page);
-			page += 10;
-			$.ajax({
-				type : 'get',
-				url : '${url}?page='+page,
-				data : ({
-					page : page
-				}),
-				success : function(data) {
-					$('table').append(data);
-					$('#page').val(page);
-				}
-			});
-		}
-	</script>
-
+	<div id="movies" border="1"></div>
+	<button id="button">ajax 테스트</button>
 </body>
 </html>

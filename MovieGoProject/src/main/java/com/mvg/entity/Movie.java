@@ -7,6 +7,7 @@ public class Movie {
 	private String movieTitleKr;
 	private String movieTitleEng;
 	private String movieGenre;
+	private String movieNation;
 	private String movieDirector;
 	private String movieActor1;
 	private String movieActor2;
@@ -14,34 +15,22 @@ public class Movie {
 	private String movieImgUrl;
 
 	public Movie() {}
-	
+
 	public Movie(String movieCode, String movieTitleKr, String movieTitleEng,
-			String movieGenre, String movieDirector, String movieActor1,
+			String movieGenre, String movieNation, String movieDirector,
+			String movieActor1, String movieActor2, String movieActor3,
 			String movieImgUrl) {
 		super();
 		this.movieCode = movieCode;
 		this.movieTitleKr = movieTitleKr;
 		this.movieTitleEng = movieTitleEng;
 		this.movieGenre = movieGenre;
+		this.movieNation = movieNation;
 		this.movieDirector = movieDirector;
 		this.movieActor1 = movieActor1;
-		this.movieImgUrl = movieImgUrl;
-	}
-
-	public Movie(String movieCode, String movieTitleKr, String movieTitleEng,
-			String movieGenre, String movieDirector, String movieActor1,
-			String movieActor2, String movieImgUrl) {
-		this(movieCode, movieTitleKr, movieTitleEng, movieGenre, movieDirector,
-				movieActor1, movieImgUrl);
 		this.movieActor2 = movieActor2;
-	}
-
-	public Movie(String movieCode, String movieTitleKr, String movieTitleEng,
-			String movieGenre, String movieDirector, String movieActor1,
-			String movieActor2, String movieActor3, String movieImgUrl) {
-		this(movieCode, movieTitleKr, movieTitleEng, movieGenre, movieDirector,
-				movieActor1, movieActor2, movieImgUrl);
 		this.movieActor3 = movieActor3;
+		this.movieImgUrl = movieImgUrl;
 	}
 
 	public String getMovieCode() {
@@ -74,6 +63,14 @@ public class Movie {
 
 	public void setMovieGenre(String movieGenre) {
 		this.movieGenre = movieGenre;
+	}
+
+	public String getMovieNation() {
+		return movieNation;
+	}
+
+	public void setMovieNation(String movieNation) {
+		this.movieNation = movieNation;
 	}
 
 	public String getMovieDirector() {
@@ -120,10 +117,12 @@ public class Movie {
 	public String toString() {
 		return "Movie [movieCode=" + movieCode + ", movieTitleKr="
 				+ movieTitleKr + ", movieTitleEng=" + movieTitleEng
-				+ ", movieGenre=" + movieGenre + ", movieDirector="
-				+ movieDirector + ", movieActor1=" + movieActor1
-				+ ", movieActor2=" + movieActor2 + ", movieActor3="
-				+ movieActor3 + ", movieImgUrl=" + movieImgUrl + "]";
+				+ ", movieGenre=" + movieGenre + ", movieNation=" + movieNation
+				+ ", movieDirector=" + movieDirector + ", movieActor1="
+				+ movieActor1 + ", movieActor2=" + movieActor2
+				+ ", movieActor3=" + movieActor3 + ", movieImgUrl="
+				+ movieImgUrl + "]";
 	}
-
+	
+	
 }

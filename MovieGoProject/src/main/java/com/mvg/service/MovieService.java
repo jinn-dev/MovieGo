@@ -12,7 +12,7 @@ public interface MovieService {
 	// 모든 영화 얻어오기
 	List<Movie> getAllMoviesService();
 	
-	/*List<Movie> randomGetAllMovies();*/
+	List<Movie> randomGetAllMovies();
 
 	// 영화 하나 불러오기
 	Movie getMovieByMCodeService(String movieCode);

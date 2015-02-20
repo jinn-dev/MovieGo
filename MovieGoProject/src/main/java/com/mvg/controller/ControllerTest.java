@@ -96,16 +96,6 @@ public class ControllerTest {
 			return result;
 	}
 	
-	@RequestMapping(value="/apitest")
-	public String apiTest(){
-		return "apitest/restService";
-	}
-	
-	@RequestMapping(value="/apitest2")
-	public String apiTest2(){
-		return "apitest/restService2";
-	}
-	
 	@RequestMapping(value="/apitest3")
 	public String apiTest3(){
 		return "apitest/restService3";

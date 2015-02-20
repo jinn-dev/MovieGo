@@ -33,12 +33,12 @@ public class MovieServiceImpl implements MovieService {
 		return movies;
 	}
 	
-	/*@Override
+	@Override
 	public List<Movie> randomGetAllMovies() {
-	//	List<Movie> movies = dao.randomGetAllMovies();
+		List<Movie> movies = dao.randomGetAllMovies();
 		return movies;
 	}
-	 */
+	 
 	
 	@Override
 	public Movie getMovieByMCodeService(String movieCode) {
