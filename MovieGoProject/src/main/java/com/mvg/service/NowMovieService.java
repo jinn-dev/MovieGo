@@ -22,6 +22,9 @@ public interface NowMovieService {
 	//영화관, 영화로 상영시간 얻어오기
 	Map<String, String> getNMovieTimeByThAndMovieService(int theaterId, String movieCode);
 	
+	//상영영화아이디얻어오기
+	public int getNMovieIdByNMovieService(int theaterId, String movieCode, String movieTime);
+	
 	// 상영하려는 영화 추가
 	int insertNMovieService(Movie movie);
 

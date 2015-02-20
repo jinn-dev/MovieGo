@@ -53,8 +53,10 @@ public class EvaluationDaoImpl implements EvaluationDao {
 
 	@Override
 	public int updateEvaluation(Evaluation evaluation) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = -1;
+		String stmt = namespace + "updateEvaluation";
+		result = sqlSession.update(stmt, evaluation);
+		return result;
 	}
 
 }

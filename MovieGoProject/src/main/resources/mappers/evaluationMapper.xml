@@ -6,4 +6,10 @@
  <insert id = "insertEvaluation" parameterType = "Evaluation">
   	insert into evaluations (user_id, movie_code, ev_rating) values (#{userId}, #{movieCode}, #{evRating})
   </insert>
+  
+	<update id="updateEvaluation" parameterType="INTEGER">
+		update evaluations set ev_comment=#{evComment}, ev_rating=#{evRating}
+		where ev_id=#{evId}
+	</update>
+
 </mapper>
