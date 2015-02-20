@@ -170,8 +170,15 @@ public class ReservationController {
 			int num = seats.get(i).getSeatNo();
 			seatNum.add(i, num);
 		}
-		model.addAttribute("seatNums", seatNum);
+		int cnt = seatNum.size();
+		model.addAttribute("seats", seatNum);
+		model.addAttribute("seatCnt", cnt);
 		model.addAttribute("rinfo", rinfo);
 		return "reservation/reservation2";
+	}
+	
+	@RequestMapping(value="/reserve/test", method=RequestMethod.GET)
+	public String reserveTest() {
+		return "reservation/reservation2222";
 	}
 }
