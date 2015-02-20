@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mvg.mappers.seatinfoMapper">
+	<select id="getAllSeatInfoCount" resultType="Integer">
+		select count(*) from seatinfo
+	</select>
+	
+	<select id="getAllSeatInfo" resultType="SeatInfo">
+		select * from seatinfo
+	</select>
+	
+	<select id="getSeatInfoBySeatId" resultType="SeatInfo">
+		select * from seatinfo where seat_id=#{seatId}
+	</select>
+	
+	<select id="getSeatInfoByNMovieId" parameterType="Integer" resultType="SeatInfo">
+		select * from seatinfo where nowmovie_id=#{nowmovieId}
+	</select>
+
+</mapper>

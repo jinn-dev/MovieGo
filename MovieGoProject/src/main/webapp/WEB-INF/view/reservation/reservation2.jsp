@@ -43,8 +43,8 @@ function chk_seledVal(){
 <!-- 좌석 설정 -->
 </td>
 <td colspan="2" align="center">
-선택하신 상영관/영화/시간<br>
-건대입구/쏘우/2015-02-06/오전(잔여40석)
+<!-- 예약한 영화 정보 -->
+${rinfo }
 </td>
 </tr>
 <tr>
