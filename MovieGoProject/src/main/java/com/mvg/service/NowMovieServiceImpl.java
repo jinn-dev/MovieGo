@@ -72,4 +72,11 @@ public class NowMovieServiceImpl implements NowMovieService {
 		return times;
 	}
 
+	@Override
+	public int getNMovieIdByNMovieService(int theaterId, String movieCode,
+			String movieTime) {
+		int nid = dao.getNMovieIdByNMovie(theaterId, movieCode, movieTime);
+		return nid;
+	}
+
 }

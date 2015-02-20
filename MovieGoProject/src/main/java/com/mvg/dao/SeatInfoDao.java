@@ -24,7 +24,8 @@ public interface SeatInfoDao {
 	//좌석 정보 하나 얻어오기
 	SeatInfo getSeatInfoBySeatId(int seatId);
 	
-	
+	//상영하는영화의 좌석정보
+	List<SeatInfo> getSeatInfoByNMovieId(int nowmovieId);
 	
 	
 }
