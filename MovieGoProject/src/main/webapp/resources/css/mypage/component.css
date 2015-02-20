@@ -32,6 +32,11 @@
 	color: #ffffff;
 }
 
+.cbp-vimenu li a:active{
+	background: #34495E;
+	color: #ffffff;
+}
+
 /* class for current item */
 .cbp-vimenu li.cbp-vicurrent a {
 	background: #34495E;

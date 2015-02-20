@@ -20,8 +20,16 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	$(".boxoffice-tr").mouseenter(function(){
+		$(this).css("background-color","#C75C5C");
+	});
+	
+	$(".boxoffice-tr").mouseleave(function(){
+		$(this).css("background-color","#F2F2F2");
+	});
 	
 	$(".movieName").mouseenter(function() { 
+		$(this).css("color","#F2F2F2");
 		var movieCd = $(".movieCd").val();
 		var param="movieCode"+"="+movieCd;
 		<c:url value="/thumbnail" var="url"/>
@@ -44,6 +52,10 @@ $(document).ready(function() {
 			}
 		 }); 
 	});
+	
+	$(".movieName").mouseleave(function() { 
+		$(this).css("color","#4F5D73");
+		});
 });
 
 </script>
@@ -145,7 +157,7 @@ table{
 				</tr>
 				<c:if test="${not empty dailyResult.boxOfficeResult.dailyBoxOfficeList }">
 					<c:forEach items="${dailyResult.boxOfficeResult.dailyBoxOfficeList }" var="boxoffice" varStatus="status">
-					<tr>
+					<tr class="boxoffice-tr">
 					<input type="hidden" value="${boxoffice.movieCd }" class='movieCd' />
 							<td><c:out value="${status.count }"/>
 							<%-- <c:out value="${boxoffice.rank }" /> --%></td>

@@ -12,6 +12,7 @@
 <style>
 table {
 	width:800px;
+	margin: 0 auto;
 }
 
 #htable {

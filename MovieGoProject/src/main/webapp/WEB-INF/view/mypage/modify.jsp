@@ -22,29 +22,50 @@
 </script>
 <style type="text/css">
 body{
-	width: 75%;
+	width: 100%;
+	height: 100%;
 	
 }
 #submenu {
 	width: 30%;
-	float: right;
+	float: left;
 }
 
 .modify-form {
-	position: absolute;
-	top: 50%;
-	left: 50%;
+	border: 1px;
+	padding: 150px;
+	/* position: absolute;
+	top: 40%;
+	left: 40%; */
+}
+.modify-form table{
+	margin: 0 auto;
 }
 
+#modify-form-header{
+	padding: 0 0 10px 0;
+}
 .modify-form label{
 	display: inline-block;
+	width: 100px;
+}
+
+.div-button {
+	background: #C75C5C;
+	font-size: 1.0em;
+	color: #F2F2F2;
+	border: none;
+	letter-spacing: 1px;
+	padding: 0.5em;
+	outline: none;
+	margin: 30px 0 0 0;
 }
 </style>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
 <body>
 <div class="modify-form">
 <table>
-	<tr><th>개인정보수정</th></tr>
+	<tr><th><div id="modify-form-header">개인정보수정</div></th></tr>
 	<tr>
 	<td>
 		<c:url value="/update" var="action"></c:url>
@@ -55,11 +76,11 @@ body{
 			<label>생년월일</label><form:input type="date" path="userBirthday" /><br>
 	</td>
 	<tr>
-	<td>
-			<button type="submit" name="_event_confirmed">수정확인</button>
-			<button type="submit" name="_event_reverse">재입력</button>
+	<td align="center">
+			<button type="submit" name="_event_confirmed" class="div-button">수정확인</button>
+			<button type="submit" name="_event_reverse" class="div-button">재입력</button>
 		</form:form> 
-	<button onclick="deleteCheck()">회원탈퇴</button>
+	<button onclick="deleteCheck()"class="div-button">회원탈퇴</button>
 	</td>
 	</tr>
 </table>

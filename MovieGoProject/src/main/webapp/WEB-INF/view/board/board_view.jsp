@@ -12,7 +12,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script>
 $(document).ready(function() {
-	
 	$("#board_delete").click(function(){
 		var result = window.confirm("글을 삭제하시겠습니까?")
 		if(result){
@@ -22,7 +21,7 @@ $(document).ready(function() {
 	});
 	
 	$("#comment_submit").click(function(){
-		if($("#commentContent").val()==""){
+		if($("#commentContentInput").val()==""){
 			alert("코멘트 내용을 입력해주세요.");
 			event.preventDefault();
 		}
@@ -34,6 +33,7 @@ $(document).ready(function() {
 			location.href="${url}?commentId="+$("#comment_id").val();
 		}
 	});   
+	
 	$(".content").click(function(){
 		var commentId = $("#id1").val();
 		var userId = $("#id2").val();
@@ -45,7 +45,10 @@ $(document).ready(function() {
 		}
 	})
 	$("#comment_modify").click(function(){
-		$("#commentForm").submit();
+		var result = window.confirm("코멘트를 수정하시겠습니까?");
+		if(result){
+			$("#commentForm").submit();
+		}
 	});
 });
 </script>
@@ -123,7 +126,7 @@ $(document).ready(function() {
 					</c:if>
 					<tr>
 					<td colspan="5" align="left" height="25">
-					<input type="text" name="commentContent" class="content" value="${comments.commentContent }" style='border: 0px;'
+					<input type="text" name="commentContent" class="content" value="${comments.commentContent }" style='border: 0px; font-size:1.0em;'
 					 readonly/>
 					</td>
 					</tr>
@@ -137,10 +140,10 @@ $(document).ready(function() {
 					<c:url value="/comment/write" var="url"></c:url>
 						<form:form method="post" modelAttribute="comment" action="${url }" name="comment-form">
 							<div class="comment-form-inner">
-								<input type="text" name="commentContent" id="commentContent"/>
+								<input type="text" name="commentContent" id="commentContentInput"/>
 								<input type="hidden" name="boardId" value="${detail.boardId }" />
 								<input type="hidden" name="userId" id="id2" value="${log.userId }" />&nbsp;&nbsp;
-								<button class="div-button" type="submit" id="comment_submit" onclick="javascript:getComment()">SUBMIT</button>
+								<input type="submit" class="div-button"  id="comment_submit" value="SUBMIT"/>
 							</div>
 						</form:form>
 					</div>

@@ -13,9 +13,13 @@
 <title>Insert title here</title>
 </head>
 <link href="<%=request.getContextPath() %>/mypage/css/component.css" rel="stylesheet" />
+<style>
+#ratingList{
+	margin: 0 auto;
+}
 
+</style>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-
 <script type="text/javascript">
 var flag = "n";
 
