@@ -78,6 +78,7 @@ header {
 
 .write-table textarea {
 	width: 600px;
+	height: 300px;
 	overflow: scroll;
 }
 
@@ -116,6 +117,21 @@ header {
 	outline: none;
 }
 
-.writeform div {
-	align: center;
+.writeform {
+	margin: 0 auto;
+}
+
+.writeform input[type="text"] {
+	width: 505px;
+	padding: 0.4em;
+}
+
+.writeform input[type="text"].focus {
+	outline: none;
+}
+
+.writeform  textarea {
+	width: 509px;
+	height: 300px;
+	overflow: scroll;
 }

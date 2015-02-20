@@ -6,21 +6,47 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reserve.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
 <style>
 table {
-	width:70%;
+	width:800px;
 }
+
+#htable {
+	visibility: hidden;
+}
+
 </style>
 <script type="text/javascript">
-
+function check() {
+	var v1 = document.querySelector("#selTheater").innerHTML;
+	var v2 = document.querySelector("#selMovie").innerHTML;
+	var v3 = document.querySelector("#selTime").innerHTML;
+	if (v1=="") {
+		alert("영화관을 선택하세요.");
+		event.preventDefault();
+	}
+	else if (v2=="") {
+		alert("영화를 선택하세요.");
+		event.preventDefault();
+	}
+	else if (v3=="") {
+		alert("시간을 선택하세요.");
+		event.preventDefault();
+	}
+	else {
+		event.preventDefault();
+		location.href="<%=request.getContextPath()%>/reserve/seat";
+	}
+}
 
 function clickTime(time) {
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState==4 && xhr.status==200) {
-			document.querySelector("#result").innerHTML = xhr.responseText;
+			document.querySelector("#selTime").innerHTML = time;
 		}
 	}
 	var url = "<%=request.getContextPath()%>/reserve/time";
@@ -28,16 +54,16 @@ function clickTime(time) {
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.send("time="+time);
 } 
-
 	
 function clickMovie(movie) {
 	$("#timelist").empty();
+	$("#selTime").empty();
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState==4 && xhr.status==200) {
-			//document.querySelector("#timelist").innerHTML = xhr.responseText;
 			var jsonobj2 = JSON.parse(xhr.responseText);
 			$("#timelist").empty();
+			document.querySelector("#selMovie").innerHTML = movie;
 			for (var i=0;i<jsonobj2.times.length;i++){
 				var appendTxt = "<a href='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>" + jsonobj2.times[i].time +"</a><br>";
 				$("#timelist").append(appendTxt);
@@ -52,16 +78,19 @@ function clickMovie(movie) {
 	} 
 
 
-function clickTheater(theater) {
+function clickTheater(theater) {	
 	$("#timelist").empty();
 	$("#movielist").empty();
+	$("#selMovie").empty();
+	$("#selTime").empty();
 	var xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState==4&&xhr.status==200) {
 			var jsonobj = JSON.parse(xhr.responseText);
 			$("#movielist").empty();
+			document.querySelector("#selTheater").innerHTML = theater;
 			for(var i = 0; i < jsonobj.movies.length; i++) {
-				var appendText = "<a href='javascript:clickMovieName(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>";
+				var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>";
 				$("#movielist").append(appendText);
 			}
 		}
@@ -70,99 +99,9 @@ function clickTheater(theater) {
 	xhr.open("post", url, true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.send("theaterId="+theater);
+	
 }
 
-//극장선택값
-/* function chk_seledVal(){
-    var form = document.frm;
-
-    var thval = "";
-    var mvval = "";
-    var dtval = "";
-    var tmval = "";
-
-	 if( frm.thChk.length == null ){
-         if(frm.thChk.checked){
-        	 thval = frm.thChk.value;
-            }else{
-            	thval ="";
-         }
-
-        }else{
-         for(i =0 ;i < frm.thChk.length;i++){
-             if(frm.thChk[i].checked == true){
-            	 thval = frm.thChk[i].value;
-             }
-         }
-        }
-
-        if( frm.mvChk.length == null ){
-         if(frm.mvChk.checked){
-        	 mvval = frm.mvChk.value;
-            }else{
-            	mvval ="";
-         }
-
-        }else{
-         for(i =0 ;i < frm.mvChk.length;i++){
-             if(frm.mvChk[i].checked == true){
-            	 mvval = frm.mvChk[i].value;
-             }
-         }
-        }
-
-        if( frm.dtChk.length == null ){
-            if(frm.dtChk.checked){
-           	 dtval = frm.dtChk.value;
-               }else{
-               	dtval ="";
-            }
-
-           }else{
-            for(i =0 ;i < frm.dtChk.length;i++){
-                if(frm.dtChk[i].checked == true){
-               	 dtval = frm.dtChk[i].value;
-                }
-            }
-           }
-
-            if( frm.tmChk.length == null ){
-        	     if(frm.tmChk.checked){
-        	    	 tmval = frm.tmChk.value;
-        	        }else{
-        	        	tmval ="";
-        	     }
-
-        	    }else{
-        	     for(i =0 ;i < frm.tmChk.length;i++){
-        	         if(frm.tmChk[i].checked == true){
-        	        	 tmval = frm.tmChk[i].value;
-        	         }
-        	     }
-        	    }
-  
-           if(thval ==""){
-               alert("영화관을 선택하세요");
-               
-           }
-           else if(mvval ==""){
-               alert("영화를 선택하세요");
-               
-           }
-           else if(dtval ==""){
-               
-               alert("날짜를 선택하세요");
-           }
-           
-           else if(tmval ==""){
-      	     
-   	        alert("시간을 선택하세요");
-   	    }
-           else {
-        		location.href="reservation2.jsp"   
-           } 
-        	    
-}*/
 </script>
 </head>
 
@@ -171,15 +110,13 @@ function clickTheater(theater) {
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
 <h1> '아이디: ${log.userId }' 영화 예매 </h1>
 <form name="frm" id="frm">
-<input type="reset" value="새로" height="70">
 <table border=1>
 <tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
 <tr>
-<td height="400px">
+<td height="400px" >
   <c:forEach items="${theaters }" var="theater">
-  <a href="javascript:check(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br>
+  <a href="javascript:clickTheater(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br>
   </c:forEach>
-  <input type="button" id="thSelected" value="영화선택"/>
 </td>
 <td>
   <div id="movielist"></div>
@@ -189,13 +126,19 @@ function clickTheater(theater) {
 </td>
 </tr>
 <tr>
-<td colspan="3" height="100px">
+<td colspan="3" height="100px" align="right">
 <!-- 추가: 좌석선택 image button  -->
-<input type="image" name="seat" src="<%=request.getContextPath() %>/img/seatSelect.png" onclick="javascript:selectedVal();" />
+<input type="image" name="seat" src="<%=request.getContextPath() %>/img/seatSelect.png" onclick="javascript:check();" />
 </td>
 </tr>
 </table>
 </form> 
-<div id="result"></div>
+<table id="htable" >
+<tr>
+<td><div id="selTheater"></div></td>
+<td><div id="selMovie"></div></td>
+<td><div id="selTime"></div></td>
+</tr>
+</table>
 </body>
 </html>

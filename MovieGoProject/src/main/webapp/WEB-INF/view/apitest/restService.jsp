@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page
-	import="kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService"%>
+<%@ page import="kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService"%>
 <%@ page import="org.codehaus.jackson.map.ObjectMapper"%>
 <%@ page import="java.util.*"%>
 <%@ page import="net.sf.json.JSONObject"%>
@@ -19,7 +18,7 @@
 <%	
 	// 파라미터 설정
 	// 조회일자
-	String targetDt = request.getParameter("targetDt")==null?"20150210":request.getParameter("targetDt");	
+	String targetDt = request.getParameter("targetDt")==null?"20150219":request.getParameter("targetDt");	
 	// 결과 row 수	
 	String itemPerPage = request.getParameter("itemPerPage")==null?"30":request.getParameter("itemPerPage");
 	// "Y": 다양성영화 "N": 상업영화 (default: 전체)
@@ -69,8 +68,6 @@
 		<td>스크린수</td>
 		<td>상영횟수</td>
 	</tr>
-
-
 	<c:if
 		test="${not empty dailyResult.boxOfficeResult.dailyBoxOfficeList }">
 		<c:forEach items="${dailyResult.boxOfficeResult.dailyBoxOfficeList }"

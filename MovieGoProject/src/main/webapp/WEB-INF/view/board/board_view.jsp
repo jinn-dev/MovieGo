@@ -31,9 +31,9 @@ $(document).ready(function() {
 		var result = window.confirm("코멘트를 삭제하시겠습니까?");
 		if(result){
 			<c:url value="/comment/drop" var="url"></c:url>
-			location.href="${url}?commentId=${comments.commentId }";
+			location.href="${url}?commentId="+$("#comment_id").val();
 		}
-	});
+	});   
 	$(".content").click(function(){
 		var commentId = $("#id1").val();
 		var userId = $("#id2").val();
@@ -103,7 +103,7 @@ $(document).ready(function() {
 		    <c:if test="${detail.comments[0].commentId!=0 }">
 				<c:forEach items="${detail.comments }" var="comments">
 				<c:url value="/comment/modify" var="url"/>
-				<form:form method="POST" modelAttribute="comment" id="commentForm" action="${url }">
+					<form:form method="POST" modelAttribute="comment" id="commentForm" action="${url }">
 					<td>
 					<c:out value="${comments.userId }" />
 					<input type="hidden" id="id1" value="${comments.userId }"/>
@@ -114,10 +114,11 @@ $(document).ready(function() {
 					</td>
 					<c:if test="${comments.userId==log.userId }">
 						<td colspan="2" align="right">
+						<input type="hidden" name="commentId" id="comment_id" value="${comments.commentId }"/>
 						<input type="hidden" name="boardId" value="${detail.boardId }" />
 						<input type="submit" class="div-button" id="comment_modify" value="MODIFY">
-						<c:url value="/comment/drop?commentId=${comments.commentId }" var="url"></c:url>
-						<a href="${url }"><button class="div-button" id="comment_delete">DELETE</button></a>
+						<c:url value="/comment/drop" var="url"></c:url>
+						<input type="button" class="div-button" id="comment_delete" value="DELETE">
 						</td>
 					</c:if>
 					<tr>

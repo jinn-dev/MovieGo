@@ -92,30 +92,40 @@ public class NowMovieDaoImpl implements NowMovieDao {
 	}
 
 	@Override
-	public Map<String, String> getNowMovieByThAndMovie(int theaterId, String movieCode) {
+	public Map<String, String> getNMovieTimeByThAndMovie(int theaterId, String movieCode) {
 		NowMovie n = new NowMovie();
 		n.setTheaterId(theaterId);
 		n.setMovieCode(movieCode);
-		String stmt = namespace + "getNowMovieByThAndMovie";
-		List<String> tlist = sqlSession.selectList(stmt, n);
+		String stmt2 = namespace + "getNMovieTimeByThAndMovie2";
+		List<String> tlist = sqlSession.selectList(stmt2, n);
 		HashMap<String, String> mtimes = new HashMap<String, String>();
 		for (int i=0;i<tlist.size();i++) {
 			String value = tlist.get(i);
 			int strlen = value.length();
-			String key = value.substring(strlen-1);
 			if ((value.substring(strlen-2)).equals("06")) {
 				value = value.replace("06", "오전");
 			}
 			else if ((value.substring(strlen-2)).equals("18")) {
 				value = value.replace("18", "오후");
 			}
-			mtimes.put(key, value);	
+			mtimes.put(tlist.get(i), value);	
 		}
-		logger.trace("수업: "+mtimes);
+		logger.trace("수업: 영화시간맵: "+mtimes);
 		return mtimes;
 	}
 
-	
+	@Override
+	public int getNMovieIdByNMovie(int theaterId, String movieCode, String movieTime) {
+		String stmt = namespace + "getNMovieIdByNMovie";
+		NowMovie n = new NowMovie();
+		n.setMovieCode(movieCode);
+		n.setMovieTime(movieTime);
+		n.setTheaterId(theaterId);
+		int nid = sqlSession.selectOne(stmt, n);
+		logger.trace("수업: nowmovieid="+nid);
+		return nid;
+
+	}
 
 	
 }

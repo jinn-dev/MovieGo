@@ -19,7 +19,7 @@
 				</h1>
 				<nav>
 					<c:url value="/reserve" var = "url"/>
-					<a href="${url }">RESERVATION</a>&nbsp;&nbsp;&nbsp;&nbsp;    
+					<a href="${url }">영화 예매</a>&nbsp;&nbsp;&nbsp;&nbsp;    
 					<c:url value="/rating" var="url" />
 					<a href="${url }">영화 평가하기</a>&nbsp;&nbsp;&nbsp;&nbsp;  
 					<c:url value="/mypage" var="url" />

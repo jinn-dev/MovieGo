@@ -37,5 +37,6 @@
 		<mapper resource="mappers/nowmovieMapper.xml" />
 		<mapper resource="mappers/wishlistMapper.xml" />
 		<mapper resource="mappers/evaluationMapper.xml" />	
+		<mapper resource="mappers/seatinfoMapper.xml" />
 	</mappers>
 </configuration>

@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
 <title>고객센터</title>
 </head>
 <body>
@@ -21,15 +22,15 @@
 
 	<section>
 	<c:url value="/board/modified" var="url"/>
-	<div id="writeform">
+	<table class="writeform">
 	<form:form modelAttribute="content" method="POST" action="${url }">
-	<input type="hidden" name="userId" value="${log.userId }"/><br>
-	<label>제목 </label><form:input type="text" path="boardTitle"/><br>
-	<label>내용 </label><form:textarea row="30" col="50" path="boardContent"/>
-	<button type="submit" name="_event_confirmed">완료</button>
-	<input type="reset"/>
+	<input type="hidden" name="userId" value="${log.userId }"/>
+	<tr><td><label>제목 </label><form:input type="text" path="boardTitle"/></td></tr>
+	<tr><td><label>내용 </label><form:textarea row="30" col="50" path="boardContent"/></td></tr>
+	<tr><td align="center"><button type="submit" name="_event_confirmed" class="div-button">완료</button>
+	<input type="reset" class="div-button"/></td></tr>
 	</form:form>
-	</div>
+	</table>
 	</section>
 </body>
 </html>

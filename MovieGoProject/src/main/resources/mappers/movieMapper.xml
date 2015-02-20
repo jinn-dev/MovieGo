@@ -27,6 +27,10 @@
 		select * from movies where movie_code=#{movieCode}
 	</select>
 	
+	<select id="getMovieThumbnail" parameterType="String" resultType="String">
+		select movie_img_url from movies where movie_code=#{movieCode}
+	</select>
+	
 	<insert id="insertMovie" parameterType="Movie">
 		insert into movies()
 	</insert>
@@ -42,5 +46,6 @@
 	<delete id="deleteMovie" parameterType="String">
 		delete from movies where movie_code=#{movieCode}
 	</delete>
+
 
 </mapper>

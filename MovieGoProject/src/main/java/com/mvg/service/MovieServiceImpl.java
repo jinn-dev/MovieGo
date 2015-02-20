@@ -64,5 +64,11 @@ public class MovieServiceImpl implements MovieService {
 		return result;
 	}
 
+	@Override
+	public String getMovieThumbnailService(String movieCode) {
+		String result = dao.getMovieThumbnail(movieCode);
+		return result;
+	}
+
 
 }

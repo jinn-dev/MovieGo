@@ -23,23 +23,27 @@
 		select * from nowmovies where theater_id=#{theaterId}
 	</select>
 	
-	<select id="getNowMovieByThAndMovie" parameterType="NowMovie" resultType="String">
+	<select id="getNMovieTimeByThAndMovie" parameterType="NowMovie" resultType="String">
 		select to_char(movie_time, 'mm"월" dd"일" hh24') from nowmovies where theater_id=#{theaterId} and movie_code=#{movieCode}
 	</select>
 	
-	<select id="getNowMovieByNMovie" parameterType="NowMovie" resultType="Integer">
+	<select id="getNMovieTimeByThAndMovie2" parameterType="NowMovie" resultType="String">
+		select to_char(movie_time, 'yyyymmddhh24') from nowmovies where theater_id=#{theaterId} and movie_code=#{movieCode}
+	</select>
+	
+	<select id="getNMovieIdByNMovie" parameterType="NowMovie" resultType="Integer">
 		select nowmovie_id from nowmovies where theater_id=#{theaterId} and movie_code=#{movieCode}
-		 and to_char(movie_time, 'mmddhh24')=#{movieTime};
+		 and to_char(movie_time, 'yyyymmddhh24')=#{movieTime}
 	</select>
 	
 	<insert id="insertNowMovie" parameterType="NowMovie">
-		insert into nowmovies(theater_id, movie_code, movie_date)
-		values(#{theaterId}, #{movieCode}, #{movieDate})
+		insert into nowmovies(theater_id, movie_code, movie_time)
+		values(#{theaterId}, #{movieCode}, #{movieTime})
 	</insert>
 	
 	<update id="updateNowMovie" parameterType="NowMovie">
 		update nowmovies set theater_id=#{theaterId}, movie_code=#{movieCode},
-		movie_date=#{movieDate} where nowmovie_id=#{nowmovieId}
+		movie_time=#{movieTime} where nowmovie_id=#{nowmovieId}
 	</update>
 	
 	<delete id="deleteNowMovie" parameterType="String">

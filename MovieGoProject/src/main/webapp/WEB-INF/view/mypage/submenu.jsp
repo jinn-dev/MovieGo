@@ -24,7 +24,8 @@
 		<ul class="cbp-vimenu">
 			<li><a href="#" class="icon-logo"></a></li>
 			<li><a href="#" class="icon-archive">영화취향분석</a></li>
-			<li><a href="#" class="icon-search">개인정보수정</a></li>
+			<c:url value="/modify" var="url"></c:url>
+			<li><a href="${url }" class="icon-search">개인정보수정</a></li>
 			<li><a href="#" class="icon-pencil">MY예매내역</a></li>
 			<li><a href="<%=request.getContextPath() %>/wishlist?userId=${log.userId }" class="icon-location">위시리스트</a></li>
 			<li><a href="#" class="icon-images">영화평가목록</a></li>

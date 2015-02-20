@@ -13,6 +13,9 @@ public interface MovieDao {
 	
 	// 모든 영화 얻어오기 (랜덤)
 	List<Movie> randomGetAllMovies();
+	
+	// 영화 포스터 url 불러오기
+	String getMovieThumbnail(String movieCode);
 
 	// 영화 하나 불러오기
 	Movie getMovieByMovieCode(String movieCode);

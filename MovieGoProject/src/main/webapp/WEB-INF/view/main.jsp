@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <%@ page trimDirectiveWhitespaces="true"%>
@@ -125,7 +124,6 @@
 			var userId = $("#userId").val();
 			var param="userId" +"="+ $("#userId").val();
 			$.ajax({
-
 				url:'http://localhost:9090/MovieGoProject/duplicate',
  				type:'GET',	
  				data : param,
@@ -136,15 +134,11 @@
 					if(data == '1') {
 						alert("이미 사용중인 아이디입니다. 다른 아이디를 사용하세요.");	
 					}
-				
 					else {
 						alert("사용가능한 아이디입니다.");
 						return false;
-				
 					}
-				
 				},
-			
 				error : function(request, status, error) {
 					if(request.status != '0') {
 						alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
@@ -152,7 +146,6 @@
 				}
 				
 			 }); 
-
 	});
  		});
 

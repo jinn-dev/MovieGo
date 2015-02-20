@@ -35,6 +35,8 @@ public class CommentController {
 	@RequestMapping(value="/drop", method=RequestMethod.GET)
 	public String commentDelete(@RequestParam int commentId){
 		int boardId = service.getBoardIdByCmtId(commentId);
+		logger.trace("글번호"+boardId);
+		logger.trace("코멘트번호"+commentId);
 		service.deleteComment(commentId);
 		String path = "redirect:/board/view?boardId="+boardId;
 		return path;
@@ -43,20 +45,8 @@ public class CommentController {
 	/* 댓글 수정 */
 	@RequestMapping(value="/modify", method=RequestMethod.POST)
 	public String commentModify(@ModelAttribute("comment") Comment comment){
-		int number = comment.getCommentId()+1;
-		comment.setCommentId(number);
 		service.updateComment(comment);
 		String path ="redirect:/board/view?boardId="+comment.getBoardId();
 		return path;
 	}
-
-/*	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public String commentList(@RequestParam int boardId, @ModelAttribute("detail") CustomerBoard board,
-			SessionStatus sessionStatus){
-		List<Comment> lists = service.getCommentByBoardId(boardId);
-		String json = new Gson().toJson(lists);
-		logger.trace("제이슨"+json);
-		sessionStatus.setComplete();
-		return  json;
-	}*/
 }

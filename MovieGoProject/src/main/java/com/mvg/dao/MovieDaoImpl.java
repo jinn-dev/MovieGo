@@ -72,6 +72,13 @@ public class MovieDaoImpl implements MovieDao{
 		return result;
 	}
 
+	@Override
+	public String getMovieThumbnail(String movieCode) {
+		String stmt = namespace + "getMovieThumbnail";
+		String result = sqlSession.selectOne(stmt, movieCode);
+		return result;
+	}
+
 
 
 

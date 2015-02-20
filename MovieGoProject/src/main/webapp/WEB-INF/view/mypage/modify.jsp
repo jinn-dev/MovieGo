@@ -21,34 +21,48 @@
 	}
 </script>
 <style type="text/css">
+body{
+	width: 75%;
+	
+}
 #submenu {
 	width: 30%;
 	float: right;
 }
 
-#modufy {
-	width: 70%;
-	float: right;
+.modify-form {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.modify-form label{
+	display: inline-block;
 }
 </style>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
-
-
 <body>
-<div id="modify">
-		개인정보수정<br>
+<div class="modify-form">
+<table>
+	<tr><th>개인정보수정</th></tr>
+	<tr>
+	<td>
 		<c:url value="/update" var="action"></c:url>
 		 <form:form modelAttribute="user" method="post" action="${action }">
-		<label>아이디</label><form:input type="text" path="userId" readonly="true" /><br>
-		<label>비밀번호</label><form:input type="password" path="userPwd" /> <br>
-		<label>EMAIL</label><form:input type="email" path="userEmail" /><br>
-		<label>생년월일</label><form:input type="date" path="userBirthday" /><br>
-		<button type="submit" name="_event_confirmed">수정확인</button>
-		<button type="submit" name="_event_reverse">재입력</button>
-<!-- 		<input type="button" onclick="deleteCheck();" value="회원탈퇴">
- -->			
+			<label>아이디</label><form:input type="text" path="userId" readonly="true" /><br>
+			<label>비밀번호</label><form:input type="password" path="userPwd" /> <br>
+			<label>EMAIL</label><form:input type="email" path="userEmail" /><br>
+			<label>생년월일</label><form:input type="date" path="userBirthday" /><br>
+	</td>
+	<tr>
+	<td>
+			<button type="submit" name="_event_confirmed">수정확인</button>
+			<button type="submit" name="_event_reverse">재입력</button>
 		</form:form> 
 	<button onclick="deleteCheck()">회원탈퇴</button>
+	</td>
+	</tr>
+</table>
 </div>
 	<div id="submenu">
 		<jsp:include page="submenu.jsp"></jsp:include>

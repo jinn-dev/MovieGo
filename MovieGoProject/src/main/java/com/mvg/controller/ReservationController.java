@@ -1,34 +1,29 @@
 package com.mvg.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.mvg.entity.SeatInfo;
 import com.mvg.entity.Theater;
 import com.mvg.service.MovieService;
 import com.mvg.service.NowMovieService;
 import com.mvg.service.ReservationService;
+import com.mvg.service.SeatInfoService;
 import com.mvg.service.TheaterService;
 
 @Controller
-@SessionAttributes("rsv, rsvInfo")
 public class ReservationController {
 	
 	private final static Logger logger;
@@ -48,21 +43,15 @@ public class ReservationController {
 	@Autowired
 	MovieService mservice;
 	
-	
-	
-	@InitBinder
-	public void initBinder(WebDataBinder binder) throws Exception {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-		binder.registerCustomEditor(Date.class, "times",
-				new CustomDateEditor(simpleDateFormat, true));
-	}
-	
+	@Autowired
+	SeatInfoService sservice;
 	
 	
 	private int thId;
 	private String mCode;
 	private String mTime;
+	private int nmId;
+	private String rinfo;
 	
 	
 	@RequestMapping(value="/reserve",  method=RequestMethod.GET)
@@ -76,6 +65,7 @@ public class ReservationController {
 	public @ResponseBody String theaterReceive(@RequestParam int theaterId, Model model) {
 		
 		thId = theaterId;
+		logger.trace("수업: 극장아이디: "+thId);
 		
 		Map<String, String> codesAndNames = nservice.getAllNMovieNamesService(thId);
 		Iterator<String> iter = codesAndNames.keySet().iterator();
@@ -110,10 +100,8 @@ public class ReservationController {
 		}
 		jsonBuilder.append("]}");
 		
-		logger.trace("수업: ㅇㅇ"+jsonBuilder.toString());
-		
-		String json = JSONValue.toJSONString(codesAndNames);
-		logger.trace("수업: "+json);
+		logger.trace("수업: 영화: "+jsonBuilder.toString());
+
 		return jsonBuilder.toString();
 
 	}
@@ -123,8 +111,9 @@ public class ReservationController {
 
 		
 		mCode = movieCode;
+		logger.trace("수업: 영화코드: "+mCode);
 		
-		Map<String, String> times = nservice.getNowMovieByThAndMovieService(thId, mCode);
+		Map<String, String> times = nservice.getNMovieTimeByThAndMovieService(thId, mCode);
 		Iterator<String> iter = times.keySet().iterator();
 		
 		StringBuilder jsonBuilder = new StringBuilder();
@@ -157,7 +146,7 @@ public class ReservationController {
 		}
 		jsonBuilder.append("]}");
 		
-		logger.trace("수업: ㅇㅇ"+jsonBuilder.toString());
+		logger.trace("수업: 시간: "+jsonBuilder.toString());
 		
 		return jsonBuilder.toString();
 	}
@@ -165,15 +154,31 @@ public class ReservationController {
 	@RequestMapping(value="reserve/time", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public @ResponseBody String timeReceive(@RequestParam String time, Model model) {
 		mTime = time;
-		logger.trace("수업: 영화시간: "+time);
-
-		return "tndus";
+		logger.trace("수업: 영화시간: "+mTime);
+		String thName = tservice.getTheaterByIdService(thId).getTheaterName();
+		String mName = mservice.getMovieByMCodeService(mCode).getMovieTitleKr();
+		nmId = nservice.getNMovieIdByNMovieService(thId, mCode, mTime);
+		rinfo = "영화관: "+thName+", 영화: "+mName+", 시간: "+mTime;
+		return rinfo;
 	}
 
 	@RequestMapping(value="/reserve/seat", method=RequestMethod.GET)
-	public String reserveSeat() {
+	public String reserveSeat(Model model) {
+		List<SeatInfo> seats = sservice.getSInfoByNMovieIdService(nmId);
+		ArrayList<Integer> seatNum = new ArrayList<Integer>();
+		for (int i=0;i<seats.size();i++) {
+			int num = seats.get(i).getSeatNo();
+			seatNum.add(i, num);
+		}
+		int cnt = seatNum.size();
+		model.addAttribute("seats", seatNum);
+		model.addAttribute("seatCnt", cnt);
+		model.addAttribute("rinfo", rinfo);
 		return "reservation/reservation2";
 	}
 	
-	
+	@RequestMapping(value="/reserve/test", method=RequestMethod.GET)
+	public String reserveTest() {
+		return "reservation/reservation2222";
+	}
 }

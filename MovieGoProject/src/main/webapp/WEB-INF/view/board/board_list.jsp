@@ -29,7 +29,6 @@
 <body>
    <jsp:include page="/WEB-INF/view/user/header.jsp" />
  	<header>
- 		<%-- <img src="<%=request.getContextPath()%>/img/board_logo.png"/> --%>
 		<h3>1:1문의</h3>
 		<h5>
 			- 문의하시기 전 FAQ를 확인하시면 궁금증을 더욱 빠르게 해결하실 수 있습니다.<br> - 1:1 문의 운영 시간

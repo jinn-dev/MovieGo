@@ -51,6 +51,7 @@ public class CommentDaoImpl implements CommentDao {
 	public int deleteComment(int commentId) {
 		String stmt = namespace+"deleteComment";
 		int result = sqlSession.delete(stmt, commentId);
+		logger.trace("코멘트삭제"+result);
 		return result;
 	}
 

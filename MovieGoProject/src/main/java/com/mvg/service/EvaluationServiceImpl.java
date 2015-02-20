@@ -17,4 +17,10 @@ public class EvaluationServiceImpl implements EvaluationService {
 		return result;
 	}
 
+	@Override
+	public int updateEvaluation(Evaluation evaluation) {
+		int result = dao.updateEvaluation(evaluation);
+		return result;
+	}
+
 }
