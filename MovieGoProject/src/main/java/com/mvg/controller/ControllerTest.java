@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.mvg.entity.User;
 import com.mvg.service.UserService;
@@ -58,7 +57,9 @@ public class ControllerTest {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(@ModelAttribute("log") User log,
 			SessionStatus sessionStatus) {
-		sessionStatus.setComplete();
+		if(log!=null){
+			sessionStatus.setComplete();
+		}
 		return "redirect:/main";
 	}
 
@@ -111,7 +112,6 @@ public class ControllerTest {
 		return "apitest/restService3";
 	}
 }
-	
 	/*
 	  ModelAndView mav = new ModelAndView();
 		mav.setViewName("main");

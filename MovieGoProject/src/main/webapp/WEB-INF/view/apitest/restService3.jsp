@@ -26,13 +26,13 @@
 	// 결과 ROW의 개수를 지정 
 	String itemPerPage = request.getParameter("itemPerPage")==null?"20":request.getParameter("itemPerPage");
 	// 영화명으로 조회
-	String movieNm = request.getParameter("movieNm")==null?"살인의뢰":request.getParameter("movieNm");
+	String movieNm = request.getParameter("movieNm")==null?"":request.getParameter("movieNm");
 	// 감독명으로 조회
 	String directorNm = request.getParameter("directorNm")==null?"":request.getParameter("directorNm");
 	// YYYY형식의 조회시작 개봉연도 입력
-	String openStartDt = request.getParameter("openStartDt")==null?"":request.getParameter("openStartDt");
+	String openStartDt = request.getParameter("openStartDt")==null?"2013":request.getParameter("openStartDt");
 	// YYYY형식의 조회종료 개봉연도 입력
-	String openEndDt = request.getParameter("openEndDt")==null?"":request.getParameter("openEndDt");
+	String openEndDt = request.getParameter("openEndDt")==null?"2014":request.getParameter("openEndDt");
 	// YYYY형식의 조회시작 제작연도 입력
 	String prdtStartYear = request.getParameter("prdtStartYear")==null?"":request.getParameter("prdtStartYear");
 	// YYYY형식의 조회종료 제작연도 입력
@@ -85,7 +85,17 @@
 			<%
 				LinkedHashMap map = (LinkedHashMap)pageContext.getAttribute("movie");
 				String apiKey = "DAUM_CONTENTS_DEMO_APIKEY";     // 5b2f03cf0e14e9579391ce1940083538
-				String movieName = (String)map.get("movieNm");
+				String str1 = (String)map.get("movieNm");
+				String str2 =":";
+				String movieName;
+				boolean contains = str1.contains(str2);
+				if(contains == true){
+					int idx = str1.indexOf(":");
+					movieName = str1.substring(0, idx-1);
+				}
+				else{
+					movieName = str1;
+				}
 				int result = 20;
 				int pageno= 1;
 				String movieUrl = "http://apis.daum.net/contents/movie?"+"output=json&apikey="+apiKey+"&pageno="+pageno+"&result="+result+"&q="+URLEncoder.encode(movieName, "UTF-8");

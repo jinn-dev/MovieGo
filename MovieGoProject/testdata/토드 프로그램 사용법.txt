@@ -1,5 +1,5 @@
 1. www.toadworld.com - 다운로드 탭 - Toad for Oracle Freeware v12.6 다운로드 하기
-2. 회원가입 안했으면 가입 후 다운로드
+2. jaybymyrrh@gmail.com / eH{47/mQ  - 다운로드
 3. 다 설치했으면 실행 후 디비 User, Password 입력 후 Connect
 4. DataBase - Import - Import Table Data 선택
 5. Object Name에 임포트 시킬 테이블 선택 후 Show Data 클릭 후 Next

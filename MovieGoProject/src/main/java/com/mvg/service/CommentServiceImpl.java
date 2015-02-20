@@ -2,6 +2,8 @@ package com.mvg.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,9 @@ import com.mvg.entity.Comment;
 @Service
 public class CommentServiceImpl implements CommentService {
 
+	private static final Logger logger = LoggerFactory
+			.getLogger(CommentServiceImpl.class);
+	
 	@Autowired
 	CommentDao dao;
 	
@@ -29,6 +34,7 @@ public class CommentServiceImpl implements CommentService {
 	@Override
 	public int deleteComment(int commentId) {
 		int result = dao.deleteComment(commentId);
+		logger.trace("코멘트삭제"+result);
 		return result;
 	}
 
