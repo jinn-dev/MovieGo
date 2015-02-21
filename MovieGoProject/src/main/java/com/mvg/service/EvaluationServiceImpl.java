@@ -23,4 +23,10 @@ public class EvaluationServiceImpl implements EvaluationService {
 		return result;
 	}
 
+	@Override
+	public Evaluation selectEvaluationByEvId(int evId) {
+		Evaluation result = dao.getEvaluationByEvId(evId);
+		return result;
+	}
+
 }

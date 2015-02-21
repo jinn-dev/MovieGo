@@ -59,4 +59,12 @@ public class EvaluationDaoImpl implements EvaluationDao {
 		return result;
 	}
 
+	@Override
+	public Evaluation getEvaluationByEvId(int evId) {
+		String stmt = namespace + "selectEvaluationByEvId";
+		Evaluation result = sqlSession.selectOne(stmt, evId);
+		
+		return result;
+	}
+
 }
