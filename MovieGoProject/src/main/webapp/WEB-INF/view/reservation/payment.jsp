@@ -21,9 +21,9 @@ function re_seledVal(){
 </script>
 
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
-
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 결제하기
+${seats }
 <table border="1">
 <tr>
 <td>

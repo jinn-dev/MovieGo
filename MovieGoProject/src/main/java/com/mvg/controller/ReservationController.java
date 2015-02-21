@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mvg.entity.SeatInfo;
 import com.mvg.entity.Theater;
+import com.mvg.entity.User;
 import com.mvg.service.MovieService;
 import com.mvg.service.NowMovieService;
 import com.mvg.service.ReservationService;
@@ -52,6 +55,7 @@ public class ReservationController {
 	private String mTime;
 	private int nmId;
 	private String rinfo;
+	private ArrayList<String> seats;
 	
 	
 	@RequestMapping(value="/reserve",  method=RequestMethod.GET)
@@ -174,11 +178,22 @@ public class ReservationController {
 		model.addAttribute("seats", seatNum);
 		model.addAttribute("seatCnt", cnt);
 		model.addAttribute("rinfo", rinfo);
-		return "reservation/reservation2";
+		return "reservation/reserv";
 	}
 	
-	@RequestMapping(value="/reserve/test", method=RequestMethod.GET)
-	public String reserveTest() {
-		return "reservation/reservation2222";
+	@RequestMapping(value="/reserve/payment", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
+	public String reservePayment(@RequestParam ArrayList<String> seatlist, HttpSession session, Model model) {
+		//User user = (User) session.getAttribute("log");
+		//만약 생일이 이번달이면 쿠폰을 yes로바꾸기
+		//쿠폰, 포인트 점수 가져오기
+		seats = seatlist;
+		model.addAttribute("seats", seats);
+		return "reservation/payment";
+	}
+	
+	@RequestMapping(value="/reserve/complete", method=RequestMethod.POST)
+	public String reserveComplete(HttpSession session) {
+		//User user = (User) session.getAttribute("log");
+		return "reservation/reservation_complete";
 	}
 }

@@ -5,6 +5,10 @@
 <mapper namespace="com.mvg.mappers.evaluationMapper">
  <insert id = "insertEvaluation" parameterType = "Evaluation">
   	insert into evaluations (user_id, movie_code, ev_rating) values (#{userId}, #{movieCode}, #{evRating})
+  	<selectKey keyProperty="evId" resultType="integer" order="AFTER">
+  		select	SEQ_evals_ev_id.currval
+  		from dual
+  	</selectKey>
   </insert>
   	<select id="selectEvaluationByEvId" parameterType="INTEGER" resultType="Evaluation">
 		select *
