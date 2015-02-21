@@ -80,6 +80,7 @@ body{
 			<label>EMAIL</label><form:input type="email" path="userEmail" /><br>
 			<label>생년월일</label><form:input type="date" path="userBirthday" id="userBirthday"/><br>
 	</td>
+	</tr>
 	<tr>
 	<td align="center">
 			<button type="submit" name="_event_confirmed" class="div-button">수정확인</button>

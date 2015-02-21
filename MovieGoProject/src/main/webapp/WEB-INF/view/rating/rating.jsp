@@ -97,10 +97,6 @@ $( "wishlist" ).click(function() {
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 
-영화평가하기
-포스터 or 리스트 형태
-별점 추가<br>
-
   <table id="ratingList">
       <tr>
          <th>
@@ -149,12 +145,8 @@ $( "wishlist" ).click(function() {
 		  </form:form>
 		  --%>
 		 
-                <input type="button" id="evcomment" name="evcomment" value="한줄평" onclick="javascript:evcomment()"/>
+        <input type="button" id="evcomment" name="evcomment" value="한줄평" onclick="javascript:evcomment()"/>
         
-         
-        
-        
-      
         </td>    
         <td>
 

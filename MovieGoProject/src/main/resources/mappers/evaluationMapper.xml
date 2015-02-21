@@ -15,8 +15,8 @@
 		from evaluations where
 		ev_id=#{evId}
 	</select>
-	<update id="updateEvaluation" parameterType="INTEGER">
-		update evaluations set ev_comment=#{evComment}, ev_rating=#{evRating}
+	<update id="updateEvaluation" parameterType="Evaluation">
+		update evaluations set user_Id=#{userId}, movie_code=#{movieCode}, ev_rating=#{evRating}, ev_comment=#{evComment}
 		where ev_id=#{evId}
 	</update>
 

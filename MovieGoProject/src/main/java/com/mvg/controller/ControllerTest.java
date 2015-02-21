@@ -1,12 +1,18 @@
 package com.mvg.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +34,14 @@ public class ControllerTest {
 
 	@Autowired
 	UserService service;
+
+	@InitBinder
+	public void initBinder(WebDataBinder binder) throws Exception {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		binder.registerCustomEditor(Date.class, "userBirthday",
+				new CustomDateEditor(simpleDateFormat, true));
+	}
 
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String mainTest(Model model) {

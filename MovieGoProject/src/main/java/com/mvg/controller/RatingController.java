@@ -1,8 +1,6 @@
 package com.mvg.controller;
 
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.HttpServletBean;
 
 import com.mvg.entity.Evaluation;
 import com.mvg.entity.Movie;
@@ -68,11 +65,12 @@ public class RatingController {
 		return "rating/write_comment";
 	}
 
-	@RequestMapping(value = "/addcomment", method = RequestMethod.POST)
-	public String addComment(
-			@ModelAttribute("addComment") Evaluation addComment, Model model) {
-		logger.trace("수업:" + addComment.getEvId());
-		eService.updateEvaluation(addComment);
+	@RequestMapping(value = "/addevcomment", params = "_event_confirmed", method = RequestMethod.POST)
+	public String addEvComment(Model model, @ModelAttribute("ecomment") Evaluation ecomment) {
+		logger.trace("이거evId:" + ecomment.getEvId());
+		logger.trace("이거evId:" + ecomment.getUserId());
+		logger.trace("이거evRating: " + ecomment.getEvRating());
+		eService.updateEvaluation(ecomment);
 		return "rating/rating";
 	}
 
@@ -91,6 +89,7 @@ public class RatingController {
 		
 		Evaluation evaluation = new Evaluation(userId, movieCode, rating);
 		eService.insertEvaluation(evaluation);
+		
 		logger.trace("evluations정보: " + evaluation);
 		model.addAttribute("evRating", evaluation);
 		return "rating/rating";
