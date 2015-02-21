@@ -52,7 +52,19 @@ public class RatingController {
 		model.addAttribute("movies", movies);
 		return "rating/rating";
 	}
-
+	
+	@RequestMapping(value = "/rating.do", method = RequestMethod.GET)
+	public String ratingTest2() {
+		return "rating/test";
+	}
+	
+	@RequestMapping(value = "/rating.ajax", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Movie> ratingTest(@RequestParam int page) {
+		List<Movie> movies = service.randomGetAllMovies(page);
+		return movies;
+	}
+	
 	@RequestMapping(value = "/addwishlist", params = "_event_confirmed", method = RequestMethod.POST)
 	public String addWishlist(Model model,
 			@ModelAttribute("wishlists") Wishlist wishlists) {

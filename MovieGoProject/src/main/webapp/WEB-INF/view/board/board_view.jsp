@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -120,13 +121,13 @@ $(document).ready(function() {
 						<input type="hidden" name="commentId" id="comment_id" value="${comments.commentId }"/>
 						<input type="hidden" name="boardId" value="${detail.boardId }" />
 						<input type="submit" class="div-button" id="comment_modify" value="MODIFY">
-						<c:url value="/comment/drop" var="url"></c:url>
 						<input type="button" class="div-button" id="comment_delete" value="DELETE">
 						</td>
 					</c:if>
 					<tr>
 					<td colspan="5" align="left" height="25">
-					<input type="text" name="commentContent" class="content" value="${comments.commentContent }" style='border: 0px; font-size:1.0em;'
+					<input type="text" name="commentContent" class="content" 
+					value="${comments.commentContent }" style='border: 0px; font-size:1.0em;'
 					 readonly/>
 					</td>
 					</tr>
@@ -140,7 +141,8 @@ $(document).ready(function() {
 					<c:url value="/comment/write" var="url"></c:url>
 						<form:form method="post" modelAttribute="comment" action="${url }" name="comment-form">
 							<div class="comment-form-inner">
-								<input type="text" name="commentContent" id="commentContentInput"/>
+								<input type="text" name="commentContent" id="commentContentInput"
+								 placeholder="댓글을 입력해주세요."/>
 								<input type="hidden" name="boardId" value="${detail.boardId }" />
 								<input type="hidden" name="userId" id="id2" value="${log.userId }" />&nbsp;&nbsp;
 								<input type="submit" class="div-button"  id="comment_submit" value="SUBMIT"/>
@@ -152,5 +154,23 @@ $(document).ready(function() {
 		</table><br>
 		</div>
 	</section>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/js/placeholdem.min.js"></script>
+		<script>
+			Placeholdem( document.querySelectorAll( '[placeholder]' ) );
+
+			var fadeElems = document.body.querySelectorAll( '.fade' ),
+				fadeElemsLength = fadeElems.length,
+				i = 0,
+				interval = 75;
+
+				function incFade() {
+					if( i < fadeElemsLength ) {
+						fadeElems[ i ].className += ' fade-load';
+						i++;
+						setTimeout( incFade, interval );
+					}
+				}
+				setTimeout( incFade, interval );
+		</script>
 </body>
 </html>

@@ -59,7 +59,7 @@ function clickTime(time) {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState==4 && xhr.status==200) {
 			document.querySelector("#selTime").innerHTML = time;
-			$("#reserveInfo").append("| "+time);
+			$("#reserveInfo").append("|　"+time);
 			
 		}
 	}
@@ -80,13 +80,13 @@ function clickMovie(movie) {
 			$("#timelist").empty();
 			document.querySelector("#selMovie").innerHTML = movie;
 			if(movie == 20124400){
-				$("#reserveInfo").append("| 간첩");
+				$("#reserveInfo").append("|　간첩");
 			}
 			else if(movie == 20124032){
-				$("#reserveInfo").append("| 간기남");
+				$("#reserveInfo").append("|　간기남");
 			}
 			else if(movie == 20124070){
-				$("#reserveInfo").append("| 강철대오");
+				$("#reserveInfo").append("|　강철대오");
 				
 			}
 			for (var i=0;i<jsonobj2.times.length;i++){

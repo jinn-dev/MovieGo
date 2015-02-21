@@ -33,6 +33,15 @@
 		on(b.board_id = c.board_id)
 		where b.board_id = #{boardId}
 	</select>
+	
+	<select id="selectBoardWithCmtByCommentId" resultMap="ComplexBoardComment">
+		select b.board_id, b.user_id, b.board_title, b.board_content, b.board_date,
+		c.comment_id, c.board_id, c.user_id, c.comment_content, c.comment_date
+		from customerboards b
+		left join comments c
+		on(b.board_id = c.board_id)
+		where c.comment_id = #{commentId}
+	</select>
 
 	<insert id="insertBoard" parameterType="CustomerBoard">
 		insert into customerboards (user_id, board_title, board_content)

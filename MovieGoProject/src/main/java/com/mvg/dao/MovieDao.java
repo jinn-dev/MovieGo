@@ -12,7 +12,7 @@ public interface MovieDao {
 	List<Movie> getAllMovies();
 	
 	// 모든 영화 얻어오기 (랜덤)
-	List<Movie> randomGetAllMovies();
+	List<Movie> randomGetAllMovies(int page);
 	
 	// 영화 포스터 url 불러오기
 	String getMovieThumbnail(String movieCode);

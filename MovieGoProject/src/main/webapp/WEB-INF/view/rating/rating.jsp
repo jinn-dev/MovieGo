@@ -23,7 +23,7 @@
 <script type="text/javascript">
 var flag = "n";
 
-function ratingInfo(s, m){
+<%-- function ratingInfo(s, m){
 	var mov = m.toString();
 	var str = s + mov;
 	alert(str);
@@ -40,7 +40,7 @@ function ratingInfo(s, m){
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.send("code=" + str);
 
-} 
+}  --%>
 
 /*  
  function ratingInfo(s){
@@ -124,8 +124,7 @@ $( "wishlist" ).click(function() {
       <c:forEach items="${movies }" var="movies">
       <tr>
          <td><c:out value="${movies.movieTitleKr}"/></td>
-  		<td > 
-  		
+  		<td >
   	<a href="javascript:ratingInfo(1, ${movies.movieCode})" class="on" id="one">★</a>
     <a href="javascript:ratingInfo(2, ${movies.movieCode})" class="on" id="two">★</a>
     <a href="javascript:ratingInfo(3, ${movies.movieCode})" class="on" id="three">★</a>
@@ -163,8 +162,6 @@ $( "wishlist" ).click(function() {
 
       </tr>  
       </c:forEach>
-      
    </table>
- 
 </body>
 </html>

@@ -48,8 +48,9 @@
 							name="boardTitle" id="boardTitle" placeholder="제목을 입력해주세요." /><br>
 						</td>
 						<tr>
-							<td><textarea rows="5" cols="80" name="boardContent"
-									id="boardContent"></textarea><br></td>
+							<td>
+							<textarea rows="5" cols="80" name="boardContent"
+									id="boardContent" placeholder="내용을 입력해주세요."></textarea><br></td>
 						</tr>
 						<tr>
 							<td>
@@ -61,6 +62,24 @@
 				</tr>
 			</table>
 	</section>
+	<script src="<%=request.getContextPath() %>/js/placeholdem.min.js"></script>
+		<script>
+			Placeholdem( document.querySelectorAll( '[placeholder]' ) );
 
+			var fadeElems = document.body.querySelectorAll( '.fade' ),
+				fadeElemsLength = fadeElems.length,
+				i = 0,
+				interval = 75;
+
+				function incFade() {
+					if( i < fadeElemsLength ) {
+						fadeElems[ i ].className += ' fade-load';
+						i++;
+						setTimeout( incFade, interval );
+					}
+				}
+
+				setTimeout( incFade, interval );
+		</script>
 </body>
 </html>

@@ -34,8 +34,8 @@ public class MovieServiceImpl implements MovieService {
 	}
 	
 	@Override
-	public List<Movie> randomGetAllMovies() {
-		List<Movie> movies = dao.randomGetAllMovies();
+	public List<Movie> randomGetAllMovies(int page) {
+		List<Movie> movies = dao.randomGetAllMovies(page);
 		return movies;
 	}
 	 
