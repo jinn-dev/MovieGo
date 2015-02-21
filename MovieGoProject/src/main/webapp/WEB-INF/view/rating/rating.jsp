@@ -171,12 +171,5 @@ $( "wishlist" ).click(function() {
       </tr>  
       </c:forEach>
    </table>
-   
- <script>
- $(document).ready(function(){
- });
- 
- </script>
- 
 </body>
 </html>

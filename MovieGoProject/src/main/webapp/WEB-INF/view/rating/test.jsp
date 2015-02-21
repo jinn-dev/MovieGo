@@ -23,10 +23,12 @@
 				dataType : 'json',
 		   		 success : function(data) {
 		   			 // var json = JSON.stringify(data);
+		   			 $("#movies").append("<tr>");
 		   			 for(var i in data){
-						$("#movies").append('<tr><td>'+data[i].movieTitleKr+'</td><td></tr>');
+						$("#movies").append('<td><img src="'+data[i].movieImgUrl+'"/></td>');
 		   			 } 
-		   			$("#page").val(10);
+		   			$("#movies").append("</tr>");  
+		   			$("#page").val(6);
 		   		 },
 			error : function(request, status, error) {
 				if(request.status != '0') {
@@ -47,10 +49,12 @@
 					dataType : 'json',
 			   		 success : function(data) {
 			   			 // var json = JSON.stringify(data);
+			   			 $("#movies").append("<tr>");
 			   			 for(var i in data){
-							$("#movies").append('<tr><td>'+data[i].movieTitleKr+'</td><td></tr>');
+			   				$("#movies").append('<td><img src="'+data[i].movieImgUrl+'"/></td>');
 			   			 } 
-			   			$("#page").val()+10;
+			   			 $("#movies").append("</tr>"); 
+			   			$("#page").val()+6;
 			   		 },
 				error : function(request, status, error) {
 					if(request.status != '0') {
@@ -66,11 +70,11 @@
 </script>
 </head>
 <body>
-<table>
+<table border="1">
 	<input type="hidden" var="${page }" id="page" name="page"/>
-	<div id="movies" border="1">
+	<div id="movies">
 	</div>
-	<button id="more">더보기</button>
-</table>	
+</table>
+<button id="more">더보기</button>
 </body>
 </html>
