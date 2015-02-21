@@ -38,9 +38,11 @@ public class MovieDaoImpl implements MovieDao{
 	}
 	
 	@Override
-	public List<Movie> randomGetAllMovies() {
+	public List<Movie> randomGetAllMovies(int page) {
 		String stmt = namespace+ "randomGetAllMovies";
-		List<Movie> movies = sqlSession.selectList(stmt);
+		List<Movie> movies = sqlSession.selectList(stmt, page);
+		logger.trace("페이지"+page);
+		logger.trace("영화"+movies);
 		return movies;
 	}
 	

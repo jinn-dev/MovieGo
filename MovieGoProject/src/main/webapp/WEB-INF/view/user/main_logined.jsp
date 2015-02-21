@@ -41,7 +41,6 @@ $(document).ready(function() {
 			async : false,
 				dataType : 'text',
 		    success : function(data) {
-		    	console.log(data);
 		    	$("#thumbnail").attr("src", data);
 				
 			},

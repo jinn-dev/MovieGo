@@ -26,7 +26,7 @@
 	<form:form modelAttribute="content" method="POST" action="${url }">
 	<input type="hidden" name="userId" value="${log.userId }"/>
 	<tr><td><label>제목 </label><form:input type="text" path="boardTitle"/></td></tr>
-	<tr><td><label>내용 </label><form:textarea row="30" col="50" path="boardContent"/></td></tr>
+	<tr><td><label>　　 </label><form:textarea row="30" col="50" path="boardContent"/></td></tr>
 	<tr><td align="center"><button type="submit" name="_event_confirmed" class="div-button">완료</button>
 	<input type="reset" class="div-button"/></td></tr>
 	</form:form>

@@ -9,17 +9,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.labelinplace.css">
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
- function deleteCheck() {
+
+function deleteCheck() {
 	 if(confirm("회원탈퇴하시겠습니까??")) {
 		 location.href="<%=request.getContextPath()%>/mypage/del?userId=${user.userId }";
 		 
 		}
-
 	}
 </script>
+
 <style type="text/css">
 body{
 	width: 100%;
@@ -73,12 +75,14 @@ body{
 	<tr><th><div id="modify-form-header">개인정보수정</div></th></tr>
 	<tr>
 	<td>
+	<div class="mygroup">
 		<c:url value="/update" var="action"></c:url>
 		 <form:form modelAttribute="user" method="post" action="${action }">
 			<label>아이디</label><form:input type="text" path="userId" readonly="true" /><br>
 			<label>비밀번호</label><form:input type="password" path="userPwd" /> <br>
 			<label>EMAIL</label><form:input type="email" path="userEmail" /><br>
-			<label>생년월일</label><form:input type="date" path="userBirthday" id="userBirthday"/><br>
+			<label>생년월일</label><form:input type="date" path="userBirthday" id="userBirthday" /><br>
+	</div>
 	</td>
 	<tr>
 	<td align="center">
