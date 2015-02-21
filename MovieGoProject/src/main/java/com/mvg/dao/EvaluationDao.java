@@ -27,5 +27,5 @@ public interface EvaluationDao {
 	//평가 수정
 	int updateEvaluation(Evaluation evaluation);
 	
-	
+	Evaluation getEvaluationByEvId(int evId);
 }

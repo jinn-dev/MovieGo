@@ -2,6 +2,9 @@ package com.mvg.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.HttpServletBean;
 
 import com.mvg.entity.Evaluation;
 import com.mvg.entity.Movie;
+import com.mvg.entity.User;
 import com.mvg.entity.Wishlist;
 import com.mvg.service.EvaluationService;
 import com.mvg.service.MovieService;
@@ -23,7 +28,7 @@ import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({ "evRating", "movies" })
+@SessionAttributes({"evRating", "movies"})
 public class RatingController {
 	@Autowired
 	MovieService service;
@@ -71,21 +76,22 @@ public class RatingController {
 		return "rating/rating";
 	}
 
-	@RequestMapping(value = "/evrating", method = RequestMethod.GET)
-	public String evRating(Model model) {
-
-		return "rating/write_comment";
-	}
 
 	@RequestMapping(value = "/evrating", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
-	public String evRating(@RequestParam String code, Model model) {
+	public String evRating(@RequestParam String code, Model model, HttpSession session) {
 		logger.trace("수업: " + code);
 		String sRating = code.substring(0, 1);
-		int evRating = Integer.parseInt(sRating);
+		int rating = Integer.parseInt(sRating);
 		String movieCode = code.substring(1, 9);
-		logger.trace("수업: " + movieCode + evRating);
-		Evaluation evaluation = new Evaluation("a", movieCode, evRating);
+		logger.trace("수업: " + movieCode + rating);
+		
+		User user = (User) session.getAttribute("log");
+		String userId = user.getUserId();
+		logger.trace("아이디:" + userId);
+		
+		Evaluation evaluation = new Evaluation(userId, movieCode, rating);
 		eService.insertEvaluation(evaluation);
+		logger.trace("evluations정보: " + evaluation);
 		model.addAttribute("evRating", evaluation);
 		return "rating/rating";
 	}

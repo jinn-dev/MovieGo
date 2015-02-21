@@ -6,7 +6,11 @@
  <insert id = "insertEvaluation" parameterType = "Evaluation">
   	insert into evaluations (user_id, movie_code, ev_rating) values (#{userId}, #{movieCode}, #{evRating})
   </insert>
-  
+  	<select id="selectEvaluationByEvId" parameterType="INTEGER" resultType="Evaluation">
+		select *
+		from evaluations where
+		ev_id=#{evId}
+	</select>
 	<update id="updateEvaluation" parameterType="INTEGER">
 		update evaluations set ev_comment=#{evComment}, ev_rating=#{evRating}
 		where ev_id=#{evId}
