@@ -53,7 +53,8 @@ ${rinfo }<br>
 <!-- 좌석 선택 화면 -->
 <div class="theaterMap">
    <div class="screen">screen</div>
-   <div class="mapWrap"></div>
+   <div class="mapWrap">
+   </div>
 </div>
 </td>
 </tr>
