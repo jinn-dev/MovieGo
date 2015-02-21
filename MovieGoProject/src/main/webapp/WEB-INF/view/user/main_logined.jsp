@@ -41,7 +41,7 @@ $(document).ready(function() {
 			async : false,
 				dataType : 'text',
 		    success : function(data) {
-		    	alert(movieCd);
+		    	console.log(data);
 		    	$("#thumbnail").attr("src", data);
 				
 			},
@@ -98,9 +98,9 @@ table{
 }
 
 #moviego-table{
-	position: absolute;
-	top: 70%;
-	left: 22.5%;
+	position: relative;
+	top: 8%;
+	left: 3.5%;
 }
 
 </style>

@@ -10,9 +10,20 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
 <style>
-table {
+.reserve-table {
 	width:800px;
 	margin: 0 auto;
+}
+
+.reserve-table th {
+	background: #4F5D73;
+ 	color: #F2F2F2;
+ 	padding: 10px;
+}
+
+.reserve-table-content {
+	background: #F2F2F2;
+	height: 280px;
 }
 
 #htable {
@@ -48,6 +59,8 @@ function clickTime(time) {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState==4 && xhr.status==200) {
 			document.querySelector("#selTime").innerHTML = time;
+			$("#reserveInfo").append("| "+time);
+			
 		}
 	}
 	var url = "<%=request.getContextPath()%>/reserve/time";
@@ -55,7 +68,8 @@ function clickTime(time) {
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.send("time="+time);
 } 
-	
+
+
 function clickMovie(movie) {
 	$("#timelist").empty();
 	$("#selTime").empty();
@@ -65,6 +79,16 @@ function clickMovie(movie) {
 			var jsonobj2 = JSON.parse(xhr.responseText);
 			$("#timelist").empty();
 			document.querySelector("#selMovie").innerHTML = movie;
+			if(movie == 20124400){
+				$("#reserveInfo").append("| 간첩");
+			}
+			else if(movie == 20124032){
+				$("#reserveInfo").append("| 간기남");
+			}
+			else if(movie == 20124070){
+				$("#reserveInfo").append("| 강철대오");
+				
+			}
 			for (var i=0;i<jsonobj2.times.length;i++){
 				var appendTxt = "<a href='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>" + jsonobj2.times[i].time +"</a><br>";
 				$("#timelist").append(appendTxt);
@@ -90,6 +114,15 @@ function clickTheater(theater) {
 			var jsonobj = JSON.parse(xhr.responseText);
 			$("#movielist").empty();
 			document.querySelector("#selTheater").innerHTML = theater;
+			if(theater==1){
+				$("#reserveInfo").append("건대");
+			}
+			else if(theater==2){
+				$("#reserveInfo").append("강변");
+			}
+			else{
+				$("#reserveInfo").append("군자");
+			}
 			for(var i = 0; i < jsonobj.movies.length; i++) {
 				var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>";
 				$("#movielist").append(appendText);
@@ -109,26 +142,27 @@ function clickTheater(theater) {
 
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
-<h1> '아이디: ${log.userId }' 영화 예매 </h1>
 <form name="frm" id="frm">
-<table border=1>
+<table class="reserve-table">
+<tr><td colspan="3" align="center"><h1>영화 예매 </h1></td>
+<tr><td colspan="3" align="right"><a href="#" onclick="javascript:onreset()"><img src="<%=request.getContextPath() %>/img/reserveReset.png"></a></td></tr>
 <tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
 <tr>
-<td height="400px" >
+<td class="reserve-table-content">
   <c:forEach items="${theaters }" var="theater">
-  <a href="javascript:clickTheater(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br>
+  <a class="theaters" href="javascript:clickTheater(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br>
   </c:forEach>
 </td>
-<td>
+<td class="reserve-table-content">
   <div id="movielist"></div>
 </td>
-<td>
+<td class="reserve-table-content">
   <div id="timelist"></div>
 </td>
 </tr>
 <tr>
-<td colspan="3" height="100px" align="right">
-<!-- 추가: 좌석선택 image button  -->
+<td colspan="2" id="reserveInfo" align="left"></td>
+<td align="right">
 <input type="image" name="seat" src="<%=request.getContextPath() %>/img/seatSelect.png" onclick="javascript:check();" />
 </td>
 </tr>

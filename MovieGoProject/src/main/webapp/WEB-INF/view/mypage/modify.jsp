@@ -23,7 +23,9 @@
 <style type="text/css">
 body{
 	width: 100%;
-	height: 100%;
+	overflow-y: hidden;
+	background-color:#F2F2F2;
+	color: #4F5D73;
 	
 }
 #submenu {
@@ -32,22 +34,25 @@ body{
 }
 
 .modify-form {
-	border: 1px;
-	padding: 150px;
-	/* position: absolute;
-	top: 40%;
-	left: 40%; */
 }
+
 .modify-form table{
+	padding: 100px;
 	margin: 0 auto;
 }
 
 #modify-form-header{
-	padding: 0 0 10px 0;
+	padding: 0 0 30px 0;
+	font-size: 2.0em;
 }
 .modify-form label{
 	display: inline-block;
 	width: 100px;
+	padding: 10px;
+}
+
+#userBirthday{
+	width: 146.5px;
 }
 
 .div-button {
@@ -73,7 +78,7 @@ body{
 			<label>아이디</label><form:input type="text" path="userId" readonly="true" /><br>
 			<label>비밀번호</label><form:input type="password" path="userPwd" /> <br>
 			<label>EMAIL</label><form:input type="email" path="userEmail" /><br>
-			<label>생년월일</label><form:input type="date" path="userBirthday" /><br>
+			<label>생년월일</label><form:input type="date" path="userBirthday" id="userBirthday"/><br>
 	</td>
 	<tr>
 	<td align="center">
