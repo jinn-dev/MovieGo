@@ -21,8 +21,8 @@ public interface WishlistDao {
 	//모든 위시리스트
 	List<Wishlist> getAllWishlist();
 	
-	//사용자별 위시리스트개수
-	int getWishlistCountByUserId(String userId);
+	//위시리스트 중복을 확인하기 위한 카운트
+	int getWishlistCntByUM(String movieCode, String userId);
 	
 	//영화별 위시리스트에 포함된 수
 	int getWishlistCountByMovieCode(String movieCode);

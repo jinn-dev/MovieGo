@@ -23,10 +23,11 @@
 <script type="text/javascript">
 var flag = "n";
 
-<%-- function ratingInfo(s, m){
+function ratingInfo(s, m){
 	var mov = m.toString();
 	var str = s + mov;
-	alert(str);
+	
+	alert(s + "점추가");
 	flag = "y";
 	var code;
 	 var xhr = new XMLHttpRequest();
@@ -40,21 +41,12 @@ var flag = "n";
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 	xhr.send("code=" + str);
 
-}  --%>
-
-/*  
- function ratingInfo(s){
-	
-	flag = "y";
-	alert(s + "점 추가");
-
-} */
-
+} 
  
 function evcomment() {
 	if(flag == "y") {
 		<c:url value="/evcomment" var="url"></c:url>    	    
-		window.open('${url}','_blank', "width=500, height=500, toolbar=no, menubar=no, resizable=no");
+		window.open('${url}','_blank', "width=700, height=300, toolbar=no, menubar=no, resizable=no");
 		flag = "n";
 
 	}
@@ -66,22 +58,45 @@ function evcomment() {
 
 }
 
-
- function wishlist() {
-	   alert("위시리스트에 추가되었습니다");
-
-}
-/* 
 function wishlist() {
-	   alert("위시리스트에 추가되었습니다");
+	alert("위시리스트 추가");	
 }
-$( "wishlist" ).click(function() {
-		   alert("위시리스트에 추가되었습니다");
 
-	})
- */
 
+/* $("#wishlist").click(function() {
+	var email = $("#email").val();
+	var movieCode $("#movieCode").val();
+	alert(movieCode);
+	var param="movieCode" +"="+ $("#movieCode").val();
+	$.ajax({
+		url:'http://localhost:9090/MovieGoProject/addwishlist',
+			type:'GET',	
+			data : param,
+			cache : false,
+		async : false,
+			dataType : 'text',
+	    success : function(data) {
+	    	if(data == 1) {
+			alert("위시리스트 추가");
+	    	}				   
+		    
+	    	else {
+	    		alert("이미 있음");
+	    	}
+
+		},
 	
+		error : function(request, status, error) {
+			if(request.status != '0') {
+				alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+			}	
+		}
+		
+	 });
+	
+}); */
+
+
 	$( ".star_rating a" ).click(function() {
 	     $(this).parent().children("a").removeClass("on");
 	     $(this).addClass("on").prevAll("a").addClass("on");
@@ -89,10 +104,6 @@ $( "wishlist" ).click(function() {
 
 	     return false;
 	});
-
-
-
-
 </script>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
@@ -149,15 +160,13 @@ $( "wishlist" ).click(function() {
         </td>    
         <td>
 
-<%--	<c:url value="/addwishlist?userId=${log.userId }&movieCode=${movies.movieCode }" var="url"/>
-			
- 	<a href="${url }"><button>위시리스트</button></a>  --%>
  	 	 <c:url value="/addwishlist" var="action"></c:url>
 		<form:form method="post" modelAttribute="wishlists" action="${action }">
   	<input type="hidden" name="movieCode" value="${movies.movieCode }"/>
  	<input type="hidden" name="userId" value="${log.userId }"/>
  	<input type="submit" id="wishlist" name="_event_confirmed" onclick="javascript:return wishlist();" value="위시리스트"></input> 
- 	  </form:form>
+   </form:form>
+          
           </td> 
 
       </tr>  

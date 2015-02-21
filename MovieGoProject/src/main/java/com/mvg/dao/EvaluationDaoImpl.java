@@ -1,15 +1,24 @@
 package com.mvg.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mvg.controller.MyPageController;
 import com.mvg.entity.Evaluation;
 
 @Repository
 public class EvaluationDaoImpl implements EvaluationDao {
+	private final static Logger logger;
+	static {
+		logger = LoggerFactory.getLogger(EvaluationDaoImpl.class);
+	}
+	
 	private final String namespace = "com.mvg.mappers.evaluationMapper.";
 	@Autowired
 	private SqlSessionTemplate sqlSession;
@@ -60,10 +69,32 @@ public class EvaluationDaoImpl implements EvaluationDao {
 	}
 
 	@Override
-	public Evaluation getEvaluationByEvId(int evId) {
-		String stmt = namespace + "selectEvaluationByEvId";
-		Evaluation result = sqlSession.selectOne(stmt, evId);
+	public int selectEvaluationByMovieCode(String movieCode, String userId) {
 		
+		String stmt = namespace + "selectEvaluationByMovieCode";
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("movieCode", movieCode);
+		map.put("userId", userId);
+		int result = sqlSession.selectOne(stmt, map);
+		
+		return result;
+	}
+
+	@Override
+	public int updateRating(Evaluation evaluation) {
+		int result = -1;
+		String stmt = namespace + "updateRating";
+		result = sqlSession.update(stmt, evaluation);
+		return result;
+	}
+
+	@Override
+	public int selectEvId(String movieCode, String userId) {
+		String stmt = namespace + "selectEvId";
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("movieCode", movieCode);
+		map.put("userId", userId);
+		int result = sqlSession.selectOne(stmt, map);
 		return result;
 	}
 

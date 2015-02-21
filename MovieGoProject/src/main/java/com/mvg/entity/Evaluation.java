@@ -16,6 +16,13 @@ public class Evaluation {
 		this.evRating = evRating;
 	}
 	
+	public Evaluation(int evId, String userId, String movieCode, int evRating) {
+		super();
+		this.evId = evId;
+		this.userId = userId;
+		this.movieCode = movieCode;
+		this.evRating = evRating;
+	}
 	public Evaluation(int evId, String userId, String movieCode, int evRating,
 			String evComment) {
 		super();

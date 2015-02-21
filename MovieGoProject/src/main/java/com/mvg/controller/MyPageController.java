@@ -74,13 +74,6 @@ public class MyPageController {
 		return "mypage/modify";
 	}
 	
-/*	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("user")User user) {
-	    service.updateUser(user);
-		return "mypage/mypage";
-	}
-	*/
-	
 	@RequestMapping(value="/update", params="_event_confirmed", method=RequestMethod.POST)
 	public String update(@ModelAttribute("user") User user) {
 	    service.updateUser(user);

@@ -25,7 +25,7 @@ import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({"evRating", "movies"})
+@SessionAttributes({"evRating", "movies", "onemovie"})
 public class RatingController {
 	@Autowired
 	MovieService service;
@@ -65,12 +65,45 @@ public class RatingController {
 		return movies;
 	}
 	
+	/*@RequestMapping(value = "/addwishlist", params = "_event_confirmed", method = RequestMethod.POST)
+	@ResponseBody
+	public int addWishlist(Model model,
+			@RequestParam String movieCode, HttpSession session) {
+		User user = (User) session.getAttribute("log");
+		String userId = user.getUserId();
+		logger.trace("무비코드:" + movieCode);
+		int result = wService.getWishlistCntByUM(movieCode, userId);
+		Wishlist wishlist = new Wishlist(movieCode, userId);
+		int r = 0;
+		if(result == 0) {
+			r = wService.insertWishlist(wishlist);
+		}
+		
+		else {
+			logger.trace("insert못함" );
+		}
+		return r;
+	}*/
+	
+
 	@RequestMapping(value = "/addwishlist", params = "_event_confirmed", method = RequestMethod.POST)
 	public String addWishlist(Model model,
 			@ModelAttribute("wishlists") Wishlist wishlists) {
-		wService.insertWishlist(wishlists);
+		String movieCode = wishlists.getMovieCode();
+		String userId = wishlists.getUserId();
+		int result = wService.getWishlistCntByUM(movieCode, userId);
+		
+		if(result == 0) {
+			wService.insertWishlist(wishlists);
+		}
+		
+		else {
+			logger.trace("insert못함" );
+		}
 		return "rating/rating";
 	}
+	
+
 
 	@RequestMapping(value = "/evcomment", method = RequestMethod.GET)
 	public String evComment(Model model) {
@@ -79,29 +112,36 @@ public class RatingController {
 
 	@RequestMapping(value = "/addevcomment", params = "_event_confirmed", method = RequestMethod.POST)
 	public String addEvComment(Model model, @ModelAttribute("ecomment") Evaluation ecomment) {
-		logger.trace("이거evId:" + ecomment.getEvId());
-		logger.trace("이거evId:" + ecomment.getUserId());
-		logger.trace("이거evRating: " + ecomment.getEvRating());
 		eService.updateEvaluation(ecomment);
-		return "rating/rating";
+		return "rating/write_comment";
 	}
 
 
 	@RequestMapping(value = "/evrating", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
 	public String evRating(@RequestParam String code, Model model, HttpSession session) {
-		logger.trace("수업: " + code);
+
 		String sRating = code.substring(0, 1);
 		int rating = Integer.parseInt(sRating);
 		String movieCode = code.substring(1, 9);
-		logger.trace("수업: " + movieCode + rating);
 		
 		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
-		logger.trace("아이디:" + userId);
 		
-		Evaluation evaluation = new Evaluation(userId, movieCode, rating);
-		eService.insertEvaluation(evaluation);
+		int test = eService.selectEvaluationByMovieCode(movieCode, userId);
+		Evaluation evaluation = null;
+		if(test == 0) {
+			evaluation = new Evaluation(userId, movieCode, rating);
+			eService.insertEvaluation(evaluation);
+		}
+		else {
+			int evId = eService.selectEvId(movieCode, userId);
+
+			evaluation = new Evaluation(evId, userId, movieCode, rating);
+			eService.updateRating(evaluation);
+		}
 		
+		Movie movie = service.getMovieByMCodeService(movieCode);
+		model.addAttribute("onemovie", movie);
 		logger.trace("evluations정보: " + evaluation);
 		model.addAttribute("evRating", evaluation);
 		return "rating/rating";

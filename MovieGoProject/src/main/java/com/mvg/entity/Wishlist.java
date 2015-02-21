@@ -20,6 +20,12 @@ public class Wishlist {
 		this.movies = movies;
 	}
 
+	public Wishlist(String userId, String movieCode) {
+		super();
+		this.userId = userId;
+		this.movieCode = movieCode;
+	}
+
 
 	public Wishlist(int wishId, String userId, String movieCode) {
 		super();

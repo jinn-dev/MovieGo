@@ -6,18 +6,29 @@
  <insert id = "insertEvaluation" parameterType = "Evaluation">
   	insert into evaluations (user_id, movie_code, ev_rating) values (#{userId}, #{movieCode}, #{evRating})
   	<selectKey keyProperty="evId" resultType="integer" order="AFTER">
-  		select	SEQ_evals_ev_id.currval
+  		select SEQ_evals_ev_id.currval
   		from dual
   	</selectKey>
   </insert>
-  	<select id="selectEvaluationByEvId" parameterType="INTEGER" resultType="Evaluation">
-		select *
-		from evaluations where
-		ev_id=#{evId}
+  	<select id="selectEvaluationByMovieCode" parameterType="String" resultType="Integer">
+		select count(movie_code)
+		from evaluations 
+		where movie_code=#{movieCode} and user_id=#{userId}
 	</select>
+	<!-- ev_id를 가져오는것 -->
+	<select id="selectEvId" parameterType="Evaluation" resultType="Integer">
+		select ev_id
+		from evaluations 
+		where movie_code=#{movieCode} and user_id=#{userId}
+	</select>
+<!-- 	comment 있는 update-->	
 	<update id="updateEvaluation" parameterType="Evaluation">
 		update evaluations set user_Id=#{userId}, movie_code=#{movieCode}, ev_rating=#{evRating}, ev_comment=#{evComment}
 		where ev_id=#{evId}
 	</update>
-
+	<!-- comment 없는 update -->
+	<update id="updateRating" parameterType="Evaluation">
+		update evaluations set ev_rating=#{evRating}
+		where ev_id=#{evId}
+	</update>
 </mapper>

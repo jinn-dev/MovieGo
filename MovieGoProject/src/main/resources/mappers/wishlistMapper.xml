@@ -6,6 +6,11 @@
 <insert id="insertWishlist" parameterType="Wishlist">
   	insert into wishlists (movie_code, user_id) values (#{movieCode}, #{userId})
 	</insert>
+	<select id="getWishlistCntByUM" parameterType="String" resultType="Integer">
+		select count(movie_code)
+		from wishlists
+		where movie_code=#{movieCode} and user_id=#{userId}
+	</select>
 	<select id="getWishlistByUserId" resultMap="ComplexMovieWish">
 	select m.movie_code, m.movie_title_kr, m.movie_title_eng, m.movie_director, 
 	m.movie_genre, w.wish_id, w.user_id, w.movie_code from wishlists w left join movies m on(m.movie_code = w.movie_code) where user_id= #{userId}

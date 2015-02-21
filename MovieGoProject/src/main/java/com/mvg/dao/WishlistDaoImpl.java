@@ -1,5 +1,6 @@
 package com.mvg.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -8,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mvg.entity.Movie;
 import com.mvg.entity.Wishlist;
 @Repository
 public class WishlistDaoImpl implements WishlistDao {
@@ -59,9 +59,14 @@ public class WishlistDaoImpl implements WishlistDao {
 	}
 
 	@Override
-	public int getWishlistCountByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getWishlistCntByUM(String movieCode, String userId) {
+		String stmt = namespace + "getWishlistCntByUM";
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("movieCode", movieCode);
+		map.put("userId", userId);
+		int result = sqlSession.selectOne(stmt, map);
+
+		return result;
 	}
 
 	@Override
@@ -69,5 +74,7 @@ public class WishlistDaoImpl implements WishlistDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+
 
 }

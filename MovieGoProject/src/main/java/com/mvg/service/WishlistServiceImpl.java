@@ -27,6 +27,11 @@ public class WishlistServiceImpl implements WishlistService {
 		List<Wishlist> wishlist = dao.getWishlistByUserId(userId);
 		return wishlist;
 	}
+	@Override
+	public int getWishlistCntByUM(String movieCode, String userId) {
+		int result = dao.getWishlistCntByUM(movieCode, userId);
+		return result;
+	}
 
 
 

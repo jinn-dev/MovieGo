@@ -1,13 +1,17 @@
 package com.mvg.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mvg.controller.RatingController;
 import com.mvg.dao.EvaluationDao;
 import com.mvg.entity.Evaluation;
 @Service
 public class EvaluationServiceImpl implements EvaluationService {
-
+	private static final Logger logger = LoggerFactory
+			.getLogger(EvaluationServiceImpl.class);
 	@Autowired
 	EvaluationDao dao;
 	
@@ -23,10 +27,24 @@ public class EvaluationServiceImpl implements EvaluationService {
 		return result;
 	}
 
+
 	@Override
-	public Evaluation selectEvaluationByEvId(int evId) {
-		Evaluation result = dao.getEvaluationByEvId(evId);
+	public int selectEvaluationByMovieCode(String movieCode, String userId) {		
+		int result = dao.selectEvaluationByMovieCode(movieCode, userId);
 		return result;
 	}
+
+	@Override
+	public int updateRating(Evaluation evaluation) {
+		int result = dao.updateRating(evaluation);
+		return result;
+	}
+
+	@Override
+	public int selectEvId(String movieCode, String userId) {
+		int result = dao.selectEvId(movieCode, userId);
+		return result;
+	}
+
 
 }
