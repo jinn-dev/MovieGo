@@ -101,11 +101,6 @@ public class ControllerTest {
 		return "main";
 	}
 
-	@RequestMapping(value = "/board_view", method = RequestMethod.GET)
-	public String boardview() {
-		return "board/board_view";
-	}
-	
 	@RequestMapping(value = "/duplicate", method = RequestMethod.GET)
 	@ResponseBody
 	public String duplicate(@RequestParam String userId) {

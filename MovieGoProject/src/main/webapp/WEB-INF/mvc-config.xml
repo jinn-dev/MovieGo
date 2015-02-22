@@ -9,12 +9,25 @@
 
 	<!-- Uncomment and your base-package here: <context:component-scan base-package="org.springframework.samples.web"/> -->
 	
+	<!-- 인터셉터 등록 -->
+	<mvc:interceptors>
+        <mvc:interceptor> 
+           <mvc:mapping path="/mainlogined"/>
+           <mvc:mapping path="/main.do"/>
+           <mvc:mapping path="/comment/write"/>
+           <mvc:mapping path="/comment/modify"/>
+           <mvc:mapping path="/comment/drop"/>
+           <mvc:mapping path="/board/write"/>
+           <mvc:mapping path="/board/submit"/>
+           <mvc:mapping path="/board/modify"/>
+            <mvc:mapping path="/board/delete"/>
+           <bean class="com.spring.interceptor.InterCeptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+	
 	<!-- @MVC와 관련된 번들만 등록 -->
 	<context:component-scan base-package="com.mvg.controller"></context:component-scan>
 	<mvc:annotation-driven />
-
-	<!-- 단순한 view 페이지 등록 -->
-	<mvc:view-controller path="/" view-name="header" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
