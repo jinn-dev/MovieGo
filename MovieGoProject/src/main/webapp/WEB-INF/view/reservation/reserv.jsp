@@ -332,6 +332,11 @@ h2 {
 </style>
 </head>
 <body>
+<jsp:include page="/WEB-INF/view/user/header.jsp" />
+<div id="rsv1">
+${rinfo }
+</div>
+
 
 <div class="wrap">
 	<div class="set clearfix">
@@ -415,6 +420,8 @@ var submitBtn = $('.charge .submitBtn');
 var closeResult = $('.result button#cancel');
 var sendResult = $('.result button#submit');
 var clickedSeat;
+var chargeTotal;
+var peopleTotal;
 
 //인원 설정
 peopleNum.bind('click', function(){
@@ -492,8 +499,8 @@ refresh.bind('click', function(){
 
 //선택완료 : 
 submitBtn.bind('click', function(){
-	var chargeTotal = $('.charge input').val();
-	var peopleTotal = $('.map .arrayNum button.clicked').length;
+	chargeTotal = $('.charge input').val();
+	peopleTotal = $('.map .arrayNum button.clicked').length;
 	if ($('.peopleNum li').eq(0).hasClass('selected')){
 		alert('인원은 최소 1명이상 선택해야 합니다.');
 		return;
@@ -526,13 +533,16 @@ closeResult.click(function() {
 
 //완료창에서 확인버튼 눌렀을 때
 sendResult.click(function() {
-	$("#postForm input").val(clickedSeat);
+	$("#postForm input[name='seatlist']").val(clickedSeat);
+	$("#postForm input[name='price']").val(chargeTotal);
+	//$("#postForm input[name='peopleNum']").val(peopleTotal);
 	$("#postForm").submit();
 });
 
 </script>
 <form style="display: none;" id="postForm" method="post" action="<%=request.getContextPath()%>/reserve/payment">
-	<input type="hidden" name="seatlist">
+	<input type="hidden" name="seatlist"/>
+	<input type="hidden" name="price"/>
 </form>
 </body>
 </html>
