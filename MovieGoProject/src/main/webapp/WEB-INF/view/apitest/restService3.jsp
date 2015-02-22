@@ -26,9 +26,9 @@
 	// 결과 ROW의 개수를 지정 
 	String itemPerPage = request.getParameter("itemPerPage")==null?"20":request.getParameter("itemPerPage");
 	// 영화명으로 조회
-	String movieNm = request.getParameter("movieNm")==null?"엘리시움":request.getParameter("movieNm");
+	String movieNm = request.getParameter("movieNm")==null?"":request.getParameter("movieNm");
 	// 감독명으로 조회
-	String directorNm = request.getParameter("directorNm")==null?"":request.getParameter("directorNm");
+	String directorNm = request.getParameter("directorNm")==null?"이성한":request.getParameter("directorNm");
 	// YYYY형식의 조회시작 개봉연도 입력
 	String openStartDt = request.getParameter("openStartDt")==null?"":request.getParameter("openStartDt");
 	// YYYY형식의 조회종료 개봉연도 입력
@@ -80,7 +80,9 @@
 				<td><c:out value="${movie.movieCd }" /></td>
 				<td><c:out value="${movie.movieNm }" /></td>
 				<td><c:out value="${movie.movieNmEn }" /></td>
-				<td><c:out value="${movie.genreAlt }" /></td>
+				<td><c:out value="${movie.repGenreNm }" /></td>
+				<td><c:out value="${movie.repNationNm }" /></td>
+				<td><c:out value="${movie.openDt }" /></td>
 				
 			<%
 				LinkedHashMap map = (LinkedHashMap)pageContext.getAttribute("movie");
@@ -95,7 +97,7 @@
 				}
 				else{
 					movieName = str1;
-				}
+				} 
 				int result = 20;
 				int pageno= 1;
 				String movieUrl = "http://apis.daum.net/contents/movie?"+"output=json&apikey="+apiKey+"&pageno="+pageno+"&result="+result+"&q="+URLEncoder.encode(movieName, "UTF-8");
@@ -111,45 +113,38 @@
 		 				daumResult3.set(i, "false");
 		 			}
 					Map<String, Object> daumResult4 = (Map)daumResult3.get(i);
-					ArrayList nation = (ArrayList)daumResult4.get("nation");
-					ArrayList director = (ArrayList)daumResult4.get("director");
-					ArrayList movieStory = (ArrayList)daumResult4.get("story");
-					ArrayList grades = (ArrayList)daumResult4.get("grades");
-					ArrayList thumbnail = (ArrayList)daumResult4.get("thumbnail");
-					ArrayList actor = (ArrayList)daumResult4.get("actor");
-					request.setAttribute("nation", nation);
+					ArrayList director = (ArrayList)daumResult4.get("director"); //감독
 					request.setAttribute("director", director);
-					request.setAttribute("thumbnail", thumbnail);  
-					request.setAttribute("movieStory", movieStory);
-					request.setAttribute("grades", grades);  
-					request.setAttribute("actor", actor);    
+					ArrayList thumbnail = (ArrayList)daumResult4.get("thumbnail"); //포스터url
+					request.setAttribute("thumbnail", thumbnail); 
+					/* ArrayList openInfo = (ArrayList)daumResult4.get("open_info"); // 관람등급, 런닝타임
+					request.setAttribute("openInfo", openInfo);  */ 
+					ArrayList story = (ArrayList)daumResult4.get("story"); //줄거리
+					request.setAttribute("story", story);
+					ArrayList actor = (ArrayList)daumResult4.get("actor"); //배우
+					request.setAttribute("actor", actor);
 		 		}
 				%>	
-				<c:if test="${not empty nation }">
-					<c:forEach items="${nation }" var="nation">
-						<td><c:out value="${nation.content }" /></td>
-						</c:forEach>
-				</c:if>
 				<c:if test="${not empty director }">
 					<c:forEach items="${director }" var="director">
 						<td><c:out value="${director.content }" /></td>
 						</c:forEach>
 				</c:if>
+			<%-- 	<c:if test="${not empty openInfo }">
+					<c:forEach items="${openInfo }" var="openInfo">
+						<td><c:out value="${openInfo.content }" /></td>
+						</c:forEach>
+				</c:if> --%>
 				<c:if test="${not empty thumbnail }">
 					<c:forEach items="${thumbnail }" var="thumbnail">
 						<td><c:out value="${thumbnail.content }" /></td>
 						</c:forEach>
 				</c:if>
-				<c:if test="${not empty movieStory }">
-					<c:forEach items="${movieStory }" var="movieStory">
-						<td><c:out value="${movieStory.content }" /></td>
+					<c:if test="${not empty story }">
+					<c:forEach items="${story }" var="story">
+						<td><c:out value="${story.content }" /></td>
 						</c:forEach>
 				</c:if>
-			<%-- 	<c:if test="${not empty grades }">
-					<c:forEach items="${grades }" var="grades">
-						<td><c:out value="${grades.content }" /></td>
-						</c:forEach>
-				</c:if> --%>
 				<c:if test="${not empty actor }">
 					<c:forEach items="${actor }" var="actor">
 						<td><c:out value="${actor.content }" /></td>
