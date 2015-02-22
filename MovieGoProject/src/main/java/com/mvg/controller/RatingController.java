@@ -26,7 +26,7 @@ import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({"evRating", "movies", "onemovie", "evcheck"})
+@SessionAttributes({"evRating", "movies", "onemovie", "evcheck", "movieinfo"})
 public class RatingController {
 	@Autowired
 	MovieService service;
@@ -145,5 +145,14 @@ public class RatingController {
 		logger.trace("evluations정보: " + evaluation);
 		model.addAttribute("evRating", evaluation);
 		return "rating/rating";
+	}
+	
+	@RequestMapping(value = "/movieinfo", method = RequestMethod.GET)
+	public String movieInfo(@RequestParam String movieCode, Model model) {
+		logger.trace("무비코드:" + movieCode);
+		Movie movie = service.getMovieByMCodeService(movieCode);
+		model.addAttribute("movieinfo", movie);
+
+		return "rating/movie_info";
 	}
 }

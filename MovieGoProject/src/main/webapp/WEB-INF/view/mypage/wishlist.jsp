@@ -35,7 +35,9 @@
 	<c:set value="${wishListItem.movies}" var="movie">	</c:set>
 		<c:forEach items="${movie}" var="movieItem">
 		<tr>
-		<td><c:out value="${movieItem.movieTitleKr}"/></td>
+		<td>
+		
+		<a href="<%=request.getContextPath()%>/movieinfo?movieCode=${movieItem.movieCode}"><c:out value="${movieItem.movieTitleKr}"/></a></td>
 		<td><c:out value="${movieItem.movieDirector }"/></td>
 		<td><c:out value="${movieItem.movieGenre}"/></td>
 		<td>

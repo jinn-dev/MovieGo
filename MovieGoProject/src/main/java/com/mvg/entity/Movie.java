@@ -13,13 +13,16 @@ public class Movie {
 	private String movieActor2;
 	private String movieActor3;
 	private String movieImgUrl;
-
+	private String movieStory;
+	private String movieDate;
+	
 	public Movie() {}
+	
 
 	public Movie(String movieCode, String movieTitleKr, String movieTitleEng,
 			String movieGenre, String movieNation, String movieDirector,
 			String movieActor1, String movieActor2, String movieActor3,
-			String movieImgUrl) {
+			String movieImgUrl, String movieStory, String movieDate) {
 		super();
 		this.movieCode = movieCode;
 		this.movieTitleKr = movieTitleKr;
@@ -31,7 +34,12 @@ public class Movie {
 		this.movieActor2 = movieActor2;
 		this.movieActor3 = movieActor3;
 		this.movieImgUrl = movieImgUrl;
+		this.movieStory = movieStory;
+		this.movieDate = movieDate;
 	}
+
+
+
 
 	public String getMovieCode() {
 		return movieCode;
@@ -113,6 +121,25 @@ public class Movie {
 		this.movieImgUrl = movieImgUrl;
 	}
 
+
+	public String getMovieStory() {
+		return movieStory;
+	}
+
+
+	public void setMovieStory(String movieStory) {
+		this.movieStory = movieStory;
+	}
+
+	public String getMovieDate() {
+		return movieDate;
+	}
+
+	public void setMovieDate(String movieDate) {
+		this.movieDate = movieDate;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Movie [movieCode=" + movieCode + ", movieTitleKr="
@@ -121,8 +148,9 @@ public class Movie {
 				+ ", movieDirector=" + movieDirector + ", movieActor1="
 				+ movieActor1 + ", movieActor2=" + movieActor2
 				+ ", movieActor3=" + movieActor3 + ", movieImgUrl="
-				+ movieImgUrl + "]";
+				+ movieImgUrl + ", movieStory=" + movieStory + ", movieDate="
+				+ movieDate + "]";
 	}
 	
-	
-}
+
+	}
