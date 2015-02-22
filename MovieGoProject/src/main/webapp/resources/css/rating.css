@@ -68,7 +68,7 @@ hr{
         pointer-events: none;
 }
 
-.grid figure figcaption, .grid figure figcaption>a {
+.grid figure figcaption, .grid figure figcaption>a.icon {
         position: absolute;
         top: 0;
         left: 0;
@@ -78,7 +78,7 @@ hr{
 
 /* Anchor will cover the whole item by default */
 /* For some effects it will show as a button */
-.grid figure figcaption>a {
+.grid figure figcaption>a.icon {
         z-index: 1000;
         text-indent: 200%;
         white-space: nowrap;

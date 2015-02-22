@@ -63,7 +63,6 @@ public class ControllerTest {
 		log.setUserPwd(userPwd);
 		
 		User u = service.getUserByUserId(log);
-
 		if(u != null) {
 			model.addAttribute("log", u);
 			model.addAttribute("user", u);
