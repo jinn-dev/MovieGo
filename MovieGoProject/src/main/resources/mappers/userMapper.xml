@@ -14,7 +14,7 @@
 
 	<select id="selectUser" parameterType="User" resultType="User">
 		select
-		user_id, user_pwd, user_email, user_birthday
+		user_id, user_pwd, user_email, user_birthday, user_coupon, user_point
 		from users where
 		user_id=#{userId}
 	</select>

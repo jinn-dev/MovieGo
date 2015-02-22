@@ -1,5 +1,7 @@
 package com.mvg.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +29,6 @@ public class EvaluationServiceImpl implements EvaluationService {
 		return result;
 	}
 
-
 	@Override
 	public int selectEvaluationByMovieCode(String movieCode, String userId) {		
 		int result = dao.selectEvaluationByMovieCode(movieCode, userId);
@@ -43,6 +44,12 @@ public class EvaluationServiceImpl implements EvaluationService {
 	@Override
 	public int selectEvId(String movieCode, String userId) {
 		int result = dao.selectEvId(movieCode, userId);
+		return result;
+	}
+
+	@Override
+	public List<Evaluation> getEvaluationByUserId(String userId) {
+		List<Evaluation> result = dao.getEvaluationByUserId(userId);
 		return result;
 	}
 

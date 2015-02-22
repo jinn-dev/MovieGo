@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 
 
 
+
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +30,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.mvg.entity.Evaluation;
 import com.mvg.entity.Movie;
 import com.mvg.entity.User;
 import com.mvg.entity.Wishlist;
+import com.mvg.service.EvaluationService;
 import com.mvg.service.MovieService;
 import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 @Controller
-@SessionAttributes("wishlist")
+@SessionAttributes({"wishlist", "evlist"})
 public class MyPageController {
 	private final static Logger logger;
 	static {
@@ -55,6 +60,8 @@ public class MyPageController {
 	WishlistService wService;
 	@Autowired
 	MovieService mService;
+	@Autowired
+	EvaluationService eService;
 	
 	@RequestMapping(value="/mypage", method=RequestMethod.GET)
 	public String myPage(){
@@ -64,8 +71,7 @@ public class MyPageController {
 	@RequestMapping(value="/wishlist", method=RequestMethod.GET)
 	public String wishlist(@RequestParam String userId, Model model){
 		List<Wishlist> wishlist = wService.getWishlistByUserId(userId);
-/*		logger.trace("수업:" + wishlist.getMovies());
-*/		model.addAttribute("wishlist", wishlist);
+		model.addAttribute("wishlist", wishlist);
 		return "mypage/wishlist";
 	}
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
@@ -87,5 +93,13 @@ public class MyPageController {
 	public String boardDelete(@RequestParam String userId){
 		service.deleteUser(userId);
 		return "redirect:/main";
+	}
+	
+	//영화평가목록보기
+	@RequestMapping(value = "/ratinglist", method = RequestMethod.GET)
+	public String ratingList(@RequestParam String userId, Model model) {
+		List<Evaluation> evaluation = eService.getEvaluationByUserId(userId);
+		model.addAttribute("evlist", evaluation);
+		return "mypage/rating_list";
 	}
 }

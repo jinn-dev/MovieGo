@@ -1,5 +1,7 @@
 package com.mvg.entity;
 
+import java.util.ArrayList;
+
 public class Evaluation {
 
 	private int evId;
@@ -7,8 +9,11 @@ public class Evaluation {
 	private String movieCode;
 	private int evRating;
 	private String evComment;
+	private ArrayList<Movie> movies;
 
 	public Evaluation() {}
+
+	
 	public Evaluation(String userId, String movieCode, int evRating) {
 		super();
 		this.userId = userId;
@@ -33,6 +38,15 @@ public class Evaluation {
 		this.evComment = evComment;
 	}
 
+	
+	public ArrayList<Movie> getMovies() {
+		return movies;
+	}
+
+
+	public void setMovies(ArrayList<Movie> movies) {
+		this.movies = movies;
+	}
 	
 	public int getEvId() {
 		return evId;
