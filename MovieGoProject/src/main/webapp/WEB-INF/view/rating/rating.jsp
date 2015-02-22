@@ -21,14 +21,14 @@
 </style>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script type="text/javascript">
-var flag = "n";
+ var flag = "n"; 
 
 function ratingInfo(s, m){
 	var mov = m.toString();
 	var str = s + mov;
 	
-	alert(s + "점추가");
-	flag = "y";
+	alert(s + "점추가되었습니다.");
+	 flag = "y"; 
 	var code;
 	 var xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function() {
@@ -43,24 +43,39 @@ function ratingInfo(s, m){
 
 } 
  
-function evcomment() {
-	if(flag == "y") {
-		<c:url value="/evcomment" var="url"></c:url>    	    
-		window.open('${url}','_blank', "width=700, height=300, toolbar=no, menubar=no, resizable=no");
-		flag = "n";
+function evcomment(m) {
+	var param="movieCode" +"="+ m;
+	$.ajax({
+			url:'http://localhost:9090/MovieGoProject/evcommentchk',
+			type:'GET',
+			data : param,
+			cache : false,
+			async : false,
+			dataType : 'text',
+	    	success : function(data) {
+	    	if(data == 0) {
+	    		 alert("별점을 먼저 선택하세요.");
+			}				   
+		    
+	    	else {
+	    		<c:url value="/evcomment" var="url"></c:url>
+	 			window.open('${url}','_blank', "width=800, height=300, toolbar=no, menubar=no, resizable=no");
+	    	}
 
-	}
-	else {
-		alert("별점 먼저 선택하세요.");
-
-
-	}	
+		},
+	
+		error : function(request, status, error) {
+			if(request.status != '0') {
+				alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+			}	
+		}
+		
+	 });	
 
 }
 
 function wishlist(m) {
 	var param="movieCode" +"="+ m;
-	alert(param);
 	$.ajax({
 			url:'http://localhost:9090/MovieGoProject/addwishlist',
 			type:'GET',
@@ -87,41 +102,6 @@ function wishlist(m) {
 		
 	 });	
 }
-
-
-/* $("#wishlist").click(function() {
-	var email = $("#email").val();
-	var movieCode $("#movieCode").val();
-	alert(movieCode);
-	var param="movieCode" +"="+ $("#movieCode").val();
-	$.ajax({
-		url:'http://localhost:9090/MovieGoProject/addwishlist',
-			type:'GET',	
-			data : param,
-			cache : false,
-		async : false,
-			dataType : 'text',
-	    success : function(data) {
-	    	if(data == 1) {
-			alert("위시리스트 추가");
-	    	}				   
-		    
-	    	else {
-	    		alert("이미 있음");
-	    	}
-
-		},
-	
-		error : function(request, status, error) {
-			if(request.status != '0') {
-				alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
-			}	
-		}
-		
-	 });
-	
-}); */
-
 
 	$( ".star_rating a" ).click(function() {
 	     $(this).parent().children("a").removeClass("on");
@@ -180,8 +160,8 @@ function wishlist(m) {
 		 <input type="hidden" name="userId" value="${log.userId }"/> 
 		  </form:form>
 		  --%>
-		 
-        <input type="button" id="evcomment" name="evcomment" value="한줄평" onclick="javascript:evcomment()"/>
+		
+        <input type="button" id="evcomment" name="evcomment" value="한줄평" onclick="javascript:evcomment(${movies.movieCode})"/>
         
         </td>    
         <td>
