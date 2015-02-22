@@ -13,6 +13,12 @@
                 format('svg');
 } */
 
+a.top {
+  position: fixed;
+  left: 50%;
+  bottom: 50px;
+  display: none;
+}
 
 .movie-table {
         background: #F2F2F2;
