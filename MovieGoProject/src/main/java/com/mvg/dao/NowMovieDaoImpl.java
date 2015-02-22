@@ -100,18 +100,32 @@ public class NowMovieDaoImpl implements NowMovieDao {
 		List<String> tlist = sqlSession.selectList(stmt2, n);
 		HashMap<String, String> mtimes = new HashMap<String, String>();
 		for (int i=0;i<tlist.size();i++) {
-			String value = tlist.get(i);
-			int strlen = value.length();
-			if ((value.substring(strlen-2)).equals("06")) {
-				value = value.replace("06", "오전");
-			}
-			else if ((value.substring(strlen-2)).equals("18")) {
-				value = value.replace("18", "오후");
-			}
+			String value=tlist.get(i);
+			value = getMovieTimeAmPm(value);
 			mtimes.put(tlist.get(i), value);	
 		}
 		logger.trace("수업: 영화시간맵: "+mtimes);
 		return mtimes;
+	}
+	
+	@Override
+	public String getMovieTimeAmPm(String movieTime) {
+		int strlen = movieTime.length();
+		String compare = movieTime.substring(strlen-2);
+		String ampm = "";
+		if (compare.equals("06")) {
+			ampm = "오전";
+		}
+		else if(compare.equals("18")) {
+			ampm = "오후";
+		}
+		StringBuilder str = new StringBuilder();
+		str.append(movieTime.substring(4,6))
+		.append("월 ")
+		.append(movieTime.substring(6,8))
+		.append("일 ")
+		.append(ampm);
+		return str.toString();
 	}
 
 	@Override
@@ -127,5 +141,4 @@ public class NowMovieDaoImpl implements NowMovieDao {
 
 	}
 
-	
 }

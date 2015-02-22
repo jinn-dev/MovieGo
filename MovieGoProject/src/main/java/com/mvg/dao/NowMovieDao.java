@@ -38,4 +38,7 @@ public interface NowMovieDao {
 	//상영 종료 영화 삭제
 	int deleteNowMovie(String movieCode);
 	
+	//시간 이쁘게얻어오기
+	String getMovieTimeAmPm(String movieTime);
+	
 }

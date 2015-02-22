@@ -65,4 +65,11 @@ public class ReservationInfoDaoImpl implements ReservationInfoDao {
 		return result;
 	}
 
+	@Override
+	public List<ReservationInfo> getReservationInfoByNMId(int nowmovieId) {
+		String stmt = namespace + "getReservationInfoByNMId";
+		List<ReservationInfo> rinfo = sqlSession.selectList(stmt, nowmovieId);
+		return rinfo;
+	}
+
 }

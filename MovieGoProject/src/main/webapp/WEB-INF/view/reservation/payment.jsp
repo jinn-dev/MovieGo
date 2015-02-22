@@ -5,24 +5,78 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
 </head>
-
-
+<style>
+</style>
 <script type="text/javascript">
-function chk_seledVal(){
- //ajax keyup으로입력될때마다옆에메시지표시할것       	    
+var totalprice;
+var spoint;
+var yncoupon="notused";
+var upoint=0;
+
+function cal() {
+	totalprice = $("#price").val() - $("#minusCoupon").val() - $("#minusPoint").val();
+	$("#total").val(totalprice);
+	spoint = totalprice * 0.1;
+	$("#savePoint").val(spoint);
 }
 
-function check() {
-    document.getElementById("myCheck").checked = true;
-    //만약체크되어있으면 ajax처리
-    //할인금액에 쿠폰이나포인트적용할것.
+function useCoupon() {
+	alert("쿠폰이 사용되었습니다.");
+	var cp = $("#price").val() * 0.1;
+	$("#minusCoupon").val(cp);
+	cal();
+	yncoupon="used";
 }
+
+function cancelCoupon() {
+	alert("쿠폰 사용이 취소되었습니다.");
+	$("#minusCoupon").val("0");
+	cal();
+	yncoupon="notused";
+}
+
+function usePoint() {
+ 	var point = $("#inputPoint").val();
+ 	if (point == null || point == 0) {
+ 		alert("포인트를 0점 이상 입력해주세요.");
+ 	}
+ 	else if (point != "" && point <= $("#price").val()) {
+		if (point%10==0) {
+			alert("포인트가 사용되었습니다.");
+			$("#minusPoint").val(point);
+			upoint=point;
+		}
+		else {
+			alert("포인트를 10점 단위로 입력해주세요.");
+		}
+	}
+	else {
+		alert("적용되지 않았습니다.");
+	}
+	cal();
+ }
+ 
+function cancelPoint() {
+	alert("포인트 사용이 취소되었습니다.");
+	$("#minusPoint").val("0");
+	cal();
+	upoint=0;
+}
+
+function completeReserv() {
+	//예매 완료버튼
+	$("#postForm input[name='totalprice']").val(totalprice);
+	$("#postForm input[name='spoint']").val(spoint);
+	$("#postForm").submit();
+}
+
 </script>
 
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+<jsp:include page="/WEB-INF/view/user/header.jsp" />
 <h1>결제하기</h1>
 <div id="rsvInfo">
 <h2>${user.userId }님의 예매정보</h2>
@@ -36,35 +90,46 @@ function check() {
 <div>
 <table border=1>
 <tr><td colspan=2>할인수단</td></tr>
-<tr><td>포인트</td><td><input type="text" id="point"/>점 / ${user.userId }점 사용가능</td></tr>
+<tr><td>포인트</td><td><input type="text" id="inputPoint"/>점 / ${user.userPoint }점 사용가능
+<input type="button" id="usePoint" value="사용" onclick="javascript:usePoint();" />
+<input type="button" id="cancelPoint" value="사용취소" onclick="javascript:cancelPoint();" /></td></tr>
 <tr><td>쿠폰</td><td>
 <%
 	User user = (User)session.getAttribute("user");
-	if (user.getUserCoupon().equals('y')) {
+	if (user.getUserCoupon().equals("y")) {
 		%>
-		<input type="checkbox" name="coupon" id="coupon" value="사용하기"/>
+		생일쿠폰 <input type="button" id="useCoupon" value="사용" onclick="javascript:useCoupon();" />
+				 <input type="button" id="cancelCoupon" value="사용취소" onclick="javascript:cancelCoupon();" />
 		<%
 	}
 	else {
 		%>
-		<input type="checkbox" name="coupon" id="coupon" value="사용하기" disabled="disabled"/>
+		사용 가능한 쿠폰이 없습니다.
 		<%
 	}
-
 %>
 </td></tr>
 </table>
 </div>
 
 <div id="payment">
-결제금액 <input type="text" name="price" value="${price }" disabled="disabled"/>원<br>
-할인금액 <input type="text" name="minus" value="0"/>원<br>
--------------------------------<br>
-총 결제금액 <input type="text" id="total" value="[price-minus]"/>원<br>
-포인트적립 <input type="text" id="addPoint" value="[total*0.1]"/>원<br>
+결제 금액		 <input type="text" id="price" value="${price }" disabled="disabled" style="text-align: right;" />원<br>
+포인트 할인 금액 <input type="text" id="minusPoint" value="0" disabled="disabled" style="text-align: right;"/>원<br>
+쿠폰 할인 금액   <input type="text" id="minusCoupon" value="0" disabled="disabled" style="text-align: right;"/>원<br>
+-----------------------------------------<br>
+총 결제금액 	 <input type="text" id="total" value="" disabled="disabled" style="text-align: right;"/>원<br>
+포인트적립		 <input type="text" id="savePoint" value="0" disabled="disabled" style="text-align: right;"/>점<br>
 </div>
 
-<div class="reset" onclick="location.href='<%=request.getContextPath() %>/reserve'">예매 다시하기</div>
-<div class="complete">결제 완료</div>
+<input type="button" id="toReserve" onclick="location.href='<%=request.getContextPath() %>/reserve'" value="예매 다시하기" />
+<input type="button" id="complete" onclick="javascript:completeReserv()" value="예매 완료"/>
+
+<form style="display: none;" id="postForm" method="post" action="<%=request.getContextPath()%>/reserve/complete">
+	<input type="hidden" name="totalprice"/>
+	<input type="hidden" name="spoint"/>
+	<input type="hidden" name="yncoupon" />
+	<input type="hidden" name="upoint" />
+</form>
+
 </body>
 </html>

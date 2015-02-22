@@ -15,16 +15,16 @@ function main(){
 function mypage(){
 	/*  선택좌석 alert창으로 뜨는거 구현
 	 */	
-	 location.href="mypage.jsp"       	    
+	 location.href="mypage.jsp"   
 	}
 </script>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp"" />
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 
 예매 완료
 
-<input type="button" onclick="main();" value="메인페이지로"></input>
-<input type="button" onclick="mypage();" value="My예매내역"></input>
+<input type="button" onclick="main();" value="메인페이지로" />
+<input type="button" onclick="mypage();" value="My예매내역" />
 
 </body>
 </html>

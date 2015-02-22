@@ -11,6 +11,10 @@
 		select * from reservationinfo
 	</select>
 	
+	<select id="getReservationInfoByNMId" parameterType="Integer" resultType="ReservationInfo">
+		select * from reservationinfo where nowmovie_id=#{nowmovieId}
+	</select>
+	
 	<select id="getReservationInfoByRId" parameterType="Integer" resultType="ReservationInfo">
 		select * from reservationinfo where reservation_id=#{reservationId}
 	</select>

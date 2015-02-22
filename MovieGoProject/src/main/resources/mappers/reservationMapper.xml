@@ -35,6 +35,9 @@
 	<insert id="insertReservation" parameterType="Reservation">
 		insert into reservations(reservation_num, reservation_price)
 		values (#{reservationNum}, #{reservationPrice})
+			<selectKey keyProperty="reservaioninfoId" resultType="integer" order="AFTER">
+  				select SEQ_rinfo_rinfo_id.currval from dual
+  			</selectKey>
 	</insert>
 	
 	<update id="deleteReservation" parameterType="Integer">

@@ -399,10 +399,10 @@ ${rinfo }
 
 <script type="text/javascript">
 //좌석배치
-var rowArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+var rowArray = ['A', 'B', 'C', 'D'];
 var map = $('.mapWrap');
 
-for (i=0; i<8; i++){
+for (i=0; i<4; i++){
 	map.append('<div class="map clearfix"><div class="row">'+rowArray[i]+'</div><div class="arrayNum"></div></div>');
 }
 for (i=1; i<14; i++){
@@ -535,9 +535,13 @@ closeResult.click(function() {
 sendResult.click(function() {
 	$("#postForm input[name='seatlist']").val(clickedSeat);
 	$("#postForm input[name='price']").val(chargeTotal);
-	//$("#postForm input[name='peopleNum']").val(peopleTotal);
 	$("#postForm").submit();
 });
+
+function selectedSeatList() {
+	var list = new Array();
+	
+}
 
 </script>
 <form style="display: none;" id="postForm" method="post" action="<%=request.getContextPath()%>/reserve/payment">

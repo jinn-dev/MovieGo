@@ -2,6 +2,7 @@ package com.mvg.controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -18,11 +19,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mvg.entity.Reservation;
+import com.mvg.entity.ReservationInfo;
 import com.mvg.entity.SeatInfo;
 import com.mvg.entity.Theater;
 import com.mvg.entity.User;
 import com.mvg.service.MovieService;
 import com.mvg.service.NowMovieService;
+import com.mvg.service.ReservationInfoService;
 import com.mvg.service.ReservationService;
 import com.mvg.service.SeatInfoService;
 import com.mvg.service.TheaterService;
@@ -50,10 +54,16 @@ public class ReservationController {
 	@Autowired
 	SeatInfoService sservice;
 	
+	@Autowired
+	ReservationInfoService riservice;
 	
+	//예매
 	private int thId;
+	private String thName;
 	private String mCode;
+	private String mName;
 	private String mTime;
+	private String mTimeampm;
 	private int nmId;
 	private String rinfo;
 	private ArrayList<String> seats;
@@ -160,11 +170,12 @@ public class ReservationController {
 	@RequestMapping(value="reserve/time", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public @ResponseBody String timeReceive(@RequestParam String time, Model model) {
 		mTime = time;
+		mTimeampm = nservice.getMTimeAmPmService(time);
 		logger.trace("수업: 영화시간: "+mTime);
-		String thName = tservice.getTheaterByIdService(thId).getTheaterName();
-		String mName = mservice.getMovieByMCodeService(mCode).getMovieTitleKr();
+		thName = tservice.getTheaterByIdService(thId).getTheaterName();
+		mName = mservice.getMovieByMCodeService(mCode).getMovieTitleKr();
 		nmId = nservice.getNMovieIdByNMovieService(thId, mCode, mTime);
-		rinfo = "영화관: "+thName+", 영화: "+mName+", 시간: "+mTime;
+		rinfo = "영화관: "+thName+", 영화: "+mName+", 시간: "+mTimeampm;
 		return rinfo;
 	}
 
@@ -176,8 +187,11 @@ public class ReservationController {
 			int num = seats.get(i).getSeatNo();
 			seatNum.add(i, num);
 		}
+		
+		
 		model.addAttribute("seats", seatNum);
 		model.addAttribute("rinfo", rinfo);
+		
 		return "reservation/reserv";
 	}
 	
@@ -186,11 +200,16 @@ public class ReservationController {
 		User user = (User) session.getAttribute("user");
 		//만약 생일이 이번달이면 쿠폰을 yes로바꾸기
 		Calendar birthday = Calendar.getInstance();
-		int sysmonth = birthday.MONTH+1;
 		birthday.setTime(user.getUserBirthday());
-		int month = birthday.MONTH+1;
-		logger.trace("수업: 오늘달: "+sysmonth+"생일달: "+month);
-		//쿠폰, 포인트 점수 가져오기
+		//birmonth = 사용자의 생일인 달
+		int birmonth = birthday.MONTH+1;
+		GregorianCalendar sys = new GregorianCalendar();
+		//sysmonth = 이번달
+		int sysmonth = sys.MONTH;
+		//생일쿠폰 가져오기
+		if (birmonth == sysmonth) {
+			user.setUserCoupon("y");
+		}
 		seats = seatlist;
 		peopleNum = seats.size();
 		model.addAttribute("price", price);
@@ -201,8 +220,16 @@ public class ReservationController {
 	}
 	
 	@RequestMapping(value="/reserve/complete", method=RequestMethod.POST)
-	public String reserveComplete(HttpSession session) {
-		//User user = (User) session.getAttribute("log");
+	public String reserveComplete(@RequestParam int totalprice, @RequestParam int spoint, 
+			@RequestParam String yncoupon, @RequestParam int upoint, HttpSession session) {
+		User user = (User) session.getAttribute("log");
+		if (yncoupon.equals("used")) {
+			user.setUserCoupon("n");
+		}
+		user.setUserPoint(user.getUserPoint()-upoint+spoint);
+		rservice.insertRService(new Reservation(user.getUserId(), peopleNum, totalprice));
+		//여기서rid얻어와서거기에rinfo등록해야함
+		//riservice.insertRInfoService(new ReservationInfo(reservationinfoId, seatId, reservationId))
 		return "reservation/reservation_complete";
 	}
 }
