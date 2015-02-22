@@ -54,11 +54,6 @@ public class RatingController {
 		return "rating/rating";
 	}
 	
-	@RequestMapping(value = "/ratinglist", method = RequestMethod.GET)
-	public String ratingList(@RequestParam String userId, Model model) {
-		return "mypage/rating_list";
-	}
-	
 	@RequestMapping(value = "/rating.do", method = RequestMethod.GET)
 	public String ratingTest2() {
 		return "rating/test";

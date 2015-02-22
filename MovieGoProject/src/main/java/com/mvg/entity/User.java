@@ -7,7 +7,7 @@ public class User {
 	private String userPwd;
 	private String userEmail;
 	private Date userBirthday;
-	private boolean userCoupon;
+	private String userCoupon;
 	private int userPoint;
 
 	public User() {
@@ -18,7 +18,7 @@ public class User {
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userEmail = userEmail;
-		this.userCoupon = false;
+		this.userCoupon = "n";
 		this.userPoint = 0;
 	}
 
@@ -60,11 +60,11 @@ public class User {
 		this.userBirthday = userBirthday;
 	}
 
-	public boolean isUserCoupon() {
+	public String getUserCoupon() {
 		return userCoupon;
 	}
 
-	public void setUserCoupon(boolean userCoupon) {
+	public void setUserCoupon(String userCoupon) {
 		this.userCoupon = userCoupon;
 	}
 

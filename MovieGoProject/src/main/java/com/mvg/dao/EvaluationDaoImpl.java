@@ -36,8 +36,9 @@ public class EvaluationDaoImpl implements EvaluationDao {
 
 	@Override
 	public List<Evaluation> getEvaluationByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace + "selectEvaluationById";
+		List<Evaluation> result = sqlSession.selectList(stmt, userId);
+		return result;
 	}
 
 	@Override

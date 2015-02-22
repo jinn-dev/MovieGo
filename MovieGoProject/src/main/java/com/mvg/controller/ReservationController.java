@@ -1,6 +1,7 @@
 package com.mvg.controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +57,7 @@ public class ReservationController {
 	private int nmId;
 	private String rinfo;
 	private ArrayList<String> seats;
+	private int peopleNum;
 	
 	
 	@RequestMapping(value="/reserve",  method=RequestMethod.GET)
@@ -174,20 +176,27 @@ public class ReservationController {
 			int num = seats.get(i).getSeatNo();
 			seatNum.add(i, num);
 		}
-		int cnt = seatNum.size();
 		model.addAttribute("seats", seatNum);
-		model.addAttribute("seatCnt", cnt);
 		model.addAttribute("rinfo", rinfo);
 		return "reservation/reserv";
 	}
 	
 	@RequestMapping(value="/reserve/payment", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
-	public String reservePayment(@RequestParam ArrayList<String> seatlist, HttpSession session, Model model) {
-		//User user = (User) session.getAttribute("log");
+	public String reservePayment(@RequestParam ArrayList<String> seatlist, @RequestParam int price, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
 		//만약 생일이 이번달이면 쿠폰을 yes로바꾸기
+		Calendar birthday = Calendar.getInstance();
+		int sysmonth = birthday.MONTH+1;
+		birthday.setTime(user.getUserBirthday());
+		int month = birthday.MONTH+1;
+		logger.trace("수업: 오늘달: "+sysmonth+"생일달: "+month);
 		//쿠폰, 포인트 점수 가져오기
 		seats = seatlist;
+		peopleNum = seats.size();
+		model.addAttribute("price", price);
 		model.addAttribute("seats", seats);
+		model.addAttribute("rinfo", rinfo);
+		model.addAttribute("peopleNum", peopleNum);
 		return "reservation/payment";
 	}
 	

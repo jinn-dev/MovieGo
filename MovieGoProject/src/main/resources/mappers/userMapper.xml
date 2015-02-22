@@ -10,13 +10,13 @@
 		insert into users (user_id, user_pwd, user_email, user_birthday) values
 		(#{userId}, #{userPwd}, #{userEmail}, #{userBirthday})
 	</insert>
-
-
+	
 	<select id="selectUser" parameterType="User" resultType="User">
 		select
-		user_id, user_pwd, user_email, user_birthday
+		user_id, user_pwd, user_email, user_birthday, user_coupon, user_point
 		from users where
 		user_id=#{userId}
+
 	</select>
 	
 	<select id="selectUserById" parameterType="String" resultType="String">
