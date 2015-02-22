@@ -16,7 +16,7 @@
 
 function deleteCheck() {
 	 if(confirm("회원탈퇴하시겠습니까??")) {
-		 location.href="<%=request.getContextPath()%>/mypage/del?userId=${user.userId }";
+		 location.href="<%=request.getContextPath()%>/deleteuser?userId=${user.userId }";
 		 
 		}
 	}

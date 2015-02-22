@@ -57,7 +57,7 @@ public class ControllerTest {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	@ResponseBody
-	public User loginCheck(Model model, @RequestParam String userId, @RequestParam String userPwd) {
+	public User loginCheck(Model model, HttpSession session, @RequestParam String userId, @RequestParam String userPwd) {
 		User log = new User();
 		log.setUserId(userId);
 		log.setUserPwd(userPwd);
@@ -66,7 +66,8 @@ public class ControllerTest {
 		if(u != null) {
 			model.addAttribute("log", u);
 			model.addAttribute("user", u);
-		}
+/*			session.setMaxInactiveInterval(3600);
+*/		}
 		
 		else {
 			logger.trace("사용자없음");

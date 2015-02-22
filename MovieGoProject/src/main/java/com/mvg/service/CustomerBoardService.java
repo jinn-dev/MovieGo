@@ -16,6 +16,8 @@ public interface CustomerBoardService {
 	
 	void deleteBoard(int boardId);
 	
+	void deleteBoardByUserId(String userId);
+
 	CustomerBoard getBoardByBdId(int boardId);
 	
 	CustomerBoard getBoardByBdIdWithCmts(int boardId);

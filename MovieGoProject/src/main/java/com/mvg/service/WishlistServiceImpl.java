@@ -32,7 +32,10 @@ public class WishlistServiceImpl implements WishlistService {
 		int result = dao.getWishlistCntByUM(movieCode, userId);
 		return result;
 	}
-
-
+	@Override
+	public int deleteWishlist(int wishId) {
+		int result = dao.deleteWishlist(wishId);
+		return result;
+	}
 
 }
