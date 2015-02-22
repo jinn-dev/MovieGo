@@ -58,8 +58,34 @@ function evcomment() {
 
 }
 
-function wishlist() {
-	alert("위시리스트 추가");	
+function wishlist(m) {
+	var param="movieCode" +"="+ m;
+	alert(param);
+	$.ajax({
+			url:'http://localhost:9090/MovieGoProject/addwishlist',
+			type:'GET',
+			data : param,
+			cache : false,
+			async : false,
+			dataType : 'text',
+	    success : function(data) {
+	    	if(data == 0) {
+	    		 alert("위시리스트 추가되었습니다.");
+			}				   
+		    
+	    	else {
+	    		alert("위시리스트 이미 포함되어 있습니다.");
+	    	}
+
+		},
+	
+		error : function(request, status, error) {
+			if(request.status != '0') {
+				alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+			}	
+		}
+		
+	 });	
 }
 
 
@@ -160,12 +186,14 @@ function wishlist() {
         </td>    
         <td>
 
- 	 	 <c:url value="/addwishlist" var="action"></c:url>
+ <%-- 	 	 <c:url value="/addwishlist" var="action"></c:url>
 		<form:form method="post" modelAttribute="wishlists" action="${action }">
   	<input type="hidden" name="movieCode" value="${movies.movieCode }"/>
- 	<input type="hidden" name="userId" value="${log.userId }"/>
- 	<input type="submit" id="wishlist" name="_event_confirmed" onclick="javascript:return wishlist();" value="위시리스트"></input> 
-   </form:form>
+ 	<input type="hidden" name="userId" value="${log.userId }"/> 
+ 	   </form:form>
+ 	--%>
+ 	<input type="button" id="wishlist" onclick="javascript:wishlist(${movies.movieCode });" value="위시리스트"></input> 
+
           
           </td> 
 

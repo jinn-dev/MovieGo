@@ -35,7 +35,11 @@
 		from users where user_id=#{userId} and
 		user_email=#{userEmail}
 	</select>
-	
+<!-- 	<select id="selectUserByIdAndPass" parameterType="String" resultType="String">
+		select count(user_id)
+		from users 
+		where user_id=#{userId} and user_pwd=#{userPwd}
+	</select> -->
 	<update id="updateUser" parameterType="User">
 		update users set user_pwd=#{userPwd}, user_email=#{userEmail},
 		user_birthday=#{userBirthday} where user_id=#{userId}
