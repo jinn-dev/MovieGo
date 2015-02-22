@@ -18,7 +18,7 @@
 		select * from (
 			select M.*, row_number() over(order by DBMS_RANDOM.VALUE) as num
 			from movies M)
-		where num between #{page}+1 and #{page}+6
+		where num between #{page}+1 and #{page}+48
 	</select>
 	
 	

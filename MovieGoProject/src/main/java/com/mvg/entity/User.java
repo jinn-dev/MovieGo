@@ -60,7 +60,7 @@ public class User {
 		this.userBirthday = userBirthday;
 	}
 
-	public String isUserCoupon() {
+	public String getUserCoupon() {
 		return userCoupon;
 	}
 
