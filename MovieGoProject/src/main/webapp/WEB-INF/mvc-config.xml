@@ -20,8 +20,8 @@
            <mvc:mapping path="/board/write"/>
            <mvc:mapping path="/board/submit"/>
            <mvc:mapping path="/board/modify"/>
-            <mvc:mapping path="/board/delete"/>
-           <bean class="com.spring.interceptor.InterCeptor"/>
+           <mvc:mapping path="/board/delete"/>
+           <bean class="com.mvg.interceptor.InterCeptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 	
