@@ -14,7 +14,7 @@ public interface WishlistDao {
 	
 	//위시리스트 삭제
 	int deleteWishlist(int wishId);
-	
+
 	//사용자별 위시리스트
 	List<Wishlist> getWishlistByUserId(String userId);
 	

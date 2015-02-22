@@ -32,32 +32,24 @@
 
 			var idLength = $("#userId").val().length;
 
-			var c = [];
-
-			for(var i = 0; i < idLength; i++) {
-
-				c[i] = $("#userId").val().charCodeAt(i);
-
+			if(idLength == 0) {
+				alert("아이디 입력해라");
+				event.preventDefault();
+			}
 	
+			for(var i = 0; i < idLength; i++) {
 
 			var c = $("#userId").val().charCodeAt(i);
 				if(!((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c>= 97 && c <= 122))) {
-					alert("다시 입력해주세요.");
+					alert("영어와 숫자로 다시 입력해주세요.");
 					event.preventDefault();
-					break;
-
-				}
-
-				else if($("#userId").val() == "") {
-					alert("아이디를 입력해주세요.");
-
 					break;
 
 				}
 
 				  else if ($("#userPwd").val() == "") {
 
-						alert("pwd:" +$("#userPwd").val() + "비밀번호를 입력해주세요.");
+						alert("비밀번호를 입력해주세요.");
 						event.preventDefault();
 
 						break;
@@ -209,13 +201,6 @@
 								<div class="content-style-form content-style-form-1">
 									<span class="icon icon-close">Close the dialog</span>
 									<h2>Login</h2>
-									<%-- <c:url value="/login" var="action"></c:url>
-									<form:form modelAttribute="log" method="post" action="${action }" name="loginform">
-										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
-										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>
-										<p><input id="loginB" type="submit" name="_event_confirmed" value="LOGIN"/></p>
-										<p id="searchinfo"><a href="javascript:userInfo()" id="searchinfoB">ID/비밀번호 찾기</a></p>
-									</form:form> --%>
 									<form>
 										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
 										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>

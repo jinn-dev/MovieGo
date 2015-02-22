@@ -29,6 +29,7 @@
 			<result column="movie_genre" jdbcType="VARCHAR" property="movieGenre" />	
 		</collection>
 	</resultMap>
+	<!-- 별점매긴 것인지 확인하기 위한것 -->
   	<select id="selectEvaluationByMovieCode" parameterType="String" resultType="Integer">
 		select count(movie_code)
 		from evaluations 
@@ -40,6 +41,12 @@
 		from evaluations 
 		where movie_code=#{movieCode} and user_id=#{userId}
 	</select>
+	<!-- 하나의 영화의 전체 평가가져오는것 -->
+	<select id="selectAllEvaluation" parameterType="Evaluation" resultType="Evaluation">
+		select *
+		from evaluations 
+		where movie_code=#{movieCode}
+	</select>
 <!-- 	comment 있는 update-->	
 	<update id="updateEvaluation" parameterType="Evaluation">
 		update evaluations set user_Id=#{userId}, movie_code=#{movieCode}, ev_rating=#{evRating}, ev_comment=#{evComment}
@@ -49,5 +56,13 @@
 	<update id="updateRating" parameterType="Evaluation">
 		update evaluations set ev_rating=#{evRating}
 		where ev_id=#{evId}
-	</update>
+	</update>	
+	<delete id="deleteEvaluation" parameterType="INTEGER">
+		delete from evaluations
+		where ev_id = #{evId}
+	</delete>
+		<delete id="deleteEvaluationByUserId" parameterType="String">
+		delete from evaluations
+		where user_id = #{userId}
+	</delete>
 </mapper>

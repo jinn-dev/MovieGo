@@ -16,6 +16,8 @@ import javax.servlet.http.HttpSession;
 
 
 
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,12 +91,26 @@ public class MyPageController {
 	public String reinput(@ModelAttribute("user") User user) {
 		return "mypage/modify";
 	}
-	@RequestMapping(value="/mypage/del", method=RequestMethod.GET)
-	public String boardDelete(@RequestParam String userId){
+	@RequestMapping(value="/deleteuser", method=RequestMethod.GET)
+	public String userDelete(@RequestParam String userId){
 		service.deleteUser(userId);
 		return "redirect:/main";
 	}
+	@RequestMapping(value="/deletewishlist", method=RequestMethod.GET)
+	public String wishlistDelete(@RequestParam int wishId, HttpSession session){
+		wService.deleteWishlist(wishId);
+		User user = (User) session.getAttribute("log");
+		String userId = user.getUserId();
+		return "redirect:/wishlist?userId="+userId;
+	}
 	
+	@RequestMapping(value="/deleteevaluation", method=RequestMethod.GET)
+	public String evaluationDelete(@RequestParam int evId, HttpSession session){
+		eService.deleteEvaluation(evId);
+		User user = (User) session.getAttribute("log");
+		String userId = user.getUserId();
+		return "redirect:/ratinglist?userId="+userId;
+	}
 	//영화평가목록보기
 	@RequestMapping(value = "/ratinglist", method = RequestMethod.GET)
 	public String ratingList(@RequestParam String userId, Model model) {

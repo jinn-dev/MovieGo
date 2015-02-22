@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.hamcrest.core.Every;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({"evRating", "movies", "onemovie", "evcheck", "movieinfo"})
+@SessionAttributes({"evRating", "movies", "onemovie", "evcheck", "movieinfo", "evlist", "avgRating"})
 public class RatingController {
 	@Autowired
 	MovieService service;
@@ -75,7 +76,6 @@ public class RatingController {
 		
 		int result = wService.getWishlistCntByUM(movieCode, userId);
 		
-		
 		if(result == 0) {
 			Wishlist wishlist = new Wishlist();
 			wishlist.setMovieCode(movieCode);
@@ -90,8 +90,6 @@ public class RatingController {
 		return result;
 	}
 	
-
-
 	@RequestMapping(value = "/evcomment", method = RequestMethod.GET)
 	public String evComment(Model model) {
 		return "rating/write_comment";
@@ -104,16 +102,12 @@ public class RatingController {
 	}
 
 	
-
 	@RequestMapping(value = "/evcommentchk", method = RequestMethod.GET)
 	@ResponseBody
 	public int evcommentchk(Model model, @RequestParam String movieCode, HttpSession session) {
 		User user = (User) session.getAttribute("log");	
 		String userId = user.getUserId();
-		logger.trace("한다:" + movieCode + userId);
-
 		int test = eService.selectEvaluationByMovieCode(movieCode, userId);
-		logger.trace("한다:" + test);
 		return test;
 	}
 	
@@ -142,17 +136,24 @@ public class RatingController {
 		
 		Movie movie = service.getMovieByMCodeService(movieCode);
 		model.addAttribute("onemovie", movie);
-		logger.trace("evluations정보: " + evaluation);
 		model.addAttribute("evRating", evaluation);
 		return "rating/rating";
 	}
 	
 	@RequestMapping(value = "/movieinfo", method = RequestMethod.GET)
 	public String movieInfo(@RequestParam String movieCode, Model model) {
-		logger.trace("무비코드:" + movieCode);
 		Movie movie = service.getMovieByMCodeService(movieCode);
 		model.addAttribute("movieinfo", movie);
-
+		List<Evaluation> evaluation = eService.getEvaluationByMovieCode(movieCode);
+		model.addAttribute("evlist", evaluation);
+		int addRating = 0;
+		for(int i = 0; i < evaluation.size(); i++) {
+			addRating += evaluation.get(i).getEvRating();
+		}
+		double avgRating = (double)addRating / evaluation.size();
+		model.addAttribute("avgRating", avgRating);
 		return "rating/movie_info";
 	}
+
+	
 }
