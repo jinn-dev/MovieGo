@@ -1,6 +1,7 @@
 package com.mvg.controller;
 
 import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({"evRating", "movies", "onemovie"})
+@SessionAttributes({"evRating", "movies", "onemovie", "evcheck"})
 public class RatingController {
 	@Autowired
 	MovieService service;
@@ -51,6 +52,11 @@ public class RatingController {
 		List<Movie> movies = service.getAllMoviesService();
 		model.addAttribute("movies", movies);
 		return "rating/rating";
+	}
+	
+	@RequestMapping(value = "/ratinglist", method = RequestMethod.GET)
+	public String ratingList(@RequestParam String userId, Model model) {
+		return "mypage/rating_list";
 	}
 	
 	@RequestMapping(value = "/rating.do", method = RequestMethod.GET)
@@ -102,7 +108,20 @@ public class RatingController {
 		return "rating/write_comment";
 	}
 
+	
 
+	@RequestMapping(value = "/evcommentchk", method = RequestMethod.GET)
+	@ResponseBody
+	public int evcommentchk(Model model, @RequestParam String movieCode, HttpSession session) {
+		User user = (User) session.getAttribute("log");	
+		String userId = user.getUserId();
+		logger.trace("한다:" + movieCode + userId);
+
+		int test = eService.selectEvaluationByMovieCode(movieCode, userId);
+		logger.trace("한다:" + test);
+		return test;
+	}
+	
 	@RequestMapping(value = "/evrating", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
 	public String evRating(@RequestParam String code, Model model, HttpSession session) {
 
