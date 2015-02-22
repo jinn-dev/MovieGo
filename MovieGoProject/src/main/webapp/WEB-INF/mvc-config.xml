@@ -17,10 +17,30 @@
            <mvc:mapping path="/comment/write"/>
            <mvc:mapping path="/comment/modify"/>
            <mvc:mapping path="/comment/drop"/>
+           <mvc:mapping path="/board"/>
            <mvc:mapping path="/board/write"/>
            <mvc:mapping path="/board/submit"/>
            <mvc:mapping path="/board/modify"/>
            <mvc:mapping path="/board/delete"/>
+           <mvc:mapping path="/mypage"/>
+           <mvc:mapping path="/wishlist"/>
+           <mvc:mapping path="/modify"/>
+           <mvc:mapping path="/update"/>
+           <mvc:mapping path="/deleteuser"/>
+           <mvc:mapping path="/ratinglist"/>
+           <mvc:mapping path="/deleteevaluation"/>
+           <mvc:mapping path="/deletewishlist"/>
+           <mvc:mapping path="/rating"/>
+           <mvc:mapping path="/addwishlist"/>
+           <mvc:mapping path="/evcomment"/>
+           <mvc:mapping path="evrating"/>
+           <mvc:mapping path="/movieinfo"/>
+           <mvc:mapping path="/reserve"/>
+           <mvc:mapping path="/reserve/complete"/>
+           <mvc:mapping path="/reserve/seat"/>
+           <mvc:mapping path="/reserve/payment"/>
+           <mvc:mapping path="/theater"/>
+  
            <bean class="com.mvg.interceptor.InterCeptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
