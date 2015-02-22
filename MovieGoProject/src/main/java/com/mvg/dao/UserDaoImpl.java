@@ -63,6 +63,7 @@ public class UserDaoImpl implements UserDao {
 			logger.error("없습니다");
 		} else if(!result.getUserPwd().equals(user.getUserPwd())) {
 			logger.error("패스워드가 틀립니다");
+			result = null;
 		}
 		return result;
 	}

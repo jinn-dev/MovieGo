@@ -1,6 +1,7 @@
 package com.mvg.controller;
 
 import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({"evRating", "movies", "onemovie"})
+@SessionAttributes({"evRating", "movies", "onemovie", "evcheck"})
 public class RatingController {
 	@Autowired
 	MovieService service;
@@ -53,6 +54,11 @@ public class RatingController {
 		return "rating/rating";
 	}
 	
+	@RequestMapping(value = "/ratinglist", method = RequestMethod.GET)
+	public String ratingList(@RequestParam String userId, Model model) {
+		return "mypage/rating_list";
+	}
+	
 	@RequestMapping(value = "/rating.do", method = RequestMethod.GET)
 	public String ratingTest2() {
 		return "rating/test";
@@ -64,43 +70,29 @@ public class RatingController {
 		List<Movie> movies = service.randomGetAllMovies(page);
 		return movies;
 	}
-	
-	/*@RequestMapping(value = "/addwishlist", params = "_event_confirmed", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/addwishlist", method = RequestMethod.GET)
 	@ResponseBody
-	public int addWishlist(Model model,
-			@RequestParam String movieCode, HttpSession session) {
+	public int addWishlist(@RequestParam String movieCode, Model model, HttpSession session) {
+
 		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
-		logger.trace("무비코드:" + movieCode);
+		
 		int result = wService.getWishlistCntByUM(movieCode, userId);
-		Wishlist wishlist = new Wishlist(movieCode, userId);
-		int r = 0;
+		
+		
 		if(result == 0) {
-			r = wService.insertWishlist(wishlist);
+			Wishlist wishlist = new Wishlist();
+			wishlist.setMovieCode(movieCode);
+			wishlist.setUserId(userId);
+			
+			wService.insertWishlist(wishlist);
 		}
 		
 		else {
-			logger.trace("insert못함" );
+			logger.trace("위시리스트 이미 추가되어있음" );
 		}
-		return r;
-	}*/
-	
-
-	@RequestMapping(value = "/addwishlist", params = "_event_confirmed", method = RequestMethod.POST)
-	public String addWishlist(Model model,
-			@ModelAttribute("wishlists") Wishlist wishlists) {
-		String movieCode = wishlists.getMovieCode();
-		String userId = wishlists.getUserId();
-		int result = wService.getWishlistCntByUM(movieCode, userId);
-		
-		if(result == 0) {
-			wService.insertWishlist(wishlists);
-		}
-		
-		else {
-			logger.trace("insert못함" );
-		}
-		return "rating/rating";
+		return result;
 	}
 	
 
@@ -116,7 +108,20 @@ public class RatingController {
 		return "rating/write_comment";
 	}
 
+	
 
+	@RequestMapping(value = "/evcommentchk", method = RequestMethod.GET)
+	@ResponseBody
+	public int evcommentchk(Model model, @RequestParam String movieCode, HttpSession session) {
+		User user = (User) session.getAttribute("log");	
+		String userId = user.getUserId();
+		logger.trace("한다:" + movieCode + userId);
+
+		int test = eService.selectEvaluationByMovieCode(movieCode, userId);
+		logger.trace("한다:" + test);
+		return test;
+	}
+	
 	@RequestMapping(value = "/evrating", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
 	public String evRating(@RequestParam String code, Model model, HttpSession session) {
 

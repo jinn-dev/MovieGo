@@ -22,7 +22,7 @@
 		});
 		
 		$("#add").click(function() {
-		alert("추가");
+		alert("코멘트가 추가되었습니다.");
 		});
 	});
 </script>
@@ -30,6 +30,7 @@
 사용자 아이디 : ${evRating.userId }<br>
 코멘트 날길 영화제목 : ${onemovie.movieTitleKr}<br>
 영화의 별점 : ${evRating.evRating }<br>
+
 코멘트 남기기<br>
 <c:url value="/addevcomment" var="action"></c:url>
 <form:form modelAttribute="ecomment" method="post" action="${action }">
