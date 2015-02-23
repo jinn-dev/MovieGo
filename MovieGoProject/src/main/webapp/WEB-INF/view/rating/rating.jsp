@@ -131,7 +131,7 @@
 										    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
 										    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
                                          } 
-                                         output+='</tr><tr>';
+                                      /*    output+='</tr><tr>';
                                           for(i=42; i<48; i++){
                                         	 output+='<td><div class="grid">'+
  											'<figure class="effect-zoe">'+
@@ -145,7 +145,7 @@
  										    '<a href="javascript:ratingInfo(3, '+data[i].movieCode+')" class="icon" id="three"><font size="6">★<font></a>'+
  										    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
  										    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
-                                           }   
+                                           }    */
                                          output+='</tr><tr></table>';
                                          $('#movies').html(output);
                                          $("#page").val(48);
@@ -341,7 +341,6 @@
  	xhr.open("post", url, true);
  	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
  	xhr.send("code=" + str);
-
  } 
  
  
@@ -350,8 +349,6 @@ $( ".star_rating a" ).click(function() {
 	  $(this).addClass("on").prevAll("a").addClass("on");
 	     return false;
 });
-
-
 function evcomment(m) {
 	var param="movieCode" +"="+m;
 	$.ajax({
@@ -377,7 +374,6 @@ function evcomment(m) {
 		}
  });	
 }
-
 function wishlist(m) {
  var param="movieCode" +"="+m;
 $.ajax({
@@ -395,7 +391,6 @@ $.ajax({
 	    	else {
 	    		alert("위시리스트 이미 포함되어 있습니다.");
 	    	}
-
 		},
 		error : function(request, status, error) {
 			if(request.status != '0') {

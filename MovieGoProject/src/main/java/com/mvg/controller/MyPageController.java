@@ -1,6 +1,7 @@
 package com.mvg.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -66,6 +67,7 @@ public class MyPageController {
 		return "mypage/mypage";
 	}
 
+
 	// 회원정보 수정
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public String modify(Model model, User user, HttpSession session) {
@@ -115,6 +117,22 @@ public class MyPageController {
 		model.addAttribute("evlist", evaluation);
 		return "mypage/rating_list";
 	}
+	
+
+	@RequestMapping(value = "/wishlist.ajax", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Wishlist> wishlistAjax(HttpSession session) {
+		User user = (User) session.getAttribute("log");
+		String userId = user.getUserId();
+		List<Wishlist> wishlist = wService.getWishlistByUserId(userId);
+		for(int i = 0; i < wishlist.size(); i++) {
+			logger.trace("수업:" + wishlist.get(i).getMovies().getClass());
+
+		}
+	
+		return wishlist;
+	}
+	
 
 	// 영화평가 삭제
 	@RequestMapping(value = "/deleteevaluation", method = RequestMethod.GET)

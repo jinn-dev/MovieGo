@@ -12,17 +12,18 @@ public class Movie {
 	private String movieActor1;
 	private String movieActor2;
 	private String movieActor3;
+	private String movieActor4;
 	private String movieImgUrl;
 	private String movieStory;
 	private String movieOpenDate;
 	
 	public Movie() {}
-	
 
 	public Movie(String movieCode, String movieTitleKr, String movieTitleEng,
 			String movieGenre, String movieNation, String movieDirector,
 			String movieActor1, String movieActor2, String movieActor3,
-			String movieImgUrl, String movieStory, String movieOpenDate) {
+			String movieActor4, String movieImgUrl, String movieStory,
+			String movieOpenDate) {
 		super();
 		this.movieCode = movieCode;
 		this.movieTitleKr = movieTitleKr;
@@ -33,13 +34,11 @@ public class Movie {
 		this.movieActor1 = movieActor1;
 		this.movieActor2 = movieActor2;
 		this.movieActor3 = movieActor3;
+		this.movieActor4 = movieActor4;
 		this.movieImgUrl = movieImgUrl;
 		this.movieStory = movieStory;
 		this.movieOpenDate = movieOpenDate;
 	}
-
-
-
 
 	public String getMovieCode() {
 		return movieCode;
@@ -113,6 +112,14 @@ public class Movie {
 		this.movieActor3 = movieActor3;
 	}
 
+	public String getMovieActor4() {
+		return movieActor4;
+	}
+
+	public void setMovieActor4(String movieActor4) {
+		this.movieActor4 = movieActor4;
+	}
+
 	public String getMovieImgUrl() {
 		return movieImgUrl;
 	}
@@ -121,24 +128,21 @@ public class Movie {
 		this.movieImgUrl = movieImgUrl;
 	}
 
-
 	public String getMovieStory() {
 		return movieStory;
 	}
-
 
 	public void setMovieStory(String movieStory) {
 		this.movieStory = movieStory;
 	}
 
-	public String getMovieDate() {
+	public String getMovieOpenDate() {
 		return movieOpenDate;
 	}
 
-	public void setMovieDate(String movieOpenDate) {
+	public void setMovieOpenDate(String movieOpenDate) {
 		this.movieOpenDate = movieOpenDate;
 	}
-
 
 	@Override
 	public String toString() {
@@ -147,10 +151,10 @@ public class Movie {
 				+ ", movieGenre=" + movieGenre + ", movieNation=" + movieNation
 				+ ", movieDirector=" + movieDirector + ", movieActor1="
 				+ movieActor1 + ", movieActor2=" + movieActor2
-				+ ", movieActor3=" + movieActor3 + ", movieImgUrl="
-				+ movieImgUrl + ", movieStory=" + movieStory + ", movieOpenDate="
+				+ ", movieActor3=" + movieActor3 + ", movieActor4="
+				+ movieActor4 + ", movieImgUrl=" + movieImgUrl
+				+ ", movieStory=" + movieStory + ", movieOpenDate="
 				+ movieOpenDate + "]";
 	}
-	
 
 	}

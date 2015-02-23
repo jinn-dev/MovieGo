@@ -12,7 +12,7 @@
 		</selectKey>
 	</insert>
 	<select id="selectEvaluationById" resultMap="ComplexMovieEvaluation">
-		select m.movie_code, m.movie_title_kr, m.movie_title_eng, m.movie_director,
+		select m.movie_code, m.movie_title_kr, m.movie_title_eng, m.movie_director, m.movie_open_date,
 		m.movie_genre, e.ev_id, e.user_id, e.movie_code, e.ev_rating,
 		e.ev_comment from evaluations e left join movies m on(m.movie_code =
 		e.movie_code) where user_id= #{userId}
@@ -29,6 +29,7 @@
 			<result column="movie_title_kr" jdbcType="VARCHAR" property="movieTitleKr" />
 			<result column="movie_title_eng" jdbcType="VARCHAR" property="movieTitleEng" />
 			<result column="movie_director" jdbcType="VARCHAR" property="movieDirector" />
+			<result column="movie_open_date" jdbcType="VARCHAR" property="movieOpenDate" />		
 			<result column="movie_genre" jdbcType="VARCHAR" property="movieGenre" />
 		</collection>
 	</resultMap>
