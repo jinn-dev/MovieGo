@@ -1,22 +1,11 @@
 package com.mvg.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-
-
-
-
-
-
-
-
-
-
-
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mvg.entity.Evaluation;
@@ -72,7 +62,9 @@ public class MyPageController {
 	
 	@RequestMapping(value="/wishlist", method=RequestMethod.GET)
 	public String wishlist(@RequestParam String userId, Model model){
+	
 		List<Wishlist> wishlist = wService.getWishlistByUserId(userId);
+
 		model.addAttribute("wishlist", wishlist);
 		return "mypage/wishlist";
 	}
@@ -118,4 +110,20 @@ public class MyPageController {
 		model.addAttribute("evlist", evaluation);
 		return "mypage/rating_list";
 	}
+	
+
+	@RequestMapping(value = "/wishlist.ajax", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Wishlist> wishlistAjax(HttpSession session) {
+		User user = (User) session.getAttribute("log");
+		String userId = user.getUserId();
+		List<Wishlist> wishlist = wService.getWishlistByUserId(userId);
+		for(int i = 0; i < wishlist.size(); i++) {
+			logger.trace("수업:" + wishlist.get(i).getMovies().getClass());
+
+		}
+	
+		return wishlist;
+	}
+	
 }

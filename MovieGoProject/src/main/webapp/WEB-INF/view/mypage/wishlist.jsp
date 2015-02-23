@@ -11,9 +11,50 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/wishlist.css" />
 <title>Insert title here</title>
 </head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 
+ $(document).ready(function() {
+	<c:url value="/wishlist.ajax" var="url"/>
+	$.ajax({
+		url:'${url}',
+			type:'GET',	    
+            cache : false,
+            async : false,
+            dataType : 'json',
+	    success : function(data) {
+	    var output = '<div class="list-table"><table><tr><th>포스터</th><th>영화제목</th><th>감독</th><th>개봉일자<th>장르</th><th>예매하기</th></tr>';
+	    for(var i = 0; i < data.length; i++) {	
+	   
+       	output += '<tr><td class ="thumbnail">'+
+		'<img width="180" height="253" src="'+data[i].movies[0].movieImgUrl+'"/></div></td>'+
+		'<td width="300" height="50">'+
+		'<c:url value="/movieinfo?movieCode='+data[i].movies[0].movieCode +'" var="url"></c:url>'+
+		'<a href="${url }">'+data[i].movies[0].movieTitleKr+'</a></td>'+
+		'<td width="100">'+data[i].movies[0].movieDirector +'</td>'+
+		'<td width="100">'+data[i].movies[0].movieOpenDate +'</td>'+
+		'<td width="100">'+data[i].movies[0].movieGenre +'</td>'+
+		'<td width="100">'+
+		'<c:url value="/reserve" var="url"></c:url>'+
+		'<a href="${url }" class="icon-search">예매하기</a></td>'+
+		'<td><button onclick="deleteCheck(${wishListItem.wishId})"class="div-button">삭제</button>'+
+		'</td></tr>';
+		}
+		'</table>';
 
+	  
+
+         $('#movies').html(output);
+		},
+		error : function(request, status, error) {
+			alert("노노");
+			if(request.status != '0') {
+				alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+			}	
+		}
+	});
+});  
 
 function deleteCheck(id) {
 	 if(confirm("위시리스트를 삭제하시겠습니까??")) {
@@ -33,38 +74,9 @@ function deleteCheck(id) {
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	
-   <div class="list-table">
-위시리스트
-
-
-<table id="list">
-	<tr>
-		<th><div>영화제목</div></th><th><div>감독</div></th><th><div>장르</div></th><th><div>예매하기</div></th>
-	</tr>
-	<c:forEach items="${wishlist}" var="wishListItem">
-	<c:set value="${wishListItem.movies}" var="movie">	</c:set>
-		<c:forEach items="${movie}" var="movieItem">
-		<tr>
-		<td width="300" height="50">
-		<c:url value="/movieinfo?movieCode=${movieItem.movieCode}" var="url"></c:url>
-		<a href="${url }"><c:out value="${movieItem.movieTitleKr}"/></a></td>
-		<td width="100"><c:out value="${movieItem.movieDirector }"/></td>
-		<td width="100"><c:out value="${movieItem.movieGenre}"/></td>
-		<td width="100">
-		<c:url value="/reserve" var="url"></c:url>
-		<a href="${url }" class="icon-search">예매하기</a>			
-		</td>
-		<td>
-		<button onclick="deleteCheck(${wishListItem.wishId})"class="div-button">삭제</button>
-		</td>
-		</tr>
-		</c:forEach>
-	</c:forEach>		
-	
-</table>
-
-</div>
-<div id="submenu">
+ 
+ <div id="movies"></div>
+ <div id="submenu">
 <jsp:include page="submenu.jsp"></jsp:include>
 </div>
 </body>

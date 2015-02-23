@@ -159,6 +159,16 @@ public class RatingController {
 		
 		return "rating/movie_info";
 	}
+	
+
+	@RequestMapping(value="/onemovieimg", method = RequestMethod.GET)
+	@ResponseBody
+	public String oneMovieImg (@RequestParam String movieCode){
+		logger.trace("무비코드:" + movieCode);
+
+		String thumbnail = service.getMovieThumbnailService(movieCode);
+		return thumbnail;
+	}
 
 	
 }

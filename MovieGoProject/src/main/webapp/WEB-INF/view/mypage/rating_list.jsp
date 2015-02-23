@@ -45,6 +45,11 @@ function deleteCheck(id) {
                <b>감독</b>
             </div>
          </th>
+          <th >
+            <div>
+               <b>개봉일자</b>
+            </div>
+         </th>
          <th>
             <div>
                <b>장르</b>
@@ -73,6 +78,7 @@ function deleteCheck(id) {
 		<a href="<%=request.getContextPath()%>/movieinfo?movieCode=${movieItem.movieCode}"><c:out value="${movieItem.movieTitleKr}"/></a>
 		</td>
 		<td width="100"><c:out value="${movieItem.movieDirector}"/></td>
+		<td width="100"><c:out value="${movieItem.movieOpenDate }"/></td>
 		<td width="100"><c:out value="${movieItem.movieGenre}"/></td>
 		<td width="100"><c:out value="${evlistItem.evRating}"/></td>
 		<td width="300"><c:out value="${evlistItem.evComment}"/></td>
