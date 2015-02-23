@@ -14,7 +14,7 @@ public class Movie {
 	private String movieActor3;
 	private String movieImgUrl;
 	private String movieStory;
-	private String movieDate;
+	private String movieOpenDate;
 	
 	public Movie() {}
 	
@@ -22,7 +22,7 @@ public class Movie {
 	public Movie(String movieCode, String movieTitleKr, String movieTitleEng,
 			String movieGenre, String movieNation, String movieDirector,
 			String movieActor1, String movieActor2, String movieActor3,
-			String movieImgUrl, String movieStory, String movieDate) {
+			String movieImgUrl, String movieStory, String movieOpenDate) {
 		super();
 		this.movieCode = movieCode;
 		this.movieTitleKr = movieTitleKr;
@@ -35,7 +35,7 @@ public class Movie {
 		this.movieActor3 = movieActor3;
 		this.movieImgUrl = movieImgUrl;
 		this.movieStory = movieStory;
-		this.movieDate = movieDate;
+		this.movieOpenDate = movieOpenDate;
 	}
 
 
@@ -132,11 +132,11 @@ public class Movie {
 	}
 
 	public String getMovieDate() {
-		return movieDate;
+		return movieOpenDate;
 	}
 
-	public void setMovieDate(String movieDate) {
-		this.movieDate = movieDate;
+	public void setMovieDate(String movieOpenDate) {
+		this.movieOpenDate = movieOpenDate;
 	}
 
 
@@ -148,8 +148,8 @@ public class Movie {
 				+ ", movieDirector=" + movieDirector + ", movieActor1="
 				+ movieActor1 + ", movieActor2=" + movieActor2
 				+ ", movieActor3=" + movieActor3 + ", movieImgUrl="
-				+ movieImgUrl + ", movieStory=" + movieStory + ", movieDate="
-				+ movieDate + "]";
+				+ movieImgUrl + ", movieStory=" + movieStory + ", movieOpenDate="
+				+ movieOpenDate + "]";
 	}
 	
 
