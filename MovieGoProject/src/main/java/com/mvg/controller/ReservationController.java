@@ -2,6 +2,8 @@ package com.mvg.controller;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -18,11 +20,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mvg.entity.Reservation;
+import com.mvg.entity.ReservationInfo;
 import com.mvg.entity.SeatInfo;
 import com.mvg.entity.Theater;
 import com.mvg.entity.User;
 import com.mvg.service.MovieService;
 import com.mvg.service.NowMovieService;
+import com.mvg.service.ReservationInfoService;
 import com.mvg.service.ReservationService;
 import com.mvg.service.SeatInfoService;
 import com.mvg.service.TheaterService;
@@ -50,10 +55,16 @@ public class ReservationController {
 	@Autowired
 	SeatInfoService sservice;
 	
+	@Autowired
+	ReservationInfoService riservice;
 	
+	//예매
 	private int thId;
+	private String thName;
 	private String mCode;
+	private String mName;
 	private String mTime;
+	private String mTimeampm;
 	private int nmId;
 	private String rinfo;
 	private ArrayList<String> seats;
@@ -160,23 +171,68 @@ public class ReservationController {
 	@RequestMapping(value="reserve/time", method=RequestMethod.POST, produces="text/plain;charset=utf-8")
 	public @ResponseBody String timeReceive(@RequestParam String time, Model model) {
 		mTime = time;
+		mTimeampm = nservice.getMTimeAmPmService(time);
 		logger.trace("수업: 영화시간: "+mTime);
-		String thName = tservice.getTheaterByIdService(thId).getTheaterName();
-		String mName = mservice.getMovieByMCodeService(mCode).getMovieTitleKr();
+		thName = tservice.getTheaterByIdService(thId).getTheaterName();
+		mName = mservice.getMovieByMCodeService(mCode).getMovieTitleKr();
 		nmId = nservice.getNMovieIdByNMovieService(thId, mCode, mTime);
-		rinfo = "영화관: "+thName+", 영화: "+mName+", 시간: "+mTime;
+		rinfo = "영화관: "+thName+", 영화: "+mName+", 시간: "+mTimeampm;
 		return rinfo;
 	}
 
 	@RequestMapping(value="/reserve/seat", method=RequestMethod.GET)
 	public String reserveSeat(Model model) {
 		List<SeatInfo> seats = sservice.getSInfoByNMovieIdService(nmId);
-		ArrayList<Integer> seatNum = new ArrayList<Integer>();
+		ArrayList<Integer> seatIds = new ArrayList<Integer>();
+		ArrayList<String> reservedSeats = new ArrayList<String>();
 		for (int i=0;i<seats.size();i++) {
-			int num = seats.get(i).getSeatNo();
-			seatNum.add(i, num);
+			int id = seats.get(i).getSeatId();
+			seatIds.add(i, id);
 		}
-		model.addAttribute("seats", seatNum);
+		//reservationinfo안에 seat_id가 있는지 검사
+		//있으면 reservedSeats에 저장
+		for (int i=0;i<seatIds.size();i++) {
+			ReservationInfo rinfo = riservice.getRInfoBySeatIdService(seatIds.get(i));
+			if (rinfo != null) {
+				String name = sservice.getSeatNameService(rinfo.getSeatId());
+				reservedSeats.add(name);
+			}
+		}
+		
+/////////////////////////////////////////////////////////////////////////
+		
+		ArrayList<Integer> test = new ArrayList<Integer>();
+		for (int i=0;i<seatIds.size();i++) {
+			ReservationInfo rinfo = riservice.getRInfoBySeatIdService(seatIds.get(i));
+			if (rinfo != null) {
+				test.add(i,seatIds.get(i));
+			}
+		}
+		
+		Iterator<Integer> iter = test.iterator();
+		StringBuilder jsonBuilder = new StringBuilder();
+		
+		jsonBuilder.append("{\"rsvdSeats\":[");
+		if(iter.hasNext()) {
+			int value = iter.next();
+			jsonBuilder.append("{\"seat\":")
+				.append(value)
+				.append("}");
+		}
+		while(iter.hasNext()) {
+			jsonBuilder.append(", ");
+			int value = iter.next();
+			jsonBuilder.append("{\"seat\":")
+				.append(value)
+				.append("}");
+		}
+		jsonBuilder.append("]}");
+		
+		model.addAttribute("testjson", jsonBuilder.toString());
+		
+///////////////////////////////////////////////////////////////////////////////	
+		model.addAttribute("test", test);
+		model.addAttribute("reservedSeats", reservedSeats);
 		model.addAttribute("rinfo", rinfo);
 		return "reservation/reserv";
 	}
@@ -186,11 +242,16 @@ public class ReservationController {
 		User user = (User) session.getAttribute("user");
 		//만약 생일이 이번달이면 쿠폰을 yes로바꾸기
 		Calendar birthday = Calendar.getInstance();
-		int sysmonth = birthday.MONTH+1;
 		birthday.setTime(user.getUserBirthday());
-		int month = birthday.MONTH+1;
-		logger.trace("수업: 오늘달: "+sysmonth+"생일달: "+month);
-		//쿠폰, 포인트 점수 가져오기
+		//birmonth = 사용자의 생일인 달
+		int birmonth = birthday.MONTH+1;
+		GregorianCalendar sys = new GregorianCalendar();
+		//sysmonth = 이번달
+		int sysmonth = sys.MONTH;
+		//생일쿠폰 가져오기
+		if (birmonth == sysmonth) {
+			user.setUserCoupon("y");
+		}
 		seats = seatlist;
 		peopleNum = seats.size();
 		model.addAttribute("price", price);
@@ -201,8 +262,24 @@ public class ReservationController {
 	}
 	
 	@RequestMapping(value="/reserve/complete", method=RequestMethod.POST)
-	public String reserveComplete(HttpSession session) {
-		//User user = (User) session.getAttribute("log");
+	public String reserveComplete(@RequestParam int totalprice, @RequestParam int spoint, 
+			@RequestParam String yncoupon, @RequestParam int upoint, HttpSession session) {
+		logger.trace("수업: 넘어온값: "+totalprice+", "+spoint+", "+yncoupon+", "+upoint);
+		User user = (User) session.getAttribute("log");
+		if (yncoupon.equals("used")) {
+			user.setUserCoupon("n");
+		}
+		user.setUserPoint(user.getUserPoint()-upoint+spoint);
+		Reservation r = new Reservation(user.getUserId(), peopleNum, totalprice);
+		rservice.insertRService(r);
+		int rid = r.getReservationId();
+		for (int i=0;i<seats.size();i++) {
+			int seatId = sservice.getSeatIdService(nmId, seats.get(i));
+			ReservationInfo rsvinfo = new ReservationInfo();
+			rsvinfo.setReservationId(rid);
+			rsvinfo.setSeatId(seatId);
+			riservice.insertRInfoService(rsvinfo);
+		}
 		return "reservation/reservation_complete";
 	}
 }

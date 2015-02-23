@@ -20,6 +20,26 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+
+	var param="movieCode"+"="+$(".firstMovie").val();
+	<c:url value="/thumbnail" var="url"/>
+	$.ajax({
+		url:'${url}',
+			type:'GET',	
+			data : param,
+			cache : false,
+			async : false,
+			dataType : 'text',
+	    success : function(data) {
+	    	$("#thumbnail").attr("src", data);
+		},
+		error : function(request, status, error) {
+			if(request.status != '0') {
+				alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+			}	
+		}
+	});
+	
 	$(".boxoffice-tr").mouseenter(function(){
 		$(this).css("background-color","#C75C5C");
 	});
@@ -30,26 +50,6 @@ $(document).ready(function() {
 	
 	$(".movieName").mouseenter(function() { 
 		$(this).css("color","#F2F2F2");
-	/* 	var movieCd = $(".movieCd").val();
-		var param="movieCode"+"="+movieCd;
-		<c:url value="/thumbnail" var="url"/>
-		$.ajax({
-			url:'${url}',
-				type:'GET',	
-				data : param,
-				cache : false,
-			async : false,
-				dataType : 'text',
-		    success : function(data) {
-		    	$("#thumbnail").attr("src", data);
-				
-			},
-			error : function(request, status, error) {
-				if(request.status != '0') {
-					alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
-				}	
-			}
-		 });  */
 	});
 	
 	$(".movieName").mouseleave(function() { 
@@ -156,8 +156,8 @@ table{
 				</tr>
 				<c:if test="${not empty dailyResult.boxOfficeResult.dailyBoxOfficeList }">
 					<c:forEach items="${dailyResult.boxOfficeResult.dailyBoxOfficeList }" var="boxoffice" varStatus="status">
+					<input type="hidden" value="${boxoffice.movieCd }" class='firstMovie' />
 					<tr class="boxoffice-tr">
-					<%-- <input type="hidden" value="${boxoffice.movieCd }" class='movieCd' /> --%>
 							<td><c:out value="${status.count }"/>
 							<%-- <c:out value="${boxoffice.rank }" /> --%></td>
 							<td><a href="#" class="movieName" onmouseover="javascript:viewThumbnail('${boxoffice.movieCd}')"><c:out value="${boxoffice.movieNm }" /></a></td>
@@ -192,7 +192,6 @@ table{
 	</section>
 <script>
 function viewThumbnail(m){
-	alert(m);
 	var param="movieCode"+"="+m;
 	<c:url value="/thumbnail" var="url"/>
 	$.ajax({

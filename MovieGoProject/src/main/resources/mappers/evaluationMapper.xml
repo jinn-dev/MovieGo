@@ -3,16 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mvg.mappers.evaluationMapper">
- <insert id = "insertEvaluation" parameterType = "Evaluation">
-  	insert into evaluations (user_id, movie_code, ev_rating) values (#{userId}, #{movieCode}, #{evRating})
-  	<selectKey keyProperty="evId" resultType="integer" order="AFTER">
-  		select SEQ_evals_ev_id.currval
-  		from dual
-  	</selectKey>
-  </insert>
-  <select id="selectEvaluationById" resultMap="ComplexMovieEvaluation">
-	select m.movie_code, m.movie_title_kr, m.movie_title_eng, m.movie_director, 
-	m.movie_genre, e.ev_id, e.user_id, e.movie_code, e.ev_rating, e.ev_comment from evaluations e left join movies m on(m.movie_code = e.movie_code) where user_id= #{userId}
+	<insert id="insertEvaluation" parameterType="Evaluation">
+		insert into evaluations (user_id, movie_code, ev_rating) values
+		(#{userId}, #{movieCode}, #{evRating})
+		<selectKey keyProperty="evId" resultType="integer" order="AFTER">
+			select SEQ_evals_ev_id.currval
+			from dual
+		</selectKey>
+	</insert>
+	<select id="selectEvaluationById" resultMap="ComplexMovieEvaluation">
+		select m.movie_code, m.movie_title_kr, m.movie_title_eng, m.movie_director, m.movie_open_date, m.movie_img_url,
+	m.movie_genre, e.ev_id, e.user_id, e.movie_code, e.ev_rating,
+		e.ev_comment from evaluations e left join movies m on(m.movie_code =
+		e.movie_code) where user_id= #{userId}
 	</select>
 	<resultMap type="Evaluation" id="ComplexMovieEvaluation">
 		<id column="ev_id" jdbcType="INTEGER" property="evId" />
@@ -20,49 +23,57 @@
 		<result column="movie_code" jdbcType="VARCHAR" property="movieCode" />
 		<result column="ev_rating" jdbcType="VARCHAR" property="evRating" />
 		<result column="ev_comment" jdbcType="VARCHAR" property="evComment" />
-		
-		<collection property="movies" ofType="Movie">
+			<collection property="movies" ofType="Movie">
 			<id column="movie_code" jdbcType="VARCHAR" property="movieCode" />
 			<result column="movie_title_kr" jdbcType="VARCHAR" property="movieTitleKr" />
 			<result column="movie_title_eng" jdbcType="VARCHAR" property="movieTitleEng" />
 			<result column="movie_director" jdbcType="VARCHAR" property="movieDirector" />
+			<result column="movie_open_date" jdbcType="VARCHAR" property="movieOpenDate" />	
+			<result column="movie_img_url" jdbcType="VARCHAR" property="movieImgUrl" />			
 			<result column="movie_genre" jdbcType="VARCHAR" property="movieGenre" />	
 		</collection>
 	</resultMap>
 	<!-- 별점매긴 것인지 확인하기 위한것 -->
-  	<select id="selectEvaluationByMovieCode" parameterType="String" resultType="Integer">
+	<select id="selectEvaluationByMovieCode" parameterType="String"
+		resultType="Integer">
 		select count(movie_code)
-		from evaluations 
+		from evaluations
 		where movie_code=#{movieCode} and user_id=#{userId}
 	</select>
 	<!-- ev_id를 가져오는것 -->
 	<select id="selectEvId" parameterType="Evaluation" resultType="Integer">
 		select ev_id
-		from evaluations 
+		from evaluations
 		where movie_code=#{movieCode} and user_id=#{userId}
 	</select>
 	<!-- 하나의 영화의 전체 평가가져오는것 -->
-	<select id="selectAllEvaluation" parameterType="Evaluation" resultType="Evaluation">
+	<select id="selectAllEvaluation" parameterType="Evaluation"
+		resultType="Evaluation">
 		select *
-		from evaluations 
+		from evaluations
 		where movie_code=#{movieCode}
 	</select>
-<!-- 	comment 있는 update-->	
+	<!-- comment 있는 update -->
 	<update id="updateEvaluation" parameterType="Evaluation">
-		update evaluations set user_Id=#{userId}, movie_code=#{movieCode}, ev_rating=#{evRating}, ev_comment=#{evComment}
+		update evaluations
+		set user_Id=#{userId}, movie_code=#{movieCode}, ev_rating=#{evRating},
+		ev_comment=#{evComment}
 		where ev_id=#{evId}
 	</update>
 	<!-- comment 없는 update -->
 	<update id="updateRating" parameterType="Evaluation">
-		update evaluations set ev_rating=#{evRating}
+		update evaluations set
+		ev_rating=#{evRating}
 		where ev_id=#{evId}
-	</update>	
+	</update>
 	<delete id="deleteEvaluation" parameterType="INTEGER">
-		delete from evaluations
+		delete from
+		evaluations
 		where ev_id = #{evId}
 	</delete>
-		<delete id="deleteEvaluationByUserId" parameterType="String">
-		delete from evaluations
+	<delete id="deleteEvaluationByUserId" parameterType="String">
+		delete from
+		evaluations
 		where user_id = #{userId}
 	</delete>
 </mapper>

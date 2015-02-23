@@ -5,6 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/reserve2.css" />
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <style type="text/css">
 html {
@@ -206,7 +208,7 @@ h2 {
 	font-weight: bold;
 	text-align: center;
 	line-height: 1.8em;
-	color: #4eaad5;
+	color: #C75C5C;
 }
 
 .theaterMap .map .arrayNum {
@@ -222,15 +224,19 @@ h2 {
 }
 
 .theaterMap .map .arrayNum button:hover {
-	background: #80d6fe;
+	background: #4F5D73;
 }
 
 .theaterMap .map .arrayNum button.selected {
-	background: #80d6fe;
+	background: #4F5D73;
+}
+
+.theaterMap .map .arrayNum button.reserved {
+	background: #4F5D73;
 }
 
 .theaterMap .map .arrayNum button.clicked {
-	background: #8ff30c;
+	background: #C75C5C;
 }
 
 .theaterMap .map .arrayNum button:nth-of-type(4) {
@@ -332,217 +338,255 @@ h2 {
 </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/user/header.jsp" />
-<div id="rsv1">
-${rinfo }
-</div>
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+	<input type="hidden" id="rseats" value="${testjson }" />
+	<div id="rsv1">
+		${rinfo }<br> 예약된 좌석: ${testjson }
+	</div>
 
-
-<div class="wrap">
-	<div class="set clearfix">
-		<div class="peopleNum">
-			<h2>인원설정</h2>
-			<ul class="clearfix">
-				<li class="selected"><button>0</button></li>
-				<li><button>1</button></li>
-				<li><button>2</button></li>
-				<li><button>3</button></li>
-				<li><button>4</button></li>
-				<li><button>5</button></li>
-				<li><button>6</button></li>
-				<li><button>7</button></li>
-				<li><button>8</button></li>
-			</ul>
+	<div class="wrap">
+		<div class="set clearfix">
+			<div class="peopleNum">
+				<h2>인원설정</h2>
+				<ul class="clearfix">
+					<li class="selected"><button>0</button></li>
+					<li><button>1</button></li>
+					<li><button>2</button></li>
+					<li><button>3</button></li>
+					<li><button>4</button></li>
+					<li><button>5</button></li>
+					<li><button>6</button></li>
+					<li><button>7</button></li>
+					<li><button>8</button></li>
+				</ul>
+			</div>
+			<div class="seat">
+				<h2>좌석설정</h2>
+				<input type="radio" id="seat1" name="selectSeat" /> <label
+					for="seat1">떨어진 자리<span></span></label> <input type="radio"
+					id="seat2" name="selectSeat" /> <label for="seat2">붙은 2자리<span></span>
+					<span></span></label>
+			</div>
 		</div>
-		<div class="seat">
-			<h2>좌석설정</h2>
-			<input type="radio" id="seat1" name="selectSeat" />
-			<label for="seat1">떨어진 자리<span></span></label>
-			<input type="radio" id="seat2" name="selectSeat" />
-			<label for="seat2">붙은 2자리<span></span> <span></span></label>
+		<div class="theaterMap">
+			<div class="screen">screen</div>
+			<div class="mapWrap"></div>
+		</div>
+		<div class="charge">
+			<label for="">합계</label><input type="text" value="0" /> <span>원</span>
+			<button class="refresh">좌석 다시선택</button>
+			<button class="submitBtn">선택완료</button>
 		</div>
 	</div>
-	<div class="theaterMap">
-		<div class="screen">screen</div>
-		<div class="mapWrap"></div>
+
+	<div class="result">
+		<table>
+			<colgroup>
+				<col style="width: 30%" />
+				<col style="width: 70%" />
+			</colgroup>
+			<caption>좌석선택 결과</caption>
+			<tr class="peopleResult">
+				<th>인원</th>
+				<td><span></span>명</td>
+			</tr>
+			<tr class="seatResult">
+				<th>좌석</th>
+				<td></td>
+			</tr>
+			<tr class="chargeResult">
+				<th>합계</th>
+				<td><span></span>원</td>
+			</tr>
+		</table>
+		<button id="submit">확인</button>
+		<button id="cancel">취소</button>
 	</div>
-	<div class="charge">
-		<label for="">합계</label><input type="text" value="0" /> <span>원</span>
-		<button class="refresh">좌석 다시선택</button>
-		<button class="submitBtn">선택완료</button>
-	</div>
-</div>
 
-<div class="result">
-	<table>
-		<colgroup>
-			<col style="width:30%" />
-			<col style="width:70%" />
-		</colgroup>
-		<caption>좌석선택 결과</caption>
-		<tr class="peopleResult">
-			<th>인원</th>
-			<td><span></span>명</td>
-		</tr>
-		<tr class="seatResult">
-			<th>좌석</th>
-			<td></td>
-		</tr>
-		<tr class="chargeResult">
-			<th>합계</th>
-			<td><span></span>원</td>
-		</tr>
-	</table>
-	<button id="submit">확인</button>
-	<button id="cancel">취소</button>
-</div>
+	<script type="text/javascript">
+		//좌석배치
+		var rowArray = ['A', 'B', 'C', 'D'];
+		var map = $('.mapWrap');
 
-<script type="text/javascript">
-//좌석배치
-var rowArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-var map = $('.mapWrap');
-
-for (i=0; i<8; i++){
-	map.append('<div class="map clearfix"><div class="row">'+rowArray[i]+'</div><div class="arrayNum"></div></div>');
-}
-for (i=1; i<14; i++){
-	map.find('.arrayNum').append('<button>'+i+'</button>');
-}
-
-var peopleNum = $('.peopleNum button');
-var selectSeat = $('.seat input');
-var seat1 = $('.seat input#seat1');
-var seat2 = $('.seat input#seat2');
-var charge = $('.charge input');
-var seatNum = $('.arrayNum button');
-var refresh = $('.charge .refresh');
-var submitBtn = $('.charge .submitBtn');
-var closeResult = $('.result button#cancel');
-var sendResult = $('.result button#submit');
-var clickedSeat;
-var chargeTotal;
-var peopleTotal;
-
-//인원 설정
-peopleNum.bind('click', function(){
-	var peopleIdx = $(this).parent().index();
-	seatNum.removeClass('clicked selected');
-	$(this).parent().addClass('selected').siblings().removeClass('selected');
-	if (peopleIdx == 1){
-		seat1.prop('checked', true).next().addClass('selected');
-		seat2.next().removeClass('selected');
-	} else if (peopleIdx > 1){
-		seat1.next().addClass('selected');
-		seat2.prop('checked', true).next().addClass('selected');
-	} else {
-		selectSeat.prop('checked', false).next().removeClass('selected');
-	}
-	//인원설정에 따른 합계금액
-	charge.val(peopleIdx*8000);
-});
-
-//좌석설정
-selectSeat.bind('click', function(){
-	//인원이 0일 때 좌석설정을 하려고 하면
-	if (peopleNum.closest('ul').find('li.selected').index() == 0){
-		alert('인원은 최소 1명 이상 선택해야 합니다.');
-		selectSeat.prop('checked', false);
-	}
-});
-seat2.bind('click', function(){
-	//인원이 1일 때 2개좌석을 설정하려고 하면
-	if (peopleNum.closest('ul').find('li.selected').index() == 1){
-		alert('2인 이상시 선택 가능합니다.');
-		$(this).prop('checked', false);
-		seat1.prop('checked', true);
-	}
-});
-
-//좌석선택
-seatNum.bind({
-	hover: function(){
-		var limitSeat1 = (peopleNum.closest('ul').find('li.selected').index()-1);
-		var limitSeat2 = (peopleNum.closest('ul').find('li.selected').index());
-		var checkSeatCnt =  $('.arrayNum button.clicked').length;
-		if (seat2.prop('checked') == true){
-			if (limitSeat2 - checkSeatCnt <= 1){
-			} else {
-				$(this).next().toggleClass('selected');
-			}
+		for (i = 0; i < 4; i++) {
+			map.append('<div class="map clearfix"><div class="row">'
+					+ rowArray[i] + '</div><div class="arrayNum"></div></div>');
 		}
-	}, click: function(){
-		var limitSeat1 = (peopleNum.closest('ul').find('li.selected').index()-1);
-		var limitSeat2 = (peopleNum.closest('ul').find('li.selected').index());
-		var checkSeatCnt =  $('.arrayNum button.clicked').length;
-		if (seat1.prop('checked') == true){
-			if (limitSeat1 < checkSeatCnt){
-			} else {
-				$(this).addClass('clicked');
-			}
-		} else if (seat2.prop('checked') == true){
-			if (limitSeat2 == checkSeatCnt){
-			} else if (limitSeat2 - checkSeatCnt == 1){
-				$(this).addClass('clicked');
-			} else {
-				$(this).addClass('clicked').next().addClass('clicked');
-			}
-		} else {
-			alert('인원은 최소 1명 이상 선택해야 합니다.');
+		for (i = 1; i < 14; i++) {
+			map.find('.arrayNum').append("<button value='"+i+"' id='"+i+"'>" + i + "</button>");
 		}
-	}
-});
 
-//좌석 다시선택 : 선택된 좌석 초기화
-refresh.bind('click', function(){
-	seatNum.removeClass('clicked selected');
-});
+		var peopleNum = $('.peopleNum button');
+		var selectSeat = $('.seat input');
+		var seat1 = $('.seat input#seat1');
+		var seat2 = $('.seat input#seat2');
+		var charge = $('.charge input');
+		var seatNum = $('.arrayNum button');
+		var refresh = $('.charge .refresh');
+		var submitBtn = $('.charge .submitBtn');
+		var closeResult = $('.result button#cancel');
+		var sendResult = $('.result button#submit');
+		var clickedSeat;
+		var chargeTotal;
+		var peopleTotal;
 
-//선택완료 : 
-submitBtn.bind('click', function(){
-	chargeTotal = $('.charge input').val();
-	peopleTotal = $('.map .arrayNum button.clicked').length;
-	if ($('.peopleNum li').eq(0).hasClass('selected')){
-		alert('인원은 최소 1명이상 선택해야 합니다.');
-		return;
-	} else if (peopleTotal != $('.peopleNum li.selected').index()){
-		alert('좌석이 모두 선택되지 않았습니다.');
-		$('.peopleNum li.selected').focus();
-	} else {
-		$('.result').show();
-		//인원결과
-		$('.peopleResult span').text(peopleTotal);
-		//금액결과
-		$('.chargeResult span').text(chargeTotal);
-		//좌석결과 : 선택된 좌석을 모두 뿌려줌
-		clickedSeat = new Array();
-		$('.arrayNum button').each(function(){
-		if ($(this).hasClass('clicked')){
-				clickedSeat.push(
-					$(this).closest('.map').find('.row').text()+($(this).index()+1)
-				);
-				$('.seatResult td').text(clickedSeat.join(' / '));
+		$(document).ready(function() {
+			var rseats = ${testjson	};
+			var rseatsarr = rseats.rsvdSeats;
+			var rowchar;
+			var seatNo;
+			for ( var temp in rseatsarr) {
+				var s = rseatsarr[temp].seat;
+				console.log("좌석 정보 : " + s);
+				n = Math.floor(s/14);
+				rowchar = rowArray[n];
+				seatNo = s-(13*n);
+				var seatNoStr = seatNo.toString();
+				console.log(seatNoStr);
+				if ($(":button# ").val()==seatNoStr) {
+					console.log(seatNoStr);
+				}
+			}
+			
+			
+		
+			/* if ((document.querySelector(".theaterMap .map .row").innerHTML == rowchar)
+					&&($(":button[value~=]").val()==seatNoStr)){
+				//$(".theaterMap .map .arrayNum button").addClass('reserved');
+				alert(rowchar);
+				alert(seatNo);
+			} */
+		});
+		
+		
+		//인원 설정
+		peopleNum.bind('click', function() {
+			var peopleIdx = $(this).parent().index();
+			seatNum.removeClass('clicked selected');
+			$(this).parent().addClass('selected').siblings().removeClass(
+					'selected');
+			if (peopleIdx == 1) {
+				seat1.prop('checked', true).next().addClass('selected');
+				seat2.next().removeClass('selected');
+			} else if (peopleIdx > 1) {
+				seat1.next().addClass('selected');
+				seat2.prop('checked', true).next().addClass('selected');
+			} else {
+				selectSeat.prop('checked', false).next()
+						.removeClass('selected');
+			}
+			//인원설정에 따른 합계금액
+			charge.val(peopleIdx * 8000);
+		});
+
+		//좌석설정
+		selectSeat.bind('click', function() {
+			//인원이 0일 때 좌석설정을 하려고 하면
+			if (peopleNum.closest('ul').find('li.selected').index() == 0) {
+				alert('인원은 최소 1명 이상 선택해야 합니다.');
+				selectSeat.prop('checked', false);
 			}
 		});
-	}
-	
-});
-//완료창에서 취소버튼 눌렀을때(창닫기)
-closeResult.click(function() {
-	$('.result').hide();
-});
+		seat2.bind('click', function() {
+			//인원이 1일 때 2개좌석을 설정하려고 하면
+			if (peopleNum.closest('ul').find('li.selected').index() == 1) {
+				alert('2인 이상시 선택 가능합니다.');
+				$(this).prop('checked', false);
+				seat1.prop('checked', true);
+			}
+		});
 
-//완료창에서 확인버튼 눌렀을 때
-sendResult.click(function() {
-	$("#postForm input[name='seatlist']").val(clickedSeat);
-	$("#postForm input[name='price']").val(chargeTotal);
-	//$("#postForm input[name='peopleNum']").val(peopleTotal);
-	$("#postForm").submit();
-});
+		//좌석선택
+		seatNum.bind({
+			hover : function() {
+				var limitSeat1 = (peopleNum.closest('ul').find('li.selected')
+						.index() - 1);
+				var limitSeat2 = (peopleNum.closest('ul').find('li.selected')
+						.index());
+				var checkSeatCnt = $('.arrayNum button.clicked').length;
+				if (seat2.prop('checked') == true) {
+					if (limitSeat2 - checkSeatCnt <= 1) {
+					} else {
+						$(this).next().toggleClass('selected');
+					}
+				}
+			},
+			click : function() {
+				var limitSeat1 = (peopleNum.closest('ul').find('li.selected')
+						.index() - 1);
+				var limitSeat2 = (peopleNum.closest('ul').find('li.selected')
+						.index());
+				var checkSeatCnt = $('.arrayNum button.clicked').length;
+				if (seat1.prop('checked') == true) {
+					if (limitSeat1 < checkSeatCnt) {
+					} else {
+						$(this).addClass('clicked');
+					}
+				} else if (seat2.prop('checked') == true) {
+					if (limitSeat2 == checkSeatCnt) {
+					} else if (limitSeat2 - checkSeatCnt == 1) {
+						$(this).addClass('clicked');
+					} else {
+						$(this).addClass('clicked').next().addClass('clicked');
+					}
+				} else {
+					alert('인원은 최소 1명 이상 선택해야 합니다.');
+				}
+			}
+		});
 
-</script>
-<form style="display: none;" id="postForm" method="post" action="<%=request.getContextPath()%>/reserve/payment">
-	<input type="hidden" name="seatlist"/>
-	<input type="hidden" name="price"/>
-</form>
+		//좌석 다시선택 : 선택된 좌석 초기화
+		refresh.bind('click', function() {
+			seatNum.removeClass('clicked selected');
+		});
+
+		//선택완료 : 
+		submitBtn.bind('click', function() {
+			chargeTotal = $('.charge input').val();
+			peopleTotal = $('.map .arrayNum button.clicked').length;
+			if ($('.peopleNum li').eq(0).hasClass('selected')) {
+				alert('인원은 최소 1명이상 선택해야 합니다.');
+				return;
+			} else if (peopleTotal != $('.peopleNum li.selected').index()) {
+				alert('좌석이 모두 선택되지 않았습니다.');
+				$('.peopleNum li.selected').focus();
+			} else {
+				$('.result').show();
+				//인원결과
+				$('.peopleResult span').text(peopleTotal);
+				//금액결과
+				$('.chargeResult span').text(chargeTotal);
+				//좌석결과 : 선택된 좌석을 모두 뿌려줌
+				clickedSeat = new Array();
+				$('.arrayNum button').each(
+						function() {
+							if ($(this).hasClass('clicked')) {
+								clickedSeat.push($(this).closest('.map').find(
+										'.row').text()
+										+ ($(this).index() + 1));
+								$('.seatResult td').text(
+										clickedSeat.join(' / '));
+							}
+						});
+			}
+
+		});
+		//완료창에서 취소버튼 눌렀을때(창닫기)
+		closeResult.click(function() {
+			$('.result').hide();
+		});
+
+		//완료창에서 확인버튼 눌렀을 때
+		sendResult.click(function() {
+			$("#postForm input[name='seatlist']").val(clickedSeat);
+			$("#postForm input[name='price']").val(chargeTotal);
+			$("#postForm").submit();
+		});
+	</script>
+	<form style="display: none;" id="postForm" method="post"
+		action="<%=request.getContextPath()%>/reserve/payment">
+		<input type="hidden" name="seatlist" /> <input type="hidden"
+			name="price" />
+	</form>
 </body>
 </html>

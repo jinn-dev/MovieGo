@@ -9,8 +9,8 @@
 	
 	<select id="getAllMovies" resultType="Movie">
 		select movie_code, movie_title_kr, movie_title_eng, movie_genre, 
-		movie_director, movie_actor1, movie_actor2, movie_actor3, 
-		movie_img_url, movie_story 
+		movie_director, movie_actor1, movie_actor2, movie_actor3, movie_actor4,
+		movie_img_url, movie_story, movie_open_date
 		from movies
 	</select>
 	
@@ -39,7 +39,8 @@
 		movie_title_kr=#{movieTitleKr}, movie_title_eng=#{movieTitleEng},
 		movie_genre=#{movieGenre}, movie_director=#{movieDirector},
 		movie_actor1=#{movieActor1}, movie_actor2=#{movieActor2},
-		movie_actor3=#{movieActor3}, movie_img_url=#{movieImgUrl}
+		movie_actor3=#{movieActor3}, movie_actor4=#{movieActor4}, 
+		movie_open_date=#{movieOpenDate}, movie_img_url=#{movieImgUrl}
 	</update>
 	
 	<delete id="deleteMovie" parameterType="String">

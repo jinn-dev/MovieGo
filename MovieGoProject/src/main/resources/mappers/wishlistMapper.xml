@@ -12,7 +12,7 @@
 		where movie_code=#{movieCode} and user_id=#{userId}
 	</select>
 	<select id="getWishlistByUserId" resultMap="ComplexMovieWish">
-	select m.movie_code, m.movie_title_kr, m.movie_title_eng, m.movie_director, 
+	select m.movie_code, m.movie_title_kr, m.movie_title_eng, m.movie_director, m.movie_open_date, m.movie_img_url,
 	m.movie_genre, w.wish_id, w.user_id, w.movie_code from wishlists w left join movies m on(m.movie_code = w.movie_code) where user_id= #{userId}
 	</select>
 	<resultMap type="Wishlist" id="ComplexMovieWish">
@@ -24,9 +24,12 @@
 			<result column="movie_title_kr" jdbcType="VARCHAR" property="movieTitleKr" />
 			<result column="movie_title_eng" jdbcType="VARCHAR" property="movieTitleEng" />
 			<result column="movie_director" jdbcType="VARCHAR" property="movieDirector" />
+			<result column="movie_open_date" jdbcType="VARCHAR" property="movieOpenDate" />	
+			<result column="movie_img_url" jdbcType="VARCHAR" property="movieImgUrl" />			
 			<result column="movie_genre" jdbcType="VARCHAR" property="movieGenre" />	
 		</collection>
 	</resultMap>
+	
 	<delete id="deleteWishlist" parameterType="INTEGER">
 		delete from wishlists
 		where wish_id = #{wishId}

@@ -8,9 +8,8 @@ public class ReservationInfo {
 	public ReservationInfo() {
 	}
 
-	public ReservationInfo(int reservationinfoId, int seatId, int reservationId) {
+	public ReservationInfo(int seatId, int reservationId) {
 		super();
-		this.reservationinfoId = reservationinfoId;
 		this.seatId = seatId;
 		this.reservationId = reservationId;
 	}

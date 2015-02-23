@@ -10,6 +10,6 @@ public interface WishlistService {
 	public List<Wishlist> getWishlistByUserId(String userId);
 	public int getWishlistCntByUM(String movieCode, String userId); 
 	public int deleteWishlist(int wishId);
-/*	public int deleteWishlistByUserId(String userId);
-*/	
+
+
 }
