@@ -339,9 +339,9 @@ h2 {
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	<input type="hidden" id="rseats" value="${testjson }" />
+	<input type="hidden" id="rseats" value="${reservedSeats }" />
 	<div id="rsv1">
-		${rinfo }<br> 예약된 좌석: ${testjson }
+		${rinfo }<br> 예약된 좌석: ${reservedSeats }
 	</div>
 
 	<div class="wrap">
@@ -443,13 +443,7 @@ h2 {
 				seatNo = s-(13*n);
 				var seatNoStr = seatNo.toString();
 				console.log(seatNoStr);
-				if ($(":button# ").val()==seatNoStr) {
-					console.log(seatNoStr);
-				}
 			}
-			
-			
-		
 			/* if ((document.querySelector(".theaterMap .map .row").innerHTML == rowchar)
 					&&($(":button[value~=]").val()==seatNoStr)){
 				//$(".theaterMap .map .arrayNum button").addClass('reserved');
