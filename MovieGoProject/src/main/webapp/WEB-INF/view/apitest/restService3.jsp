@@ -28,7 +28,7 @@
 	// 영화명으로 조회
 	String movieNm = request.getParameter("movieNm")==null?"":request.getParameter("movieNm");
 	// 감독명으로 조회
-	String directorNm = request.getParameter("directorNm")==null?"호소다마모루":request.getParameter("directorNm");
+	String directorNm = request.getParameter("directorNm")==null?"강제규":request.getParameter("directorNm");
 	// YYYY형식의 조회시작 개봉연도 입력
 	String openStartDt = request.getParameter("openStartDt")==null?"":request.getParameter("openStartDt");
 	// YYYY형식의 조회종료 개봉연도 입력
@@ -70,7 +70,6 @@
 		<td>평점</td>
 		<td>배우</td>
 	</tr> -->
-
 	<c:if test="${not empty movieResult.movieListResult.movieList }"><!--  linked hash map -->
 		<c:forEach items="${movieResult.movieListResult.movieList }" var="movie"> <!--  map 안에 있는 movie linked hash map -->
 		<%
@@ -150,7 +149,6 @@
 						<td><c:out value="${actor.content }" /></td>
 						</c:forEach>
 				</c:if>
-				
 			<%-- <% 
 			String code = (String)map.get("movieCd");			
 			String movieCd = request.getParameter("movieCd")==null?code:request.getParameter("movieCd");
