@@ -77,6 +77,7 @@ public class WishlistDaoImpl implements WishlistDao {
 		return 0;
 	}
 
+	
 
 
 
