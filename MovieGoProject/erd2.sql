@@ -20,10 +20,10 @@ DROP TABLE cancellations CASCADE CONSTRAINTS;
 DROP TABLE comments CASCADE CONSTRAINTS;
 DROP TABLE customerboards CASCADE CONSTRAINTS;
 DROP TABLE evaluations CASCADE CONSTRAINTS;
+DROP TABLE wishlists CASCADE CONSTRAINTS;
 DROP TABLE reservationinfo CASCADE CONSTRAINTS;
 DROP TABLE seatinfo CASCADE CONSTRAINTS;
 DROP TABLE nowmovies CASCADE CONSTRAINTS;
-DROP TABLE wishlists CASCADE CONSTRAINTS;
 DROP TABLE movies CASCADE CONSTRAINTS;
 DROP TABLE reservations CASCADE CONSTRAINTS;
 DROP TABLE theaters CASCADE CONSTRAINTS;
@@ -114,12 +114,14 @@ CREATE TABLE movies
 	movie_title_eng varchar2(400) NOT NULL,
 	movie_genre varchar2(400) NOT NULL,
 	movie_nation varchar2(400) NOT NULL,
+	movie_open_date varchar2(400),
 	movie_director varchar2(400) NOT NULL,
 	movie_img_url varchar2(4000),
 	movie_story varchar2(4000),
 	movie_actor1 varchar2(200),
 	movie_actor2 varchar2(200),
 	movie_actor3 varchar2(200),
+	movie_actor4 varchar2(200),
 	PRIMARY KEY (movie_code)
 );
 
@@ -201,12 +203,6 @@ ALTER TABLE comments
 ;
 
 
-ALTER TABLE nowmovies
-	ADD FOREIGN KEY (movie_code)
-	REFERENCES movies (movie_code)
-;
-
-
 ALTER TABLE evaluations
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
@@ -214,6 +210,12 @@ ALTER TABLE evaluations
 
 
 ALTER TABLE wishlists
+	ADD FOREIGN KEY (movie_code)
+	REFERENCES movies (movie_code)
+;
+
+
+ALTER TABLE nowmovies
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
 ;
@@ -249,19 +251,7 @@ ALTER TABLE nowmovies
 ;
 
 
-ALTER TABLE wishlists
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
 ALTER TABLE customerboards
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
-
-ALTER TABLE reservations
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
@@ -273,13 +263,25 @@ ALTER TABLE cancellations
 ;
 
 
-ALTER TABLE comments
+ALTER TABLE reservations
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
 
 
 ALTER TABLE evaluations
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE wishlists
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE comments
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
