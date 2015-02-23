@@ -199,8 +199,6 @@ public class ReservationController {
 			}
 		}
 		
-/////////////////////////////////////////////////////////////////////////
-		
 		ArrayList<Integer> test = new ArrayList<Integer>();
 		for (int i=0;i<seatIds.size();i++) {
 			ReservationInfo rinfo = riservice.getRInfoBySeatIdService(seatIds.get(i));
@@ -208,7 +206,7 @@ public class ReservationController {
 				test.add(i,seatIds.get(i));
 			}
 		}
-		
+		logger.trace("수업: "+test);
 		Iterator<Integer> iter = test.iterator();
 		StringBuilder jsonBuilder = new StringBuilder();
 		
@@ -228,11 +226,7 @@ public class ReservationController {
 		}
 		jsonBuilder.append("]}");
 		
-		model.addAttribute("testjson", jsonBuilder.toString());
-		
-///////////////////////////////////////////////////////////////////////////////	
-		model.addAttribute("test", test);
-		model.addAttribute("reservedSeats", reservedSeats);
+		model.addAttribute("reservedSeats", jsonBuilder.toString());
 		model.addAttribute("rinfo", rinfo);
 		return "reservation/reserv";
 	}
