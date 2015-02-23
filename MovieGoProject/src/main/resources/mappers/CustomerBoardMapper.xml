@@ -59,11 +59,21 @@
 		where board_id=#{boardId}
 	</delete>
 
+	<delete id="deleteBoardByUserId" parameterType="String">
+		delete from customerboards
+		where user_id=#{userId}
+	</delete>
+	
 	<delete id="deleteComment" parameterType="INTEGER">
 		delete from comments
 		where board_id = #{boardId}
 	</delete>
 
+	<delete id="deleteCommentByUserId" parameterType="String">
+		delete from comments
+		where user_id=#{userId}
+	</delete>
+	
 	<resultMap type="CustomerBoard" id="ComplexBoardComment">
 		<id column="board_id" jdbcType="INTEGER" property="boardId" />
 		<result column="user_id" jdbcType="VARCHAR" property="userId" />

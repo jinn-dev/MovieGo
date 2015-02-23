@@ -27,5 +27,13 @@
 			<result column="movie_genre" jdbcType="VARCHAR" property="movieGenre" />	
 		</collection>
 	</resultMap>
+	<delete id="deleteWishlist" parameterType="INTEGER">
+		delete from wishlists
+		where wish_id = #{wishId}
+	</delete>
+	<delete id="deleteWishlistByUserId" parameterType="String">
+		delete from wishlists
+		where user_id = #{userId}
+	</delete>
 </mapper>
 
