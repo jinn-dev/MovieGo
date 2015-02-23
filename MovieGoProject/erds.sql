@@ -113,6 +113,7 @@ CREATE TABLE movies
 	movie_title_kr varchar2(50) NOT NULL,
 	movie_title_eng varchar2(50) NOT NULL,
 	movie_genre varchar2(30) NOT NULL,
+	movie_nation varchar2(400) NOT NULL,
 	movie_director varchar2(100) NOT NULL,
 	movie_actor1 varchar2(20) NOT NULL,
 	movie_actor2 varchar2(20),

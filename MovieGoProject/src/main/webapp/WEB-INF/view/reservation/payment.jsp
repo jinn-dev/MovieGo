@@ -11,8 +11,9 @@
 <style>
 </style>
 <script type="text/javascript">
-var totalprice;
-var spoint;
+var price = ${price };
+var totalprice = price;
+var spoint = price * 0.1;
 var yncoupon="notused";
 var upoint=0;
 
@@ -33,7 +34,7 @@ function useCoupon() {
 
 function cancelCoupon() {
 	alert("쿠폰 사용이 취소되었습니다.");
-	$("#minusCoupon").val("0");
+	$("#minusCoupon").val(0);
 	cal();
 	yncoupon="notused";
 }
@@ -41,9 +42,9 @@ function cancelCoupon() {
 function usePoint() {
  	var point = $("#inputPoint").val();
  	if (point == null || point == 0) {
- 		alert("포인트를 0점 이상 입력해주세요.");
+ 		alert("포인트를 10점 이상 입력해주세요.");
  	}
- 	else if (point != "" && point <= $("#price").val()) {
+ 	else if (point != null && point <= $("#price").val()) {
 		if (point%10==0) {
 			alert("포인트가 사용되었습니다.");
 			$("#minusPoint").val(point);
@@ -51,17 +52,20 @@ function usePoint() {
 		}
 		else {
 			alert("포인트를 10점 단위로 입력해주세요.");
+			$("#inputPoint").val(0);
 		}
 	}
 	else {
 		alert("적용되지 않았습니다.");
+		$("#inputPoint").val(0);
 	}
 	cal();
  }
  
 function cancelPoint() {
 	alert("포인트 사용이 취소되었습니다.");
-	$("#minusPoint").val("0");
+	$("#minusPoint").val(0);
+	$("#inputPoint").val(0);
 	cal();
 	upoint=0;
 }
@@ -70,6 +74,8 @@ function completeReserv() {
 	//예매 완료버튼
 	$("#postForm input[name='totalprice']").val(totalprice);
 	$("#postForm input[name='spoint']").val(spoint);
+	$("#postForm input[name='yncoupon']").val(yncoupon);
+	$("#postForm input[name='upoint']").val(upoint);
 	$("#postForm").submit();
 }
 
@@ -92,7 +98,8 @@ function completeReserv() {
 <tr><td colspan=2>할인수단</td></tr>
 <tr><td>포인트</td><td><input type="text" id="inputPoint"/>점 / ${user.userPoint }점 사용가능
 <input type="button" id="usePoint" value="사용" onclick="javascript:usePoint();" />
-<input type="button" id="cancelPoint" value="사용취소" onclick="javascript:cancelPoint();" /></td></tr>
+<input type="button" id="cancelPoint" value="사용취소" onclick="javascript:cancelPoint();" /><br>
+포인트를 10점 단위로 입력해주세요.</td></tr>
 <tr><td>쿠폰</td><td>
 <%
 	User user = (User)session.getAttribute("user");
@@ -117,7 +124,7 @@ function completeReserv() {
 포인트 할인 금액 <input type="text" id="minusPoint" value="0" disabled="disabled" style="text-align: right;"/>원<br>
 쿠폰 할인 금액   <input type="text" id="minusCoupon" value="0" disabled="disabled" style="text-align: right;"/>원<br>
 -----------------------------------------<br>
-총 결제금액 	 <input type="text" id="total" value="" disabled="disabled" style="text-align: right;"/>원<br>
+총 결제금액 	 <input type="text" id="total" value="${price }" disabled="disabled" style="text-align: right;"/>원<br>
 포인트적립		 <input type="text" id="savePoint" value="0" disabled="disabled" style="text-align: right;"/>점<br>
 </div>
 

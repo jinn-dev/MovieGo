@@ -18,5 +18,9 @@
 	<select id="getSeatInfoByNMovieId" parameterType="Integer" resultType="SeatInfo">
 		select * from seatinfo where nowmovie_id=#{nowmovieId}
 	</select>
+	
+	<select id="getSeatId" parameterType="SeatInfo" resultType="Integer">
+		select seat_id from seatinfo where nowmovie_id=#{nowmovieId} and seat_no=#{seatNo}
+	</select>
 
 </mapper>
