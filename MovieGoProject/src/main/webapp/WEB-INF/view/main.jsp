@@ -1,4 +1,4 @@
-.<%@ page language="java" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -32,32 +32,24 @@
 
 			var idLength = $("#userId").val().length;
 
-			var c = [];
-
-			for(var i = 0; i < idLength; i++) {
-
-				c[i] = $("#userId").val().charCodeAt(i);
-
+			if(idLength == 0) {
+				alert("아이디 입력해라");
+				event.preventDefault();
+			}
 	
+			for(var i = 0; i < idLength; i++) {
 
 			var c = $("#userId").val().charCodeAt(i);
 				if(!((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c>= 97 && c <= 122))) {
-					alert("다시 입력해주세요.");
+					alert("영어와 숫자로 다시 입력해주세요.");
 					event.preventDefault();
-					break;
-
-				}
-
-				else if($("#userId").val() == "") {
-					alert("아이디를 입력해주세요.");
-
 					break;
 
 				}
 
 				  else if ($("#userPwd").val() == "") {
 
-						alert("pwd:" +$("#userPwd").val() + "비밀번호를 입력해주세요.");
+						alert("비밀번호를 입력해주세요.");
 						event.preventDefault();
 
 						break;
@@ -117,7 +109,36 @@
 				event.preventDefault();
 
 			}
+			else {
+				var param="userId" +"="+ $("#id").val() +"&userPwd" +"="+ $("#pwd").val();
+				$.ajax({
+					url:'http://localhost:9090/MovieGoProject/login',
+					type:'GET',
+					data : param,
+					cache : false,
+					async : false,
+					dataType : 'text',
+			    success : function(data) {
+			    	if(data) {
+			    		 alert("로그인 성공했습니다.");
+			    		 <c:url value="/mainlogined" var="action"></c:url>
+			    		 location.href="${action }";
+					}				   
+				    
+			    	else {
+			    		alert("로그인을 다시 해주세요.");
+			    	}
+
+				},
 			
+				error : function(request, status, error) {
+					if(request.status != '0') {
+						alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+					}	
+				}
+				
+			 });	
+			}
 
 	});
 		
@@ -180,13 +201,12 @@
 								<div class="content-style-form content-style-form-1">
 									<span class="icon icon-close">Close the dialog</span>
 									<h2>Login</h2>
-									<c:url value="/login" var="action"></c:url>
-									<form:form modelAttribute="log" method="post" action="${action }" name="loginform">
+									<form>
 										<p><label>Id</label><input type="text" id="id" name="userId"/></p>
 										<p><label>Password</label><input type="password" id="pwd" name="userPwd"/></p>
-										<p><input id="loginB" type="submit" name="_event_confirmed" value="LOGIN"/></p>
+									<p><input id="loginB" type="button" value="LOGIN"/></p>
 										<p id="searchinfo"><a href="javascript:userInfo()" id="searchinfoB">ID/비밀번호 찾기</a></p>
-									</form:form>
+								</form>
 								</div>
 							</div>
 						</div>

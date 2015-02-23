@@ -24,6 +24,8 @@ public interface CustomerBoardDao {
 	//게시글 삭제..impl안에서 댓글 먼저 삭제
 	void deleteCustomerBoard(int boardId);
 	
+	void deleteCustomerBoardByUserId(String userId);
+
 	//게시글 하나 가져오기
 	CustomerBoard getBoardByBoardId(int boardId);
 	

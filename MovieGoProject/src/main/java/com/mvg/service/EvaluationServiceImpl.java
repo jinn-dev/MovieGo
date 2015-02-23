@@ -1,11 +1,12 @@
 package com.mvg.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mvg.controller.RatingController;
 import com.mvg.dao.EvaluationDao;
 import com.mvg.entity.Evaluation;
 @Service
@@ -27,7 +28,6 @@ public class EvaluationServiceImpl implements EvaluationService {
 		return result;
 	}
 
-
 	@Override
 	public int selectEvaluationByMovieCode(String movieCode, String userId) {		
 		int result = dao.selectEvaluationByMovieCode(movieCode, userId);
@@ -46,5 +46,29 @@ public class EvaluationServiceImpl implements EvaluationService {
 		return result;
 	}
 
+	@Override
+	public List<Evaluation> getEvaluationByUserId(String userId) {
+		List<Evaluation> result = dao.getEvaluationByUserId(userId);
+		return result;
+	}
+
+	@Override
+	public List<Evaluation> getEvaluationByMovieCode(String movieCode) {
+		List<Evaluation> result = dao.getEvaluationByMovieCode(movieCode);
+		return result;
+	}
+
+	@Override
+	public int deleteEvaluation(int evId) {
+		int result = dao.deleteEvaluation(evId);
+		return result;
+	}
+
+/*	@Override
+	public int deleteEvaluationByUserId(String userId) {
+		int result = dao.deleteEvaluationByUserId(userId);
+		return result;
+	}
+*/
 
 }

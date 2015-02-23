@@ -16,14 +16,12 @@ public class Reservation {
 	public Reservation() {
 	}
 
-	public Reservation(int reservationId, String userId, int reservationNum,
-			int reservationPrice, Date reservationDate) {
+	public Reservation(String userId, int reservationNum,
+			int reservationPrice) {
 		super();
-		this.reservationId = reservationId;
 		this.userId = userId;
 		this.reservationNum = reservationNum;
 		this.reservationPrice = reservationPrice;
-		this.reservationDate = reservationDate;
 	}
 	
 	public ArrayList<ReservationInfo> getReservationInfo() {

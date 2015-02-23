@@ -30,7 +30,7 @@ $(document).ready(function() {
 	
 	$(".movieName").mouseenter(function() { 
 		$(this).css("color","#F2F2F2");
-		var movieCd = $(".movieCd").val();
+	/* 	var movieCd = $(".movieCd").val();
 		var param="movieCode"+"="+movieCd;
 		<c:url value="/thumbnail" var="url"/>
 		$.ajax({
@@ -49,7 +49,7 @@ $(document).ready(function() {
 					alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
 				}	
 			}
-		 }); 
+		 });  */
 	});
 	
 	$(".movieName").mouseleave(function() { 
@@ -111,7 +111,7 @@ table{
 	String year = Integer.toString(now.get(Calendar.YEAR));
 	String month = Integer.toString(now.get(Calendar.MONTH)+1);
 	String date = Integer.toString(now.get(Calendar.DAY_OF_MONTH)-1);
-	String sysdate = year+"0"+month+date;
+	String sysdate = year+"0"+month+date; 
 	String targetDt = request.getParameter("targetDt")==null?sysdate:request.getParameter("targetDt");	
 	// 결과 row 수	
 	String itemPerPage = request.getParameter("itemPerPage")==null?"30":request.getParameter("itemPerPage");
@@ -157,10 +157,10 @@ table{
 				<c:if test="${not empty dailyResult.boxOfficeResult.dailyBoxOfficeList }">
 					<c:forEach items="${dailyResult.boxOfficeResult.dailyBoxOfficeList }" var="boxoffice" varStatus="status">
 					<tr class="boxoffice-tr">
-					<input type="hidden" value="${boxoffice.movieCd }" class='movieCd' />
+					<%-- <input type="hidden" value="${boxoffice.movieCd }" class='movieCd' /> --%>
 							<td><c:out value="${status.count }"/>
 							<%-- <c:out value="${boxoffice.rank }" /> --%></td>
-							<td><a href="#" class="movieName"><c:out value="${boxoffice.movieNm }" /></a></td>
+							<td><a href="#" class="movieName" onmouseover="javascript:viewThumbnail('${boxoffice.movieCd}')"><c:out value="${boxoffice.movieNm }" /></a></td>
 							<td><c:out value="${boxoffice.salesAcc }" /></td>
 							<td><c:out value="${boxoffice.audiAcc }" /></td>
 							<td><c:out value="${boxoffice.scrnCnt }" /></td>
@@ -190,7 +190,31 @@ table{
 			</table>
 		</div>
 	</section>
-	
+<script>
+function viewThumbnail(m){
+	alert(m);
+	var param="movieCode"+"="+m;
+	<c:url value="/thumbnail" var="url"/>
+	$.ajax({
+		url:'${url}',
+			type:'GET',	
+			data : param,
+			cache : false,
+		async : false,
+			dataType : 'text',
+	    success : function(data) {
+	    	$("#thumbnail").attr("src", data);
+			
+		},
+		error : function(request, status, error) {
+			if(request.status != '0') {
+				alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+			}	
+		}
+	});
+}
+
+</script>	
 </body>
 </html>
 

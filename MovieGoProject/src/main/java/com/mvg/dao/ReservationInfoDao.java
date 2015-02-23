@@ -18,6 +18,9 @@ public interface ReservationInfoDao {
 	//seatId로 가져오기
 	ReservationInfo getReservationInfoBySeatId(int seatId);
 	
+	//예약된좌석 가져오기
+	List<ReservationInfo> getReservationInfoByNMId(int nowmovieId);
+	
 	//디테일 추가
 	int insertReservationInfo(ReservationInfo reservationInfo);
 	

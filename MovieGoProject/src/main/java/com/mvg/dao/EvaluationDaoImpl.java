@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mvg.controller.MyPageController;
 import com.mvg.entity.Evaluation;
 
 @Repository
@@ -36,14 +35,16 @@ public class EvaluationDaoImpl implements EvaluationDao {
 
 	@Override
 	public List<Evaluation> getEvaluationByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace + "selectEvaluationById";
+		List<Evaluation> result = sqlSession.selectList(stmt, userId);
+		return result;
 	}
 
 	@Override
 	public List<Evaluation> getEvaluationByMovieCode(String movieCode) {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace + "selectAllEvaluation";
+		List<Evaluation> result = sqlSession.selectList(stmt, movieCode);
+		return result;
 	}
 
 	@Override
@@ -56,10 +57,12 @@ public class EvaluationDaoImpl implements EvaluationDao {
 
 	@Override
 	public int deleteEvaluation(int evId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = -1;
+		String stmt = namespace+"deleteEvaluation";
+		result = sqlSession.delete(stmt, evId);
+		return result;
 	}
-
+	
 	@Override
 	public int updateEvaluation(Evaluation evaluation) {
 		int result = -1;
@@ -97,5 +100,6 @@ public class EvaluationDaoImpl implements EvaluationDao {
 		int result = sqlSession.selectOne(stmt, map);
 		return result;
 	}
+
 
 }

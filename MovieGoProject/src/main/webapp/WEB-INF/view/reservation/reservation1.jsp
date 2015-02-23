@@ -59,8 +59,6 @@ function clickTime(time) {
 	xhr.onreadystatechange = function() {
 		if (xhr.readyState==4 && xhr.status==200) {
 			document.querySelector("#selTime").innerHTML = time;
-			$("#reserveInfo").append("|　"+time);
-			
 		}
 	}
 	var url = "<%=request.getContextPath()%>/reserve/time";
@@ -79,16 +77,6 @@ function clickMovie(movie) {
 			var jsonobj2 = JSON.parse(xhr.responseText);
 			$("#timelist").empty();
 			document.querySelector("#selMovie").innerHTML = movie;
-			if(movie == 20124400){
-				$("#reserveInfo").append("|　간첩");
-			}
-			else if(movie == 20124032){
-				$("#reserveInfo").append("|　간기남");
-			}
-			else if(movie == 20124070){
-				$("#reserveInfo").append("|　강철대오");
-				
-			}
 			for (var i=0;i<jsonobj2.times.length;i++){
 				var appendTxt = "<a href='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>" + jsonobj2.times[i].time +"</a><br>";
 				$("#timelist").append(appendTxt);
@@ -114,15 +102,6 @@ function clickTheater(theater) {
 			var jsonobj = JSON.parse(xhr.responseText);
 			$("#movielist").empty();
 			document.querySelector("#selTheater").innerHTML = theater;
-			if(theater==1){
-				$("#reserveInfo").append("건대");
-			}
-			else if(theater==2){
-				$("#reserveInfo").append("강변");
-			}
-			else{
-				$("#reserveInfo").append("군자");
-			}
 			for(var i = 0; i < jsonobj.movies.length; i++) {
 				var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>";
 				$("#movielist").append(appendText);
@@ -132,8 +111,15 @@ function clickTheater(theater) {
 	var url = "<%=request.getContextPath()%>/reserve/theater";
 	xhr.open("post", url, true);
 	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send("theaterId="+theater);
-	
+	xhr.send("theaterId="+theater);	
+}
+
+function reset() {
+	$("#timelist").empty();
+	$("#movielist").empty();
+	$("#selTheater").empty();
+	$("#selMovie").empty();
+	$("#selTime").empty();
 }
 
 </script>
@@ -145,7 +131,7 @@ function clickTheater(theater) {
 <form name="frm" id="frm">
 <table class="reserve-table">
 <tr><td colspan="3" align="center"><h1>영화 예매 </h1></td>
-<tr><td colspan="3" align="right"><a href="#" onclick="javascript:onreset()"><img src="<%=request.getContextPath() %>/img/reserveReset.png"></a></td></tr>
+<tr><td colspan="3" align="right"><a href="#" onclick="javascript:reset()"><img src="<%=request.getContextPath() %>/img/reserveReset.png"></a></td></tr>
 <tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
 <tr>
 <td class="reserve-table-content">

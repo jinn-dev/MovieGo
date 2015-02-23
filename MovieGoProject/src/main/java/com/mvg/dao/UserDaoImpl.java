@@ -42,8 +42,17 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int deleteUser(String userId) {
 		int result = -1;
-		String stmt = namespace + "deleteUser";
-		result= sqlSession.delete(stmt, userId);
+		String stmt1 = "com.mvg.mappers.wishlistMapper.deleteWishlistByUserId";
+		sqlSession.delete(stmt1, userId);
+		String stmt2 = "com.mvg.mappers.evaluationMapper.deleteEvaluationByUserId";
+		sqlSession.delete(stmt2, userId);
+		String stmt3 = "com.mvg.mappers.customerBoardMapper.deleteCommentByUserId";
+		sqlSession.delete(stmt3, userId);
+		String stmt4 = "com.mvg.mappers.customerBoardMapper.deleteBoardByUserId";
+		sqlSession.delete(stmt4, userId);
+		String stmt5 = namespace + "deleteUser";
+		result= sqlSession.delete(stmt5, userId);
+		
 		return result;
 	}
 
@@ -63,6 +72,7 @@ public class UserDaoImpl implements UserDao {
 			logger.error("없습니다");
 		} else if(!result.getUserPwd().equals(user.getUserPwd())) {
 			logger.error("패스워드가 틀립니다");
+			result = null;
 		}
 		return result;
 	}

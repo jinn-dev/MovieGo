@@ -55,11 +55,30 @@ public class ControllerTest {
 	}
 
 
-	@RequestMapping(value = "/login", params = "_event_confirmed", method = RequestMethod.POST)
-	public String login(Model model, @ModelAttribute("log") User log,
-			HttpSession session) {
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@ResponseBody
+	public User loginCheck(Model model, HttpSession session, @RequestParam String userId, @RequestParam String userPwd) {
+		User log = new User();
+		log.setUserId(userId);
+		log.setUserPwd(userPwd);
+		
 		User u = service.getUserByUserId(log);
-		model.addAttribute("user", u);
+		if(u != null) {
+			model.addAttribute("log", u);
+			model.addAttribute("user", u);
+/*			session.setMaxInactiveInterval(3600);
+*/		}
+		
+		else {
+			logger.trace("사용자없음");
+		}
+		
+		return u;
+	}
+	
+
+	@RequestMapping(value = "/mainlogined", method = RequestMethod.GET)
+	public String mainlogined() {
 		return "user/main_logined";
 	}
 	
@@ -83,11 +102,6 @@ public class ControllerTest {
 		return "main";
 	}
 
-	@RequestMapping(value = "/board_view", method = RequestMethod.GET)
-	public String boardview() {
-		return "board/board_view";
-	}
-	
 	@RequestMapping(value = "/duplicate", method = RequestMethod.GET)
 	@ResponseBody
 	public String duplicate(@RequestParam String userId) {
@@ -106,9 +120,7 @@ public class ControllerTest {
 	@RequestMapping(value = "/passwordCheck", method = RequestMethod.GET)
 	@ResponseBody
 	public String emailCheck(@RequestParam String userId, @RequestParam String userEmail) {
-		  logger.trace("수업:" + userId + userEmail);
 		  String result = service.selectUserByIdAndEmail(userId, userEmail);
-		  logger.trace("수업:" + result);
 			return result;
 	}
 	

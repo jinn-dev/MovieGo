@@ -25,6 +25,9 @@ public interface NowMovieService {
 	//상영영화아이디얻어오기
 	public int getNMovieIdByNMovieService(int theaterId, String movieCode, String movieTime);
 	
+	//영화시간이쁘게
+	public String getMTimeAmPmService(String movieTime);
+	
 	// 상영하려는 영화 추가
 	int insertNMovieService(Movie movie);
 

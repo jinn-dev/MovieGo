@@ -40,8 +40,10 @@ public class WishlistDaoImpl implements WishlistDao {
 
 	@Override
 	public int deleteWishlist(int wishId) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = -1;
+		String stmt = namespace+"deleteWishlist";
+		result = sqlSession.delete(stmt, wishId);
+		return result;
 	}
 
 	@Override
@@ -74,6 +76,7 @@ public class WishlistDaoImpl implements WishlistDao {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 
 

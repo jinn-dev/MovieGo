@@ -79,4 +79,10 @@ public class NowMovieServiceImpl implements NowMovieService {
 		return nid;
 	}
 
+	@Override
+	public String getMTimeAmPmService(String movieTime) {
+		String time = dao.getMovieTimeAmPm(movieTime);
+		return time;
+	}
+
 }

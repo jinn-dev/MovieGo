@@ -13,6 +13,7 @@ public interface MovieService {
 	List<Movie> getAllMoviesService();
 	
 	List<Movie> randomGetAllMovies(int page);
+
 	
 	// 영화 포스터 url 불러오기
 	String getMovieThumbnailService(String movieCode);
