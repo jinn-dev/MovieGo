@@ -70,4 +70,45 @@ public class SeatInfoDaoImpl implements SeatInfoDao {
 		return seats;
 	}
 
+	@Override
+	public int getSeatId(int nowmovieId, String seatName) {
+		SeatInfo si = new SeatInfo();
+		si.setNowmovieId(nowmovieId);
+		String row = seatName.substring(0,1);
+		String num = seatName.replace(row, "");
+		int seatNo = Integer.parseInt(num);
+		if (row.equals("A")) {
+			seatNo += (13*0);
+		}
+		else if (row.equals("B")) {
+			seatNo += (13*1);
+		}
+		else if (row.equals("C")) {
+			seatNo += (13*2);
+		}
+		else if (row.equals("D")) {
+			seatNo += (13*3);
+		}
+		SeatInfo sinfo = new SeatInfo();
+		sinfo.setNowmovieId(nowmovieId);
+		sinfo.setSeatNo(seatNo);
+		String stmt = namespace + "getSeatId";
+		int seatId = sqlSession.selectOne(stmt, sinfo);
+		return seatId;
+	}
+
+	@Override
+	public String getSeatName(int seatId) {
+		String[] row = {"A", "B", "C", "D"};
+		String seatName = "";
+		int sid = seatId;
+		for (int i=0;i<row.length;i++) {
+			if (seatId/14==i) {
+				seatName = row[i];
+				sid = sid-(13*i);
+			}
+		}
+		seatName = seatName.concat(Integer.toString(sid));
+		return seatName;
+	}
 }

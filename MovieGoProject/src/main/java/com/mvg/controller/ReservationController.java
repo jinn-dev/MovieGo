@@ -3,6 +3,7 @@ package com.mvg.controller;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -182,16 +183,57 @@ public class ReservationController {
 	@RequestMapping(value="/reserve/seat", method=RequestMethod.GET)
 	public String reserveSeat(Model model) {
 		List<SeatInfo> seats = sservice.getSInfoByNMovieIdService(nmId);
-		ArrayList<Integer> seatNum = new ArrayList<Integer>();
+		ArrayList<Integer> seatIds = new ArrayList<Integer>();
+		ArrayList<String> reservedSeats = new ArrayList<String>();
 		for (int i=0;i<seats.size();i++) {
-			int num = seats.get(i).getSeatNo();
-			seatNum.add(i, num);
+			int id = seats.get(i).getSeatId();
+			seatIds.add(i, id);
+		}
+		//reservationinfo안에 seat_id가 있는지 검사
+		//있으면 reservedSeats에 저장
+		for (int i=0;i<seatIds.size();i++) {
+			ReservationInfo rinfo = riservice.getRInfoBySeatIdService(seatIds.get(i));
+			if (rinfo != null) {
+				String name = sservice.getSeatNameService(rinfo.getSeatId());
+				reservedSeats.add(name);
+			}
 		}
 		
+/////////////////////////////////////////////////////////////////////////
 		
-		model.addAttribute("seats", seatNum);
+		ArrayList<Integer> test = new ArrayList<Integer>();
+		for (int i=0;i<seatIds.size();i++) {
+			ReservationInfo rinfo = riservice.getRInfoBySeatIdService(seatIds.get(i));
+			if (rinfo != null) {
+				test.add(i,seatIds.get(i));
+			}
+		}
+		
+		Iterator<Integer> iter = test.iterator();
+		StringBuilder jsonBuilder = new StringBuilder();
+		
+		jsonBuilder.append("{\"rsvdSeats\":[");
+		if(iter.hasNext()) {
+			int value = iter.next();
+			jsonBuilder.append("{\"seat\":")
+				.append(value)
+				.append("}");
+		}
+		while(iter.hasNext()) {
+			jsonBuilder.append(", ");
+			int value = iter.next();
+			jsonBuilder.append("{\"seat\":")
+				.append(value)
+				.append("}");
+		}
+		jsonBuilder.append("]}");
+		
+		model.addAttribute("testjson", jsonBuilder.toString());
+		
+///////////////////////////////////////////////////////////////////////////////	
+		model.addAttribute("test", test);
+		model.addAttribute("reservedSeats", reservedSeats);
 		model.addAttribute("rinfo", rinfo);
-		
 		return "reservation/reserv";
 	}
 	
@@ -222,14 +264,22 @@ public class ReservationController {
 	@RequestMapping(value="/reserve/complete", method=RequestMethod.POST)
 	public String reserveComplete(@RequestParam int totalprice, @RequestParam int spoint, 
 			@RequestParam String yncoupon, @RequestParam int upoint, HttpSession session) {
+		logger.trace("수업: 넘어온값: "+totalprice+", "+spoint+", "+yncoupon+", "+upoint);
 		User user = (User) session.getAttribute("log");
 		if (yncoupon.equals("used")) {
 			user.setUserCoupon("n");
 		}
 		user.setUserPoint(user.getUserPoint()-upoint+spoint);
-		rservice.insertRService(new Reservation(user.getUserId(), peopleNum, totalprice));
-		//여기서rid얻어와서거기에rinfo등록해야함
-		//riservice.insertRInfoService(new ReservationInfo(reservationinfoId, seatId, reservationId))
+		Reservation r = new Reservation(user.getUserId(), peopleNum, totalprice);
+		rservice.insertRService(r);
+		int rid = r.getReservationId();
+		for (int i=0;i<seats.size();i++) {
+			int seatId = sservice.getSeatIdService(nmId, seats.get(i));
+			ReservationInfo rsvinfo = new ReservationInfo();
+			rsvinfo.setReservationId(rid);
+			rsvinfo.setSeatId(seatId);
+			riservice.insertRInfoService(rsvinfo);
+		}
 		return "reservation/reservation_complete";
 	}
 }

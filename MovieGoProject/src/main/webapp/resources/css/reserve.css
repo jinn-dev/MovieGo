@@ -29,4 +29,23 @@
 	background: #E0E0D2;
 }
 
+.reserve-table {
+	width:800px;
+	margin: 0 auto;
+}
+
+.reserve-table th {
+	background: #4F5D73;
+ 	color: #F2F2F2;
+ 	padding: 10px;
+}
+
+.reserve-table-content {
+	background: #F2F2F2;
+	height: 280px;
+}
+
+#htable {
+	visibility: hidden;
+}
 

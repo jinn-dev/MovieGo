@@ -26,17 +26,19 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mvg.entity.Evaluation;
 import com.mvg.entity.Movie;
+import com.mvg.entity.NowMovie;
 import com.mvg.entity.Recommend;
 import com.mvg.entity.User;
 import com.mvg.entity.Wishlist;
 import com.mvg.service.EvaluationService;
 import com.mvg.service.MovieService;
+import com.mvg.service.NowMovieService;
 import com.mvg.service.RecommendService;
 import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({ "wishlist", "evlist" })
+@SessionAttributes({ "wishlist", "evlist", "nowmovie" })
 public class MyPageController {
 	private final static Logger logger;
 	static {
@@ -61,13 +63,14 @@ public class MyPageController {
 	EvaluationService eService;
 	@Autowired
 	RecommendService rService;
+	@Autowired
+	NowMovieService nService;
 
 	// 마이페이지 첫화면
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String myPage() {
 		return "mypage/mypage";
 	}
-
 
 	// 회원정보 수정
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
@@ -94,6 +97,15 @@ public class MyPageController {
 		return "redirect:/main";
 	}
 
+	// 위시리스트 jsp가져오기
+	@RequestMapping(value = "/wishlist", method = RequestMethod.GET)
+	public String wishlist(Model model) {
+		List<NowMovie> now = nService.getAllNMoviesService();
+
+		// 현재 상영하고 있을 시 예매하기 버튼 나타내기 위한 세션
+		model.addAttribute("nowmovie", now);
+		return "mypage/wishlist";
+	}
 
 	// 위시리스트에서 삭제
 	@RequestMapping(value = "/deletewishlist", method = RequestMethod.GET)
@@ -106,27 +118,51 @@ public class MyPageController {
 
 	// 영화평가목록 보기
 	@RequestMapping(value = "/ratinglist", method = RequestMethod.GET)
-	public String ratingList(@RequestParam String userId, Model model) {
-		List<Evaluation> evaluation = eService.getEvaluationByUserId(userId);
-		model.addAttribute("evlist", evaluation);
+	public String ratingList() {
 		return "mypage/rating_list";
 	}
-	
+
 	// 위시리스트 보기
+	// 위시리스트 가져오는 에이젝스
 	@RequestMapping(value = "/wishlist.ajax", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Wishlist> wishlistAjax(HttpSession session) {
 		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
 		List<Wishlist> wishlist = wService.getWishlistByUserId(userId);
-		for(int i = 0; i < wishlist.size(); i++) {
-			logger.trace("수업:" + wishlist.get(i).getMovies().getClass());
 
-		}
-	
 		return wishlist;
 	}
-	
+
+	/*
+	 * @RequestMapping(value = "/rechk.ajax", method = RequestMethod.GET)
+	 * 
+	 * @ResponseBody public List<Wishlist> reChk(HttpSession session) { User
+	 * user = (User) session.getAttribute("log"); String userId =
+	 * user.getUserId(); List<Evaluation> evaluation =
+	 * eService.getEvaluationByUserId(userId); logger.trace("수업:" + evaluation);
+	 * for(int i = 0; i < evaluation.size(); i++) { String movieCode =
+	 * evaluation.get(i).getMovieCode(); List<NowMovie> nowMovie =
+	 * nService.getNMovieByMCodeService(movieCode); "y"; }
+	 * 
+	 * return wishlist; }
+	 */
+
+	// 평가리스트 가져오는 에이젝스
+	@RequestMapping(value = "/ratinglist.ajax", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Evaluation> ratinglistAjax(HttpSession session) {
+		User user = (User) session.getAttribute("log");
+		String userId = user.getUserId();
+		List<Evaluation> evaluation = eService.getEvaluationByUserId(userId);
+		logger.trace("수업:" + evaluation);
+		for (int i = 0; i < evaluation.size(); i++) {
+			String movieCode = evaluation.get(i).getMovieCode();
+			List<NowMovie> nowMovie = nService
+					.getNMovieByMCodeService(movieCode);
+		}
+		return evaluation;
+	}
 
 	// 영화평가 삭제
 	@RequestMapping(value = "/deleteevaluation", method = RequestMethod.GET)
@@ -145,22 +181,23 @@ public class MyPageController {
 		List<Recommend> results = rService.countGenreService(user);
 		return results;
 	}
-	
+
 	// 장르기반 영화 추천
-	@RequestMapping(value="/genre.rmd", method = RequestMethod.GET)
-	public String rmdMovieBasedGenreRed (){
+	@RequestMapping(value = "/genre.rmd", method = RequestMethod.GET)
+	public String rmdMovieBasedGenreRed() {
 		return "mypage/recommend";
 	}
-	
-	@RequestMapping(value="/genre.rmd.do", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/genre.rmd.do", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Movie> rmdMovieBasedGenre(HttpSession session, @RequestParam int page){
+	public List<Movie> rmdMovieBasedGenre(HttpSession session,
+			@RequestParam int page) {
 		User user = (User) session.getAttribute("user");
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("userId",user.getUserId());
+		map.put("userId", user.getUserId());
 		map.put("page", page);
 		List<Movie> results = rService.rmdMovieBasedGenreService(map);
-		logger.trace("결과"+results);
+		logger.trace("결과" + results);
 		return results;
 	}
 }

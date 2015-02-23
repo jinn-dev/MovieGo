@@ -27,5 +27,10 @@ public interface SeatInfoDao {
 	//상영하는영화의 좌석정보
 	List<SeatInfo> getSeatInfoByNMovieId(int nowmovieId);
 	
+	//nowmovieId와 좌석이름으로 좌석mapping-> seatid반환
+	int getSeatId(int nowmovieId, String seatName);
+	
+	//좌석을 다시 이름으로
+	String getSeatName(int seatId);
 	
 }

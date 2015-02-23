@@ -12,8 +12,8 @@
 		</selectKey>
 	</insert>
 	<select id="selectEvaluationById" resultMap="ComplexMovieEvaluation">
-		select m.movie_code, m.movie_title_kr, m.movie_title_eng, m.movie_director, m.movie_open_date,
-		m.movie_genre, e.ev_id, e.user_id, e.movie_code, e.ev_rating,
+		select m.movie_code, m.movie_title_kr, m.movie_title_eng, m.movie_director, m.movie_open_date, m.movie_img_url,
+	m.movie_genre, e.ev_id, e.user_id, e.movie_code, e.ev_rating,
 		e.ev_comment from evaluations e left join movies m on(m.movie_code =
 		e.movie_code) where user_id= #{userId}
 	</select>
@@ -23,14 +23,14 @@
 		<result column="movie_code" jdbcType="VARCHAR" property="movieCode" />
 		<result column="ev_rating" jdbcType="VARCHAR" property="evRating" />
 		<result column="ev_comment" jdbcType="VARCHAR" property="evComment" />
-
-		<collection property="movies" ofType="Movie">
+			<collection property="movies" ofType="Movie">
 			<id column="movie_code" jdbcType="VARCHAR" property="movieCode" />
 			<result column="movie_title_kr" jdbcType="VARCHAR" property="movieTitleKr" />
 			<result column="movie_title_eng" jdbcType="VARCHAR" property="movieTitleEng" />
 			<result column="movie_director" jdbcType="VARCHAR" property="movieDirector" />
-			<result column="movie_open_date" jdbcType="VARCHAR" property="movieOpenDate" />		
-			<result column="movie_genre" jdbcType="VARCHAR" property="movieGenre" />
+			<result column="movie_open_date" jdbcType="VARCHAR" property="movieOpenDate" />	
+			<result column="movie_img_url" jdbcType="VARCHAR" property="movieImgUrl" />			
+			<result column="movie_genre" jdbcType="VARCHAR" property="movieGenre" />	
 		</collection>
 	</resultMap>
 	<!-- 별점매긴 것인지 확인하기 위한것 -->
