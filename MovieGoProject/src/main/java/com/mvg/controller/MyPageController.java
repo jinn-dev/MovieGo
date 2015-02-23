@@ -179,6 +179,7 @@ public class MyPageController {
 	public List<Recommend> ratingList(HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		List<Recommend> results = rService.countGenreService(user);
+		logger.trace("결과"+results);
 		return results;
 	}
 

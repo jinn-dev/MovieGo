@@ -16,7 +16,7 @@
 	display: block; /* 완전히 꽉 채우는 가로 사이즈를 갖는 요소 h1,p,li,div */
 	/* text-indent: -500em; */
 	height: 7em;
-	width: 20em;
+	width: 12em;
 	line-height: 8em;
 	text-align: center;
 	color: #4F5D73;
@@ -60,7 +60,7 @@
 .cbp-vimenu li a.icon-logo:before {
 	content: "MOVIEGO";
 	font-weight: 700;
-	font-size: 300%;
+	font-size: 230%;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 

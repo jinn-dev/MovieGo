@@ -8,14 +8,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/favorite.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	<c:url value="/genre.rmd" var="url"/>
-	$(".genre-rmd-div").load("${url}");
-	
+	 <c:url value="/genre.rmd" var="url"/>
+	$(".genre-rmd-div").load("${url}"); 
 	<c:url value="/genre.count" var="url"/>
 	$.ajax({
 		type: "POST",
@@ -55,9 +55,9 @@ $(document).ready(function() {
 				 }
 			}
 			else{
-				  $('.content').css({"background":"RGBA(242,242,242,0.8)",
+				  $('.frame').css({"background":"RGBA(242,242,242,0.8)",
 					   "text-align":"center"});
-				  $('.content').append("최소 20개의 영화 평가를 하시면 장르 통계를 볼 수 있습니다.");
+				  $('.frame').append("최소 20개의 영화 평가를 하시면 장르 통계를 볼 수 있습니다.");
 			}
 			 /***********************************************************
 			  * Create framework
