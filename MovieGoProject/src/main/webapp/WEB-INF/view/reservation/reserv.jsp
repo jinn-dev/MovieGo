@@ -413,7 +413,7 @@ h2 {
 					+ rowArray[i] + '</div><div class="arrayNum"></div></div>');
 		}
 		for (i = 1; i < 14; i++) {
-			map.find('.arrayNum').append('<button>' + i + '</button>');
+			map.find('.arrayNum').append("<button value='"+i+"' id='"+i+"'>" + i + "</button>");
 		}
 
 		var peopleNum = $('.peopleNum button');
@@ -433,18 +433,29 @@ h2 {
 		$(document).ready(function() {
 			var rseats = ${testjson	};
 			var rseatsarr = rseats.rsvdSeats;
-			var rowchar='a';
+			var rowchar;
 			var seatNo;
 			for ( var temp in rseatsarr) {
 				var s = rseatsarr[temp].seat;
 				console.log("좌석 정보 : " + s);
-				n = s/14;
-				console.log(Math.floor(n));
-				console.log(rowArray[0]);
-				//seatNo=seatNo-13*n;
-				//console.log(rowchar);
+				n = Math.floor(s/14);
+				rowchar = rowArray[n];
+				seatNo = s-(13*n);
+				var seatNoStr = seatNo.toString();
+				console.log(seatNoStr);
+				if ($(":button# ").val()==seatNoStr) {
+					console.log(seatNoStr);
+				}
 			}
 			
+			
+		
+			/* if ((document.querySelector(".theaterMap .map .row").innerHTML == rowchar)
+					&&($(":button[value~=]").val()==seatNoStr)){
+				//$(".theaterMap .map .arrayNum button").addClass('reserved');
+				alert(rowchar);
+				alert(seatNo);
+			} */
 		});
 		
 		
