@@ -118,7 +118,7 @@
                                           } 
                                           output+='</tr><tr>';
                                          for(i=36; i<42; i++){
-                                        	 voutput+='<td><div class="grid">'+
+                                        	 output+='<td><div class="grid">'+
 											'<figure class="effect-zoe">'+
 											'<img width="180" height="253" src="'+data[i].movieImgUrl+'"/>'+
 											'<figcaption><h2>'+data[i].movieTitleKr+'</h2><hr><br>'+
@@ -132,7 +132,7 @@
 										    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
                                          } 
                                          output+='</tr><tr>';
-                                         for(i=42; i<48; i++){
+                                      /*    for(i=42; i<48; i++){
                                         	 output+='<td><div class="grid">'+
  											'<figure class="effect-zoe">'+
  											'<img width="180" height="253" src="'+data[i].movieImgUrl+'"/>'+
@@ -145,7 +145,7 @@
  										    '<a href="javascript:ratingInfo(3, '+data[i].movieCode+')" class="icon" id="three"><font size="6">★<font></a>'+
  										    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
  										    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
-                                           }  
+                                           }   */
                                          output+='</tr><tr></table>';
                                          $('#movies').html(output);
                                          $("#page").val(48);
@@ -266,7 +266,7 @@
                                                } 
                                                output+='</tr><tr>';
                                               for(i=36; i<42; i++){
-                                             	 voutput+='<td><div class="grid">'+
+                                             	 output+='<td><div class="grid">'+
      											'<figure class="effect-zoe">'+
      											'<img width="180" height="253" src="'+data[i].movieImgUrl+'"/>'+
      											'<figcaption><h2>'+data[i].movieTitleKr+'</h2><hr><br>'+

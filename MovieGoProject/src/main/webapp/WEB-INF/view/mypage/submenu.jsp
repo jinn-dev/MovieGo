@@ -4,11 +4,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="com.mvg.entity.User" %>
 <%@ page import="com.mvg.entity.Movie" %>
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <meta name="author" content="Codrops" />
-<!-- <link rel="shortcut icon" href="../resources/fonts/mypage/favicon.ico"> -->
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/default.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/component.css" />
 <script src="<%=request.getContextPath()%>/js/mypage/modernizr.custom.js"></script>

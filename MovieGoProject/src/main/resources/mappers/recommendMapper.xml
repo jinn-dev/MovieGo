@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mvg.mappers.recommendMapper">
+
+
+	<select id="countGenreByUserId">
+		select m.movie_genre, count(m.movie_genre)
+		from evaluations e join movies m on(e.movie_code = m.movie_code)
+		where user_id = '${userId}'
+		group by m.movie_genre
+	</select>
+	
+	
+	
+	<resultMap type="Evaluation" id="ComplexCountGenre">
+		<result column="m.movie_genre" jdbcType="VARCHAR2" property="movieGenre"></result>
+		<result	column="count(m.movie_genre)" jdbcType="INTEGER" property=""></result>
+	</resultMap>
+</mapper>
