@@ -3,19 +3,29 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mvg.mappers.recommendMapper">
-
-
-	<select id="countGenreByUserId">
+	<select id="countGenreByUserId" parameterType="User"  resultMap="CountGenreResult">
 		select m.movie_genre, count(m.movie_genre)
 		from evaluations e join movies m on(e.movie_code = m.movie_code)
-		where user_id = '${userId}'
+		where e.user_id = '${userId}'
 		group by m.movie_genre
+		order by count(m.movie_genre) desc
+	</select>
+
+	<select id="recommendMovieBasedOnGenre" parameterType="hashmap" resultType="Movie">
+		select * from (
+		select mv.*, row_number() over(order by DBMS_RANDOM.VALUE) as num
+		from movies mv)
+		where (num between #{page}+1 and #{page}+6) and movie_code NOT IN (select movie_code
+		from evaluations
+		where user_id = #{userId}) and movie_genre = (select max(m.movie_genre)
+		from evaluations e join movies m on(e.movie_code = m.movie_code)
+		where e.user_id = #{userId})
 	</select>
 	
 	
 	
-	<resultMap type="Evaluation" id="ComplexCountGenre">
-		<result column="m.movie_genre" jdbcType="VARCHAR2" property="movieGenre"></result>
-		<result	column="count(m.movie_genre)" jdbcType="INTEGER" property=""></result>
+	<resultMap type="Recommend" id="CountGenreResult">
+		<result column="movie_genre"  javaType="String" property="movieGenre"></result>
+		<result	column="count(m.movie_genre)" javaType="INTEGER" property="genreCount"></result>
 	</resultMap>
 </mapper>
