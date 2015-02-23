@@ -94,13 +94,6 @@ public class MyPageController {
 		return "redirect:/main";
 	}
 
-	// 위시리스트목록
-	@RequestMapping(value = "/wishlist", method = RequestMethod.GET)
-	public String wishlist(@RequestParam String userId, Model model) {
-		List<Wishlist> wishlist = wService.getWishlistByUserId(userId);
-		model.addAttribute("wishlist", wishlist);
-		return "mypage/wishlist";
-	}
 
 	// 위시리스트에서 삭제
 	@RequestMapping(value = "/deletewishlist", method = RequestMethod.GET)
@@ -119,7 +112,7 @@ public class MyPageController {
 		return "mypage/rating_list";
 	}
 	
-
+	// 위시리스트 보기
 	@RequestMapping(value = "/wishlist.ajax", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Wishlist> wishlistAjax(HttpSession session) {
@@ -164,9 +157,10 @@ public class MyPageController {
 	public List<Movie> rmdMovieBasedGenre(HttpSession session, @RequestParam int page){
 		User user = (User) session.getAttribute("user");
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("user",user);
+		map.put("userId",user.getUserId());
 		map.put("page", page);
 		List<Movie> results = rService.rmdMovieBasedGenreService(map);
+		logger.trace("결과"+results);
 		return results;
 	}
 }
