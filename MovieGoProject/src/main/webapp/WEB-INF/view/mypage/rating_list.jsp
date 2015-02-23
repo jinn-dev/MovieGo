@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.labelinplace.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/rating.css" />
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
@@ -30,9 +31,9 @@ function deleteCheck(id) {
 </style>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-<div id="ratinglist">
+<div class="list-table">
 영화평가목록
- <table id="ratingList" border="1">
+<table id="list">
       <tr>
          <th>
             <div>
@@ -68,12 +69,14 @@ function deleteCheck(id) {
 		<c:set value="${evlistItem.movies}" var="movie">	</c:set>
 		<c:forEach items="${movie}" var="movieItem">
 		<tr>
-		<td><a href="<%=request.getContextPath()%>/movieinfo?movieCode=${movieItem.movieCode}"><c:out value="${movieItem.movieTitleKr}"/></a></td>
-		<td><c:out value="${movieItem.movieDirector}"/></td>
-		<td><c:out value="${movieItem.movieGenre}"/></td>
-		<td><c:out value="${evlistItem.evRating}"/></td>
-		<td><c:out value="${evlistItem.evComment}"/></td>
-		<td>
+		<td width="300" height="50">
+		<a href="<%=request.getContextPath()%>/movieinfo?movieCode=${movieItem.movieCode}"><c:out value="${movieItem.movieTitleKr}"/></a>
+		</td>
+		<td width="100"><c:out value="${movieItem.movieDirector}"/></td>
+		<td width="100"><c:out value="${movieItem.movieGenre}"/></td>
+		<td width="100"><c:out value="${evlistItem.evRating}"/></td>
+		<td width="300"><c:out value="${evlistItem.evComment}"/></td>
+		<td width="100">
 		<c:url value="/reserve" var="url"></c:url>
 		<a href="${url }" class="icon-search">예매하기</a>		
 		</td>

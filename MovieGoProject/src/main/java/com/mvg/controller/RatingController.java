@@ -3,8 +3,6 @@ package com.mvg.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-
-import org.hamcrest.core.Every;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +25,7 @@ import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({"evRating", "movies", "onemovie", "evcheck", "movieinfo", "evlist", "avgRating"})
+@SessionAttributes({"evRating", "movies", "onemovie", "evlist", "avgrating"})
 public class RatingController {
 	@Autowired
 	MovieService service;
@@ -143,15 +141,22 @@ public class RatingController {
 	@RequestMapping(value = "/movieinfo", method = RequestMethod.GET)
 	public String movieInfo(@RequestParam String movieCode, Model model) {
 		Movie movie = service.getMovieByMCodeService(movieCode);
-		model.addAttribute("movieinfo", movie);
+		model.addAttribute("onemovie", movie);
 		List<Evaluation> evaluation = eService.getEvaluationByMovieCode(movieCode);
 		model.addAttribute("evlist", evaluation);
 		int addRating = 0;
-		for(int i = 0; i < evaluation.size(); i++) {
-			addRating += evaluation.get(i).getEvRating();
+		if(evaluation.size() == 0) {
+			model.addAttribute("avgrating", 0);
 		}
-		double avgRating = (double)addRating / evaluation.size();
-		model.addAttribute("avgRating", avgRating);
+		else {
+			for(int i = 0; i < evaluation.size(); i++) {
+				addRating += evaluation.get(i).getEvRating();
+			}
+			double avgRating = (double)addRating / evaluation.size();
+			
+			model.addAttribute("avgrating", avgRating);
+		}
+		
 		return "rating/movie_info";
 	}
 

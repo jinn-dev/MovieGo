@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.labelinplace.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/wishlist.css" />
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
@@ -26,41 +27,30 @@ function deleteCheck(id) {
 		width : 30%;
 		float : right;
 	}
- 	#reservationlist {
-		width : 70%;
-		float : right;
-	} 
-	.div-button {
-	background: #C75C5C;
-	font-size: 1.0em;
-	color: #F2F2F2;
-	border: none;
-	letter-spacing: 1px;
-	padding: 0.5em;
-	outline: none;
-	margin: 30px 0 0 0;
-}
+
+
 </style>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	
-<div id="reservationlist">
+   <div class="list-table">
 위시리스트
 
 
-<table border="1">
+<table id="list">
 	<tr>
-		<th>영화제목</th><th>감독</th><th>장르</th><th>예매하기</th>
+		<th><div>영화제목</div></th><th><div>감독</div></th><th><div>장르</div></th><th><div>예매하기</div></th>
 	</tr>
 	<c:forEach items="${wishlist}" var="wishListItem">
 	<c:set value="${wishListItem.movies}" var="movie">	</c:set>
 		<c:forEach items="${movie}" var="movieItem">
 		<tr>
-		<td>
-		<a href="<%=request.getContextPath()%>/movieinfo?movieCode=${movieItem.movieCode}"><c:out value="${movieItem.movieTitleKr}"/></a></td>
-		<td><c:out value="${movieItem.movieDirector }"/></td>
-		<td><c:out value="${movieItem.movieGenre}"/></td>
-		<td>
+		<td width="300" height="50">
+		<c:url value="/movieinfo?movieCode=${movieItem.movieCode}" var="url"></c:url>
+		<a href="${url }"><c:out value="${movieItem.movieTitleKr}"/></a></td>
+		<td width="100"><c:out value="${movieItem.movieDirector }"/></td>
+		<td width="100"><c:out value="${movieItem.movieGenre}"/></td>
+		<td width="100">
 		<c:url value="/reserve" var="url"></c:url>
 		<a href="${url }" class="icon-search">예매하기</a>			
 		</td>
