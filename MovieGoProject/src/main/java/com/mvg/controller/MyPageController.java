@@ -2,6 +2,7 @@ package com.mvg.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.mvg.entity.Evaluation;
+import com.mvg.entity.Movie;
 import com.mvg.entity.Recommend;
 import com.mvg.entity.User;
 import com.mvg.entity.Wishlist;
@@ -135,4 +135,20 @@ public class MyPageController {
 	}
 	
 	// 장르기반 영화 추천
+	@RequestMapping(value="/genre.rmd", method = RequestMethod.GET)
+	public String rmdMovieBasedGenreRed (){
+		return "mypage/recommend";
+	}
+	
+	
+	@RequestMapping(value="/genre.rmd.do", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Movie> rmdMovieBasedGenre(HttpSession session, @RequestParam int page){
+		User user = (User) session.getAttribute("user");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("user",user);
+		map.put("page", page);
+		List<Movie> results = rService.rmdMovieBasedGenreService(map);
+		return results;
+	}
 }

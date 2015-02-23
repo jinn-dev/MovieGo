@@ -12,5 +12,5 @@ public interface RecommendService {
 	
 	List<Recommend> countGenreService(User user);
 	
-	List<Movie> rcmdMovieBasedGenreService(HashMap<String, Object> hashmap);
+	List<Movie> rmdMovieBasedGenreService(HashMap<String, Object> hashmap);
 }

@@ -13,6 +13,9 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	<c:url value="/genre.rmd" var="url"></c:url>
+	$(".genre-recommend").load('${url}');
+	
 	<c:url value="/genre.count" var="url"/>
 	$.ajax({
 		type: "POST",
@@ -496,6 +499,7 @@ $(document).ready(function() {
 			<svg id="svg"></svg>
 		</div>
 	</div>
+	<div class="genre-recommend"></div>
 		<div id="submenu">
 	<jsp:include page="submenu.jsp"></jsp:include>
 	</div>

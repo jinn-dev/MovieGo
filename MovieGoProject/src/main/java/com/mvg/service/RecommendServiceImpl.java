@@ -32,7 +32,7 @@ public class RecommendServiceImpl implements RecommendService {
 	}
 
 	@Override
-	public List<Movie> rcmdMovieBasedGenreService(
+	public List<Movie> rmdMovieBasedGenreService(
 			HashMap<String, Object> hashmap) {
 		List<Movie> results = dao.recommendMovieBasedGenre(hashmap);
 		return results;
