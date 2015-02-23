@@ -63,4 +63,16 @@ public class SeatInfoServiceImpl implements SeatInfoService {
 		return seats;
 	}
 
+	@Override
+	public int getSeatIdService(int nowmovieId, String seatName) {
+		int seatId = dao.getSeatId(nowmovieId, seatName);
+		return seatId;
+	}
+
+	@Override
+	public String getSeatNameService(int seatId) {
+		String seatName = dao.getSeatName(seatId);
+		return seatName;
+	}
+
 }

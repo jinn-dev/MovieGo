@@ -1,36 +1,81 @@
 @CHARSET "UTF-8";
 
-.reserve-seat {
-	margin: 0 auto;
-	width: 75%;
-	border-color: #bdc3c7;
+html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-y: scroll;
 }
 
-#seat-first {
-	background: #4F5D73;
-	padding: 10px auto;
-	border: 1px solid;
-	color: #fff;
-	font-size: 1.5em;
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-family: NanumGothic, '나눔고딕', 'Nanum Gothic', '돋움', Dotum, '굴림',
+		Gulim, Vernada, Arial, sans-serif !important;
+	color: #484848;
 }
 
-.reserve-seat td {
-	padding: 10px 10px;
-	border: 1px solid;
-	border-color: #bdc3c7;
-	background: #E0E0D2;
+html, h1, h2, h3, h4, h5, h6, dl, dt, dd, form, fieldset, img {
+	margin: 0;
+	padding: 0;
+	font-family: NanumGothic, '나눔고딕', 'Nanum Gothic', '돋움', Dotum, '굴림',
+		Gulim, Vernada, Arial, sans-serif !important;
+	border: 0;
 }
 
-.reserve-seat th {
-	padding: 10px auto;
-	border: 1px solid;
-	border-color: #bdc3c7;
-	background: #E0E0D2;
+article, aside, details, figcaption, figure, footer, header, hgroup,
+	menu, nav, section {
+	display: block;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
-label {
-	display: inline-block;
-	width: 30%;
+ul, ol, li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-family: NanumGothic, '나눔고딕', 'Nanum Gothic', '돋움', Dotum, '굴림',
+		Gulim, Vernada, Arial, sans-serif !important;
+}
+
+legend {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+	line-height: 0;
+	text-indent: -9999em;
+	overflow: hidden;
+}
+
+label, input, button, select, img {
+	vertical-align: middle;
+	border: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+p {
+	margin: 0;
+	padding: 0;
+	font-family: NanumGothic, '나눔고딕', 'Nanum Gothic', '돋움', Dotum, '굴림',
+		Gulim, Vernada, Arial, sans-serif !important;
+	word-break: break-all;
+}
+
+hr {
+	display: none;
+}
+
+a, a:link, a:visited, a:hover, a:focus, a:active {
+	text-decoration: none !important;
 }
 
 .hide {
@@ -154,7 +199,7 @@ h2 {
 	font-weight: bold;
 	text-align: center;
 	line-height: 1.8em;
-	color: #4F5D73;
+	color: #C75C5C;
 }
 
 .theaterMap .map .arrayNum {
@@ -170,15 +215,19 @@ h2 {
 }
 
 .theaterMap .map .arrayNum button:hover {
-	background: #C75C5C;
+	background: #4F5D73;
 }
 
 .theaterMap .map .arrayNum button.selected {
-	background: #C75C5C;
+	background: #4F5D73;
+}
+
+.theaterMap .map .arrayNum button.reserved {
+	background: #4F5D73;
 }
 
 .theaterMap .map .arrayNum button.clicked {
-	background: #DF995E;
+	background: #C75C5C;
 }
 
 .theaterMap .map .arrayNum button:nth-of-type(4) {
