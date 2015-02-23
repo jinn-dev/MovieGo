@@ -10,89 +10,72 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/rating.css" />
 <title>Insert title here</title>
 </head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
+
+ $(document).ready(function() {
+	<c:url value="/ratinglist.ajax" var="url"/>
+	$.ajax({
+		url:'${url}',
+			type:'GET',	    
+            cache : false,
+            async : false,
+            dataType : 'json',
+	    success : function(data) {
+	    var output = '<div class="list-table"><table><tr><th>포스터</th><th>영화제목</th><th>감독</th><th>개봉일자<th>장르</th><th>별점</th><th>코멘트</th><th>예매하기</th></tr>';
+	    for(var i = 0; i < data.length; i++) {	
+	   
+       	output += '<tr><td class ="thumbnail">'+
+		'<img width="180" height="253" src="'+data[i].movies[0].movieImgUrl+'"/></div></td>'+
+		'<td width="300" height="50">'+
+		'<c:url value="/movieinfo?movieCode='+data[i].movies[0].movieCode +'" var="url"></c:url>'+
+		'<a href="${url }">'+data[i].movies[0].movieTitleKr+'</a></td>'+
+		'<td width="100">'+data[i].movies[0].movieDirector +'</td>'+
+		'<td width="100">'+data[i].movies[0].movieOpenDate +'</td>'+
+		'<td width="100">'+data[i].movies[0].movieGenre +'</td>'+
+		'<td width="100">'+data[i].evRating +'</td>'+
+		'<td width="100">'+data[i].evComment +'</td>'+
+		'<td width="100">'+
+		'<c:url value="/reserve" var="url"></c:url>'+
+		'<a href="${url }" class="icon-search">예매하기</a></td>'+
+		'<td><button onclick="deleteCheck(${wishListItem.wishId})"class="div-button">삭제</button>'+
+		'</td></tr>';
+		}
+		'</table>';
+
+	  
+
+         $('#evlist').html(output);
+		},
+		error : function(request, status, error) {
+			alert("노노");
+			if(request.status != '0') {
+				alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+			}	
+		}
+	});
+});  
 
 function deleteCheck(id) {
 	 if(confirm("위시리스트를 삭제하시겠습니까??")) {
-		 location.href="<%=request.getContextPath()%>/deleteevaluation?evId="+id;
+		 location.href="<%=request.getContextPath()%>/deletewishlist?wishId="+id;
 		 
 		}
 	}
 </script>
-<style type="text/css">
+ <style type="text/css">
 	#submenu {
 		width : 30%;
 		float : right;
 	}
-	#ratinglist {
-		width : 70%;
-		float : right;
-	}
+
+
 </style>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 <div class="list-table">
-영화평가목록
-<table id="list">
-      <tr>
-         <th>
-            <div>
-               <b>영화제목</b>
-            </div>
-         </th>
-         <th >
-            <div>
-               <b>감독</b>
-            </div>
-         </th>
-          <th >
-            <div>
-               <b>개봉일자</b>
-            </div>
-         </th>
-         <th>
-            <div>
-               <b>장르</b>
-            </div>
-         </th>
-          <th>
-            <div>
-               <b>별점</b>
-            </div>
-         </th>
-          <th>
-            <div>
-               <b>코멘트</b>
-            </div>
-            <th>
-            <div>
-               <b>예매하기</b>
-            </div>
-         </th>
-      </tr>
-      	<c:forEach items="${evlist}" var="evlistItem">
-		<c:set value="${evlistItem.movies}" var="movie">	</c:set>
-		<c:forEach items="${movie}" var="movieItem">
-		<tr>
-		<td width="300" height="50">
-		<a href="<%=request.getContextPath()%>/movieinfo?movieCode=${movieItem.movieCode}"><c:out value="${movieItem.movieTitleKr}"/></a>
-		</td>
-		<td width="100"><c:out value="${movieItem.movieDirector}"/></td>
-		<td width="100"><c:out value="${movieItem.movieOpenDate }"/></td>
-		<td width="100"><c:out value="${movieItem.movieGenre}"/></td>
-		<td width="100"><c:out value="${evlistItem.evRating}"/></td>
-		<td width="300"><c:out value="${evlistItem.evComment}"/></td>
-		<td width="100">
-		<c:url value="/reserve" var="url"></c:url>
-		<a href="${url }" class="icon-search">예매하기</a>		
-		</td>
-		<td>
-		<button onclick="deleteCheck(${evlistItem.evId})"class="div-button">삭제</button>
-		</td>
-		</tr>
-		</c:forEach>
-	</c:forEach>	
-   </table>
+ <div id="evlist"></div>
 </div>
 <div id="submenu">
 <jsp:include page="submenu.jsp"></jsp:include>
