@@ -86,11 +86,11 @@ public class MyPageController {
 		return "mypage/mypage";
 	}
 
-	@RequestMapping(value = "/update", params = "_event_reverse", method = RequestMethod.POST)
+/*	@RequestMapping(value = "/update", params = "_event_reverse", method = RequestMethod.POST)
 	public String reinput(@ModelAttribute("user") User user) {
 		return "mypage/modify";
 	}
-
+*/
 	// 회원 탈퇴
 	@RequestMapping(value = "/deleteuser", method = RequestMethod.GET)
 	public String userDelete(@RequestParam String userId) {
@@ -128,6 +128,7 @@ public class MyPageController {
 		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
 		List<Wishlist> wishlist = wService.getWishlistByUserId(userId);
+
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("wishlist", wishlist);
 		List<NowMovie> now = nService.getAllDistictNowMovieCodes();

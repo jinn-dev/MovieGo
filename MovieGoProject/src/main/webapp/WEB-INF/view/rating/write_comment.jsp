@@ -27,7 +27,7 @@
 	});
 </script>
 <body>
-사용자 아이디 : ${evRating.userId }<br>
+사용자 아이디 : ${user.userId }<br>
 코멘트 날길 영화제목 : ${onemovie.movieTitleKr}<br>
 영화의 별점 : ${evRating.evRating }<br>
 

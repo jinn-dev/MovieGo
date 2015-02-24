@@ -34,15 +34,15 @@
 		'<td width="120">'+data.evaluation[i].movies[0].movieDirector +'</td>'+
 		'<td width="100">'+data.evaluation[i].movies[0].movieOpenDate +'</td>'+
 		'<td width="100">'+data.evaluation[i].movies[0].movieGenre +'</td>'+
-		'<td width="100">'+data.evaluation[i].evRating +'</td>'+
-		'<td width="100">';
+		'<td width="100">'+data.evaluation[i].evRating +'</td>';
 		if(data.evaluation[i].evComment== null) {
-			output += '코멘트쓰기</td>';
-
-			
-		}
+			var param2="?movieCode=" + data.evaluation[i].movies[0].movieCode;
+			output += '<td width="100">'+
+				'<a href="javascript:evc('+data.evaluation[i].movies[0].movieCode+')" class="icon-search">코멘트쓰기</a></td>';
+				
+			}
 		else {
-			output += data.evaluation[i].evComment +'</td>';
+			output += '<td width="100">'+data.evaluation[i].evComment +'</td>';
 		}
 		
 		output += '<td width="100">';
@@ -63,7 +63,7 @@
 			}
 		}
 	
-		output += '<td width="80"><button onclick="deleteCheck(${wishListItem.wishId})"class="div-button">삭제</button>'+
+		output += '<td width="80"><button onclick="deleteCheck('+data.evaluation[i].evId+')"class="div-button">삭제</button>'+
 		'</td></tr>';
 		}
 		'</table>';
@@ -81,9 +81,15 @@
 	});
 });  
 
+ function evc(m) {
+	 var param2="?movieCode" +"="+m;
+		<c:url value="/evcomment" var="url"></c:url>
+		window.open('${url}'+param2,'_blank', "width=800, height=300, toolbar=no, menubar=no, resizable=no");
+}
+ 
 function deleteCheck(id) {
-	 if(confirm("위시리스트를 삭제하시겠습니까??")) {
-		 location.href="<%=request.getContextPath()%>/deletewishlist?wishId="+id;
+	 if(confirm("영화평가를 삭제하시겠습니까??")) {
+		 location.href="<%=request.getContextPath()%>/deleteevaluation?evId="+id;
 		 
 		}
 	}

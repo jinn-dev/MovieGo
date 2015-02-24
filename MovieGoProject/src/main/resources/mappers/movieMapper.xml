@@ -8,9 +8,7 @@
 	</select>
 	
 	<select id="getAllMovies" resultType="Movie">
-		select movie_code, movie_title_kr, movie_title_eng, movie_genre, 
-		movie_director, movie_actor1, movie_actor2, movie_actor3, movie_actor4,
-		movie_img_url, movie_story, movie_open_date
+		select *
 		from movies
 	</select>
 	
