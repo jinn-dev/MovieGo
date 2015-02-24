@@ -165,6 +165,7 @@ public class ReservationController {
 		
 		logger.trace("수업: 시간: "+jsonBuilder.toString());
 		
+		
 		return jsonBuilder.toString();
 	}
 	
@@ -182,14 +183,27 @@ public class ReservationController {
 
 	@RequestMapping(value="/reserve/seat", method=RequestMethod.GET)
 	public String reserveSeat(Model model) {
+		
+		//nowmovie_id로 seatinfo조회
 		List<SeatInfo> seats = sservice.getSInfoByNMovieIdService(nmId);
+		
+		//seatinfo에서 좌석아이디만뽑아서 seatIds 리스트에 저장
 		ArrayList<Integer> seatIds = new ArrayList<Integer>();
-		ArrayList<String> reservedSeats = new ArrayList<String>();
 		for (int i=0;i<seats.size();i++) {
 			int id = seats.get(i).getSeatId();
 			seatIds.add(i, id);
 		}
-		//reservationinfo안에 seat_id가 있는지 검사
+		
+		//그중 예약되어 있는 좌석은 아이디만 따로 저장
+		ArrayList<Integer> reservedSeats = new ArrayList<Integer>();
+		for (int i=0;i<seatIds.size();i++) {
+			ReservationInfo rinfo = riservice.getRInfoBySeatIdService(seatIds.get(i));
+			if (rinfo != null) {
+				reservedSeats.add(seatIds.get(i));
+			}
+		}
+		
+		/*//reservationinfo안에 seat_id가 있는지 검사
 		//있으면 reservedSeats에 저장
 		for (int i=0;i<seatIds.size();i++) {
 			ReservationInfo rinfo = riservice.getRInfoBySeatIdService(seatIds.get(i));
@@ -197,17 +211,11 @@ public class ReservationController {
 				String name = sservice.getSeatNameService(rinfo.getSeatId());
 				reservedSeats.add(name);
 			}
-		}
+		}*/
 		
-		ArrayList<Integer> test = new ArrayList<Integer>();
-		for (int i=0;i<seatIds.size();i++) {
-			ReservationInfo rinfo = riservice.getRInfoBySeatIdService(seatIds.get(i));
-			if (rinfo != null) {
-				test.add(i,seatIds.get(i));
-			}
-		}
-		logger.trace("수업: "+test);
-		Iterator<Integer> iter = test.iterator();
+		
+		logger.trace("수업: "+reservedSeats);
+		Iterator<Integer> iter = reservedSeats.iterator();
 		StringBuilder jsonBuilder = new StringBuilder();
 		
 		jsonBuilder.append("{\"rsvdSeats\":[");
@@ -259,7 +267,7 @@ public class ReservationController {
 	public String reserveComplete(@RequestParam int totalprice, @RequestParam int spoint, 
 			@RequestParam String yncoupon, @RequestParam int upoint, HttpSession session) {
 		logger.trace("수업: 넘어온값: "+totalprice+", "+spoint+", "+yncoupon+", "+upoint);
-		User user = (User) session.getAttribute("log");
+		User user = (User) session.getAttribute("user");
 		if (yncoupon.equals("used")) {
 			user.setUserCoupon("n");
 		}

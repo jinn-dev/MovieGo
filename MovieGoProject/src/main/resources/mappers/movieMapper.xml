@@ -8,7 +8,8 @@
 	</select>
 	
 	<select id="getAllMovies" resultType="Movie">
-		select * from movies
+		select *
+		from movies
 	</select>
 	
 	<select id="randomGetAllMovies" parameterType="INTEGER" resultType="Movie">

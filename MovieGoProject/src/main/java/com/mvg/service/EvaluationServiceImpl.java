@@ -29,8 +29,8 @@ public class EvaluationServiceImpl implements EvaluationService {
 	}
 
 	@Override
-	public int selectEvaluationByMovieCode(String movieCode, String userId) {		
-		int result = dao.selectEvaluationByMovieCode(movieCode, userId);
+	public Evaluation selectEvaluationByMovieCode(String movieCode, String userId) {		
+		Evaluation result = dao.selectEvaluationByMovieCode(movieCode, userId);
 		return result;
 	}
 

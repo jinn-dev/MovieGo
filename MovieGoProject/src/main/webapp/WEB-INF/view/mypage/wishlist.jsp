@@ -52,7 +52,7 @@
 				}
 				
 		}
-		output +='<td width="80"><button onclick="deleteCheck(${wishListItem.wishId})"class="div-button">삭제</button>'+
+		output +='<td width="80"><button onclick="deleteCheck('+data.wishlist[i].wishId+')"class="div-button">삭제</button>'+
 		'</td></tr>';
 		}
 		'</table>';

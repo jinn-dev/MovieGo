@@ -396,12 +396,14 @@ function evcomment(m) {
 			async : false,
 			dataType : 'text',
 	    	success : function(data) {
-	    	if(data == 0) {
-	    		 alert("별점을 먼저 선택하세요.");
+	    	if(data) {
+	    		var param2="?movieCode" +"="+m;
+	    		<c:url value="/evcomment" var="url"></c:url>
+	 			window.open('${url}'+param2,'_blank', "width=800, height=300, toolbar=no, menubar=no, resizable=no");
 			}				   
 	    	else {
-	    		<c:url value="/evcomment" var="url"></c:url>
-	 			window.open('${url}','_blank', "width=800, height=300, toolbar=no, menubar=no, resizable=no");
+	    		 alert("별점을 먼저 선택하세요.");
+
 	    	}
 		},
 		error : function(request, status, error) {

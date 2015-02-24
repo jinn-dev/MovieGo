@@ -5,8 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/reserve2.css" />
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <style type="text/css">
 html {
@@ -140,17 +138,18 @@ h2 {
 	padding: 5px 10px;
 	font-weight: normal;
 	border: 1px solid #aaa;
+	background: #eee;
 }
 
 .peopleNum .selected button {
 	font-weight: bold;
-	background: #444;
+	background: #C75C5C;
 	color: #fff;
 }
 
 .peopleNum li:hover button {
 	font-weight: bold;
-	background: #444;
+	background: #4F5D73;
 	color: #fff;
 }
 
@@ -247,7 +246,7 @@ h2 {
 	margin-top: 30px;
 	padding: 30px;
 	text-align: right;
-	background: #444;
+	background: #4F5D73;
 	color: #fff;
 }
 
@@ -265,6 +264,7 @@ h2 {
 	padding: 6px 5px;
 	font-size: 18px;
 	text-align: right;
+	background: #E0E0D2;
 }
 
 .charge button {
@@ -275,10 +275,11 @@ h2 {
 .charge .refresh {
 	margin-left: 20px;
 	margin-right: 5px;
+	background: #E0E0D2;
 }
 
 .charge .submitBtn {
-	background: #0094d9;
+	background: #C75C5C;
 	color: #fff;
 }
 
@@ -327,8 +328,8 @@ h2 {
 	margin-top: 20px;
 	padding: 10px 20px;
 	font-weight: bold;
-	border: 1px solid #09567a;
-	background: #0094d9;
+	border: 1px solid #4F5D73;
+	background: #4F5D73;
 	color: #fff;
 }
 
@@ -340,8 +341,10 @@ h2 {
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<input type="hidden" id="rseats" value="${reservedSeats }" />
-	<div id="rsv1">
-		${rinfo }<br> 예약된 좌석: ${reservedSeats }
+	<div class="rsv1">
+		<h2>${user.userId }님의 예매정보</h2>
+		${rinfo }
+		<br> 예약된 좌석: ${reservedSeats }
 	</div>
 
 	<div class="wrap">
@@ -409,8 +412,8 @@ h2 {
 		var map = $('.mapWrap');
 
 		for (i = 0; i < 4; i++) {
-			map.append('<div class="map clearfix"><div class="row" value="'+rowArray[i]+'">'
-					+ rowArray[i] + '</div><div class="arrayNum"></div></div>');
+			map.append('<div class="map clearfix"><div class="row">'
+					+ rowArray[i] + '</div><div class="arrayNum" value="'+rowArray[i]+'"></div></div>');
 		}
 		for (i = 1; i < 14; i++) {
 			map.find('.arrayNum').append("<button id='"+i+"' value='"+i+"'>" + i + "</button>");
@@ -440,19 +443,21 @@ h2 {
 				var s = rseatsarr[temp].seat;
 				console.log("좌석 정보 : " + s);
 				n = Math.floor(s/14);
-				console.log(n);
+				//console.log(n);
 				rowchar = rowArray[n];
-				console.log(rowchar);
+				console.log("열 : "+rowchar);
 				seatNo = s-(13*n);
-				console.log(seatNo);
+				console.log("행 : "+seatNo);
 				var seatNoStr = seatNo.toString();
-				console.log(seatNoStr);
-				var nStr = n.toString();
+				console.log("행 string : "+seatNoStr);
+				
+				/* if ((document.querySelector(".theaterMap .map .row").innerHTML == rowchar)) {
+					alert(rowchar);
+				} */
 				
 				if ((document.querySelector(".theaterMap .map .row").innerHTML == rowchar) && (document.getElementById(seatNoStr).value == seatNoStr)){
-					var name = rowchar.concat(seatNoStr);
-					alert(name);
-					($(".theaterMap .map .row[value='"+rowchar+"']")&&$(":button[value='"+seatNo+"']")).addClass('reserved');
+					alert(rowchar.concat(seatNoStr));
+					$(".theaterMap .map .arrayNum[value='"+rowchar+"'] > :button[value='"+seatNoStr+"']").addClass('reserved');
 				}
 			}
 		});
