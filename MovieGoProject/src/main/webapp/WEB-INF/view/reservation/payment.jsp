@@ -44,7 +44,7 @@ function usePoint() {
  	if (point == null || point == 0) {
  		alert("포인트를 10점 이상 입력해주세요.");
  	}
- 	else if (point != null && point <= $("#price").val()) {
+ 	else if (point <= $("#userPoint").val()) {
 		if (point%10==0) {
 			alert("포인트가 사용되었습니다.");
 			$("#minusPoint").val(point);
@@ -96,7 +96,7 @@ function completeReserv() {
 <div>
 <table border=1>
 <tr><td colspan=2>할인수단</td></tr>
-<tr><td>포인트</td><td><input type="text" id="inputPoint"/>점 / ${user.userPoint }점 사용가능
+<tr><td>포인트</td><td><input type="text" id="inputPoint"/>점 / <input type="text" id="userPoint" value="${user.userPoint }" disabled="disabled"/>점 사용가능
 <input type="button" id="usePoint" value="사용" onclick="javascript:usePoint();" />
 <input type="button" id="cancelPoint" value="사용취소" onclick="javascript:cancelPoint();" /><br>
 포인트를 10점 단위로 입력해주세요.</td></tr>
