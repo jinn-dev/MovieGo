@@ -11,7 +11,7 @@
 <script src="<%=request.getContextPath()%>/js/mypage/modernizr.custom.js"></script>
 	<div class="container">
 		<ul class="cbp-vimenu">
-			<li><a href="45" class="icon-logo"></a></li>
+			<!-- <li><a href="45" class="icon-logo"></a></li> -->
 			<c:url value="/mypage" var="url"></c:url>
 			<li><a href="${url }" class="icon-archive">영화취향분석</a></li>
 			<c:url value="/modify" var="url"></c:url>
@@ -21,6 +21,7 @@
 			
 			<c:url value="/ratinglist?userId=${log.userId }" var="url"></c:url>
 			<li><a href="${url }" class="icon-images">영화평가목록</a></li>
+			<li><a href="${url }" class="icon-images">코멘트</a></li>
 		</ul>
 
 	</div>

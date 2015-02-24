@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -44,7 +43,8 @@ $(document).ready(function() {
 		else{
 			return false;
 		}
-	})
+	});
+	
 	$("#comment_modify").click(function(){
 		var result = window.confirm("코멘트를 수정하시겠습니까?");
 		if(result){

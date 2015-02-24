@@ -28,10 +28,10 @@
 	transition: background 0.1s ease-in-out;
 }
 
-.cbp-vimenu li a:hover, .cbp-vimenu li:first-child a {
+/* .cbp-vimenu li a:hover, .cbp-vimenu li:first-child a {
 	background: #34495E;
 	color: #fff;
-}
+} */
 
 .cbp-vimenu li a:active{
 	/* background: #34495E; */
