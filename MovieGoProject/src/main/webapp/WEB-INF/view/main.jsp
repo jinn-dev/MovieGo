@@ -212,7 +212,8 @@ $(document).ready(function() {
 	<script src="<%=request.getContextPath()%>/main/js/uiMorphingButton_fixed.js"></script>
 	<script>
 		function userInfo(){
-			<c:url value="/find_user_info" var="url"></c:url>    	    
+			<c:url value="/find_user_info" var="url"></c:url>
+			
 			window.open('${url}','_blank', "width=500, height=500, toolbar=no, menubar=no, resizable=no");
 		}
 

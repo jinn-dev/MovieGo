@@ -39,45 +39,74 @@ $(document).ready(function() {
 	});
 });
 </script>
-<style>
-table{
+<style type="text/css">
 
-	table-layout:fixed;
+	section{
+	margin: 0 auto;
+	width: 85%;
+	height: 100%;
 }
 
-.table-th{
-	padding: 10px;
-	font-size: 1.0em;
-	background: #4F5D73;
-	color:#F2F2F2;
+.info td{
+ 	margin: 0 auto;
+	text-align: center;
+	
+	height: 1px;
+/* width: 800px; 	
+position: relative;
+	left: 2%; */
+}
+.info th{
+ 	margin: 0 auto;
+	text-align: center;
+	
+	height: 1px;
+	width: 200px; 	
+ /*
+position: relative;
+	left: 2%; */
 }
 
-.table-td{
-	font-size: 1.0em;
-	width : 60%;
-	word-wrap:break-word;	
-}
-.box-office {
+.box {
 	margin: 0 auto;
 	text-align: center;
-	width : 70%;
+	width: 900px;
 	height: 400px;
+}
+
+.in {
+
+	padding-right: 150px;
+	padding-top: 20px;
+	
+}
+
+.story {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+.box2{
+border-radius:50px 0;
+border:2px solid black; 
+
 }
 
 </style>
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+<jsp:include page="/WEB-INF/view/user/header.jsp" />
 
-영화정보페이지<br>
 <section>
-<div class="box-office">
+<div class="box">
 
+<table align="center" border=0 class="info">
+<tr>
+<td rowspan="8" class="in">
 <img id="img" src="#" width="213" height="301">
-
-<table align="right" border=1>
-
+</td>
+</tr>
 <tr>
 	<th>제목</th>
 	<td><c:out value="${onemovie.movieTitleKr }"/></td>
@@ -106,24 +135,33 @@ table{
 	<th>배우3</th>
 	<td><c:out value="${onemovie.movieActor3 }"/></td>
 </tr>
+</table>
+
+
+<table class="story">
 <tr>
-	<th>줄거리</th>
+<th>줄거리</th>
+</tr>
+<tr>
+	
 	<td><c:out value="${onemovie.movieStory }"/></td>
 </tr>
+</table>
+
+<table border=1 class="box2">
 <c:forEach items="${evlist}" var="evlist">
 <tr>
 	<th>코멘트</th>
-	<td><c:out value="${evlist.evComment }"/></td>
+	<td width="500"><c:out value="${evlist.evComment }"/></td>
 </tr>
 <tr>
-	<th>코멘트</th>
+	<th>별점</th>
 	<td width="200"><c:out value="${evlist.evRating }"/></td>
 </tr>
 </c:forEach>
 </table>
 </div>
 </section>
-
 
 </body>
 </html>

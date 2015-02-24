@@ -66,8 +66,7 @@ public class ControllerTest {
 		if(u != null) {
 			model.addAttribute("log", u);
 			model.addAttribute("user", u);
-/*			session.setMaxInactiveInterval(3600);
-*/		}
+		}
 		
 		else {
 			logger.trace("사용자없음");
@@ -78,7 +77,8 @@ public class ControllerTest {
 	
 
 	@RequestMapping(value = "/mainlogined", method = RequestMethod.GET)
-	public String mainlogined() {
+	public String mainlogined(HttpSession session) {
+		session.setMaxInactiveInterval(3600);
 		return "user/main_logined";
 	}
 	

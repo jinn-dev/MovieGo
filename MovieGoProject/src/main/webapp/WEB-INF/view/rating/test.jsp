@@ -141,13 +141,14 @@ function wishlist(m) {
       <c:forEach items="${movies }" var="movies">
       <tr>
          <td><c:out value="${movies.movieTitleKr}"/></td>
-  		<td >
+  		<td ><p class="star_rating">
+
   	<a href="javascript:ratingInfo(1, ${movies.movieCode})" class="on" id="one">★</a>
     <a href="javascript:ratingInfo(2, ${movies.movieCode})" class="on" id="two">★</a>
     <a href="javascript:ratingInfo(3, ${movies.movieCode})" class="on" id="three">★</a>
     <a href="javascript:ratingInfo(4, ${movies.movieCode})" id="four">★</a>
     <a href="javascript:ratingInfo(5, ${movies.movieCode})" id="five">★</a>
-  
+  </p>
  <!--    	
  p태그안에 들어가면 a태그 안먹힘
  <p class="star_rating">

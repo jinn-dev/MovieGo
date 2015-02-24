@@ -9,6 +9,64 @@
 <title>Insert title here</title>
 </head>
 <style>
+.rsvInfo {
+	padding-left: 600px;
+	padding-bottom: 30px; 
+	margin: 0 auto;
+	width: 2000px;
+	height: 100%;
+	
+}
+
+.discount {
+	padding-left: 700px; 
+	padding-bottom: 50px;
+	margin: 0 auto;
+	width: 2000px;
+	height: 100%;
+}
+
+.payment {
+	padding-left: 800px; 
+	margin: 0 auto;
+	width: 2000px;
+	height: 100%;
+}
+
+.but {
+	padding-left: 800px; 
+	margin: 0 auto;
+	width: 2000px;
+	height: 100%;
+}
+
+.table1 th {
+	background: #4F5D73;
+	text-align: center;
+	color: #ffffff;
+}
+
+.table1 td {
+
+	text-align: center;
+
+}
+
+.table2 th {
+	background: #4F5D73;
+	text-align: center;
+	color: #ffffff;
+}
+
+.table2 td {
+	width: 550px;
+	text-align: center;
+
+}
+.btn {
+	background: #0094d9;
+	color: #fff;
+}
 </style>
 <script type="text/javascript">
 var price = ${price };
@@ -83,24 +141,27 @@ function completeReserv() {
 
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
-<h1>결제하기</h1>
-<div id="rsvInfo">
+<center>
+<h1>결제하기</h1></center>
+<div class="rsvInfo">
+
 <h2>${user.userId }님의 예매정보</h2>
-<table border=1>
-<tr><td>가격</td><td>${price }</td></tr>
-<tr><td>좌석</td><td>${seats }</td></tr>
-<tr><td>예매정보</td><td>${rinfo }</td></tr>
-<tr><td>인원</td><td>${peopleNum }</td></tr>
+<table border=0 class ="table1">
+<tr><th width="70px" background= "#c9c9c9">가격</th><th width="100px">좌석</th><th width="700px">예매정보</th><th width="50px">인원</th></tr>
+<tr><td>${price }</td>
+<td>${seats }</td>
+<td>${rinfo }</td>
+<td>${peopleNum }</td></tr>
 </table>
 </div>
-<div>
-<table border=1>
-<tr><td colspan=2>할인수단</td></tr>
-<tr><td>포인트</td><td><input type="text" id="inputPoint"/>점 / ${user.userPoint }점 사용가능
-<input type="button" id="usePoint" value="사용" onclick="javascript:usePoint();" />
-<input type="button" id="cancelPoint" value="사용취소" onclick="javascript:cancelPoint();" /><br>
+<div class="discount">
+<table border=0 class ="table2">
+<tr><th colspan=2>할인수단</th></tr>
+<tr><th>포인트</th><td><input type="text" id="inputPoint"/>점 / ${user.userPoint }점 사용가능
+<input type="button" id="usePoint" class="btn" value="사용" onclick="javascript:usePoint();" />
+<input type="button" id="cancelPoint" class="btn" value="사용취소" onclick="javascript:cancelPoint();" /><br>
 포인트를 10점 단위로 입력해주세요.</td></tr>
-<tr><td>쿠폰</td><td>
+<tr><th>쿠폰</th><td>
 <%
 	User user = (User)session.getAttribute("user");
 	if (user.getUserCoupon().equals("y")) {
@@ -119,7 +180,7 @@ function completeReserv() {
 </table>
 </div>
 
-<div id="payment">
+<div class="payment">
 결제 금액		 <input type="text" id="price" value="${price }" disabled="disabled" style="text-align: right;" />원<br>
 포인트 할인 금액 <input type="text" id="minusPoint" value="0" disabled="disabled" style="text-align: right;"/>원<br>
 쿠폰 할인 금액   <input type="text" id="minusCoupon" value="0" disabled="disabled" style="text-align: right;"/>원<br>
@@ -128,9 +189,10 @@ function completeReserv() {
 포인트적립		 <input type="text" id="savePoint" value="0" disabled="disabled" style="text-align: right;"/>점<br>
 </div>
 
+<div class="but">
 <input type="button" id="toReserve" onclick="location.href='<%=request.getContextPath() %>/reserve'" value="예매 다시하기" />
 <input type="button" id="complete" onclick="javascript:completeReserv()" value="예매 완료"/>
-
+</div>
 <form style="display: none;" id="postForm" method="post" action="<%=request.getContextPath()%>/reserve/complete">
 	<input type="hidden" name="totalprice"/>
 	<input type="hidden" name="spoint"/>
