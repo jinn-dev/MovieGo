@@ -11,7 +11,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	background: #E0E0D2; /* 헤더 배경색 */
+	background: #4F5D73; /* 헤더 배경색 */
 	z-index: 10000;
 	height: 200px;
 	overflow: hidden;
@@ -55,7 +55,7 @@
 }
 
 .cbp-af-header nav a {
-	color: #4F5D73; /* 메뉴 글자 색상 */
+	color: #F2F2F2; /* 메뉴 글자 색상 */
 	font-weight: 700;
 	margin: 0 0 0 20px;
 	font-size: 1.4em;

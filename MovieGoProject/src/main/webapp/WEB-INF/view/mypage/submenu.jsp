@@ -21,7 +21,6 @@
 			
 			<c:url value="/ratinglist?userId=${log.userId }" var="url"></c:url>
 			<li><a href="${url }" class="icon-images">영화평가목록</a></li>
-			<li><a href="${url }" class="icon-images">코멘트</a></li>
 		</ul>
 
 	</div>

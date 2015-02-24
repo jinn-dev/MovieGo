@@ -18,11 +18,19 @@
 }
 
 /* Common styles for overlay and modal type (fixed morph) */
-.morph-button-fixed,
+/* .morph-button-fixed,
 .morph-button-fixed .morph-content {
 	width: 300px;
 	height: 80px;
 }
+ */
+ 
+.morph-button-fixed,
+.morph-button-fixed .morph-content {
+	width:  150px;
+	height: 50px;
+}
+
 
 .morph-button-fixed > button {
 	z-index: 1000;
@@ -141,6 +149,12 @@
 	font-size: 20px;
 	background: rgba(242,242,242,0.8);
 }
+
+
+/* 코멘트 버튼 배경 */
+
+
+
 .morph-button-modal-1.open .morph-content {
 	margin: -210px 0 0 -170px;
 	width: 340px;

@@ -1,74 +1,77 @@
 @CHARSET "UTF-8";
 
 .cbp-vimenu {
-	position: fixed;
-	overflow: hidden;
-	top: 23%;
-	left: 0;
-	height: 80%;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	background: #E0E0D2;
+   position: fixed;
+   overflow: hidden;
+   top: 25%;
+   left: 0;
+   height: 80%;
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   background: #E0E0D2;
 }
 
 .cbp-vimenu li a {
-	display: block; /* 완전히 꽉 채우는 가로 사이즈를 갖는 요소 h1,p,li,div */
-	/* text-indent: -500em; */
-	margin: -13px auto -13px auto;
-	height: 7em;
-	width: 8em;
-	line-height: 8em;
-	text-align: center;
-	color: #4F5D73;
-	position: relative;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-	-webkit-transition: background 0.1s ease-in-out;
-	-moz-transition: background 0.1s ease-in-out;
-	transition: background 0.1s ease-in-out;
+   display: block; /* 완전히 꽉 채우는 가로 사이즈를 갖는 요소 h1,p,li,div */
+   /* text-indent: -500em; */
+   height: 7em;
+   width: 7em;
+   line-height: 8em;
+   text-align: center;
+   color: #4F5D73;
+   position: relative;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+   -webkit-transition: background 0.1s ease-in-out;
+   -moz-transition: background 0.1s ease-in-out;
+   transition: background 0.1s ease-in-out;
 }
 
-/* .cbp-vimenu li a:hover, .cbp-vimenu li:first-child a {
-	background: #34495E;
-	color: #fff;
-} */
+.cbp-vimenu li a:hover /* .cbp-vimenu li:first-child a */ {
+   background: #34495E;
+   color: #ffffff;
+}
 
 .cbp-vimenu li a:active{
-	/* background: #34495E; */
-	color: #34495E;
+   background: #34495E;
+   color: #ffffff;
 }
 
 /* class for current item */
 .cbp-vimenu li.cbp-vicurrent a {
-	background: #34495E;
-	/* color: #47a3da; */
+   background: #34495E;
+   /* color: #47a3da; */
 }
 
 .cbp-vimenu li a:before {
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	/* 	text-indent: 2em; */
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	font-size: 2.0em;
-	-webkit-font-smoothing: antialiased;
+   speak: none;
+   font-style: normal;
+   font-weight: normal;
+   /*    text-indent: 2em; */
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   font-size: 2.0em;
+   -webkit-font-smoothing: antialiased;
 }
 
 .cbp-vimenu li a.icon-logo:before {
-	content: "MOVIEGO";
-	font-weight: 700;
-	font-size: 160%;
-	font-family: 'Lato', Calibri, Arial, sans-serif;
+   content: "MOVIEGO";
+   font-weight: 700;
+   font-size: 230%;
+   font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
+/* .icon-search:before {
+   content: "\e004";
+}
+*/
 .cbp-vimenu li a, .cbp-vimenu li a.icon-logo:before {
-	-webkit-transition: all 0.3s;
-	-moz-transition: all 0.3s;
-	transition: all 0.3s;
+   -webkit-transition: all 0.3s;
+   -moz-transition: all 0.3s;
+   transition: all 0.3s;
 }
 
 .star_rating {font-size:0; letter-spacing:-4px;}
@@ -85,27 +88,27 @@
 
 
 @media screen and (max-width: 60em) {
-	.cbp-vimenu li a {
-		height: 7em;
-		width: 10em;
-	}
-	.cbp-vimenu li a.icon-logo:before {
-		content: "MOVIEGO";
-		font-weight: 700;
-		font-size: 150%;
-		font-family: 'Lato', Calibri, Arial, sans-serif;
-	}
+   .cbp-vimenu li a {
+      height: 7em;
+      width: 10em;
+   }
+   .cbp-vimenu li a.icon-logo:before {
+      content: "MOVIEGO";
+      font-weight: 700;
+      font-size: 150%;
+      font-family: 'Lato', Calibri, Arial, sans-serif;
+   }
 }
 
 @media screen and (max-width: 32.25em) {
-	.cbp-vimenu li a {
-		height: 7em;
-		width: 8em;
-	}
-	.cbp-vimenu li a.icon-logo:before {
-		content: "MOVIEGO";
-		font-weight: 700;
-		font-size: 130%;
-		font-family: 'Lato', Calibri, Arial, sans-serif;
-	}
+   .cbp-vimenu li a {
+      height: 7em;
+      width: 8em;
+   }
+   .cbp-vimenu li a.icon-logo:before {
+      content: "MOVIEGO";
+      font-weight: 700;
+      font-size: 130%;
+      font-family: 'Lato', Calibri, Arial, sans-serif;
+   }
 }

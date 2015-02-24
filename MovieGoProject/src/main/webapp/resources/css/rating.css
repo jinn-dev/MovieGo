@@ -20,10 +20,14 @@ a.top {
   display: none;
 }
 
-.movie-table {
-        background: #F2F2F2;
+body{
+	background: #E5E5E5;
+	
+}
+
+.rating-table {
         margin: 0 auto;
-        padding: 50px;
+        padding: 5px;
 }
 
 hr{
@@ -53,10 +57,13 @@ hr{
         min-height: 100%;
         max-width: 100%;
         opacity: 0.8;
+		-moz-border-radius:10px;
+		-webkit-border-radius:10px;
+		border-radius:10px;
 }
 
 .grid figure figcaption {
-        padding: 2em;
+        padding: 1em;
         color: #fff;
         text-transform: uppercase;
         font-size: 0.625em;

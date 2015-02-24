@@ -57,7 +57,7 @@
                                 data : param,
                                 dataType : 'json',
                                  success : function(data) {
-                                	 var output = '<table class="movie-table"><tr><th>영화 평가하기</th></tr><tr>';
+                                	 var output = '<table class="rating-table"><tr><th><span class="rating-title">영화 평가하기</span></th></tr><tr>';
                                          for(var i=0; i<6; i++){
 											output+='<td><div class="grid">'+
 											'<figure class="effect-zoe">'+
@@ -164,7 +164,7 @@
 										    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
 										    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
                                          } 
-                                      /*    output+='</tr><tr>';
+                                         output+='</tr><tr>';
                                           for(i=42; i<48; i++){
                                         	 output+='<td><div class="grid">'+
  											'<figure class="effect-zoe">'+
@@ -178,7 +178,7 @@
  										    '<a href="javascript:ratingInfo(3, '+data[i].movieCode+')" class="icon" id="three"><font size="6">★<font></a>'+
  										    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
  										    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
-                                           }    */
+                                           }    
                                          output+='</tr><tr></table>';
                                          $('#movies').html(output);
                                          $("#page").val(48);
@@ -210,7 +210,7 @@
                                                 data : param,
                                                 dataType : 'json',
                                                  success : function(data) {
-                                               	  var output = '<table class="movie-table"><tr>';
+                                               	  var output = '<table class="rating-table"><tr>';
                                                      for(var i=0; i<6; i++){
             											output+='<td><div class="grid">'+
             											'<figure class="effect-zoe">'+
