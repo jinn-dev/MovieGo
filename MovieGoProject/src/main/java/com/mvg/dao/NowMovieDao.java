@@ -41,4 +41,6 @@ public interface NowMovieDao {
 	//시간 이쁘게얻어오기
 	String getMovieTimeAmPm(String movieTime);
 	
+	//예매하기 버튼 생성하기 위해 현재 상영중인 영화인지 구별하기
+	List<NowMovie> getAllDistictNowMovieCodes();
 }

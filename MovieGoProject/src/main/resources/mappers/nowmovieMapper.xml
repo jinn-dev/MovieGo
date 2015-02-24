@@ -49,5 +49,8 @@
 	<delete id="deleteNowMovie" parameterType="String">
 		delete from nowmovies where movie_code=#{movieCode}
 	</delete>
-
+	
+	<select id="getAllDistictNowMovieCodes" resultType="String">
+		select distinct movie_code from nowmovies
+	</select>
 </mapper>

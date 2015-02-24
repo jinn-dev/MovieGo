@@ -141,4 +141,11 @@ public class NowMovieDaoImpl implements NowMovieDao {
 
 	}
 
+	@Override
+	public List<NowMovie> getAllDistictNowMovieCodes() {
+		String stmt = namespace + "getAllDistictNowMovieCodes";
+		List<NowMovie> nmovies = sqlSession.selectList(stmt);
+		return nmovies;
+	}
+
 }

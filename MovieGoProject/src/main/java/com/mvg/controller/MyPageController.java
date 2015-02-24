@@ -38,7 +38,7 @@ import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({ "wishlist", "evlist", "nowmovie" })
+@SessionAttributes({ "wishlist", "evlist"})
 public class MyPageController {
 	private final static Logger logger;
 	static {
@@ -69,6 +69,7 @@ public class MyPageController {
 	// 마이페이지 첫화면
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String myPage() {
+		
 		return "mypage/mypage";
 	}
 
@@ -100,10 +101,7 @@ public class MyPageController {
 	// 위시리스트 jsp가져오기
 	@RequestMapping(value = "/wishlist", method = RequestMethod.GET)
 	public String wishlist(Model model) {
-		List<NowMovie> now = nService.getAllNMoviesService();
-
-		// 현재 상영하고 있을 시 예매하기 버튼 나타내기 위한 세션
-		model.addAttribute("nowmovie", now);
+		
 		return "mypage/wishlist";
 	}
 
@@ -126,42 +124,31 @@ public class MyPageController {
 	// 위시리스트 가져오는 에이젝스
 	@RequestMapping(value = "/wishlist.ajax", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Wishlist> wishlistAjax(HttpSession session) {
+	public HashMap<String, Object> wishlistAjax(HttpSession session) {
 		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
 		List<Wishlist> wishlist = wService.getWishlistByUserId(userId);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("wishlist", wishlist);
+		List<NowMovie> now = nService.getAllDistictNowMovieCodes();
 
-		return wishlist;
+		map.put("nowlist", now);
+		return map;
 	}
-
-	/*
-	 * @RequestMapping(value = "/rechk.ajax", method = RequestMethod.GET)
-	 * 
-	 * @ResponseBody public List<Wishlist> reChk(HttpSession session) { User
-	 * user = (User) session.getAttribute("log"); String userId =
-	 * user.getUserId(); List<Evaluation> evaluation =
-	 * eService.getEvaluationByUserId(userId); logger.trace("수업:" + evaluation);
-	 * for(int i = 0; i < evaluation.size(); i++) { String movieCode =
-	 * evaluation.get(i).getMovieCode(); List<NowMovie> nowMovie =
-	 * nService.getNMovieByMCodeService(movieCode); "y"; }
-	 * 
-	 * return wishlist; }
-	 */
 
 	// 평가리스트 가져오는 에이젝스
 	@RequestMapping(value = "/ratinglist.ajax", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Evaluation> ratinglistAjax(HttpSession session) {
+	public HashMap<String, Object> ratinglistAjax(HttpSession session) {
 		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
 		List<Evaluation> evaluation = eService.getEvaluationByUserId(userId);
-		logger.trace("수업:" + evaluation);
-		for (int i = 0; i < evaluation.size(); i++) {
-			String movieCode = evaluation.get(i).getMovieCode();
-			List<NowMovie> nowMovie = nService
-					.getNMovieByMCodeService(movieCode);
-		}
-		return evaluation;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("evaluation", evaluation);
+		List<NowMovie> now = nService.getAllDistictNowMovieCodes();
+
+		map.put("nowlist", now);
+		return map;
 	}
 
 	// 영화평가 삭제

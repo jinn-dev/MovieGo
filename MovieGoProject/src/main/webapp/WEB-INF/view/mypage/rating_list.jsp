@@ -23,23 +23,47 @@
             async : false,
             dataType : 'json',
 	    success : function(data) {
-	    var output = '<div class="list-table"><table><tr><th>포스터</th><th>영화제목</th><th>감독</th><th>개봉일자<th>장르</th><th>별점</th><th>코멘트</th><th>예매하기</th></tr>';
-	    for(var i = 0; i < data.length; i++) {	
+	    var output = '<div class="list-table"><table><tr><th>포스터</th><th>영화제목</th><th>감독</th><th>개봉일자<th>장르</th><th>별점</th><th>코멘트</th><th>예매하기</th><th>삭제하기</th></tr>';
+	    for(var i = 0; i < data.evaluation.length; i++) {	
 	   
        	output += '<tr><td class ="thumbnail">'+
-		'<img width="180" height="253" src="'+data[i].movies[0].movieImgUrl+'"/></div></td>'+
+		'<img width="180" height="253" src="'+data.evaluation[i].movies[0].movieImgUrl+'"/></div></td>'+
 		'<td width="300" height="50">'+
-		'<c:url value="/movieinfo?movieCode='+data[i].movies[0].movieCode +'" var="url"></c:url>'+
-		'<a href="${url }">'+data[i].movies[0].movieTitleKr+'</a></td>'+
-		'<td width="100">'+data[i].movies[0].movieDirector +'</td>'+
-		'<td width="100">'+data[i].movies[0].movieOpenDate +'</td>'+
-		'<td width="100">'+data[i].movies[0].movieGenre +'</td>'+
-		'<td width="100">'+data[i].evRating +'</td>'+
-		'<td width="100">'+data[i].evComment +'</td>'+
-		'<td width="100">'+
-		'<c:url value="/reserve" var="url"></c:url>'+
-		'<a href="${url }" class="icon-search">예매하기</a></td>'+
-		'<td><button onclick="deleteCheck(${wishListItem.wishId})"class="div-button">삭제</button>'+
+		'<c:url value="/movieinfo?movieCode='+data.evaluation[i].movies[0].movieCode +'" var="url"></c:url>'+
+		'<a href="${url }">'+data.evaluation[i].movies[0].movieTitleKr+'</a></td>'+
+		'<td width="120">'+data.evaluation[i].movies[0].movieDirector +'</td>'+
+		'<td width="100">'+data.evaluation[i].movies[0].movieOpenDate +'</td>'+
+		'<td width="100">'+data.evaluation[i].movies[0].movieGenre +'</td>'+
+		'<td width="100">'+data.evaluation[i].evRating +'</td>'+
+		'<td width="100">';
+		if(data.evaluation[i].evComment== null) {
+			output += '코멘트쓰기</td>';
+
+			
+		}
+		else {
+			output += data.evaluation[i].evComment +'</td>';
+		}
+		
+		output += '<td width="100">';
+		for(var j = 0; j < data.nowlist.length; j++) {
+			if(data.nowlist[j] == data.evaluation[i].movies[0].movieCode) {
+				output += '<c:url value="/reserve" var="url"></c:url>'+
+				'<a href="${url }" class="icon-search">예매하기</a></td>';
+				break;
+			}
+			else if(data.nowlist[j] != data.evaluation[i].movies[0].movieCode) {
+				if(j == data.nowlist.length - 1) {
+					output += '-</td>';
+					break;
+				}
+				else {
+					
+				}
+			}
+		}
+	
+		output += '<td width="80"><button onclick="deleteCheck(${wishListItem.wishId})"class="div-button">삭제</button>'+
 		'</td></tr>';
 		}
 		'</table>';
@@ -63,13 +87,45 @@ function deleteCheck(id) {
 		 
 		}
 	}
+jQuery(document).ready(function() {  
+    var offset = 220;  
+    var duration = 500;  
+    jQuery(window).scroll(function() {  
+        if (jQuery(this).scrollTop() > offset) {  
+            jQuery('.back_to_top').fadeIn(duration);  
+        } else {  
+            jQuery('.back_to_top').fadeOut(duration);  
+        }  
+    });  
+      
+    jQuery('.back_to_top').click(function(event) {  
+        event.preventDefault();  
+        jQuery('html, body').animate({scrollTop: 0}, duration);  
+        return false;  
+    })  
+});
 </script>
  <style type="text/css">
 	#submenu {
 		width : 30%;
 		float : right;
 	}
-
+.back_to_top{
+	position:fixed;
+	bottom:0;
+	left:50%;
+	margin-left:700px;
+	text-decoration:none;
+	color:#000000;
+	background-color:rgba(0, 0, 0, 0.80);
+	font-size:12px;
+	padding:1em;
+	display:none;
+}  
+.back_to_top:hover{
+	background-color:rgba(0, 0, 0, 0.50);
+	color:#000;
+}
 
 </style>
 <body>
@@ -77,6 +133,8 @@ function deleteCheck(id) {
 <div class="list-table">
  <div id="evlist"></div>
 </div>
+  <a href="#" class="back_to_top">Back to Top</a>
+
 <div id="submenu">
 <jsp:include page="submenu.jsp"></jsp:include>
 </div>
