@@ -232,6 +232,7 @@ h2 {
 
 .theaterMap .map .arrayNum button.reserved {
 	background: #4F5D73;
+	
 }
 
 .theaterMap .map .arrayNum button.clicked {
@@ -413,7 +414,7 @@ h2 {
 
 		for (i = 0; i < 4; i++) {
 			map.append('<div class="map clearfix"><div class="row">'
-					+ rowArray[i] + '</div><div class="arrayNum" value="'+rowArray[i]+'"></div></div>');
+					+ rowArray[i] + '</div><div class="arrayNum" id="'+rowArray[i]+'"></div></div>');
 		}
 		for (i = 1; i < 14; i++) {
 			map.find('.arrayNum').append("<button id='"+i+"' value='"+i+"'>" + i + "</button>");
@@ -443,21 +444,16 @@ h2 {
 				var s = rseatsarr[temp].seat;
 				console.log("좌석 정보 : " + s);
 				n = Math.floor(s/14);
-				//console.log(n);
 				rowchar = rowArray[n];
 				console.log("열 : "+rowchar);
 				seatNo = s-(13*n);
 				console.log("행 : "+seatNo);
 				var seatNoStr = seatNo.toString();
 				console.log("행 string : "+seatNoStr);
-				
-				/* if ((document.querySelector(".theaterMap .map .row").innerHTML == rowchar)) {
-					alert(rowchar);
-				} */
-				
-				if ((document.querySelector(".theaterMap .map .row").innerHTML == rowchar) && (document.getElementById(seatNoStr).value == seatNoStr)){
-					alert(rowchar.concat(seatNoStr));
-					$(".theaterMap .map .arrayNum[value='"+rowchar+"'] > :button[value='"+seatNoStr+"']").addClass('reserved');
+
+				if ((document.querySelector("#"+rowchar)) && (document.getElementById(seatNoStr).value == seatNoStr)){
+					$("#"+rowchar+"> :button[value='"+seatNoStr+"']").addClass('reserved');
+					$("#"+rowchar+"> :button[value='"+seatNoStr+"']").disabled = true;
 				}
 			}
 		});
@@ -588,8 +584,8 @@ h2 {
 	</script>
 	<form style="display: none;" id="postForm" method="post"
 		action="<%=request.getContextPath()%>/reserve/payment">
-		<input type="hidden" name="seatlist" /> <input type="hidden"
-			name="price" />
+		<input type="hidden" name="seatlist" />
+		<input type="hidden" name="price" />
 	</form>
 </body>
 </html>

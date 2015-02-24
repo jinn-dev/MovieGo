@@ -8,4 +8,5 @@ public interface ReservationByUserDao {
 
 	List<ReservationByUser> getAllRByUserId(String userId);
 	
+	int cancelYN(String movieTime);
 }
