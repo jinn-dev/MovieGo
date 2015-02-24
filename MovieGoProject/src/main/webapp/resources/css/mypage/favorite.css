@@ -16,6 +16,10 @@ body {
 	background: transparent;
 }
 
+table{
+	margin: -20px auto;
+}
+
 .frame {
 	width: 40%;
 	min-width: 500px;
@@ -25,9 +29,9 @@ body {
 	margin: -20px auto;
 }
 
-body .frame .content h1 {
+body .frame .content h3 {
 	margin: 0 0 10px 0;
-	text-align: center;
+	text-align: left;
 	color: white;
 	font-weight: 100;
 	text-transform: uppercase;
@@ -40,4 +44,184 @@ body .frame .content h1 {
 
 .content {
 	text-align: center;
+}
+
+/* 영화추천 */
+.movie-table {
+        background: #F2F2F2;
+        margin: 0 auto;
+        padding: 50px;
+}
+
+hr{
+        width: 20em;
+        
+}
+
+/* Common style */
+.grid figure {
+        position: relative;
+        float: left;
+        overflow: hidden;
+        /* margin: 10px 1%; */
+        margin: 10px 1%;
+        min-width: 180px;
+        max-width: 180px;
+        max-height: 253px;
+        width: 48%;
+        /* background: #3085a3; */
+        text-align: center;
+        cursor: pointer;
+}
+
+.grid figure img {
+        position: relative;
+        display: block;
+        min-height: 100%;
+        max-width: 100%;
+        opacity: 0.8;
+}
+
+.grid figure figcaption {
+        padding: 2em;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 0.625em;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+}
+
+.grid figure figcaption::before, .grid figure figcaption::after {
+        pointer-events: none;
+}
+
+.grid figure figcaption, .grid figure figcaption>a.icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+}
+
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.grid figure figcaption>a.icon {
+        z-index: 1000;
+        text-indent: 200%;
+        white-space: nowrap;
+        font-size: 0;
+        opacity: 0;
+}
+
+.grid figure h2 {
+        word-spacing: -0.15em;
+        font-weight: 0.2em;
+}
+
+.grid figure h2 span {
+        font-weight: 800;
+}
+
+.grid figure h2, .grid figure p {
+        margin: 0;
+}
+
+.grid figure p {
+        letter-spacing: 1px;
+        font-size: 68.5%;
+}
+
+/*---------------*/
+/***** Zoe *****/
+/*---------------*/
+figure.effect-zoe:hover img {
+        opacity: 0.5;
+}
+
+figure.effect-zoe figcaption {
+        top: auto;
+        bottom: 0;
+        padding: 0.5em;
+        height: 15em;
+        background: RGBA(242,242,242,0.8);
+        color: #3c4a50;
+        -webkit-transition: -webkit-transform 0.35s;
+        transition: transform 0.35s;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+}
+
+figure.effect-zoe h2 {
+        float: left;
+}
+
+figure.effect-zoe p.icon-links a {
+        margin: 0 auto;
+        /* float: right; */
+        color: #3c4a50;
+        font-size: 1.4em; /*1.4em*/
+}
+
+figure.effect-zoe:hover p.icon-links a:hover, figure.effect-zoe:hover p.icon-links a:focus
+        {
+        color: #252d31;
+}
+
+figure.effect-zoe p.description {
+        position: absolute;
+        /* bottom: 8em;
+        padding: 2em; */
+        color: #f2f2f2;
+        text-transform: none;
+        font-size: 90%;
+        opacity: 0;
+        -webkit-transition: opacity 0.35s;
+        transition: opacity 0.35s;
+        -webkit-backface-visibility: hidden;
+        /* Fix for Chrome 37.0.2062.120 (Mac) */
+}
+
+figure.effect-zoe h2, figure.effect-zoe p.icon-links a {
+        -webkit-transition: -webkit-transform 0.35s;
+        transition: transform 0.35s;
+        -webkit-transform: translate3d(0, 200%, 0);
+        transform: translate3d(0, 200%, 0);
+}
+
+figure.effect-zoe p.icon-links a span::before {
+        display: inline-block;
+        padding: 8px 10px;
+        font-family: 'feathericons';
+        speak: none;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+}
+
+figure.effect-zoe h2 {
+        display: inline-block;
+}
+
+figure.effect-zoe:hover p.description {
+        opacity: 1;
+}
+
+figure.effect-zoe:hover figcaption, figure.effect-zoe:hover h2, figure.effect-zoe:hover p.icon-links a
+        {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+}
+
+figure.effect-zoe:hover h2 {
+        -webkit-transition-delay: 0.05s;
+        transition-delay: 0.05s;
+}
+
+figure.effect-zoe:hover p.icon-links a:nth-child(3) {
+        -webkit-transition-delay: 0.1s;
+        transition-delay: 0.1s;
+}
+
+figure.effect-zoe:hover p.icon-links a:nth-child(2) {
+        -webkit-transition-delay: 0.15s;
+        transition-delay: 0.15s;
 }

@@ -3,38 +3,57 @@ package com.mvg.entity;
 public class Recommend {
 	
 	String movieGenre;
-	int genreCount;
+	String movieNation;
+	int count;
 	
 	
-	public Recommend(){};
-	
-	public Recommend(String movieGenre, int genreCount) {
+	public Recommend(){}
+
+
+	public Recommend(String movieGenre, String movieNation, int count) {
 		super();
 		this.movieGenre = movieGenre;
-		this.genreCount = genreCount;
+		this.movieNation = movieNation;
+		this.count = count;
 	}
+
 
 	public String getMovieGenre() {
 		return movieGenre;
 	}
 
+
 	public void setMovieGenre(String movieGenre) {
 		this.movieGenre = movieGenre;
 	}
 
-	public int getGenreCount() {
-		return genreCount;
+
+	public String getMovieNation() {
+		return movieNation;
 	}
 
-	public void setGenreCount(int genreCount) {
-		this.genreCount = genreCount;
+
+	public void setMovieNation(String movieNation) {
+		this.movieNation = movieNation;
 	}
+
+
+	public int getCount() {
+		return count;
+	}
+
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 
 	@Override
 	public String toString() {
-		return "Recommendation [movieGenre=" + movieGenre + ", genreCount="
-				+ genreCount + "]";
-	}
+		return "Recommend [movieGenre=" + movieGenre + ", movieNation="
+				+ movieNation + ", count=" + count + "]";
+	};
+	
 
 	
 }

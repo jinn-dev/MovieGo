@@ -14,11 +14,10 @@
 	
 	<select id="randomGetAllMovies" parameterType="INTEGER" resultType="Movie">
 		select * from (
-			select M.*, row_number() over(order by DBMS_RANDOM.VALUE) as num
+			select M.*, row_number() over(order by DBMS_RANDOM.VALUE) as NUM
 			from movies M)
-		where num between #{page}+1 and #{page}+48
+		where NUM between #{page}+1 and #{page}+48
 	</select>
-	
 	
 	<select id="getMovieByMovieCode" parameterType="String" resultType="Movie">
 		select * from movies where movie_code=#{movieCode}

@@ -4,13 +4,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.mvg.entity.Movie;
-import com.mvg.entity.Recommend;
 import com.mvg.entity.User;
 
 public interface RecommendService {
 
 	
-	List<Recommend> countGenreService(User user);
+	List<Movie> countGenreService(User user);
+	
+	List<Movie> countNationService(User user);
 	
 	int countMovieEvalService(User user);
 	
