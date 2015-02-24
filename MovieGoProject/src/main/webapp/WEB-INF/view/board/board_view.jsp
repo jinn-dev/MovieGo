@@ -126,8 +126,7 @@ $(document).ready(function() {
 					</c:if>
 					<tr>
 					<td colspan="5" align="left" height="25">
-					<input type="text" name="commentContent" class="content" 
-					value="${comments.commentContent }" style='border: 0px; font-size:1.0em;'
+					<input type="text" name="commentContent" class="content" value="${comments.commentContent }" style='border: 0px; font-size:1.0em;'
 					 readonly/>
 					</td>
 					</tr>
