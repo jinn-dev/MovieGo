@@ -30,4 +30,11 @@ public class ReservationByUserDaoImpl implements ReservationByUserDao {
 		return rlist;
 	}
 
+	@Override
+	public int cancelYN(String movieTime) {
+		String stmt = namespace + "cancelYN";
+		int result = sqlSession.selectOne(stmt, movieTime);
+		return result;
+	}
+
 }

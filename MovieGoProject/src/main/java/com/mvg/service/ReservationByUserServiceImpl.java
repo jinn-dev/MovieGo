@@ -28,4 +28,10 @@ public class ReservationByUserServiceImpl implements ReservationByUserService {
 		return rlist;
 	}
 
+	@Override
+	public int cancelYNService(String movieTime) {
+		int result = dao.cancelYN(movieTime);
+		return result;
+	}
+
 }

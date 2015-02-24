@@ -8,4 +8,6 @@ public interface ReservationByUserService {
 	
 	List<ReservationByUser> getAllRByUIdService(String userId);
 	
+	public int cancelYNService(String movieTime);
+	
 }

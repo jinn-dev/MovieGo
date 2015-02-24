@@ -2,23 +2,35 @@ package com.mvg.entity;
 
 public class ReservationByUser {
 
+	private int reservationId;
 	private String theaterName;
 	private String movieName;
 	private String reservationDate;
 	private String movieTime;
 	private int reservationPrice;
+	private String cancel;
 
 	public ReservationByUser() {
 	}
 
-	public ReservationByUser(String theaterName, String movieName,
+	public ReservationByUser(int reservationId, String theaterName, String movieName,
 			String reservationDate, String movieTime, int reservationPrice) {
 		super();
+		this.reservationId = reservationId;
 		this.theaterName = theaterName;
 		this.movieName = movieName;
 		this.reservationDate = reservationDate;
 		this.movieTime = movieTime;
 		this.reservationPrice = reservationPrice;
+		this.cancel = "n";
+	}
+
+	public int getReservationId() {
+		return reservationId;
+	}
+
+	public void setReservationId(int reservationId) {
+		this.reservationId = reservationId;
 	}
 
 	public String getTheaterName() {
@@ -61,12 +73,22 @@ public class ReservationByUser {
 		this.reservationPrice = reservationPrice;
 	}
 
+	public String getCancel() {
+		return cancel;
+	}
+
+	public void setCancel(String cancel) {
+		this.cancel = cancel;
+	}
+
 	@Override
 	public String toString() {
-		return "ReservationByUser [theaterName=" + theaterName + ", movieName="
-				+ movieName + ", reservationDate=" + reservationDate
-				+ ", movieTime=" + movieTime + ", reservationPrice="
-				+ reservationPrice + "]";
+		return "ReservationByUser [reservationId=" + reservationId
+				+ ", theaterName=" + theaterName + ", movieName=" + movieName
+				+ ", reservationDate=" + reservationDate + ", movieTime="
+				+ movieTime + ", reservationPrice=" + reservationPrice
+				+ ", cancel=" + cancel + "]";
 	}
+	
 
 }
