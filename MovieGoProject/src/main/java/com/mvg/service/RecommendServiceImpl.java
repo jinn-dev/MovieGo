@@ -30,12 +30,20 @@ public class RecommendServiceImpl implements RecommendService {
 		List<Recommend> results = dao.countGenre(user);
 		return results;
 	}
-
+	
+	@Override
+	public int countMovieEvalService(User user) {
+		int result = dao.countMovieEval(user);
+		return result;
+	}
+	
 	@Override
 	public List<Movie> rmdMovieBasedGenreService(
 			HashMap<String, Object> hashmap) {
 		List<Movie> results = dao.recommendMovieBasedGenre(hashmap);
 		return results;
 	}
+
+
 
 }

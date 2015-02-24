@@ -34,6 +34,12 @@ public class RecommendDaoImpl implements RecommendDao {
 		return results;
 	}
 
+	@Override
+	public int countMovieEval(User user) {
+		String stmt = namespace+"countMovieEvalByUserId";
+		int result = sqlSession.selectOne(stmt, user);
+		return result;
+	}
 
 	@Override
 	public List<Movie> recommendMovieBasedGenre(HashMap<String, Object> hashmap) {
@@ -41,6 +47,8 @@ public class RecommendDaoImpl implements RecommendDao {
 		List<Movie> results = sqlSession.selectList(stmt, hashmap);
 		return results;
 	}
+
+
 
 
 
