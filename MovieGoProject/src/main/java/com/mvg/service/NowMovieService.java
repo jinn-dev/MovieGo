@@ -36,5 +36,7 @@ public interface NowMovieService {
 
 	// 상영 종료 영화 삭제
 	int deleteNMovieService(String movieCode);
-
+	
+	//예매하기 버튼 생성하기 위해 현재 상여중인 영화인지 구별
+	List<NowMovie> getAllDistictNowMovieCodes();
 }

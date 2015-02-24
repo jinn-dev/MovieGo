@@ -10,7 +10,24 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
+
 <style>
+.back_to_top{
+	position:fixed;
+	bottom:0;
+	left:50%;
+	margin-left:700px;
+	text-decoration:none;
+	color:#000000;
+	background-color:rgba(0, 0, 0, 0.80);
+	font-size:12px;
+	padding:1em;
+	display:none;
+}  
+.back_to_top:hover{
+	background-color:rgba(0, 0, 0, 0.50);
+	color:#000;
+}
 </style>
 <script type="text/javascript">
         $(document).ready(function() {
@@ -309,6 +326,8 @@
                                                 }       
                                         }
                                  }); 
+                           
+         				
                      }
                  }
              }
@@ -319,7 +338,7 @@
 </head>
 <body>
  <jsp:include page="/WEB-INF/view/user/header.jsp" />
- <a href="#" class="top">Top</a>
+ <a href="#" class="back_to_top">Back to Top</a>
  <input type="hidden" var="${page }" id="page" name="page"/>
  <div id="movies"></div>
  <script>
@@ -349,6 +368,24 @@ $( ".star_rating a" ).click(function() {
 	  $(this).addClass("on").prevAll("a").addClass("on");
 	     return false;
 });
+
+jQuery(document).ready(function() {  
+    var offset = 220;  
+    var duration = 500;  
+    jQuery(window).scroll(function() {  
+        if (jQuery(this).scrollTop() > offset) {  
+            jQuery('.back_to_top').fadeIn(duration);  
+        } else {  
+            jQuery('.back_to_top').fadeOut(duration);  
+        }  
+    });  
+      
+    jQuery('.back_to_top').click(function(event) {  
+        event.preventDefault();  
+        jQuery('html, body').animate({scrollTop: 0}, duration);  
+        return false;  
+    })  
+});  
 function evcomment(m) {
 	var param="movieCode" +"="+m;
 	$.ajax({
@@ -400,5 +437,6 @@ $.ajax({
 	});	 
 }
 </script>
+
 </body>
 </html>
