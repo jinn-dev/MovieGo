@@ -163,11 +163,15 @@ public class MyPageController {
 	// 평가한영화 장르 통계
 	@RequestMapping(value = "/genre.count", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Recommend> ratingList(HttpSession session) {
+	public HashMap<String,Object> ratingList(HttpSession session) {
 		User user = (User) session.getAttribute("user");
+		int result = rService.countMovieEvalService(user);
 		List<Recommend> results = rService.countGenreService(user);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("result", result);
+		map.put("results", results);
 		logger.trace("결과"+results);
-		return results;
+		return map;
 	}
 
 	// 장르기반 영화 추천

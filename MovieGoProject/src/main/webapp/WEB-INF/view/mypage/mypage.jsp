@@ -8,14 +8,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/favorite.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	 <c:url value="/genre.rmd" var="url"/>
-	$(".genre-rmd-div").load("${url}"); 
+/* 	<c:url value="/genre.rmd" var="url"/>
+	$(".genre-rmd-div").load("${url}");  */
+	
+	
 	<c:url value="/genre.count" var="url"/>
 	$.ajax({
 		type: "POST",
@@ -24,41 +25,53 @@ $(document).ready(function() {
         async: false,
 		dataType:"json",
 		success: function(data){
-			 if(data.length>=5){ // 장르 상위 5개 보임 
+			if(data.result>=30){
 			 var sum = 0;
-			 for (var i in data){
-				 sum+=data[i].genreCount;				 
-			 }
-			 if(sum>25){ 
-			 for(var j in data){
+			 for (var i in data.results){
+				 sum+=data.results[i].genreCount;			 
+			 } 
+			 
+			  for(var j in data.results){
 				 var browserStats = [ {
-						value : data[0].genreCount/sum*100,
-						label : data[0].movieGenre,
-						color : '#3399FF'
+						value : data.results[0].genreCount/sum*100,
+						label : data.results[0].movieGenre,
+						color : '#C75C5C'
 					}, {
-						value : data[1].genreCount/sum*100,
-						label : data[1].movieGenre,
-						color : '#FFC575'
+						value : data.results[1].genreCount/sum*100,
+						label : data.results[1].movieGenre,
+						color : '#E09A5E'
 					}, {
-						value : data[2].genreCount/sum*100,
-						label : data[2].movieGenre,
-						color : '#99CC00'
+						value : data.results[2].genreCount/sum*100,
+						label : data.results[2].movieGenre,
+						color : '#4F5D73'
 					}, {
-						value : data[3].genreCount/sum*100,
-						label : data[3].movieGenre,
-						color : '#FF3300'
+						value : data.results[3].genreCount/sum*100,
+						label : data.results[3].movieGenre,
+						color : '#E0E1D2'
 					}, {
-						value : data[4].genreCount/sum*100,
-						label : data[4].movieGenre,
-						color : '#944DDB'
-					}, ];
-				 }
-			}
-			else{
-				  $('.frame').css({"background":"RGBA(242,242,242,0.8)",
-					   "text-align":"center"});
-				  $('.frame').append("최소 20개의 영화 평가를 하시면 장르 통계를 볼 수 있습니다.");
-			}
+						value : data.results[4].genreCount/sum*100,
+						label : data.results[4].movieGenre,
+						color : '#367D7D'
+					}, 
+					   {
+						value : data.results[5].genreCount/sum*100,
+						label : data.results[5].movieGenre,
+						color : '#77B3D4'
+       				}, {
+       					value : data.results[6].genreCount/sum*100,
+						label : data.results[6].movieGenre,
+						color : '#7A7A7A'
+       				}, {
+       					value : data.results[7].genreCount/sum*100,
+						label : data.results[7].movieGenre,
+						color : '#76897B'
+       				}, {
+       					value : data.results[8].genreCount/sum*100,
+						label : data.results[8].movieGenre,
+						color : '#F5CF88'
+       				}
+				  ];
+				 }  
 			 /***********************************************************
 			  * Create framework
 			  ***********************************************************/
@@ -472,12 +485,11 @@ $(document).ready(function() {
 			   $('button').attr('disabled', false);
 			 });
 
-			}
-			else{
-				$('.content').css({"background":"RGBA(242,242,242,0.8)",
-								   "text-align":"center",	
-				});
-				$('.content').append("최소 20개의 영화 평가를 하시면 장르 통계를 볼 수 있습니다.");
+		}
+		else{
+				$('.frame').css({"background":"RGBA(242,242,242,0.8)",
+								   "text-align":"center" });
+				$('.frame').append("최소 30개의 영화 평가를 하시면 장르 통계를 볼 수 있습니다.");
 			} 
 		
 		},
@@ -495,7 +507,7 @@ $(document).ready(function() {
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<div class="frame">
 		<div class="content">
-			<h1>Design Knowledge</h1>
+			<h1>선호장르 분석</h1>
 			<svg id="svg"></svg>
 		</div>
 	</div>

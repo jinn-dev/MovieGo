@@ -409,11 +409,11 @@ h2 {
 		var map = $('.mapWrap');
 
 		for (i = 0; i < 4; i++) {
-			map.append('<div class="map clearfix"><div class="row">'
+			map.append('<div class="map clearfix"><div class="row" value="'+rowArray[i]+'">'
 					+ rowArray[i] + '</div><div class="arrayNum"></div></div>');
 		}
 		for (i = 1; i < 14; i++) {
-			map.find('.arrayNum').append("<button value='"+i+"' id='"+i+"'>" + i + "</button>");
+			map.find('.arrayNum').append("<button id='"+i+"' value='"+i+"'>" + i + "</button>");
 		}
 
 		var peopleNum = $('.peopleNum button');
@@ -429,29 +429,33 @@ h2 {
 		var clickedSeat;
 		var chargeTotal;
 		var peopleTotal;
-
+		
+		var rowchar;
+		var seatNo;
+		
 		$(document).ready(function() {
-			var rseats = ${testjson	};
+			var rseats = ${reservedSeats };
 			var rseatsarr = rseats.rsvdSeats;
-			var rowchar;
-			var seatNo;
 			for ( var temp in rseatsarr) {
 				var s = rseatsarr[temp].seat;
 				console.log("좌석 정보 : " + s);
 				n = Math.floor(s/14);
+				console.log(n);
 				rowchar = rowArray[n];
+				console.log(rowchar);
 				seatNo = s-(13*n);
+				console.log(seatNo);
 				var seatNoStr = seatNo.toString();
 				console.log(seatNoStr);
+				var nStr = n.toString();
+				
+				if ((document.querySelector(".theaterMap .map .row").innerHTML == rowchar) && (document.getElementById(seatNoStr).value == seatNoStr)){
+					var name = rowchar.concat(seatNoStr);
+					alert(name);
+					($(".theaterMap .map .row[value='"+rowchar+"']")&&$(":button[value='"+seatNo+"']")).addClass('reserved');
+				}
 			}
-			/* if ((document.querySelector(".theaterMap .map .row").innerHTML == rowchar)
-					&&($(":button[value~=]").val()==seatNoStr)){
-				//$(".theaterMap .map .arrayNum button").addClass('reserved');
-				alert(rowchar);
-				alert(seatNo);
-			} */
 		});
-		
 		
 		//인원 설정
 		peopleNum.bind('click', function() {
