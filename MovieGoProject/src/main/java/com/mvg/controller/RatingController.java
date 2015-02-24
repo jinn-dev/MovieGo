@@ -89,7 +89,14 @@ public class RatingController {
 	}
 	
 	@RequestMapping(value = "/evcomment", method = RequestMethod.GET)
-	public String evComment(Model model) {
+	public String evComment(@RequestParam String movieCode, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("log");	
+		String userId = user.getUserId();
+		Evaluation evaluation = eService.selectEvaluationByMovieCode(movieCode, userId);
+
+		Movie movie = service.getMovieByMCodeService(movieCode);
+		model.addAttribute("onemovie", movie);
+		model.addAttribute("evRating", evaluation);
 		return "rating/write_comment";
 	}
 
@@ -102,10 +109,10 @@ public class RatingController {
 	
 	@RequestMapping(value = "/evcommentchk", method = RequestMethod.GET)
 	@ResponseBody
-	public int evcommentchk(Model model, @RequestParam String movieCode, HttpSession session) {
+	public Evaluation evcommentchk(Model model, @RequestParam String movieCode, HttpSession session) {
 		User user = (User) session.getAttribute("log");	
 		String userId = user.getUserId();
-		int test = eService.selectEvaluationByMovieCode(movieCode, userId);
+		Evaluation test = eService.selectEvaluationByMovieCode(movieCode, userId);
 		return test;
 	}
 	
@@ -119,9 +126,9 @@ public class RatingController {
 		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
 		
-		int test = eService.selectEvaluationByMovieCode(movieCode, userId);
+		Evaluation test = eService.selectEvaluationByMovieCode(movieCode, userId);
 		Evaluation evaluation = null;
-		if(test == 0) {
+		if(test == null) {
 			evaluation = new Evaluation(userId, movieCode, rating);
 			eService.insertEvaluation(evaluation);
 		}
@@ -131,10 +138,7 @@ public class RatingController {
 			evaluation = new Evaluation(evId, userId, movieCode, rating);
 			eService.updateRating(evaluation);
 		}
-		
-		Movie movie = service.getMovieByMCodeService(movieCode);
-		model.addAttribute("onemovie", movie);
-		model.addAttribute("evRating", evaluation);
+
 		return "rating/rating";
 	}
 	

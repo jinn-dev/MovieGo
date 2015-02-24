@@ -55,6 +55,8 @@ $(document).ready(function() {
 	$(".movieName").mouseleave(function() { 
 		$(this).css("color","#4F5D73");
 		});
+	
+
 });
 
 </script>
@@ -178,6 +180,7 @@ table{
 								src="<%=request.getContextPath()%>/vid/Despicable_Me_Trailer.mp4"
 								type='video/mp4' />
 						</video></td>
+						
 				</tr>
 			</table>
 			<table id="moviego-table">

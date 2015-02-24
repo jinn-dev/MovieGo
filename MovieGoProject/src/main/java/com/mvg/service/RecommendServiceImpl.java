@@ -21,29 +21,33 @@ public class RecommendServiceImpl implements RecommendService {
 	static {
 		logger = LoggerFactory.getLogger(UserDaoImpl.class);
 	}
-	
+
 	@Autowired
 	RecommendDao dao;
-	
+
 	@Override
-	public List<Recommend> countGenreService(User user) {
-		List<Recommend> results = dao.countGenre(user);
+	public List<Movie> countGenreService(User user) {
+		List<Movie> results = dao.countGenre(user);
 		return results;
 	}
 	
+	@Override
+	public List<Movie> countNationService(User user) {
+		List<Movie> results = dao.countNation(user);
+		return results;
+	}
+
 	@Override
 	public int countMovieEvalService(User user) {
 		int result = dao.countMovieEval(user);
 		return result;
 	}
-	
+
 	@Override
-	public List<Movie> rmdMovieBasedGenreService(
-			HashMap<String, Object> hashmap) {
+	public List<Movie> rmdMovieBasedGenreService(HashMap<String, Object> hashmap) {
 		List<Movie> results = dao.recommendMovieBasedGenre(hashmap);
 		return results;
 	}
-
 
 
 }

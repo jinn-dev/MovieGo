@@ -28,7 +28,7 @@ public interface EvaluationDao {
 	int updateEvaluation(Evaluation evaluation);
 	
 	//평가시, 중복확인 위한 것
-	int selectEvaluationByMovieCode(String movieCode, String userId);
+	Evaluation selectEvaluationByMovieCode(String movieCode, String userId);
 	
 	//별점만 수정
 	int updateRating(Evaluation evaluation);

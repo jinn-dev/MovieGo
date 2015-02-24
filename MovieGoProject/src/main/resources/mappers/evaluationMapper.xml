@@ -35,8 +35,8 @@
 	</resultMap>
 	<!-- 별점매긴 것인지 확인하기 위한것 -->
 	<select id="selectEvaluationByMovieCode" parameterType="String"
-		resultType="Integer">
-		select count(movie_code)
+		resultType="Evaluation">
+		select *
 		from evaluations
 		where movie_code=#{movieCode} and user_id=#{userId}
 	</select>

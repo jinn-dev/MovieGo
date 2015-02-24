@@ -72,13 +72,13 @@ public class EvaluationDaoImpl implements EvaluationDao {
 	}
 
 	@Override
-	public int selectEvaluationByMovieCode(String movieCode, String userId) {
+	public Evaluation selectEvaluationByMovieCode(String movieCode, String userId) {
 		
 		String stmt = namespace + "selectEvaluationByMovieCode";
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("movieCode", movieCode);
 		map.put("userId", userId);
-		int result = sqlSession.selectOne(stmt, map);
+		Evaluation result = sqlSession.selectOne(stmt, map);
 		
 		return result;
 	}
