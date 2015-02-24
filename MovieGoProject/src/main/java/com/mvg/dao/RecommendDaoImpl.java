@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mvg.entity.Movie;
-import com.mvg.entity.Recommend;
 import com.mvg.entity.User;
 
 @Repository
@@ -28,9 +27,9 @@ public class RecommendDaoImpl implements RecommendDao {
 
 	
 	@Override
-	public List<Recommend> countGenre(User user) {
+	public List<Movie> countGenre(User user) {
 		String stmt = namespace+"countGenreByUserId";
-		List<Recommend> results = sqlSession.selectList(stmt, user);
+		List<Movie> results = sqlSession.selectList(stmt, user);
 		return results;
 	}
 
@@ -42,18 +41,19 @@ public class RecommendDaoImpl implements RecommendDao {
 	}
 
 	@Override
+	public List<Movie>  countNation(User user) {
+		String stmt = namespace+"countNationByUserId";
+		List<Movie> results = sqlSession.selectList(stmt, user);
+		return results;
+	}
+	
+	@Override
 	public List<Movie> recommendMovieBasedGenre(HashMap<String, Object> hashmap) {
 		String stmt = namespace+"recommendMovieBasedOnGenre";
 		List<Movie> results = sqlSession.selectList(stmt, hashmap);
 		return results;
 	}
 
-	@Override
-	public HashMap<String, String> countNation(User user) {
-		String stmt = namespace+"countNationByUserId";
-		HashMap<String, String> results = sqlSession.selectOne(stmt, user);
-		return results;
-	}
 
 
 

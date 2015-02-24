@@ -9,6 +9,30 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
 </head>
+<script>
+$(document).ready(function(){
+	
+	<c:url value="/nation.count.do" var="url"></c:url>
+	$.ajax({
+		url:'${url}',
+		type:'POST',
+		cache : false,
+		async : false,
+		dataType : 'json',
+    success : function(data) {
+			alert(data);	    
+	},
+
+	error : function(request, status, error) {
+		if(request.status != '0') {
+			alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+		   }	
+	   }
+   });
+	
+	
+});
+</script>
 <body>
 
 </body>

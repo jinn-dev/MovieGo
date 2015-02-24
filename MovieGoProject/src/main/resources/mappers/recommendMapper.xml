@@ -13,8 +13,13 @@
 		group by m.movie_genre
 	</select>
 	
+	<resultMap type="Movie" id="CountGenreResult">
+		<result column="movie_genre" javaType="String" property="movieGenre"></result>
+		<result column="count(m.movie_genre)" javaType="INTEGER" property="count"></result>
+	</resultMap>
+	
 	<!-- 선호 국가 통계 -->
-	<select id="countNationByUserId" parameterType="User" resultType="hashmap">
+	<select id="countNationByUserId" parameterType="User" resultMap="CountNationResult">
 		select m.movie_nation, count(m.movie_nation), row_number() over(order by
 		count(m.movie_nation) DESC) 
 		from evaluations E join
@@ -23,11 +28,11 @@
 		group by m.movie_nation 
 	</select>
 
-	<resultMap type="Recommend" id="CountGenreResult">
-		<result column="movie_genre" javaType="String" property="movieGenre"></result>
-		<result column="count(m.movie_genre)" javaType="INTEGER"
-			property="genreCount"></result>
+	<resultMap type="Movie" id="CountNationResult">
+		<result column="movie_nation" javaType="String" property="movieNation"></result>
+		<result column="count(m.movie_nation)" javaType="INTEGER" property="count"></result>
 	</resultMap>
+
 
 	<!-- 평가한 영화 갯수 -->
 	<select id="countMovieEvalByUserId" parameterType="User"

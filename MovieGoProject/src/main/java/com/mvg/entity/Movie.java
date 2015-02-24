@@ -1,6 +1,5 @@
 package com.mvg.entity;
 
-
 public class Movie {
 
 	private String movieCode;
@@ -16,14 +15,16 @@ public class Movie {
 	private String movieImgUrl;
 	private String movieStory;
 	private String movieOpenDate;
-	
-	public Movie() {}
+	int count; // 장르 통계낼때 필요 ㅠㅠ
+
+	public Movie() {
+	}
 
 	public Movie(String movieCode, String movieTitleKr, String movieTitleEng,
 			String movieGenre, String movieNation, String movieDirector,
 			String movieActor1, String movieActor2, String movieActor3,
 			String movieActor4, String movieImgUrl, String movieStory,
-			String movieOpenDate) {
+			String movieOpenDate, int count) {
 		super();
 		this.movieCode = movieCode;
 		this.movieTitleKr = movieTitleKr;
@@ -38,6 +39,7 @@ public class Movie {
 		this.movieImgUrl = movieImgUrl;
 		this.movieStory = movieStory;
 		this.movieOpenDate = movieOpenDate;
+		this.count = count;
 	}
 
 	public String getMovieCode() {
@@ -144,6 +146,14 @@ public class Movie {
 		this.movieOpenDate = movieOpenDate;
 	}
 
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
 	@Override
 	public String toString() {
 		return "Movie [movieCode=" + movieCode + ", movieTitleKr="
@@ -154,7 +164,7 @@ public class Movie {
 				+ ", movieActor3=" + movieActor3 + ", movieActor4="
 				+ movieActor4 + ", movieImgUrl=" + movieImgUrl
 				+ ", movieStory=" + movieStory + ", movieOpenDate="
-				+ movieOpenDate + "]";
+				+ movieOpenDate + ", count=" + count + "]";
 	}
 
-	}
+}

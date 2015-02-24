@@ -19,8 +19,7 @@
 						$(".genre-rmd-div").load("${url}");
 						
 						<c:url value="/genre.count" var="url"/>
-						$
-								.ajax({
+						$.ajax({
 									type : "POST",
 									url : "${url}",
 									cache : false,
@@ -30,63 +29,63 @@
 										if (data.result >= 30) {
 											var sum = 0;
 											for ( var i in data.results) {
-												sum += data.results[i].genreCount;
+												sum += data.results[i].count;
 											}
 											$("#genre-header").append('선호 장르: '+data.results[0].movieGenre);
 											for ( var j in data.results) {
 												var browserStats = [
 														{
-															value : data.results[0].genreCount
+															value : data.results[0].count
 																	/ sum * 100,
-															label : data.results[0].movieGenre+'('+data.results[0].genreCount+')',
+															label : data.results[0].movieGenre+'('+data.results[0].count+')',
 															color : '#C75C5C'
 														},
 														{
-															value : data.results[1].genreCount
+															value : data.results[1].count
 																	/ sum * 100,
-															label : data.results[1].movieGenre+'('+data.results[1].genreCount+')',
+															label : data.results[1].movieGenre+'('+data.results[1].count+')',
 															color : '#E09A5E'
 														},
 														{
-															value : data.results[2].genreCount
+															value : data.results[2].count
 																	/ sum * 100,
-															label : data.results[2].movieGenre+'('+data.results[2].genreCount+')',
+															label : data.results[2].movieGenre+'('+data.results[2].count+')',
 															color : '#4F5D73'
 														},
 														{
-															value : data.results[3].genreCount
+															value : data.results[3].count
 																	/ sum * 100,
-															label : data.results[3].movieGenre+'('+data.results[3].genreCount+')',
+															label : data.results[3].movieGenre+'('+data.results[3].count+')',
 															color : '#E0E1D2'
 														},
 														{
-															value : data.results[4].genreCount
+															value : data.results[4].count
 																	/ sum * 100,
-															label : data.results[4].movieGenre+'('+data.results[4].genreCount+')',
+															label : data.results[4].movieGenre+'('+data.results[4].count+')',
 															color : '#367D7D'
 														},
 														{
-															value : data.results[5].genreCount
+															value : data.results[5].count
 																	/ sum * 100,
-															label : data.results[5].movieGenre+'('+data.results[5].genreCount+')',
+															label : data.results[5].movieGenre+'('+data.results[5].count+')',
 															color : '#77B3D4'
 														},
 														{
-															value : data.results[6].genreCount
+															value : data.results[6].count
 																	/ sum * 100,
-															label : data.results[6].movieGenre+'('+data.results[6].genreCount+')',
+															label : data.results[6].movieGenre+'('+data.results[6].count+')',
 															color : '#7A7A7A'
 														},
 														{
-															value : data.results[7].genreCount
+															value : data.results[7].count
 																	/ sum * 100,
-															label : data.results[7].movieGenre+'('+data.results[7].genreCount+')',
+															label : data.results[7].movieGenre+'('+data.results[7].count+')',
 															color : '#76897B'
 														},
 														{
-															value : data.results[8].genreCount
+															value : data.results[8].count
 																	/ sum * 100,
-															label : data.results[8].movieGenre+'('+data.results[8].genreCount+')',
+															label : data.results[8].movieGenre+'('+data.results[8].count+')',
 															color : '#F5CF88'
 														} ];
 											}

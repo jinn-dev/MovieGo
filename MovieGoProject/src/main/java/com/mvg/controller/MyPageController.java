@@ -67,7 +67,6 @@ public class MyPageController {
 	// 마이페이지 첫화면
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String myPage() {
-		
 		return "mypage/mypage";
 	}
 
@@ -96,7 +95,7 @@ public class MyPageController {
 		return "redirect:/main";
 	}
 
-	// 위시리스트 jsp가져오기
+	// 위시리스트jsp 가져오기
 	@RequestMapping(value = "/wishlist", method = RequestMethod.GET)
 	public String wishlist(Model model) {
 		

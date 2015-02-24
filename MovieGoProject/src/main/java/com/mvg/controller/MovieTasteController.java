@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mvg.entity.Movie;
-import com.mvg.entity.Recommend;
 import com.mvg.entity.User;
 import com.mvg.service.RecommendService;
 
@@ -29,25 +28,40 @@ public class MovieTasteController {
 	@Autowired
 	RecommendService service;
 
-	// 평가한영화 장르 통계
-	
+	// 선호장르 통계
 	@RequestMapping(value = "/genre.count", method = RequestMethod.POST)
 	@ResponseBody
 	public HashMap<String, Object> ratingList(HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		int result = service.countMovieEvalService(user);
-		List<Recommend> results = service.countGenreService(user);
+		List<Movie> results = service.countGenreService(user);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("result", result);
 		map.put("results", results);
+		logger.trace("결과" + results);
 		return map;
+	}
+
+	// 선호국가 통계
+	@RequestMapping(value = "/nation.count", method = RequestMethod.GET)
+	public String tasteNationRedirect() {
+		return "mypage/favorite_nations";
+	}
+	@RequestMapping(value = "/nation.count.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<Movie> tasteNation(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		List<Movie> results = service.countNationService(user);
+		logger.trace("결과" + results);
+		return results;
 	}
 
 	// 장르기반 영화 추천
 	@RequestMapping(value = "/genre.rmd", method = RequestMethod.GET)
-	public String rmdMovieBasedGenreRed() {
+	public String rmdMovieBasedGenreRedirect() {
 		return "mypage/recommend";
 	}
+
 	@RequestMapping(value = "/genre.rmd.do", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Movie> rmdMovieBasedGenre(HttpSession session,
@@ -57,14 +71,7 @@ public class MovieTasteController {
 		map.put("userId", user.getUserId());
 		map.put("page", page);
 		List<Movie> results = service.rmdMovieBasedGenreService(map);
-		logger.trace("결과" + results);
 		return results;
-	}
-
-	// 사용자별점 통계
-	@RequestMapping(value = "/star.statics", method = RequestMethod.GET)
-	public String starStatics() {
-		return "mypage/star_statics";
 	}
 
 }
