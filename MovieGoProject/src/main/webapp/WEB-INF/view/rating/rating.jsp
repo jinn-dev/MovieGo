@@ -10,27 +10,43 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
-
 <style>
 .back_to_top{
 	position:fixed;
 	bottom:0;
-	left:50%;
+	left:45%;
 	margin-left:700px;
 	text-decoration:none;
-	color:#000000;
-	background-color:rgba(0, 0, 0, 0.80);
-	font-size:12px;
+	color:#f2f2f2;
+	background-color:rgba(79, 93, 115, 0.50);
+	font-size:15px;
 	padding:1em;
 	display:none;
 }  
 .back_to_top:hover{
-	background-color:rgba(0, 0, 0, 0.50);
-	color:#000;
+	background-color:rgba(199, 92, 92, 0.50);
+	color:#f2f2f2;
 }
 </style>
 <script type="text/javascript">
         $(document).ready(function() {
+        	/* 스크롤 위로 이동 */
+        	var offset = 220;  
+            var duration = 500;  
+            $(window).scroll(function() {  
+                if ($(this).scrollTop() > offset) {  
+                    $('.back_to_top').fadeIn(duration);  
+                } else {  
+                    $('.back_to_top').fadeOut(duration);  
+                }  
+            });  
+              
+            $('.back_to_top').click(function(event) {  
+                event.preventDefault();  
+                $('html, body').animate({scrollTop: 0}, duration);  
+                return false;  
+            })  
+        	
                 <c:url value="/rating.ajax" var="url"/>
                 var param="page"+"="+0;
                 $.ajax({
@@ -41,7 +57,7 @@
                                 data : param,
                                 dataType : 'json',
                                  success : function(data) {
-                                	 var output = '<table class="movie-table"><tr><th>영화 평가하기</th></tr><tr>';
+                                	 var output = '<table class="rating-table"><tr><th><span class="rating-title">영화 평가하기</span></th></tr><tr>';
                                          for(var i=0; i<6; i++){
 											output+='<td><div class="grid">'+
 											'<figure class="effect-zoe">'+
@@ -148,7 +164,7 @@
 										    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
 										    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
                                          } 
-                                      /*    output+='</tr><tr>';
+                                         output+='</tr><tr>';
                                           for(i=42; i<48; i++){
                                         	 output+='<td><div class="grid">'+
  											'<figure class="effect-zoe">'+
@@ -162,7 +178,7 @@
  										    '<a href="javascript:ratingInfo(3, '+data[i].movieCode+')" class="icon" id="three"><font size="6">★<font></a>'+
  										    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
  										    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
-                                           }    */
+                                           }    
                                          output+='</tr><tr></table>';
                                          $('#movies').html(output);
                                          $("#page").val(48);
@@ -194,7 +210,7 @@
                                                 data : param,
                                                 dataType : 'json',
                                                  success : function(data) {
-                                               	  var output = '<table class="movie-table"><tr>';
+                                               	  var output = '<table class="rating-table"><tr>';
                                                      for(var i=0; i<6; i++){
             											output+='<td><div class="grid">'+
             											'<figure class="effect-zoe">'+
@@ -369,23 +385,6 @@ $( ".star_rating a" ).click(function() {
 	     return false;
 });
 
-jQuery(document).ready(function() {  
-    var offset = 220;  
-    var duration = 500;  
-    jQuery(window).scroll(function() {  
-        if (jQuery(this).scrollTop() > offset) {  
-            jQuery('.back_to_top').fadeIn(duration);  
-        } else {  
-            jQuery('.back_to_top').fadeOut(duration);  
-        }  
-    });  
-      
-    jQuery('.back_to_top').click(function(event) {  
-        event.preventDefault();  
-        jQuery('html, body').animate({scrollTop: 0}, duration);  
-        return false;  
-    })  
-});  
 function evcomment(m) {
 	var param="movieCode" +"="+m;
 	$.ajax({

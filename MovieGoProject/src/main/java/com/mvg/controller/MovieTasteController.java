@@ -38,7 +38,6 @@ public class MovieTasteController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("result", result);
 		map.put("results", results);
-		logger.trace("결과" + results);
 		return map;
 	}
 
@@ -52,7 +51,6 @@ public class MovieTasteController {
 	public List<Movie> tasteNation(HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		List<Movie> results = service.countNationService(user);
-		logger.trace("결과" + results);
 		return results;
 	}
 

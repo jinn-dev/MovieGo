@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page import="com.mvg.entity.User" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +14,7 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/component.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/content.css" />
-<title>메인 페이지</title>
+<title>MOVIE GO</title>
 <script src="<%=request.getContextPath ()%>/main/js/modernizr.custom.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
@@ -74,7 +72,6 @@ $(document).ready(function() {
 					}
 			}
 	});
-
 		$("#loginB").click(function() {
 			if ($("#id").val() == "") {
 				alert("아이디를 입력해주세요.");
@@ -95,7 +92,7 @@ $(document).ready(function() {
 					dataType : 'text',
 			    success : function(data) {
 			    	if(data) {
-			    		 alert("로그인 성공했습니다.");
+			    		/*  alert("로그인 성공했습니다."); */
 			    		 <c:url value="/mainlogined" var="action"></c:url>
 			    		 location.href="${action }";
 					}				   
@@ -105,7 +102,6 @@ $(document).ready(function() {
 			    	}
 
 				},
-			
 				error : function(request, status, error) {
 					if(request.status != '0') {
 						alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
@@ -141,10 +137,9 @@ $(document).ready(function() {
 						alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
 					}	
 				}
-				
 			 }); 
-	});
- 		});
+		});
+ 	});
 
 </script>
 </head>
@@ -157,7 +152,6 @@ $(document).ready(function() {
 					class="big-image" />
 			</div>
 		</div>
-
 		<!-- 로그인/회원가입 -->
 		<header>
 			<h1 class="main-title">MOVIE<font color="#C75C5C">GO</font></h1>
@@ -189,7 +183,7 @@ $(document).ready(function() {
 									<h2>Sign Up</h2>
 									<c:url value="/signup" var="action"></c:url>
 									<form:form modelAttribute="user" method="post" action="${action }" name="joinform">
-										<p><label>아이디 (영문/숫자 혼합 10자리)</label><input type="text" id="userId" name="userId" autofocus="autofocus"/></p>
+										<p><label>아이디 (영문/숫자 혼합 10자리)</label><input type="text" id="userId" name="userId"/></p>
 										<input type="button" id="idCheck" name="idCheck" value="중복확인"/>									
 										<p><label>이메일</label><input type="text" id="userEmail" name="userEmail"/></p>
 										<p><label>비밀번호 (영문/숫자 혼합 10자리)</label>

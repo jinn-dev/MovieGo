@@ -5,26 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
-<script type="text/javascript">
-function main(){
-/*  선택좌석 alert창으로 뜨는거 구현
- */	
- location.href="main_logined.jsp"       	    
-}
-function mypage(){
-	/*  선택좌석 alert창으로 뜨는거 구현
-	 */	
-	 location.href="mypage.jsp"   
-	}
+<script>
 </script>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 
 예매 완료
 
-<input type="button" onclick="main();" value="메인페이지로" />
-<input type="button" onclick="mypage();" value="My예매내역" />
+<input type="button" onclick="location.href='<%=request.getContextPath() %>/mainlogined'" value="메인페이지로" />
+<input type="button" onclick="location.href='<%=request.getContextPath() %>/myrlist'" value="MY예매내역" />
 
 </body>
 </html>

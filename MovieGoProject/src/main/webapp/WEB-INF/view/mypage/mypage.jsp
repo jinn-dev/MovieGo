@@ -12,11 +12,13 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
 <script type="text/javascript">
-	$(document)
-			.ready(
+	$(document).ready(
 					function() {
 						<c:url value="/genre.rmd" var="url"/>
 						$(".genre-rmd-div").load("${url}");
+						
+						<c:url value="/nation.count" var="url"/>
+						$(".taste-nation-div").load("${url}");
 						
 						<c:url value="/genre.count" var="url"/>
 						$.ajax({
@@ -168,8 +170,8 @@
 												Donut.prototype.drawLegend = function() {
 													var s = this.snap, o = this.opts, data = o.data;
 
-													var x = o.center.x
-															+ o.radius + 50, step = 30, radius = 6, y = o.center.y
+													var x = o.center.x // step으로 넣을 수 있는 데이터 갯수 정함
+															+ o.radius + 50, step = 20, radius = 6, y = o.center.y
 															- (data.length / 2 * step)
 															+ radius
 															/ 2
@@ -672,18 +674,17 @@
 </script>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	<table><tr><td>
+	<table class="wrap"><tr><td>
 	<div class="frame">
-		<div class="content">
-			<h3><span id="genre-header"></span></h3>
+		<div class="content"><!-- 장르 -->
+			<h3><span id="genre-header"></span></h3> 
 			<svg id="svg"></svg>
 		</div>
-	</div></td><tr><td>
-	<div class="star-rating-div">
+	</div></td><td width="500px">
+	<div class="taste-nation-div"><!-- 국가 -->
 	</div></td></tr>
 	</table>
-	
-	<div class="genre-rmd-div"></div>
+	<div class="genre-rmd-div"></div><!-- 추천 -->
 	
 	<div id="submenu">
 		<jsp:include page="submenu.jsp"></jsp:include>
