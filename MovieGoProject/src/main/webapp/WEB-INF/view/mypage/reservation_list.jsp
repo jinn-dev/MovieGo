@@ -24,7 +24,7 @@
  	var id;
 	$(document).ready(function() {
 		if ($("#cancel").val() == "n") {
-			//$(":button").hide();
+			$(":button").hide();
 		}
 	});
 	
