@@ -15,8 +15,9 @@
 .cbp-vimenu li a {
 	display: block; /* 완전히 꽉 채우는 가로 사이즈를 갖는 요소 h1,p,li,div */
 	/* text-indent: -500em; */
+	margin: -13px auto -13px auto;
 	height: 7em;
-	width: 12em;
+	width: 8em;
 	line-height: 8em;
 	text-align: center;
 	color: #4F5D73;
@@ -27,14 +28,14 @@
 	transition: background 0.1s ease-in-out;
 }
 
-.cbp-vimenu li a:hover, .cbp-vimenu li:first-child a {
+/* .cbp-vimenu li a:hover, .cbp-vimenu li:first-child a {
 	background: #34495E;
-	color: #ffffff;
-}
+	color: #fff;
+} */
 
 .cbp-vimenu li a:active{
-	background: #34495E;
-	color: #ffffff;
+	/* background: #34495E; */
+	color: #34495E;
 }
 
 /* class for current item */
@@ -60,14 +61,10 @@
 .cbp-vimenu li a.icon-logo:before {
 	content: "MOVIEGO";
 	font-weight: 700;
-	font-size: 230%;
+	font-size: 160%;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 }
 
-/* .icon-search:before {
-	content: "\e004";
-}
-*/
 .cbp-vimenu li a, .cbp-vimenu li a.icon-logo:before {
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;

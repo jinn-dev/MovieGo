@@ -23,7 +23,6 @@
 		<typeAlias type="com.mvg.entity.Wishlist" alias="Wishlist" />
 		<typeAlias type="com.mvg.entity.ReservationInfo" alias="ReservationInfo" />
 		<typeAlias type="com.mvg.entity.Evaluation" alias="Evaluation" />
-		<typeAlias type="com.mvg.entity.Recommend" alias="Recommend" />
 		<typeAlias type="com.mvg.entity.ReservationByUser" alias="ReservationByUser" />
 	</typeAliases>
 

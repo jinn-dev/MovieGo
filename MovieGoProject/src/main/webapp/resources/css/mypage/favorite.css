@@ -16,8 +16,8 @@ body {
 	background: transparent;
 }
 
-table{
-	margin: -20px auto;
+.wrap{
+	margin: 10px auto 5px auto;
 }
 
 .frame {
@@ -26,7 +26,7 @@ table{
 	border-radius: 4px;
 	background: rgba(30, 30, 30, .3);
 	padding: 20px;
-	margin: -20px auto;
+	margin: -10px auto;
 }
 
 body .frame .content h3 {
@@ -47,10 +47,9 @@ body .frame .content h3 {
 }
 
 /* 영화추천 */
-.movie-table {
-        background: #F2F2F2;
-        margin: 0 auto;
-        padding: 50px;
+.genre-rmd-content table {
+	margin: 0 auto;
+	padding: 50px;
 }
 
 hr{

@@ -12,7 +12,6 @@
 		where e.user_id = #{userId}
 		group by m.movie_genre
 	</select>
-	
 	<resultMap type="Movie" id="CountGenreResult">
 		<result column="movie_genre" javaType="String" property="movieGenre"></result>
 		<result column="count(m.movie_genre)" javaType="INTEGER" property="count"></result>
@@ -27,7 +26,6 @@
 		where e.user_id = #{userId}
 		group by m.movie_nation 
 	</select>
-
 	<resultMap type="Movie" id="CountNationResult">
 		<result column="movie_nation" javaType="String" property="movieNation"></result>
 		<result column="count(m.movie_nation)" javaType="INTEGER" property="count"></result>
