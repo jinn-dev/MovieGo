@@ -48,6 +48,13 @@ public class RecommendDaoImpl implements RecommendDao {
 		return results;
 	}
 
+	@Override
+	public HashMap<String, String> countNation(User user) {
+		String stmt = namespace+"countNationByUserId";
+		HashMap<String, String> results = sqlSession.selectOne(stmt, user);
+		return results;
+	}
+
 
 
 

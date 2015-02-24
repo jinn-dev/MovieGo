@@ -62,8 +62,6 @@ public class MyPageController {
 	@Autowired
 	EvaluationService eService;
 	@Autowired
-	RecommendService rService;
-	@Autowired
 	NowMovieService nService;
 
 	// 마이페이지 첫화면
@@ -171,38 +169,5 @@ public class MyPageController {
 		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
 		return "redirect:/ratinglist?userId=" + userId;
-	}
-
-	// 평가한영화 장르 통계
-	@RequestMapping(value = "/genre.count", method = RequestMethod.POST)
-	@ResponseBody
-	public HashMap<String,Object> ratingList(HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		int result = rService.countMovieEvalService(user);
-		List<Recommend> results = rService.countGenreService(user);
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("result", result);
-		map.put("results", results);
-		logger.trace("결과"+results);
-		return map;
-	}
-
-	// 장르기반 영화 추천
-	@RequestMapping(value = "/genre.rmd", method = RequestMethod.GET)
-	public String rmdMovieBasedGenreRed() {
-		return "mypage/recommend";
-	}
-
-	@RequestMapping(value = "/genre.rmd.do", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Movie> rmdMovieBasedGenre(HttpSession session,
-			@RequestParam int page) {
-		User user = (User) session.getAttribute("user");
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("userId", user.getUserId());
-		map.put("page", page);
-		List<Movie> results = rService.rmdMovieBasedGenreService(map);
-		logger.trace("결과" + results);
-		return results;
 	}
 }

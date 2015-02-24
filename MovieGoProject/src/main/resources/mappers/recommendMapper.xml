@@ -5,22 +5,31 @@
 <mapper namespace="com.mvg.mappers.recommendMapper">
 	<!-- 선호 장르 통계 -->
 	<select id="countGenreByUserId" parameterType="User" resultMap="CountGenreResult">
-		select m.movie_genre, count(m.movie_genre)
-		from evaluations e join
-		movies m on(e.movie_code = m.movie_code)
-		where
-		e.user_id = #{userId}
+		select m.movie_genre, count(m.movie_genre), row_number() over(order by
+		count(m.movie_genre) DESC)
+		from evaluations E join
+		movies M on(e.movie_code = m.movie_code)
+		where e.user_id = #{userId}
 		group by m.movie_genre
-		order by count(m.movie_genre) desc
 	</select>
 	
+	<!-- 선호 국가 통계 -->
+	<select id="countNationByUserId" parameterType="User" resultType="hashmap">
+		select m.movie_nation, count(m.movie_nation), row_number() over(order by
+		count(m.movie_nation) DESC) 
+		from evaluations E join
+		movies M on(e.movie_code = m.movie_code)
+		where e.user_id = #{userId}
+		group by m.movie_nation 
+	</select>
+
 	<resultMap type="Recommend" id="CountGenreResult">
 		<result column="movie_genre" javaType="String" property="movieGenre"></result>
 		<result column="count(m.movie_genre)" javaType="INTEGER"
 			property="genreCount"></result>
 	</resultMap>
 
-	<!-- 평가한 영화 갯수  -->
+	<!-- 평가한 영화 갯수 -->
 	<select id="countMovieEvalByUserId" parameterType="User"
 		resultType="INTEGER">
 		select count(*)
@@ -29,21 +38,18 @@
 	</select>
 
 	<!-- 선호장르기반 영화추천 -->
-	<select id="recommendMovieBasedOnGenre" parameterType="hashmap"
-		resultType="Movie">
-		select * from (
-		select mv.*, row_number() over(order by
-		DBMS_RANDOM.VALUE) as num
-		from movies mv)
-		where (num between #{page}+1
-		and #{page}+6) and movie_code NOT IN (select movie_code
-		from
-		evaluations
-		where user_id = #{userId}) and movie_genre = (select
-		max(m.movie_genre)
-		from evaluations e join movies m on(e.movie_code =
-		m.movie_code)
-		where e.user_id = #{userId})
+	<select id="recommendMovieBasedOnGenre" parameterType="hashmap" resultType="Movie">
+	<![CDATA[ 
+		select * from (select mv.*, row_number()
+		over(order by DBMS_RANDOM.VALUE) as NUM
+		from movies MV
+		where mv.movie_genre IN (select total.movie_genre from
+		(select m.movie_genre, count(m.movie_genre), row_number() over(order by count(m.movie_genre) DESC) 
+		from evaluations e join movies m on(e.movie_code = m.movie_code) where e.user_id =#{userId}
+		group by m.movie_genre) TOTAL 
+		where ROWNUM <=3)
+		and mv.movie_code NOT IN (select ev.movie_code from evaluations EV where ev.user_id=#{userId}))
+		where NUM between #{page}+1 and #{page}+6
+	]]> 
 	</select>
-
 </mapper>

@@ -16,44 +16,31 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/component.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/content.css" />
+<title>메인 페이지</title>
 <script src="<%=request.getContextPath ()%>/main/js/modernizr.custom.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-
 <script>
-
 /* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */ 
-
 	$(document).ready(function() {
-
-		
 		$("#signupB").click(function() {
-
 			var pwdLength = $("#userPwd").val().length;
-
 			var idLength = $("#userId").val().length;
-
 			if(idLength == 0) {
 				alert("아이디 입력해라");
 				event.preventDefault();
 			}
 	
 			for(var i = 0; i < idLength; i++) {
-
 			var c = $("#userId").val().charCodeAt(i);
 				if(!((c >= 48 && c <= 57) || (c >= 65 && c <= 90) || (c>= 97 && c <= 122))) {
 					alert("영어와 숫자로 다시 입력해주세요.");
 					event.preventDefault();
 					break;
-
 				}
-
 				  else if ($("#userPwd").val() == "") {
-
 						alert("비밀번호를 입력해주세요.");
 						event.preventDefault();
-
 						break;
-
 					}  
 
 					else if (idLength > 10) {
@@ -172,11 +159,7 @@
  		});
 
 </script>
-
-<title>메인 페이지</title>
-
 </head>
-
 <body>
 
 	<!-- 메인 배경화면 -->
