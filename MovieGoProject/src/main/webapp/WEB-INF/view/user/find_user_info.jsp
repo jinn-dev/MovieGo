@@ -26,10 +26,11 @@
 			    success : function(data) {
 			    	if(data) {
 			    		  $("#idCheckResultView").html("<b>아이디는 " + data + " 입니다.<b>"); 
-					}				   
+			    		  event.preventDefault();					}				   
 				    
 			    	else {
 			    		$("#idCheckResultView").html("<b>찾는 아이디는가 없습니다.<b>"); 
+			    		event.preventDefault();
 			    	}
 
 				},
@@ -56,9 +57,11 @@
 					    success : function(data) {
 					    	if(data) {
 						    	  $("#passwordCheckResultView").html("<b>비밀번호는" + data + " 입니다.<b>"); 
+						    	  event.preventDefault();
 							}
 					    	else {
 					    		$("#passwordCheckResultView").html("<b>찾는 비밀번호가 없습니다.<b>"); 
+					    		event.preventDefault();
 					    	}
 
 						},
@@ -90,7 +93,7 @@ body {
 						<label>이메일</label><input type="text" id="email" name="email">
 					</p>
 					<p>
-					<input type="button" id="findId" value="FIND ID"/></p>
+					<button id="findId">FIND ID</button></p>
 					<span class="style4" id="idCheckResultView"></span> 					
 	
 				</form>
@@ -107,7 +110,7 @@ body {
 							<label>이메일</label><input type="text" id="em" name="em">
 						</p>
 						<p>
-						<input type="button" id="findPassword" value="FIND PASSWORD"/></p>
+						<button id="findPassword">FIND PASSWORD</button></p>
 						<span class="style4" id="passwordCheckResultView"></span> 		
 						
 					</form>
