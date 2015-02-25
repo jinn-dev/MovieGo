@@ -16,6 +16,13 @@
 <tr></tr>
 </table>
 
+예매 완료
+가격 : ${price }
+인원 : ${peopleNum }
+극장 : ${theater }
+영화 : ${movie }
+상영시간 : ${movieTime }
+좌석 : ${seats }
 
 <input type="button" onclick="location.href='<%=request.getContextPath() %>/mainlogined'" value="메인페이지로" />
 <input type="button" onclick="location.href='<%=request.getContextPath() %>/myrlist'" value="MY예매내역" />
