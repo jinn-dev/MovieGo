@@ -24,6 +24,7 @@
 		<typeAlias type="com.mvg.entity.ReservationInfo" alias="ReservationInfo" />
 		<typeAlias type="com.mvg.entity.Evaluation" alias="Evaluation" />
 		<typeAlias type="com.mvg.entity.ReservationByUser" alias="ReservationByUser" />
+		<typeAlias type="com.mvg.entity.CancellationByUser" alias="CancellationByUser" />
 	</typeAliases>
 
 	<mappers>
@@ -41,5 +42,6 @@
 		<mapper resource="mappers/seatinfoMapper.xml" />
 		<mapper resource="mappers/reservationByUserMapper.xml" />
 		<mapper resource="mappers/cancellationMapper.xml" />
+		<mapper resource="mappers/cancellationByUserMapper.xml" />
 	</mappers>
 </configuration>

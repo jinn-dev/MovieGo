@@ -34,4 +34,10 @@ public class ReservationByUserServiceImpl implements ReservationByUserService {
 		return result;
 	}
 
+	@Override
+	public ReservationByUser getAllRByRIdService(int reservationId) {
+		ReservationByUser ru = dao.getAllRByRId(reservationId);
+		return ru;
+	}
+
 }

@@ -284,4 +284,9 @@ public class ReservationController {
 		}
 		return "reservation/reservation_complete";
 	}
+	
+	@RequestMapping(value="/complete", method=RequestMethod.GET)
+	public String completeTest() {
+		return "reservation/reservation_complete";
+	}
 }

@@ -68,7 +68,6 @@ public class MyRsvListController {
 			HttpSession session) {
 		Cancellation c = new Cancellation();
 		User user = (User) session.getAttribute("user");
-		
 		List<ReservationInfo> info = riservice.getRInfoByRIdService(rid);
 		for (int i = 0; i < info.size(); i++) {
 			c.setUserId(user.getUserId());
@@ -81,12 +80,11 @@ public class MyRsvListController {
 
 	@RequestMapping(value = "/myclist", method = RequestMethod.GET)
 	public String myCListCall(Model model, HttpSession session) {
-		/*// 번호, 영화관, 영화제목, 예매일, 상영시간, 결제금액, 예매취소
-		User user = (User) session.getAttribute("user");
+		// 번호, 영화관, 영화제목, 예매일, 상영시간, 결제금액, 예매취소
+		/*User user = (User) session.getAttribute("user");
 		String userId = user.getUserId();
 		List<Cancellation> clist = cservice.getCancelByUserIdService(userId);
 		for (int i = 0; i < clist.size(); i++) {
-			ReservationByUser ru = rlist.get(i);
 			int cancel = ruservice.cancelYNService(ru.getMovieTime());
 			if (cancel >= 1) {
 				ru.setCancel("y");

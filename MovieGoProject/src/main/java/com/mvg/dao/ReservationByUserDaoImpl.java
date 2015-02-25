@@ -37,4 +37,11 @@ public class ReservationByUserDaoImpl implements ReservationByUserDao {
 		return result;
 	}
 
+	@Override
+	public ReservationByUser getAllRByRId(int reservationId) {
+		String stmt = namespace + "getAllRByRId";
+		ReservationByUser ru = sqlSession.selectOne(stmt, reservationId);
+		return ru;
+	}
+
 }

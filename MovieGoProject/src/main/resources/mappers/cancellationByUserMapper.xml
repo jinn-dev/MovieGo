@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mvg.mappers.cancellationByUserMapper">
+
+	<select id="getCListByUserId">
+	select distinct 
+			r.reservation_id as reservation_id,
+			t.theater_name as theater_name,
+			m.movie_title_kr as movie_name,
+			r.reservation_date as reservation_date,
+			nm.movie_time as movie_time,
+			r.reservation_price as reservation_price
+	from 	movies m, theaters t, nowmovies nm,
+			seatinfo si, reservationinfo ri, reservations r
+	where 	r.reservation_id = ri.reservation_id
+			and	  ri.seat_id = si.seat_id
+			and	  si.nowmovie_id = nm.nowmovie_id
+			and	  nm.theater_id = t.theater_id
+			and   nm.movie_code = m.movie_code
+			and   r.user_id=#{userId}
+	order by r.reservation_id
+</select>
+</mapper>
