@@ -40,5 +40,6 @@
 		<mapper resource="mappers/evaluationMapper.xml" />	
 		<mapper resource="mappers/seatinfoMapper.xml" />
 		<mapper resource="mappers/reservationByUserMapper.xml" />
+		<mapper resource="mappers/cancellationMapper.xml" />
 	</mappers>
 </configuration>
