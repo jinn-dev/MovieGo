@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.mvg.entity.Evaluation;
 import com.mvg.entity.Movie;
 import com.mvg.entity.NowMovie;
-import com.mvg.entity.Recommend;
 import com.mvg.entity.User;
 import com.mvg.entity.Wishlist;
 import com.mvg.service.EvaluationService;

@@ -1,5 +1,6 @@
 package com.mvg.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvg.entity.Cancellation;
+import com.mvg.entity.CancellationByUser;
 import com.mvg.entity.ReservationByUser;
 import com.mvg.entity.ReservationInfo;
 import com.mvg.entity.User;
+import com.mvg.service.CancellationByUserService;
 import com.mvg.service.CancellationService;
 import com.mvg.service.ReservationByUserService;
 import com.mvg.service.ReservationInfoService;
@@ -41,6 +44,9 @@ public class MyRsvListController {
 
 	@Autowired
 	CancellationService cservice;
+	
+	@Autowired
+	CancellationByUserService cuservice;
 
 	@RequestMapping(value = "/myrlist", method = RequestMethod.GET)
 	public String myRListCall(Model model, HttpSession session) {
@@ -48,9 +54,18 @@ public class MyRsvListController {
 		User user = (User) session.getAttribute("user");
 		String userId = user.getUserId();
 		List<ReservationByUser> rlist = ruservice.getAllRByUIdService(userId);
+		ArrayList<ReservationInfo> info = new ArrayList<ReservationInfo>();
+		ArrayList<Integer> seats = new ArrayList<Integer>();
 		for (int i = 0; i < rlist.size(); i++) {
 			ReservationByUser ru = rlist.get(i);
 			int cancel = ruservice.cancelYNService(ru.getMovieTime());
+			int rid = ru.getReservationId();
+			info = (ArrayList<ReservationInfo>) riservice.getRInfoByRIdService(rid);
+			seats = new ArrayList<Integer>();
+			for (int j=0;j<info.size();j++) {
+				int seatid = info.get(i).getSeatId();
+				seats.add(seatid);
+			}
 			if (cancel >= 1) {
 				ru.setCancel("y");
 			} else {
@@ -58,8 +73,11 @@ public class MyRsvListController {
 			}
 			rlist.set(i, ru);
 		}
+		
+		
 		logger.trace("수업: " + rlist);
 		model.addAttribute("rlist", rlist);
+		model.addAttribute("seats", seats);
 		return "mypage/reservation_list";
 	}
 
@@ -80,21 +98,15 @@ public class MyRsvListController {
 
 	@RequestMapping(value = "/myclist", method = RequestMethod.GET)
 	public String myCListCall(Model model, HttpSession session) {
-		// 번호, 영화관, 영화제목, 예매일, 상영시간, 결제금액, 예매취소
-		/*User user = (User) session.getAttribute("user");
+		// 취소번호, 영화관, 영화제목, 상영시간, 취소일
+		User user = (User) session.getAttribute("user");
 		String userId = user.getUserId();
-		List<Cancellation> clist = cservice.getCancelByUserIdService(userId);
-		for (int i = 0; i < clist.size(); i++) {
-			int cancel = ruservice.cancelYNService(ru.getMovieTime());
-			if (cancel >= 1) {
-				ru.setCancel("y");
-			} else {
-				ru.setCancel("n");
-			}
-			rlist.set(i, ru);
-		}
-		logger.trace("수업: " + rlist);
-		model.addAttribute("rlist", rlist);*/
+		List<CancellationByUser> clist = cuservice.getCListByUIdService(userId);
+		
+		logger.trace("수업: " + clist);
+		
+		model.addAttribute("clist", clist);
+		
 		return "mypage/cancel_list";
 	}
 

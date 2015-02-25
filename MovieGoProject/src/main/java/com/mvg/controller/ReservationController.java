@@ -203,17 +203,6 @@ public class ReservationController {
 			}
 		}
 		
-		/*//reservationinfo안에 seat_id가 있는지 검사
-		//있으면 reservedSeats에 저장
-		for (int i=0;i<seatIds.size();i++) {
-			ReservationInfo rinfo = riservice.getRInfoBySeatIdService(seatIds.get(i));
-			if (rinfo != null) {
-				String name = sservice.getSeatNameService(rinfo.getSeatId());
-				reservedSeats.add(name);
-			}
-		}*/
-		
-		
 		logger.trace("수업: "+reservedSeats);
 		Iterator<Integer> iter = reservedSeats.iterator();
 		StringBuilder jsonBuilder = new StringBuilder();
@@ -265,7 +254,7 @@ public class ReservationController {
 	
 	@RequestMapping(value="/reserve/complete", method=RequestMethod.POST)
 	public String reserveComplete(@RequestParam int totalprice, @RequestParam int spoint, 
-			@RequestParam String yncoupon, @RequestParam int upoint, HttpSession session) {
+			@RequestParam String yncoupon, @RequestParam int upoint, HttpSession session, Model model) {
 		logger.trace("수업: 넘어온값: "+totalprice+", "+spoint+", "+yncoupon+", "+upoint);
 		User user = (User) session.getAttribute("user");
 		if (yncoupon.equals("used")) {
@@ -282,11 +271,15 @@ public class ReservationController {
 			rsvinfo.setSeatId(seatId);
 			riservice.insertRInfoService(rsvinfo);
 		}
+		String url = mservice.getMovieByMCodeService(mCode).getMovieImgUrl();
+		model.addAttribute("price", totalprice);
+		model.addAttribute("peopleNum", peopleNum);
+		model.addAttribute("theater", thName);
+		model.addAttribute("movie", mName);
+		model.addAttribute("movieTime", mTimeampm);
+		model.addAttribute("seats", seats);
+		model.addAttribute("imgurl", url);
 		return "reservation/reservation_complete";
 	}
 	
-	@RequestMapping(value="/complete", method=RequestMethod.GET)
-	public String completeTest() {
-		return "reservation/reservation_complete";
-	}
 }

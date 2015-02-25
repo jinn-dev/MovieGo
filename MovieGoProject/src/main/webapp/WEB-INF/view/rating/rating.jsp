@@ -60,7 +60,7 @@
                                 data : param,
                                 dataType : 'json',
                                  success : function(data) {
-                                	 var output = '<table class="rating-table"><tr><th><span class="rating-title">영화 평가하기</span></th></tr><tr>';
+                                	 var output = '<table class="rating-table"><tr><th colspan="6" align="center"><img id="headerimg" width="500" height="112" src="<%=request.getContextPath() %>/img/rating.png"/></th></tr><tr>';
                                          for(var i=0; i<6; i++){
 											output+='<td><div class="grid">'+
 											'<figure class="effect-zoe">'+

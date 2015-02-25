@@ -26,7 +26,7 @@
             async : false,
             dataType : 'json',
 	    success : function(data) {
-	    var output = '<div class="list-table"><table><tr><th>포스터</th><th>영화제목</th><th>감독</th><th>개봉일자<th>장르</th><th>예매하기</th><th>삭제하기</th></tr>';
+	    var output = '<div class="list-table"><table><tr><td colspan="7" style="background:white;"><img id="tasteimg" width="350" height="130" src="<%=request.getContextPath() %>/img/wishlist.png"/></td></tr><tr><th>포스터</th><th>영화제목</th><th>감독</th><th>개봉일자<th>장르</th><th>예매하기</th><th>삭제하기</th></tr>';
 	    for(var i = 0; i < data.wishlist.length; i++) {	
        	output += '<tr><td class ="thumbnail">'+
 		'<img width="180" height="253" src="'+data.wishlist[i].movies[0].movieImgUrl+'"/></div></td>'+
@@ -134,6 +134,8 @@ jQuery(document).ready(function() {
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 
+
+ <a href="#" class="back_to_top">Back to Top</a>
  <div id="movies"></div>
 
 <jsp:include page="submenu.jsp"></jsp:include>

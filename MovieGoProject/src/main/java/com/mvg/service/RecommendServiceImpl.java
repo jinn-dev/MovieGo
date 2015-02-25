@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.mvg.dao.RecommendDao;
 import com.mvg.dao.UserDaoImpl;
 import com.mvg.entity.Movie;
-import com.mvg.entity.Recommend;
 import com.mvg.entity.User;
 
 @Service

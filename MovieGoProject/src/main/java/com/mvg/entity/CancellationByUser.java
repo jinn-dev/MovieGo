@@ -6,20 +6,18 @@ public class CancellationByUser {
 	private String movieName;
 	private String movieTime;
 	private String cancelDate;
-	private String cancelPrice;
 
 	public CancellationByUser() {
 
 	}
 
 	public CancellationByUser(String theaterName, String movieName,
-			String movieTime, String cancelDate, String cancelPrice) {
+			String movieTime, String cancelDate) {
 		super();
 		this.theaterName = theaterName;
 		this.movieName = movieName;
 		this.movieTime = movieTime;
 		this.cancelDate = cancelDate;
-		this.cancelPrice = cancelPrice;
 	}
 
 	public String getTheaterName() {
@@ -54,20 +52,11 @@ public class CancellationByUser {
 		this.cancelDate = cancelDate;
 	}
 
-	public String getCancelPrice() {
-		return cancelPrice;
-	}
-
-	public void setCancelPrice(String cancelPrice) {
-		this.cancelPrice = cancelPrice;
-	}
-
 	@Override
 	public String toString() {
 		return "CancellationByUser [theaterName=" + theaterName
 				+ ", movieName=" + movieName + ", movieTime=" + movieTime
-				+ ", cancelDate=" + cancelDate + ", cancelPrice=" + cancelPrice
-				+ "]";
+				+ ", cancelDate=" + cancelDate + "]";
 	}
 
 }

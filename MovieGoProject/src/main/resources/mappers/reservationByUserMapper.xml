@@ -11,7 +11,7 @@
 			m.movie_title_kr as movie_name,
 			r.reservation_date as reservation_date,
 			nm.movie_time as movie_time,
-			r.reservation_price as reservation_price
+			r.reservation_price as reservation_price, ri.seat_id
 	from 	movies m, theaters t, nowmovies nm,
 			seatinfo si, reservationinfo ri, reservations r
 	where 	r.reservation_id = ri.reservation_id
