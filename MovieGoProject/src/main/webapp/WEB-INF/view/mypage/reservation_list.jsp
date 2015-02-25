@@ -18,7 +18,10 @@
 	margin: 0 auto;
 
 }
-
+/* 
+table:first-child{
+background: rgba(201, 00, 00, 0.1);
+} */
 
 .reserv-table {
 	margin: 0 auto;
@@ -69,9 +72,10 @@
 
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+	<center><img width="350" src="<%=request.getContextPath() %>/img/myreserve.png"/></center>
 		<c:forEach items="${rlist }" var="reservation" varStatus="status">
 		<div class="reserve-wrap">
-		<table class="reserv-table">
+	<table class="reserv-table">
 		<tr><td colspan="6">No.${status.index+1 }<hr></td></tr>
 		<tr><td colspan="2" rowspan="7"><div id="img"></div></td></tr>
 		<tr><th>영화</th><td><c:out value="${reservation.movieName }"/></td>
@@ -82,10 +86,11 @@
 		<tr><td colspan="5" align="right"><hr><input type="hidden" id="cancel" value="${reservation.cancel }" />
 		<input type="button" onclick="javascript:deleteRsv(${reservation.reservationId });" value="예매취소" class="div-button"/></td></tr>
 		</table>
+		</div>		
 		<c:if test="${status.index+1/2==0 }">
 		<br>
 		</c:if>
-		</div>
+		
 		</c:forEach>
 		
 	<form style="display: none;" id="postForm" method="post" action="<%=request.getContextPath()%>/cancelConfirm">

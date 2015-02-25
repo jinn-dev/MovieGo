@@ -87,28 +87,18 @@ function completeReserv() {
 
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
-<<<<<<< HEAD
-${user.userId }
+<%-- ${user.userId } --%>
 <table class ="table1" >
 <tr><td align="center" colspan="4">
 <img width="500" height="112" src="<%=request.getContextPath() %>/img/payment.png"/>
 </td></tr>
-=======
-<<<<<<< HEAD
-<div class="img"><img width="500" height="112" src="<%=request.getContextPath() %>/img/payment.png"/></div>
-
-<div class="rsvInfo">
-<div class="h">
-<h2>${user.userId }님의 예매정보</h2></div>
-<table border=0 class ="table1">
->>>>>>> branch 'master' of https://github.com/kjeun/MovieGo.git
 <tr><th width="70px" background= "#c9c9c9">가격</th><th width="100px">좌석</th><th width="700px">예매정보</th><th width="50px">인원</th></tr>
 <tr><td>${price }</td>
 <td>${seats }</td>
 <td>${rinfo }</td>
 <td>${peopleNum }</td></tr>
 </table>
-
+<br>
 
 <table class="table2">
 <tr><th colspan=2 width="930px">할인수단</th></tr>
