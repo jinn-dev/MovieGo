@@ -91,8 +91,8 @@ function completeReserv() {
 
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
-<center>
-<h1>결제하기</h1></center>
+<div class="img"><img width="500" height="112" src="<%=request.getContextPath() %>/img/payment.png"/></div>
+
 <div class="rsvInfo">
 <div class="h">
 <h2>${user.userId }님의 예매정보</h2></div>
