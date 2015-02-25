@@ -10,7 +10,11 @@
 <script>
 </script>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+<jsp:include page="/WEB-INF/view/user/header.jsp" />
+
+<table>
+<tr></tr>
+</table>
 
 예매 완료
 가격 : ${price }
