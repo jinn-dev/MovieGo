@@ -34,7 +34,6 @@
 												sum += data.results[i].count;
 											}
 											$("#genre-header").append('선호 장르: '+data.results[0].movieGenre+'<br>');
-											$("#genre-header").append('눈물주루룩');
 											for ( var j in data.results) {
 												var browserStats = [
 														{
