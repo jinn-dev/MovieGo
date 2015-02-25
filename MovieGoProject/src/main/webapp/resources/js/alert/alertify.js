@@ -91,8 +91,8 @@
 			 * @type {Object}
 			 */
 			labels : {
-				ok     : "OK",
-				cancel : "Cancel"
+				ok     : "네",
+				cancel : "아니오"
 			},
 
 			/**

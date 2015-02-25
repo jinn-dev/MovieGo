@@ -52,7 +52,7 @@
 		group by m.movie_genre) TOTAL 
 		where ROWNUM <=3)
 		and mv.movie_code NOT IN (select ev.movie_code from evaluations EV where ev.user_id=#{userId}))
-		where NUM between #{page}+1 and #{page}+6
+		where NUM between #{page}+1 and #{page}+12
 	]]> 
 	</select>
 </mapper>

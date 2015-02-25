@@ -146,7 +146,9 @@ table{
 		<img id="thumbnail" src="#" width="213" height="301">
 			<table align="right">
 				<tr>
-					<th colspan="6" class="table-th">BOX OFFICE</th>
+					<th colspan="6">
+					<img id="tasteimg" src="<%=request.getContextPath() %>/img/boxoffice.png"/>
+					</th>
 				</tr>
 				<tr>
 					<td></td>
@@ -183,14 +185,14 @@ table{
 						
 				</tr>
 			</table>
-			<table id="moviego-table">
+			<!-- <table id="moviego-table">
 				<tr><th colspan="2" class="table-th">무비고 내 영화 예매 순위</th></tr>
 				<tr><td>1</td><td></td></tr>
 				<tr><td>2</td><td></td></tr>
 				<tr><td>3</td><td></td></tr>
 				<tr><td>4</td><td></td></tr>
 				<tr><td>5</td><td></td></tr>
-			</table>
+			</table> -->
 		</div>
 	</section>
 <script>
