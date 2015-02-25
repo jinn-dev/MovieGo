@@ -17,6 +17,7 @@
 <title>MOVIE GO</title>
 <script src="<%=request.getContextPath ()%>/main/js/modernizr.custom.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
 <script>
 $(document).ready(function() {
 		/* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */ 
@@ -143,6 +144,7 @@ $(document).ready(function() {
  	});
 
 </script>
+
 </head>
 <body>
 
@@ -185,7 +187,7 @@ $(document).ready(function() {
 									<c:url value="/signup" var="action"></c:url>
 									<form:form modelAttribute="user" method="post" action="${action }" name="joinform">
 										<p><label>아이디 (영문/숫자 혼합 10자리)</label><input type="text" id="userId" name="userId"/></p>
-										<input type="button" id="idCheck" name="idCheck" value="중복확인"/>									
+										<input type="button" id="idCheck" name="idCheck" class="btn" value="중복확인"/>									
 										<p><label>이메일</label><input type="text" id="userEmail" name="userEmail"/></p>
 										<p><label>비밀번호 (영문/숫자 혼합 10자리)</label>
 										<input type="password" id="userPwd" name="userPwd" /></p>
