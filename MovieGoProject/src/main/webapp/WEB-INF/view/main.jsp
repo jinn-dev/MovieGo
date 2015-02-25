@@ -24,7 +24,7 @@ $(document).ready(function() {
 			var pwdLength = $("#userPwd").val().length;
 			var idLength = $("#userId").val().length;
 			if(idLength == 0) {
-				alert("아이디를 입력해주세요.");
+				alertify.alert("아이디를 입력해주세요.");
 				event.preventDefault();
 			}
 			for(var i = 0; i < idLength; i++) {

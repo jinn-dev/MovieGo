@@ -10,28 +10,43 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <script>
 $(document).ready(function() {
-	$("#board_delete").click(function(){
-		var result = window.confirm("글을 삭제하시겠습니까?")
-		if(result){
-			<c:url value="/board/delete" var="url"></c:url>
-			location.href="${url}?boardId=${detail.boardId }";
-		}
+	$("#board_delete").click(function(){		
+		alertify.confirm("글을 삭제하시겠습니까?", function (result) {
+			if(result) {
+				<c:url value="/board/delete" var="url"></c:url>
+				location.href="${url}?boardId=${detail.boardId }";
+			 
+			}else {
+
+	        }
+	    });
+	    return false;
+	    
 	});
 	
 	$("#comment_submit").click(function(){
 		if($("#commentContentInput").val()==""){
-			alert("코멘트 내용을 입력해주세요.");
+			alertify.alert("코멘트 내용을 입력해주세요.");
 			event.preventDefault();
 		}
 	});
 	$("#comment_delete").click(function(){
-		var result = window.confirm("코멘트를 삭제하시겠습니까?");
-		if(result){
-			<c:url value="/comment/drop" var="url"></c:url>
-			location.href="${url}?commentId="+$("#comment_id").val();
-		}
+		alertify.confirm("코멘트를 삭제하시겠습니까?", function (result) {
+			if(result) {
+				<c:url value="/comment/drop" var="url"></c:url>
+				location.href="${url}?commentId="+$("#comment_id").val();
+			 
+			}else {
+
+	        }
+	    });
+	    return false;
+	    
 	});   
 	
 	$(".content").click(function(){

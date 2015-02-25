@@ -1,0 +1,75 @@
+@CHARSET "EUC-KR";
+
+@import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
+
+* {
+	font-family: '³ª´®°íµñ';
+}
+
+.rsvInfo {
+	padding-left: 600px;
+	padding-bottom: 30px; 
+	margin: 0 auto;
+	width: 2000px;
+	height: 100%;
+	
+}
+
+.h {
+	color: #4F5D73;
+}
+.discount {
+	padding-left: 600px; 
+	padding-bottom: 50px;
+	margin: 0 auto;
+	width: 2000px;
+	height: 100%;
+}
+
+.payment {
+	padding-left: 900px; 
+	margin: 0 auto;
+	width: 2000px;
+	height: 100%;
+}
+
+.payment label {
+	display: inline-block;
+	width: 150px;
+	padding: 5px;
+}
+
+.but {
+	padding-left: 980px; 
+	margin: 0 auto;
+	width: 2000px;
+	height: 100%;
+}
+
+.table1 th {
+	background: #4F5D73;
+	text-align: center;
+	color: #ffffff;
+}
+
+.table1 td {
+
+	text-align: center;
+
+}
+
+.table2 th {
+	background: #4F5D73;
+	text-align: center;
+	color: #ffffff;
+}
+
+.table2 td {
+	width: 550px;
+	text-align: center;
+
+}
+.btn {
+	background: #C75C5C;
+	color: #F2F2F2;
+}

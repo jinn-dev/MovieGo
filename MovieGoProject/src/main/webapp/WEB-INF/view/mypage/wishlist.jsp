@@ -4,17 +4,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+ <p>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.labelinplace.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/wishlist.css" />
-<title>Insert title here</title>
-</head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <script type="text/javascript">
  $(document).ready(function() {
+
 	<c:url value="/wishlist.ajax" var="url"/>
 	$.ajax({
 		url:'${url}',
@@ -69,14 +72,20 @@
 		}
 	});
 	
+	
 });  
 
 function deleteCheck(id) {
-	 if(confirm("위시리스트를 삭제하시겠습니까??")) {
+	alertify.confirm("위시리스트를 삭제하시겠습니까??", function (e) {
+		if(e) {
 		 location.href="<%=request.getContextPath()%>/deletewishlist?wishId="+id;
 		 
-		}
-	}
+		}else {
+
+        }
+    });
+    return false;
+}
 jQuery(document).ready(function() {  
     var offset = 220;  
     var duration = 500;  
@@ -93,8 +102,11 @@ jQuery(document).ready(function() {
         jQuery('html, body').animate({scrollTop: 0}, duration);  
         return false;  
     })  
+    
+    
 });
 </script>
+
  <style type="text/css">
 	#submenu {
 		width : 30%;
@@ -118,14 +130,14 @@ jQuery(document).ready(function() {
 	color:#000;
 }
 </style>
+</head>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	
-  <a href="#" class="back_to_top">Back to Top</a>
- 
+
  <div id="movies"></div>
- <div id="submenu">
+
 <jsp:include page="submenu.jsp"></jsp:include>
-</div>
+
 </body>
-</html>
+
+</p>

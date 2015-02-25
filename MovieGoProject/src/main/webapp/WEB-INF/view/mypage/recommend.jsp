@@ -9,6 +9,9 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -61,7 +64,7 @@ $(document).ready(function() {
  	var mov = m.toString();
  	var str = s + mov;
  	
- 	alert(s + "점추가되었습니다.");
+	 alertify.alert(s + "점추가되었습니다.");
  	 flag = "y"; 
  	var code;
  	 var xhr = new XMLHttpRequest();
@@ -111,7 +114,7 @@ function evcomment(m) {
 			dataType : 'text',
 	    	success : function(data) {
 	    	if(data == 0) {
-	    		 alert("별점을 먼저 선택하세요.");
+	    		alertify.alert("별점을 먼저 선택하세요.");
 			}				   
 	    	else {
 	    		<c:url value="/evcomment" var="url"></c:url>
@@ -136,11 +139,11 @@ $.ajax({
 			dataType : 'text',
 	    success : function(data) {
 	    	if(data == 0) {
-	    		 alert("위시리스트 추가되었습니다.");
+	    		alertify.alert("위시리스트 추가되었습니다.");
 			}				   
 		    
 	    	else {
-	    		alert("위시리스트 이미 포함되어 있습니다.");
+	    		alertify.alert("위시리스트 이미 포함되어 있습니다.");
 	    	}
 		},
 		error : function(request, status, error) {

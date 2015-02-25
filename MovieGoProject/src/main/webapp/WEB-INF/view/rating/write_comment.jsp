@@ -7,6 +7,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <title>코멘트쓰기</title>
 </head>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
@@ -22,7 +25,7 @@
 		});
 		
 		$("#add").click(function() {
-		alert("코멘트가 추가되었습니다.");
+		alertify.alert("코멘트가 추가되었습니다.");
 		});
 	});
 </script>
