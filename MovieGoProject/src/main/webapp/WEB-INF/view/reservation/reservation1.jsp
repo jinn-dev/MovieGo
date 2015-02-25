@@ -11,8 +11,9 @@
 <title>Insert title here</title>
 <style>
 .reserve-table {
-	width:800px;
-	margin: 0 auto;
+	width:1000px;
+	margin: -60px auto auto auto;
+	border: 1px;
 }
 
 .reserve-table th {

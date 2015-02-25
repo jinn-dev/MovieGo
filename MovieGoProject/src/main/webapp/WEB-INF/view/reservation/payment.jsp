@@ -87,31 +87,24 @@ function completeReserv() {
 
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
-<div class="rsvInfo">
-<div class="h">
-<h2>${user.userId }님의 예매정보</h2></div>
-<table border=0 class ="table1">
+${user.userId }
+<table class ="table1" >
+<tr><td align="center" colspan="4">
+<img width="500" height="112" src="<%=request.getContextPath() %>/img/payment.png"/>
+</td></tr>
 <tr><th width="70px" background= "#c9c9c9">가격</th><th width="100px">좌석</th><th width="700px">예매정보</th><th width="50px">인원</th></tr>
 <tr><td>${price }</td>
 <td>${seats }</td>
 <td>${rinfo }</td>
 <td>${peopleNum }</td></tr>
 </table>
-</div>
 
-<%-- <div class="discount">
-<table border=0 class ="table2">
-<tr><th colspan=2>할인수단</th></tr>
-<tr><th>포인트</th><td><input type="text" id="inputPoint"/>점 / ${user.userPoint }점 사용가능
-<input type="button" id="usePoint" class="btn" value="사용" onclick="javascript:usePoint();" />
-<input type="button" id="cancelPoint" class="btn" value="사용취소" onclick="javascript:cancelPoint();" /><br> --%>
 
-<div class="discount">
-<table border=0 class="table2">
+<table class="table2">
 <tr><th colspan=2 width="930px">할인수단</th></tr>
 <tr><th width="130px">포인트</th><td><input type="text" id="inputPoint"/>점 / <input type="text" id="userPoint" value="${user.userPoint }" disabled="disabled"/>점 사용가능
-<input type="button" id="usePoint" value="사용" class="btn" onclick="javascript:usePoint();" />
-<input type="button" id="cancelPoint" value="사용취소" class="btn" onclick="javascript:cancelPoint();" /><br>
+<input type="button" id="usePoint" value="사용" class="div-button" onclick="javascript:usePoint();" />
+<input type="button" id="cancelPoint" value="사용취소" class="div-button" onclick="javascript:cancelPoint();" /><br>
 포인트를 10점 단위로 입력해주세요.</td></tr>
 <tr><th>쿠폰</th><td>
 <%
@@ -130,27 +123,34 @@ function completeReserv() {
 %>
 </td></tr>
 </table>
-</div>
-
-<div class="payment">
-<label>결제 금액</label>		 <input type="text" id="price" value="${price }" disabled="disabled" style="text-align: right;" />원<br>
-<label>포인트 할인 금액</label> <input type="text" id="minusPoint" value="0" disabled="disabled" style="text-align: right;"/>원<br>
-<label>쿠폰 할인 금액</label>   <input type="text" id="minusCoupon" value="0" disabled="disabled" style="text-align: right;"/>원<br>
--------------------------------------------------<br>
-<label>총 결제금액</label> 	 <input type="text" id="total" value="${price }" disabled="disabled" style="text-align: right;"/>원<br>
-<label>포인트적립</label>		 <input type="text" id="savePoint" value="0" disabled="disabled" style="text-align: right;"/>점<br>
-</div>
-
-<div class="but">
-<input type="button" id="toReserve" class="btn" onclick="location.href='<%=request.getContextPath() %>/reserve'" value="예매 다시하기" />
-<input type="button" id="complete" class="btn" onclick="javascript:completeReserv()" value="예매 완료"/>
-</div>
+<br><br>
+<table class="table3">
+<tr><td>
+<label>결제 금액</label>
+<input type="text" id="price" value="${price }" disabled="disabled" style="text-align: right;" />원</td></tr>
+<tr><td>
+<label>포인트 할인 금액</label>
+<input type="text" id="minusPoint" value="0" disabled="disabled" style="text-align: right;"/>원</td></tr>
+<tr><td>
+<label>쿠폰 할인 금액</label>   
+<input type="text" id="minusCoupon" value="0" disabled="disabled" style="text-align: right;"/>원</td></tr>
+<tr><td>
+-------------------------------------------------</td></tr>
+<tr><td>
+<label>총 결제금액</label>
+<input type="text" id="total" value="${price }" disabled="disabled" style="text-align: right;"/>원</td></tr>
+<tr><td>
+<label>포인트적립</label>
+<input type="text" id="savePoint" value="0" disabled="disabled" style="text-align: right;"/>점</td></tr>
+<tr><td>
+<input type="button" id="toReserve" class="div-button" onclick="location.href='<%=request.getContextPath() %>/reserve'" value="예매 다시하기" />
+<input type="button" id="complete" class="div-button" onclick="javascript:completeReserv()" value="예매 완료"/>
 <form style="display: none;" id="postForm" method="post" action="<%=request.getContextPath()%>/reserve/complete">
 	<input type="hidden" name="totalprice"/>
 	<input type="hidden" name="spoint"/>
 	<input type="hidden" name="yncoupon" />
 	<input type="hidden" name="upoint" />
 </form>
-
-</body>
+</td></tr>
+</table>
 </html>

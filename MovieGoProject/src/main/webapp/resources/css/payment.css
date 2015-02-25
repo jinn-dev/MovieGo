@@ -6,41 +6,37 @@
 	font-family: '³ª´®°íµñ';
 }
 
-.rsvInfo {
-	padding-left: 600px;
-	padding-bottom: 30px; 
+.table1 {
+	margin: -60px auto auto auto;
+	width: 1000px;
+	/* table-layout: fixed; */
+}
+
+.table2 {
 	margin: 0 auto;
-	width: 2000px;
-	height: 100%;
-	
+	width: 1000px;
+	/* table-layout: fixed; */
+}
+
+.table3{
+	margin: 0 auto;
+	width: 1000px;
+	table-layout: fixed;
+	text-align: center;
 }
 
 .h {
 	color: #4F5D73;
 }
-.discount {
-	padding-left: 600px; 
-	padding-bottom: 50px;
-	margin: 0 auto;
-	width: 2000px;
-	height: 100%;
-}
 
-.payment {
-	padding-left: 900px; 
-	margin: 0 auto;
-	width: 2000px;
-	height: 100%;
-}
 
-.payment label {
+label {
 	display: inline-block;
 	width: 150px;
 	padding: 5px;
 }
 
 .but {
-	padding-left: 980px; 
 	margin: 0 auto;
 	width: 2000px;
 	height: 100%;
@@ -53,9 +49,7 @@
 }
 
 .table1 td {
-
 	text-align: center;
-
 }
 
 .table2 th {
@@ -67,9 +61,13 @@
 .table2 td {
 	width: 550px;
 	text-align: center;
-
 }
-.btn {
+
+.div-button {
 	background: #C75C5C;
 	color: #F2F2F2;
+	border: none;
+	letter-spacing: 1px;
+	padding: 0.5em;
+	outline: none;
 }

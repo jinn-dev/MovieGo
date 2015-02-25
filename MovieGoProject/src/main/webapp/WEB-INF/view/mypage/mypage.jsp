@@ -683,7 +683,7 @@
 		</div>
 	</div></td><td width="500px">
 	<div class="frame-nation">
-	<img id="tasteimg" width="350" height="130" src="<%=request.getContextPath() %>/img/taste.png"/>
+	<img width="350" src="<%=request.getContextPath() %>/img/taste.png"/>
 	<div class="taste-nation-div"><!-- 국가 -->
 	</div></div></td></tr>
 	</table>

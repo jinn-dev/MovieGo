@@ -140,8 +140,8 @@ function deleteCheck(id) {
 <body>
  <jsp:include page="/WEB-INF/view/user/header.jsp" />
 
-
-
+<center>
+<img id="tasteimg" width="400" height="96" src="<%=request.getContextPath() %>/img/movierating.png"/></center>
 <div class="list-table">
 <div id="evlist"></div></div>
 
