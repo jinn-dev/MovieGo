@@ -122,7 +122,7 @@
  function evc(m) {
     var param2="?movieCode" +"="+m;
       <c:url value="/evcomment" var="url"></c:url>
-      window.open('${url}'+param2,'_blank', "width=800, height=300, toolbar=no, menubar=no, resizable=no");
+      window.open('${url}'+param2,'_blank', "width=460, height=180, left=700, top=450, toolbar=no, menubar=no, resizable=no");
 }
  
 function deleteCheck(id) {
