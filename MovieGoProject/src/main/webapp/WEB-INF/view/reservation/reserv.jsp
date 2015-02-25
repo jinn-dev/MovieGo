@@ -548,10 +548,10 @@ h2 {
 			chargeTotal = $('.charge input').val();
 			peopleTotal = $('.map .arrayNum button.clicked').length;
 			if ($('.peopleNum li').eq(0).hasClass('selected')) {
-				alert('인원은 최소 1명이상 선택해야 합니다.');
+				alertify.alert('인원은 최소 1명이상 선택해야 합니다.');
 				return;
 			} else if (peopleTotal != $('.peopleNum li.selected').index()) {
-				alert('좌석이 모두 선택되지 않았습니다.');
+				alertify.alert('좌석이 모두 선택되지 않았습니다.');
 				$('.peopleNum li.selected').focus();
 			} else {
 				$('.result').show();
