@@ -6,6 +6,7 @@
 
 	<select id="getCListByUserId" parameterType="String" resultType="CancellationByUser">
 	select  distinct
+			c.cancel_id as cancel_id,
 			t.theater_name as theater_name,
 			m.movie_title_kr as movie_name,
 			nm.movie_time as movie_time,
@@ -16,7 +17,7 @@
 		and si.nowmovie_id = nm.nowmovie_id
 		and nm.theater_id = t.theater_id
 		and nm.movie_code = m.movie_code
-		and c.user_id='a'
+		and c.user_id=#{userId}
 	order by c.cancel_date
 	</select>
 

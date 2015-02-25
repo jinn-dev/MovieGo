@@ -1,25 +1,33 @@
 package com.mvg.entity;
 
 public class CancellationByUser {
-
+	
+	private int cancelId;
 	private String theaterName;
 	private String movieName;
 	private String movieTime;
 	private String cancelDate;
-	private String cancelPrice;
 
 	public CancellationByUser() {
 
 	}
 
-	public CancellationByUser(String theaterName, String movieName,
-			String movieTime, String cancelDate, String cancelPrice) {
+	public CancellationByUser(int cancelId, String theaterName,
+			String movieName, String movieTime, String cancelDate) {
 		super();
+		this.cancelId = cancelId;
 		this.theaterName = theaterName;
 		this.movieName = movieName;
 		this.movieTime = movieTime;
 		this.cancelDate = cancelDate;
-		this.cancelPrice = cancelPrice;
+	}
+
+	public int getCancelId() {
+		return cancelId;
+	}
+
+	public void setCancelId(int cancelId) {
+		this.cancelId = cancelId;
 	}
 
 	public String getTheaterName() {
@@ -54,20 +62,12 @@ public class CancellationByUser {
 		this.cancelDate = cancelDate;
 	}
 
-	public String getCancelPrice() {
-		return cancelPrice;
-	}
-
-	public void setCancelPrice(String cancelPrice) {
-		this.cancelPrice = cancelPrice;
-	}
-
 	@Override
 	public String toString() {
-		return "CancellationByUser [theaterName=" + theaterName
-				+ ", movieName=" + movieName + ", movieTime=" + movieTime
-				+ ", cancelDate=" + cancelDate + ", cancelPrice=" + cancelPrice
-				+ "]";
+		return "CancellationByUser [cancelId=" + cancelId + ", theaterName="
+				+ theaterName + ", movieName=" + movieName + ", movieTime="
+				+ movieTime + ", cancelDate=" + cancelDate + "]";
 	}
 
+	
 }
