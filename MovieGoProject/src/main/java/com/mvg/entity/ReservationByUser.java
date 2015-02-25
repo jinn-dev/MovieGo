@@ -1,5 +1,6 @@
 package com.mvg.entity;
 
+
 public class ReservationByUser {
 
 	private int reservationId;
@@ -13,8 +14,9 @@ public class ReservationByUser {
 	public ReservationByUser() {
 	}
 
-	public ReservationByUser(int reservationId, String theaterName, String movieName,
-			String reservationDate, String movieTime, int reservationPrice) {
+	public ReservationByUser(int reservationId, String theaterName,
+			String movieName, String reservationDate, String movieTime,
+			int reservationPrice, String cancel) {
 		super();
 		this.reservationId = reservationId;
 		this.theaterName = theaterName;
@@ -22,7 +24,7 @@ public class ReservationByUser {
 		this.reservationDate = reservationDate;
 		this.movieTime = movieTime;
 		this.reservationPrice = reservationPrice;
-		this.cancel = "n";
+		this.cancel = cancel;
 	}
 
 	public int getReservationId() {
@@ -89,6 +91,5 @@ public class ReservationByUser {
 				+ movieTime + ", reservationPrice=" + reservationPrice
 				+ ", cancel=" + cancel + "]";
 	}
-	
 
 }

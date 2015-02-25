@@ -44,7 +44,7 @@
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
 <table class="complete-table">
-<tr><td colspan="4"><img id="tasteimg" width="500" height="123" src="<%=request.getContextPath() %>/img/complete.png"/><hr></td></tr>
+<tr><td colspan="4"><img id="headerimg" width="500" height="123" src="<%=request.getContextPath() %>/img/complete.png"/><hr></td></tr>
 <tr><td colspan="2" rowspan="7" id="poster">영화포스터</td>
 <th>예매번호</th><td></td></tr>
 <tr><th>영화</th><td>${movie }</td></tr>

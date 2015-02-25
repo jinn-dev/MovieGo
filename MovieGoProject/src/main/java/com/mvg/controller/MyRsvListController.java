@@ -63,6 +63,8 @@ public class MyRsvListController {
 			}
 			rlist.set(i, ru);
 		}
+		
+		
 		logger.trace("수업: " + rlist);
 		String str = "none";
 		if (rlist.size()==0) {

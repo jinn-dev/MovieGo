@@ -337,6 +337,11 @@ h2 {
 .result .seatResult td {
 	padding: 10px 40px;
 }
+
+.img{
+	margin: auto 8em;
+	border: 1px;
+}
 </style>
 </head>
 <body>
@@ -347,8 +352,8 @@ h2 {
 		${rinfo }
 		<br> 예약된 좌석: ${reservedSeats }
 	</div>
-
 	<div class="wrap">
+		<div class="img"><img width="500" height="112" src="<%=request.getContextPath() %>/img/reservation.png"/></div>
 		<div class="set clearfix">
 			<div class="peopleNum">
 				<h2>인원설정</h2>

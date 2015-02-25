@@ -45,7 +45,7 @@ public class ControllerTest {
 
 	@RequestMapping(value = "/tt", method = RequestMethod.GET)
 	public String imediate(Model model) {
-		return "/reservation/reservation_complete";
+		return "/mypage/reservation_list";
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
