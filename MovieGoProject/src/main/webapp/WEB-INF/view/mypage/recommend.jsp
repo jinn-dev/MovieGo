@@ -23,7 +23,7 @@ $(document).ready(function() {
         data: param,
 		dataType:"json",
 		success: function(data){
-			var output = '<table><tr><th colspan="6">영화 추천</th></tr><tr>';
+			var output = '<table><tr><th colspan="6"></th></tr><tr>';
 			for (var i=0; i<6; i++){
 					output+='<td><div class="grid">'+
 					'<figure class="effect-zoe">'+
@@ -53,6 +53,7 @@ $(document).ready(function() {
 </head>
 <body>
  <input type="hidden" var="${page }" id="page" name="page"/>
+ <img id="rmdimg" width="350" height="130" src="<%=request.getContextPath() %>/img/recommend.png"/>
  <div class="genre-rmd-content"></div>
   <script>
  var flag = "n"; 

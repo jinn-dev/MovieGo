@@ -33,7 +33,7 @@
 											for ( var i in data.results) {
 												sum += data.results[i].count;
 											}
-											$("#genre-header").append('선호 장르: '+data.results[0].movieGenre);
+											$("#genre-header").append('선호 장르: '+data.results[0].movieGenre+'<br>');
 											for ( var j in data.results) {
 												var browserStats = [
 														{
@@ -675,17 +675,20 @@
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<table class="wrap"><tr><td>
-	<div class="frame">
+	<div class="frame-genre">
 		<div class="content"><!-- 장르 -->
 			<h3><span id="genre-header"></span></h3> 
 			<svg id="svg"></svg>
 		</div>
 	</div></td><td width="500px">
+	<div class="frame-nation">
+	<img id="tasteimg" width="350" height="130" src="<%=request.getContextPath() %>/img/taste.png"/>
 	<div class="taste-nation-div"><!-- 국가 -->
-	</div></td></tr>
+	</div></div></td></tr>
 	</table>
+	<div class="frame-rmd">
 	<div class="genre-rmd-div"></div><!-- 추천 -->
-	
+	</div>
 	<div id="submenu">
 		<jsp:include page="submenu.jsp"></jsp:include>
 	</div>
