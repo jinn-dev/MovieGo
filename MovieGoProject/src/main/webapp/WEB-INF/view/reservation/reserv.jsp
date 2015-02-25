@@ -291,14 +291,14 @@ h2 {
 .result {
 	display: none;
 	position: absolute;
-	top: 200px;
+	top: 35%;
 	left: 50%;
 	width: 300px;
 	margin-left: -201px;
 	padding: 30px 50px;
 	text-align: center;
 	background: #fff;
-	border: 5px solid #0094d9;
+	border: 5px solid #4F5D73;
 }
 
 .result table {

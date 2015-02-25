@@ -7,7 +7,10 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reserve.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/component.css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="<%=request.getContextPath()%>/js/svgcheckbx.js"></script>
+<script src="<%=request.getContextPath()%>/js/main/modernizr.custom.js"></script>
 <title>Insert title here</title>
 <style>
 .reserve-table {
@@ -78,10 +81,17 @@ function clickMovie(movie) {
 			var jsonobj2 = JSON.parse(xhr.responseText);
 			$("#timelist").empty();
 			document.querySelector("#selMovie").innerHTML = movie;
+			var appendTxt='<form class="ac-custom-2 ac-radio-2 ac-swirl-2" name="frm2" id="frm2" autocomplete="off"><ul>';
 			for (var i=0;i<jsonobj2.times.length;i++){
-				var appendTxt = "<a href='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>" + jsonobj2.times[i].time +"</a><br>";
-				$("#timelist").append(appendTxt);
+				/* var appendTxt = "<a href='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>" + jsonobj2.times[i].time +"</a><br>"; */
+				appendTxt+='<li onclick="clickTime('+jsonobj2.times[i].ampm+')"';
+				appendTxt+='<input id="selectTime" name="selectTime" type="radio">';
+				appendTxt+='<label for="selectTime">'+jsonobj2.times[i].time+'</label></li>';
+				
 			}
+			appendTxt+='</ul></form>';
+			alert(appendTxt);
+			$("#timelist").append(appendTxt);
 		}
 	}
 	var url = "<%=request.getContextPath()%>/reserve/movie";
@@ -103,10 +113,16 @@ function clickTheater(theater) {
 			var jsonobj = JSON.parse(xhr.responseText);
 			$("#movielist").empty();
 			document.querySelector("#selTheater").innerHTML = theater;
+			var appendText='<form class="ac-custom-3 ac-radio-3 ac-swirl-3" name="frm3" id="frm3" autocomplete="off"><ul>';
 			for(var i = 0; i < jsonobj.movies.length; i++) {
-				var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>";
-				$("#movielist").append(appendText);
+				/* var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>"; */
+				appendText+='<li onclick="clickMovie('+jsonobj.movies[i].code+')">';
+				appendText+='<input id="selectMovie" name="selectMovie" type="radio">';
+				appendText+='<label for="selectMovie">'+jsonobj.movies[i].movieName+'</label></li>';
 			}
+			appendText+='</ul></form>';
+			alert(appendText);
+			$("#movielist").append(appendText);
 		}
 	}
 	var url = "<%=request.getContextPath()%>/reserve/theater";
@@ -129,16 +145,20 @@ function reset() {
 
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
-<form name="frm" id="frm">
+<%-- <form name="frm" id="frm"> --%>
 <table class="reserve-table">
 <tr><td colspan="3" align="center"><h1><img width="500" height="112" src="<%=request.getContextPath() %>/img/reservation.png"/></h1></td>
 <tr><td colspan="3" align="right"><a href="#" onclick="javascript:reset()"><img src="<%=request.getContextPath() %>/img/reserveReset.png"></a></td></tr>
 <tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
 <tr>
 <td class="reserve-table-content">
+<form class="ac-custom ac-radio ac-swirl" name="frm" id="frm" autocomplete="off">
   <c:forEach items="${theaters }" var="theater">
-  <a class="theaters" href="javascript:clickTheater(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br>
+  <ul><li onclick="javascript:clickTheater(${theater.theaterId })" id="thChk${theater.theaterId }">
+  <input id="theatherInput" name="theatherInput" type="radio"><label for="theatherInput">${theater.theaterName }</label></li></ul>
+  <%-- <a class="theaters" href="javascript:clickTheater(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br> --%>
   </c:forEach>
+</form> 
 </td>
 <td class="reserve-table-content">
   <div id="movielist"></div>
@@ -154,7 +174,9 @@ function reset() {
 </td>
 </tr>
 </table>
-</form> 
+
+
+
 <table id="htable" >
 <tr>
 <td><div id="selTheater"></div></td>
@@ -162,5 +184,7 @@ function reset() {
 <td><div id="selTime"></div></td>
 </tr>
 </table>
+
+<script src="<%=request.getContextPath()%>/js/svgcheckbx.js"></script>
 </body>
 </html>

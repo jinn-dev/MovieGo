@@ -40,8 +40,7 @@ hr{
         position: relative;
         float: left;
         overflow: hidden;
-        /* margin: 10px 1%; */
-        margin: 30px 1%;
+        margin: 10px 1%;
         min-width: 180px;
         max-width: 180px;
         max-height: 253px;

@@ -5,6 +5,14 @@
 	font-family:'맑은 고딕';
 }
 
+#userInfo {
+	position: absolute;
+	top: 10%;
+	left: 88%;
+	color: #ffffff;
+}
+
+
 /* header css */
 .cbp-af-header {
 	position: fixed;
@@ -63,10 +71,6 @@
 
 .cbp-af-header nav a:hover {
 	color: #C75C5C;
-}
-
-#userInfo {
-	position: absolute;
 }
 
 /* Transitions and class for reduced height */

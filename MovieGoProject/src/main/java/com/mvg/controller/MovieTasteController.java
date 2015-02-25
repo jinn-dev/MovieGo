@@ -48,10 +48,14 @@ public class MovieTasteController {
 	}
 	@RequestMapping(value = "/nation.count.do", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Movie> tasteNation(HttpSession session) {
+	public HashMap<String, Object> tasteNation(HttpSession session) {
 		User user = (User) session.getAttribute("user");
+		int result = service.countMovieEvalService(user);
 		List<Movie> results = service.countNationService(user);
-		return results;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("result", result);
+		map.put("results", results);
+		return map;
 	}
 
 	// 장르기반 영화 추천

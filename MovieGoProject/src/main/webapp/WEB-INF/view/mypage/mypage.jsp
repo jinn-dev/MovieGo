@@ -648,15 +648,29 @@
 													});
 
 										} else {
-											$('.frame')
+											
+											var width = $(window).width();
+											var height = $(window).height();
+											//  화면 가리는 레이어 사이즈 조정
+											$('.wrap').width(width);
+											$('.wrap').height(height);
+											// 화면 가리는 레이어를 보여준다. (0.5초동안 30%의 농도의 투명도)
+											$('.wrap').fadeTo(500, 0.3);
+											// 팝업 레이어 보이게
+											var loadingDivObj = $('.loadingDiv');
+											loadingDivObj.css("top",$(document).height()/2-150);
+											loadingDivObj.css("left",$(document).width()/2-150);
+											loadingDivObj.fadeIn(500);
+											
+										/* 	$('.wrap')
 													.css(
 															{
 																"background" : "RGBA(242,242,242,0.8)",
 																"text-align" : "center"
 															});
-											$('.frame')
+											$('.wrap')
 													.append(
-															"최소 30개의 영화 평가를 하시면 장르 통계를 볼 수 있습니다.");
+															"최소 30개의 영화 평가를 하시면 장르 통계를 볼 수 있습니다."); */
 										}
 
 									},
@@ -670,11 +684,30 @@
 									}
 								});
 
+						
+						// esc 누르면 화면 잠김 해제
+						$(document).keydown(function(event){
+							if(event.which=='27'){
+								$('.loadingDiv').fadeOut(300);
+								$('.wrap').fadeOut(1000);
+							}
+						});
+						
+						// window resize될때마다 backlayer를 조정
+						$(window).resize(function(){
+							var width = $(window).width();
+							var height = $(window).height();
+							$(".wrap").width(width).height(height);
+						});
+						
+						
+						
 					});
 </script>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	
+	<div class="wrap"></div>
+	<div class="loadingDiv"></div>
 	<table class="wrap"><tr><td>
 	<div class="frame-genre">
 		<div class="content"><!-- 장르 -->

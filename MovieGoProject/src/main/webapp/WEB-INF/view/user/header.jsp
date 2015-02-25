@@ -7,13 +7,6 @@
 <link href="<%=request.getContextPath() %>/header/css/component.css" rel="stylesheet" />
 <link href="<%=request.getContextPath() %>/header/css/default.css" rel="stylesheet" />
 <script src="<%=request.getContextPath() %>/header/js/modernizr.custom.js"></script>
-<style>
-	#userInfo {
-		 padding-left: 1200px;
-		 color: #ffffff;
-		 padding-top: 100px;
-	}
-</style>
 
 	<!--  header 시작 -->
 	<div class="container">
@@ -35,7 +28,9 @@
 					<c:url value="/logout" var="url" />
 					<a href="${url }">LOGOUT</a>	
 				</nav>
-			 <div id="userInfo"><c:out value="${user.userId}"/>님 반갑습니다.<br></div>
+			 <div id="userInfo">
+			 <img id="headerimg" src="<%=request.getContextPath() %>/img/Roundicons-16.png"/>
+			 <c:out value="${user.userId}"/>님 반갑습니다.<br></div>
 			</div>
 		</div>
 	</div>
