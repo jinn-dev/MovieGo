@@ -76,4 +76,5 @@
 	<!-- alert resource -->
 	<mvc:resources location="/resources/css/alert/" mapping="/alert/css/**" />
 	<mvc:resources location="/resources/js/alert/" mapping="/alert/js/**" />
+	
 </beans>
