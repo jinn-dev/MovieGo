@@ -648,13 +648,13 @@
 													});
 
 										} else {
-											$('.wrap')
+											$('body')
 													.css(
 															{
 																"background" : "RGBA(242,242,242,0.8)",
 																"text-align" : "center"
 															});
-											$('.wrap')
+											$('')
 													.append(
 															"최소 30개의 영화 평가를 하시면 장르 통계를 볼 수 있습니다.");
 										}
