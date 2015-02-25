@@ -7,7 +7,13 @@
 <link href="<%=request.getContextPath() %>/header/css/component.css" rel="stylesheet" />
 <link href="<%=request.getContextPath() %>/header/css/default.css" rel="stylesheet" />
 <script src="<%=request.getContextPath() %>/header/js/modernizr.custom.js"></script>
-
+<style>
+	#userInfo {
+		 padding-left: 1200px;
+		 color: #ffffff;
+		 padding-top: 100px;
+	}
+</style>
 
 	<!--  header 시작 -->
 	<div class="container">

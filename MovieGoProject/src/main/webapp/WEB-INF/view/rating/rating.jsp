@@ -60,7 +60,7 @@
                                 data : param,
                                 dataType : 'json',
                                  success : function(data) {
-                                	 var output = '<table class="rating-table"><tr><th colspan="6" align="center"><img id="headerimg" width="450" height="101" src="<%=request.getContextPath() %>/img/rating.png"/></th></tr><tr>';
+                                	 var output = '<table class="rating-table"><tr><th colspan="6" align="center"><img id="headerimg" width="350px" src="<%=request.getContextPath() %>/img/rating.png"/></th></tr><tr>';
                                      output+='<tr><th colspan="6" align="center">30개 이상 평가하시면 취향 분석을 볼 수 있어요!</th></tr><tr>';    
                                 	 for(var i=0; i<6; i++){
 											output+='<td><div class="grid">'+

@@ -1,4 +1,17 @@
 
+.btn {
+	background: #C75C5C;
+	color: #F2F2F2;
+	border: none;
+	letter-spacing: 1px;
+	padding: 0.5em;
+	outline: none;
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	letter-spacing: 1px;
+	font-weight: 700;
+}
 .morph-button {
 	position: relative;
 	display: block;
@@ -128,7 +141,7 @@
 	margin: 10px 15px;
 }
 
-/* 로그인&회원가입 버튼 배경 */
+/* */
 .morph-button-modal-1 > button,
 .morph-button-modal-1 .morph-content,
 .morph-button-modal-2 > button,

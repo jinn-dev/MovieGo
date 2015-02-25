@@ -6,6 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <style type="text/css">
 html {
 	width: 100%;
@@ -347,11 +351,6 @@ h2 {
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<input type="hidden" id="rseats" value="${reservedSeats }" />
-	<div class="rsv1">
-		<h2>${user.userId }님의 예매정보</h2>
-		${rinfo }
-		<br> 예약된 좌석: ${reservedSeats }
-	</div>
 	<div class="wrap">
 		<div class="img"><img width="500" height="112" src="<%=request.getContextPath() %>/img/reservation.png"/></div>
 		<div class="set clearfix">
@@ -487,14 +486,14 @@ h2 {
 		selectSeat.bind('click', function() {
 			//인원이 0일 때 좌석설정을 하려고 하면
 			if (peopleNum.closest('ul').find('li.selected').index() == 0) {
-				alert('인원은 최소 1명 이상 선택해야 합니다.');
+				alertify.alert('인원은 최소 1명 이상 선택해야 합니다.');
 				selectSeat.prop('checked', false);
 			}
 		});
 		seat2.bind('click', function() {
 			//인원이 1일 때 2개좌석을 설정하려고 하면
 			if (peopleNum.closest('ul').find('li.selected').index() == 1) {
-				alert('2인 이상시 선택 가능합니다.');
+				alertify.alert('2인 이상시 선택 가능합니다.');
 				$(this).prop('checked', false);
 				seat1.prop('checked', true);
 			}
@@ -549,10 +548,10 @@ h2 {
 			chargeTotal = $('.charge input').val();
 			peopleTotal = $('.map .arrayNum button.clicked').length;
 			if ($('.peopleNum li').eq(0).hasClass('selected')) {
-				alert('인원은 최소 1명이상 선택해야 합니다.');
+				alertify.alert('인원은 최소 1명이상 선택해야 합니다.');
 				return;
 			} else if (peopleTotal != $('.peopleNum li.selected').index()) {
-				alert('좌석이 모두 선택되지 않았습니다.');
+				alertify.alert('좌석이 모두 선택되지 않았습니다.');
 				$('.peopleNum li.selected').focus();
 			} else {
 				$('.result').show();
