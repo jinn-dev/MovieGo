@@ -47,6 +47,21 @@ $(document).ready(function() {
 				    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
 				    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
 			} 
+		/* 	output+='</tr><tr></table><table><tr>';
+			for (var i=6; i<12; i++){
+				output+='<td><div class="grid">'+
+				'<figure class="effect-zoe">'+
+				'<img width="180" height="253" src="'+data[i].movieImgUrl+'"/>'+
+				'<figcaption><h2>'+data[i].movieTitleKr+'</h2><hr><br>'+
+				'<p class="icon-links">'+
+				'<a href="javascript:wishlist('+data[i].movieCode+')" class="icon"><i class="fa fa-heart fa-2x"></i>위시리스트</a><br>'+
+				'<a href="javascript:evcomment('+data[i].movieCode+')" class="icon"><i class="fa fa-comment-o fa-2x"></i>코멘트쓰기</a><br>'+
+				'<a href="javascript:ratingInfo(1, '+data[i].movieCode+')" class="icon" id="one"><font size="6">★<font></a>'+
+			    '<a href="javascript:ratingInfo(2, '+data[i].movieCode+')" class="icon" id="two"><font size="6">★<font></a>'+
+			    '<a href="javascript:ratingInfo(3, '+data[i].movieCode+')" class="icon" id="three"><font size="6">★<font></a>'+
+			    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
+			    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
+		}  */
 			 output+='</tr><tr></table>';
                $(".genre-rmd-content").html(output);
                
@@ -62,7 +77,7 @@ $(document).ready(function() {
 </head>
 <body>
  <input type="hidden" var="${page }" id="page" name="page"/>
-<center><img width="350" height="130" src="<%=request.getContextPath() %>/img/recommend.png"/></center>
+<center><img src="<%=request.getContextPath() %>/img/recommend.png"/></center>
 <div class="genre-rmd-content"></div>
   <script>
  var flag = "n"; 

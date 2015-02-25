@@ -174,10 +174,10 @@ table{
 					<td colspan="6" id="video-tr">
 					<hr><video id="main-video"
 							class="video-js vjs-default-skin" controls preload="none"
-							poster="<%=request.getContextPath()%>/img/main_poster.png"
+							poster="<%=request.getContextPath()%>/img/kingsman12-1024x576.jpg"
 							data-setup="{}" width="600" height="360">
 							<source
-								src="<%=request.getContextPath()%>/vid/Despicable_Me_Trailer.mp4"
+								src="<%=request.getContextPath()%>/vid/KINGSMAN.mp4"
 								type='video/mp4' />
 						</video></td>
 						
