@@ -29,7 +29,7 @@
 			    		  event.preventDefault();					}				   
 				    
 			    	else {
-			    		$("#idCheckResultView").html("<b>찾는 아이디는가 없습니다.<b>"); 
+			    		$("#idCheckResultView").html("<b>입력하신 정보가 일치하지 않습니다.<b>"); 
 			    		event.preventDefault();
 			    	}
 
@@ -80,6 +80,8 @@
 <style>
 body {
 	background-color: #F2F2F2;
+
+	
 }
 </style>
 <title>ID/비밀번호 찾기</title>
@@ -116,6 +118,5 @@ body {
 					</form>
 				</div>
 			</div>
-			
 </body>
 </html>

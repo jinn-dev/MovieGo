@@ -7,14 +7,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코멘트쓰기</title>
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
 <script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/writecomment.css"/>
-
-<title>코멘트쓰기</title>
-</head>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 /* input 박스에 기본값 넣어주고 마우스 클릭시 초기화 */ 
 	$(document).ready(function() {
@@ -27,7 +28,9 @@
 		});
 		
 		$("#add").click(function() {
-		alertify.alert("코멘트가 추가되었습니다.");
+		self.close();
+		opener.location.reload();
+
 		});
 	});
 </script>

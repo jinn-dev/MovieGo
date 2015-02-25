@@ -82,11 +82,6 @@ public class MyPageController {
 		return "mypage/mypage";
 	}
 
-/*	@RequestMapping(value = "/update", params = "_event_reverse", method = RequestMethod.POST)
-	public String reinput(@ModelAttribute("user") User user) {
-		return "mypage/modify";
-	}
-*/
 	// 회원 탈퇴
 	@RequestMapping(value = "/deleteuser", method = RequestMethod.GET)
 	public String userDelete(@RequestParam String userId) {
@@ -142,6 +137,7 @@ public class MyPageController {
 		List<Evaluation> evaluation = eService.getEvaluationByUserId(userId);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("evaluation", evaluation);
+
 		List<NowMovie> now = nService.getAllDistictNowMovieCodes();
 
 		map.put("nowlist", now);

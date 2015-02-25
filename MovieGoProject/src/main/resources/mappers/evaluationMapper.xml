@@ -12,32 +12,27 @@
 		</selectKey>
 	</insert>
 	
-	<select id="selectEvaluationById" resultMap="ComplexMovieEvaluation">
-		select m.movie_code,
-		m.movie_title_kr, m.movie_title_eng, m.movie_director,
-		m.movie_open_date, m.movie_img_url,
-		m.movie_genre, e.ev_id, e.user_id, e.movie_code, e.ev_rating,
-		NVL(e.ev_comment, '코멘트를 등록해주세요') from evaluations e left join movies m on(m.movie_code =
-		e.movie_code) where user_id= #{userId}
-	</select>
-	
-	<resultMap type="Evaluation" id="ComplexMovieEvaluation">
-		<id column="ev_id" jdbcType="INTEGER" property="evId" />
-		<result column="user_id" jdbcType="VARCHAR" property="userId" />
-		<result column="movie_code" jdbcType="VARCHAR" property="movieCode" />
-		<result column="ev_rating" jdbcType="VARCHAR" property="evRating" />
-		<result column="ev_comment" jdbcType="VARCHAR" property="evComment" />
-		<collection property="movies" ofType="Movie">
-			<id column="movie_code" jdbcType="VARCHAR" property="movieCode" />
-			<result column="movie_title_kr" jdbcType="VARCHAR" property="movieTitleKr" />
-			<result column="movie_title_eng" jdbcType="VARCHAR" property="movieTitleEng" />
-			<result column="movie_director" jdbcType="VARCHAR" property="movieDirector" />
-			<result column="movie_open_date" jdbcType="VARCHAR" property="movieOpenDate" />
-			<result column="movie_img_url" jdbcType="VARCHAR" property="movieImgUrl" />
-			<result column="movie_genre" jdbcType="VARCHAR" property="movieGenre" />
-		</collection>
-	</resultMap>
-	
+	<select id="selectEvaluationById" resultMap="ComplexMovieEvaluation"> 
+		select m.movie_code, m.movie_title_kr, m.movie_title_eng, m.movie_director, m.movie_open_date, 
+		m.movie_img_url, m.movie_genre, e.ev_id, e.user_id, e.movie_code, e.ev_rating, e.ev_comment 
+		from evaluations e left join movies m on(m.movie_code = e.movie_code) 
+		where user_id= #{userId} </select>
+		<resultMap id="ComplexMovieEvaluation" type="Evaluation">
+			<id property="evId" jdbcType="INTEGER" column="ev_id"/>
+			<result property="userId" jdbcType="VARCHAR" column="user_id"/>
+			<result property="movieCode" jdbcType="VARCHAR" column="movie_code"/>
+			<result property="evRating" jdbcType="VARCHAR" column="ev_rating"/>
+			<result property="evComment" jdbcType="VARCHAR" column="ev_comment"/>
+				<collection property="movies" ofType="Movie">
+				<id property="movieCode" jdbcType="VARCHAR" column="movie_code"/>
+				<result property="movieTitleKr" jdbcType="VARCHAR" column="movie_title_kr"/>
+				<result property="movieTitleEng" jdbcType="VARCHAR" column="movie_title_eng"/>
+				<result property="movieDirector" jdbcType="VARCHAR" column="movie_director"/>
+				<result property="movieOpenDate" jdbcType="VARCHAR" column="movie_open_date"/>
+				<result property="movieImgUrl" jdbcType="VARCHAR" column="movie_img_url"/>
+				<result property="movieGenre" jdbcType="VARCHAR" column="movie_genre"/>
+				</collection>
+		</resultMap>
 	<!-- 별점매긴 것인지 확인하기 위한것 -->
 	<select id="selectEvaluationByMovieCode" parameterType="String"
 		resultType="Evaluation">
