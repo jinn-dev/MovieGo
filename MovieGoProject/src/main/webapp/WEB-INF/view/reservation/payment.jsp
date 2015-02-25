@@ -13,10 +13,6 @@
 <title>Insert title here</title>
 </head>
 <style>
-
-
-
-	
 </style>
 <script type="text/javascript">
 var price = ${price };
@@ -91,6 +87,7 @@ function completeReserv() {
 
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
+<<<<<<< HEAD
 <div class="img"><img width="500" height="112" src="<%=request.getContextPath() %>/img/payment.png"/></div>
 
 <div class="rsvInfo">

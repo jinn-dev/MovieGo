@@ -77,7 +77,7 @@ $(document).ready(function() {
 </head>
 <body>
  <input type="hidden" var="${page }" id="page" name="page"/>
-<center><img src="<%=request.getContextPath() %>/img/recommend.png"/></center>
+<br><center><img width="380" height="112" src="<%=request.getContextPath() %>/img/recommend.png"/></center>
 <div class="genre-rmd-content"></div>
   <script>
  var flag = "n"; 

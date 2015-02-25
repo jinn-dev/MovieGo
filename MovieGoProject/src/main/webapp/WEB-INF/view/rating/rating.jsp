@@ -444,6 +444,5 @@ $.ajax({
 	});	 
 }
 </script>
-
 </body>
 </html>
