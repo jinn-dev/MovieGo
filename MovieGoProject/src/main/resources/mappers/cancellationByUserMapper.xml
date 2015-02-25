@@ -6,7 +6,6 @@
 
 	<select id="getCListByUserId" parameterType="String" resultType="CancellationByUser">
 	select  distinct
-			c.cancel_id as cancel_id,
 			t.theater_name as theater_name,
 			m.movie_title_kr as movie_name,
 			nm.movie_time as movie_time,

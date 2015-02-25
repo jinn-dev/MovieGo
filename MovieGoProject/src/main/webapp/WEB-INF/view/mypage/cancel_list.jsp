@@ -26,7 +26,6 @@
 		예매취소내역
 		<table>
 			<tr>
-				<th>취소번호</th>
 				<th>영화관</th>
 				<th>영화제목</th>
 				<th>상영시간</th>
@@ -34,7 +33,6 @@
 			</tr>
 			<c:forEach items="${clist }" var="cancel">
 			<tr>
-				<td><c:out value="${cancel.cancelId}" /></td>
 				<td><c:out value="${cancel.theaterName}" /></td>
 				<td><c:out value="${cancel.movieName}" /></td>
 				<td><c:out value="${cancel.movieTime}" /></td>

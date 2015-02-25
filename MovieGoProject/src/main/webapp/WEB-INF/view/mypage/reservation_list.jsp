@@ -73,17 +73,18 @@
 		<c:forEach items="${rlist }" var="reservation" varStatus="status">
 		<div class="reserve-wrap">
 		<table class="reserv-table">
-		<tr><td colspan="6">No.${status.index+1 }</td></tr>
+		<tr><td colspan="6">No.${status.index+1 }<hr></td></tr>
 		<tr><td colspan="2" rowspan="7">영화포스터</td></tr>
 		<tr><th>영화</th><td><c:out value="${reservation.movieName }"/></td>
 		<th>예매번호</th><td><c:out value="${reservation.reservationId }" /></td></tr>
 		<tr><th>상영시간</th><td><c:out value="${reservation.movieTime }"/></td>
 		<th>영화관</th><td><c:out value="${reservation.theaterName }"/></td></tr>
 		<tr><th>예매일</th><td><c:out value="${reservation.reservationDate }"/></td><th>결제금액</th><td><c:out value="${reservation.reservationPrice }"/></td></tr>
-		<tr><td colspan="5"><input type="hidden" id="cancel" value="${reservation.cancel }" />
+		<tr><th>좌석</th><td><c:out value="${seats }"></c:out></td></tr>
+		<tr><td colspan="5" align="right"><hr><input type="hidden" id="cancel" value="${reservation.cancel }" />
 		<input type="button" onclick="javascript:deleteRsv(${reservation.reservationId });" value="예매취소" class="div-button"/></td></tr>
 		</table>
-		</div><br>
+		</div>
 		</c:forEach>
 		
 	<form style="display: none;" id="postForm" method="post" action="<%=request.getContextPath()%>/cancelConfirm">

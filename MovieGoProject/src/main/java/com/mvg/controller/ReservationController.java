@@ -271,12 +271,14 @@ public class ReservationController {
 			rsvinfo.setSeatId(seatId);
 			riservice.insertRInfoService(rsvinfo);
 		}
+		String url = mservice.getMovieByMCodeService(mCode).getMovieImgUrl();
 		model.addAttribute("price", totalprice);
 		model.addAttribute("peopleNum", peopleNum);
 		model.addAttribute("theater", thName);
 		model.addAttribute("movie", mName);
 		model.addAttribute("movieTime", mTimeampm);
 		model.addAttribute("seats", seats);
+		model.addAttribute("imgurl", url);
 		return "reservation/reservation_complete";
 	}
 	
