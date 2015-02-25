@@ -1,6 +1,5 @@
 package com.mvg.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -21,6 +20,7 @@ import com.mvg.entity.ReservationInfo;
 import com.mvg.entity.User;
 import com.mvg.service.CancellationByUserService;
 import com.mvg.service.CancellationService;
+import com.mvg.service.MovieService;
 import com.mvg.service.ReservationByUserService;
 import com.mvg.service.ReservationInfoService;
 import com.mvg.service.ReservationService;
@@ -44,9 +44,12 @@ public class MyRsvListController {
 
 	@Autowired
 	CancellationService cservice;
-	
+
 	@Autowired
 	CancellationByUserService cuservice;
+	
+	@Autowired
+	MovieService mservice;
 
 	@RequestMapping(value = "/myrlist", method = RequestMethod.GET)
 	public String myRListCall(Model model, HttpSession session) {
@@ -54,30 +57,18 @@ public class MyRsvListController {
 		User user = (User) session.getAttribute("user");
 		String userId = user.getUserId();
 		List<ReservationByUser> rlist = ruservice.getAllRByUIdService(userId);
-		ArrayList<ReservationInfo> info = new ArrayList<ReservationInfo>();
-		ArrayList<Integer> seats = new ArrayList<Integer>();
 		for (int i = 0; i < rlist.size(); i++) {
 			ReservationByUser ru = rlist.get(i);
 			int cancel = ruservice.cancelYNService(ru.getMovieTime());
-			int rid = ru.getReservationId();
-			info = (ArrayList<ReservationInfo>) riservice.getRInfoByRIdService(rid);
-			seats = new ArrayList<Integer>();
-			for (int j=0;j<info.size();j++) {
-				int seatid = info.get(i).getSeatId();
-				seats.add(seatid);
-			}
-			if (cancel >= 1) {
+			if (cancel >= 0) {
 				ru.setCancel("y");
 			} else {
 				ru.setCancel("n");
 			}
 			rlist.set(i, ru);
 		}
-		
-		
 		logger.trace("수업: " + rlist);
 		model.addAttribute("rlist", rlist);
-		model.addAttribute("seats", seats);
 		return "mypage/reservation_list";
 	}
 
@@ -102,11 +93,11 @@ public class MyRsvListController {
 		User user = (User) session.getAttribute("user");
 		String userId = user.getUserId();
 		List<CancellationByUser> clist = cuservice.getCListByUIdService(userId);
-		
+
 		logger.trace("수업: " + clist);
-		
+
 		model.addAttribute("clist", clist);
-		
+
 		return "mypage/cancel_list";
 	}
 

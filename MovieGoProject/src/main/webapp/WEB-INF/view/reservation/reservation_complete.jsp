@@ -46,7 +46,7 @@
 <table class="complete-table">
 <tr><td colspan="4"><img id="tasteimg" width="500" height="123" src="<%=request.getContextPath() %>/img/complete.png"/><hr></td></tr>
 <tr><td colspan="2" rowspan="7" id="poster"><img src="${imgurl }"/></td>
-<th>예매번호</th><td></td></tr>
+<th>예매번호</th><td>${rid }</td></tr>
 <tr><th>영화</th><td>${movie }</td></tr>
 <tr><th>극장</th><td>${theater }</td></tr>
 <tr><th>상영시간</th><td>${movieTime }</td></tr>

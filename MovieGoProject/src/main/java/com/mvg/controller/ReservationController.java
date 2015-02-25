@@ -272,6 +272,7 @@ public class ReservationController {
 			riservice.insertRInfoService(rsvinfo);
 		}
 		String url = mservice.getMovieByMCodeService(mCode).getMovieImgUrl();
+		model.addAttribute("rid", rid);
 		model.addAttribute("price", totalprice);
 		model.addAttribute("peopleNum", peopleNum);
 		model.addAttribute("theater", thName);

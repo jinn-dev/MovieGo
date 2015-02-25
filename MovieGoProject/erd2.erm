@@ -11,8 +11,8 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
-	<x>0</x>
-	<y>250</y>
+	<x>374</x>
+	<y>180</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2015-02-09 19:44:26</creation_date>
-			<updated_date>2015-02-23 09:36:04</updated_date>
+			<updated_date>2015-02-25 15:44:32</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -1052,12 +1052,12 @@
 			<connections>
 				<relation>
 					<id>1</id>
-					<source>9</source>
+					<source>11</source>
 					<target>1</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
+						<source_xp>100</source_xp>
+						<source_yp>53</source_yp>
+						<target_xp>0</target_xp>
+						<target_yp>78</target_yp>
 						<color>
 							<r>0</r>
 							<g>0</g>
@@ -1074,12 +1074,12 @@
 				</relation>
 				<relation>
 					<id>2</id>
-					<source>11</source>
+					<source>9</source>
 					<target>1</target>
-						<source_xp>100</source_xp>
-						<source_yp>53</source_yp>
-						<target_xp>0</target_xp>
-						<target_yp>78</target_yp>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
 						<color>
 							<r>0</r>
 							<g>0</g>
@@ -1138,7 +1138,7 @@
 				<normal_column>
 					<id>6</id>
 					<referenced_column>45</referenced_column>
-					<relation>2</relation>
+					<relation>1</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -1172,7 +1172,7 @@
 				<normal_column>
 					<id>7</id>
 					<referenced_column>38</referenced_column>
-					<relation>1</relation>
+					<relation>2</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2127,12 +2127,12 @@
 			<connections>
 				<relation>
 					<id>8</id>
-					<source>4</source>
+					<source>8</source>
 					<target>6</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
-						<target_xp>17</target_xp>
-						<target_yp>0</target_yp>
+						<target_xp>100</target_xp>
+						<target_yp>8</target_yp>
 						<color>
 							<r>0</r>
 							<g>0</g>
@@ -2149,12 +2149,12 @@
 				</relation>
 				<relation>
 					<id>9</id>
-					<source>8</source>
+					<source>4</source>
 					<target>6</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
-						<target_xp>100</target_xp>
-						<target_yp>8</target_yp>
+						<target_xp>17</target_xp>
+						<target_yp>0</target_yp>
 						<color>
 							<r>0</r>
 							<g>0</g>
@@ -2213,7 +2213,7 @@
 				<normal_column>
 					<id>29</id>
 					<referenced_column>19</referenced_column>
-					<relation>8</relation>
+					<relation>9</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2247,7 +2247,7 @@
 				<normal_column>
 					<id>30</id>
 					<referenced_column>35</referenced_column>
-					<relation>9</relation>
+					<relation>8</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2336,12 +2336,12 @@
 			<connections>
 				<relation>
 					<id>10</id>
-					<source>11</source>
+					<source>4</source>
 					<target>7</target>
-						<source_xp>0</source_xp>
-						<source_yp>10</source_yp>
-						<target_xp>100</target_xp>
-						<target_yp>78</target_yp>
+						<source_xp>-1</source_xp>
+						<source_yp>-1</source_yp>
+						<target_xp>-1</target_xp>
+						<target_yp>-1</target_yp>
 						<color>
 							<r>0</r>
 							<g>0</g>
@@ -2358,12 +2358,12 @@
 				</relation>
 				<relation>
 					<id>11</id>
-					<source>4</source>
+					<source>11</source>
 					<target>7</target>
-						<source_xp>-1</source_xp>
-						<source_yp>-1</source_yp>
-						<target_xp>-1</target_xp>
-						<target_yp>-1</target_yp>
+						<source_xp>0</source_xp>
+						<source_yp>10</source_yp>
+						<target_xp>100</target_xp>
+						<target_yp>78</target_yp>
 						<color>
 							<r>0</r>
 							<g>0</g>
@@ -2422,7 +2422,7 @@
 				<normal_column>
 					<id>33</id>
 					<referenced_column>45</referenced_column>
-					<relation>10</relation>
+					<relation>11</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2456,7 +2456,7 @@
 				<normal_column>
 					<id>34</id>
 					<referenced_column>19</referenced_column>
-					<relation>11</relation>
+					<relation>10</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2656,7 +2656,7 @@
 				<font_name>맑은 고딕</font_name>
 				<font_size>9</font_size>
 			<x>1200</x>
-			<y>672</y>
+			<y>684</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -2762,7 +2762,7 @@
 			<connections>
 				<relation>
 					<id>13</id>
-					<source>3</source>
+					<source>4</source>
 					<target>10</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2784,7 +2784,7 @@
 				</relation>
 				<relation>
 					<id>14</id>
-					<source>4</source>
+					<source>3</source>
 					<target>10</target>
 						<source_xp>-1</source_xp>
 						<source_yp>-1</source_yp>
@@ -2848,7 +2848,7 @@
 				<normal_column>
 					<id>41</id>
 					<referenced_column>14</referenced_column>
-					<relation>13</relation>
+					<relation>14</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -2882,7 +2882,7 @@
 				<normal_column>
 					<id>42</id>
 					<referenced_column>19</referenced_column>
-					<relation>14</relation>
+					<relation>13</relation>
 					<description></description>
 					<unique_key_name></unique_key_name>
 					<logical_name></logical_name>
@@ -5130,6 +5130,593 @@
 								<select>movie_directior_2</select>
 								<select>movie_directior_3</select>
 								<select>movie_directior_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>52</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_img_url_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_img_url_1</select>
+								<select>movie_img_url_2</select>
+								<select>movie_img_url_3</select>
+								<select>movie_img_url_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>53</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_story_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_story_1</select>
+								<select>movie_story_2</select>
+								<select>movie_story_3</select>
+								<select>movie_story_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>54</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_actor1_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_actor1_1</select>
+								<select>movie_actor1_2</select>
+								<select>movie_actor1_3</select>
+								<select>movie_actor1_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>55</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_actor2_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_actor2_1</select>
+								<select>movie_actor2_2</select>
+								<select>movie_actor2_3</select>
+								<select>movie_actor2_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>56</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_actor3_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_actor3_1</select>
+								<select>movie_actor3_2</select>
+								<select>movie_actor3_3</select>
+								<select>movie_actor3_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>57</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_actor4_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_actor4_1</select>
+								<select>movie_actor4_2</select>
+								<select>movie_actor4_3</select>
+								<select>movie_actor4_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+						</data_def_list>
+					</repeat_test_data>
+				</table_test_data>
+			</test_data>
+			<test_data>
+				<name>movies2</name>
+				<export_order>0</export_order>
+				<table_test_data>
+					<table_id>11</table_id>
+					<direct_test_data>
+						<data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>20149401</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>스폰지밥 3D</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>The SpongeBob Movie: Sponge Out of Water</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value>애니메이션</value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value>미국</value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value>20150218</value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value>폴 티비트</value>
+							</column_data>
+							<column_data>
+								<column_id>52</column_id>
+								<value>http://cfile18.uf.daum.net/C110x160/2128994C54C8915E23B3A9</value>
+							</column_data>
+							<column_data>
+								<column_id>53</column_id>
+								<value>비키니 시티의 최고 메뉴 ‘게살 버거’의 특급 레시피가 사라졌다! 레시피를 되찾기 위해 최초로 육.지.상.륙! 비키니 시티의 최고 인기 메뉴 ‘게살 버거’ 어느 날, ‘게살 버거’의 특급 레시피가 사라지자 비키니 시티는 혼란에 빠지게 된다. 스폰지밥과 친구들은 해적 ‘버거수염’에게 특급 레시피가 있다는 사실을 알게 되고 레시피를 되찾기 위해 인간 세상으로 모험을 떠나게 되는데… 마법의 주문으로 거대하고 생생해진 슈퍼 히어로 스폰지밥! 상상 그 이상의 웃음이 넘치는 인간 세상 모험에 흡수된다!</value>
+							</column_data>
+							<column_data>
+								<column_id>54</column_id>
+								<value>전태열</value>
+							</column_data>
+							<column_data>
+								<column_id>55</column_id>
+								<value>이인성</value>
+							</column_data>
+							<column_data>
+								<column_id>56</column_id>
+								<value>최한</value>
+							</column_data>
+							<column_data>
+								<column_id>57</column_id>
+								<value>전광주</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>20140110</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>킹스맨 : 시크릿 에이전트</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>Kingsman: The Secret Service</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value>액션</value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value>미국</value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value>20150211</value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value>매튜 본</value>
+							</column_data>
+							<column_data>
+								<column_id>52</column_id>
+								<value>http://cfile78.uf.daum.net/C110x160/2478DE4B54DABBF02304E0</value>
+							</column_data>
+							<column_data>
+								<column_id>53</column_id>
+								<value>세상에서 가장 위험한 면접이 시작된다! 높은 IQ, 주니어 체조대회 2년 연속 우승! 그러나 학교 중퇴, 해병대 중도 하차. 동네 패싸움에 직장은 가져본 적도 없이 별볼일 없는 루저로 낙인 찍혔던 ‘그’가 ‘젠틀맨 스파이’로 전격 스카우트 됐다! 전설적 베테랑 요원 해리 하트(콜린 퍼스)는 경찰서에 구치된 에그시(태런 애거튼)를 구제한다. 탁월한 잠재력을 알아본 그는 에그시를 전설적 국제 비밀정보기구 ‘킹스맨’ 면접에 참여시킨다. 아버지 또한 ‘킹스맨’의 촉망 받는 요원이었으나 해리 하트를 살리기 위해 죽었다는 사실을 알게 된 에그시. 목숨을 앗아갈 만큼 위험천만한 훈련을 통과해야 하는 킹스맨 후보들. 최종 멤버 발탁을 눈 앞에 둔 에그시는 최고의 악당 발렌타인(사무엘 L. 잭슨)을 마주하게 되는데… &lt;엑스맨: 퍼스트 클래스&gt; 감독과 마블 코믹스 인기작가의 만남! 스파이 액션의 새로운 시대가 열린다!</value>
+							</column_data>
+							<column_data>
+								<column_id>54</column_id>
+								<value>콜린 퍼스</value>
+							</column_data>
+							<column_data>
+								<column_id>55</column_id>
+								<value>태런 애거튼</value>
+							</column_data>
+							<column_data>
+								<column_id>56</column_id>
+								<value>사무엘 L. 잭슨</value>
+							</column_data>
+							<column_data>
+								<column_id>57</column_id>
+								<value>마이클 케인</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>20149951</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>빅 히어로</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>Big Hero 6</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value>애니메이션</value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value>미국</value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value>20150121</value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value>돈 할</value>
+							</column_data>
+							<column_data>
+								<column_id>52</column_id>
+								<value>http://cfile17.uf.daum.net/C110x160/240FFE4E54BE8A5937ED74</value>
+							</column_data>
+							<column_data>
+								<column_id>53</column_id>
+								<value>천재 공학도 ‘테디’가 개발한 힐링로봇 ‘베이맥스’! ‘테디’의 동생이자 로봇 전문가인 ‘히로’는 도시가 파괴될 위기에 처하자 ‘베이맥스’를 슈퍼히어로로 업그레이드 하는데… 과연 이들은 도시의 위험을 막아낼 수 있을까?</value>
+							</column_data>
+							<column_data>
+								<column_id>54</column_id>
+								<value>다니엘 헤니</value>
+							</column_data>
+							<column_data>
+								<column_id>55</column_id>
+								<value>라이언 포터</value>
+							</column_data>
+							<column_data>
+								<column_id>56</column_id>
+								<value>스캇 애짓</value>
+							</column_data>
+							<column_data>
+								<column_id>57</column_id>
+								<value></value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>20148188</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>쎄시봉</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>C&apos;est Si Bon</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value>멜로/로맨스</value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value>한국</value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value>20150205</value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value>김현석</value>
+							</column_data>
+							<column_data>
+								<column_id>52</column_id>
+								<value>http://cfile16.uf.daum.net/C110x160/26021C4854C764C82BDE41</value>
+							</column_data>
+							<column_data>
+								<column_id>53</column_id>
+								<value>한국 포크 음악계의 전설이 된 ‘트윈폴리오’에 제 3의 멤버가 있었다?! 한국 음악계에 포크 열풍을 일으킨 조영남, 이장희, 윤형주, 송창식 등을 배출한 음악감상실 ‘쎄시봉’, 젊음의 거리 무교동 최고의 핫플레이스였던 그곳에서 ‘마성의 미성’ 윤형주와 ‘타고난 음악천재’ 송창식이 평생의 라이벌로 처음 만나게 된다. ‘쎄시봉’ 사장은 이들의 가수 데뷔를 위해 트리오 팀 구성을 제안하고, 자칭 ‘쎄시봉’의 전속 프로듀서 이장희는 우연히 오근태의 중저음 목소리를 듣고 그가 두 사람의 빈틈을 채워줄 ‘숨은 원석’임을 직감한다. 기타 코드조차 제대로 잡지 못하는 ‘통영촌놈’ 오근태는 이장희의 꼬임에 얼떨결에 ‘트리오 쎄시봉’의 멤버로 합류하게 되고 그 시절, 모든 남자들의 마음을 사로잡은 ‘쎄시봉’의 뮤즈 민자영에게 첫눈에 반해 그녀를 위해 노래를 부르기로 결심하는데.... 그 시절, 젊음의 거리 무교동을 주름잡던 음악감상실 ‘쎄시봉’` 모두의 마음을 사로잡은 단 한명의 뮤즈 그리고 잊지 못할 가슴 시린 첫사랑의 기억...</value>
+							</column_data>
+							<column_data>
+								<column_id>54</column_id>
+								<value>김윤석</value>
+							</column_data>
+							<column_data>
+								<column_id>55</column_id>
+								<value>정우</value>
+							</column_data>
+							<column_data>
+								<column_id>56</column_id>
+								<value>김희애</value>
+							</column_data>
+							<column_data>
+								<column_id>57</column_id>
+								<value>한효주</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>20136888</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>강남 1970</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>Gangnam Blues</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value>액션</value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value>한국</value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value>20150121</value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value>유하</value>
+							</column_data>
+							<column_data>
+								<column_id>52</column_id>
+								<value>http://cfile19.uf.daum.net/C110x160/2753B04F54B2AF9F22DA33</value>
+							</column_data>
+							<column_data>
+								<column_id>53</column_id>
+								<value>1970년, 강남땅을 향한 위험한 욕망이 춤추기 시작한다! 호적도 제대로 없는 고아로, 넝마주이 생활을 하며 친형제처럼 살던 종대(이민호)와 용기(김래원). 유일한 안식처였던 무허가촌의 작은 판자집마저 빼앗기게 된 두 사람은 건달들이 개입된 전당대회 훼방 작전에 얽히게 되고 그 곳에서 서로를 잃어버린다. “땅 종대, 돈 용기! 끝까지 한번 가 보자!” 3년 후, 자신을 가족으로 받아 준 조직 두목 출신 길수(정진영)의 바람과 달리, 잘 살고 싶다는 꿈 하나로 건달 생활을 하게 되는 종대. 정보와 권력의 수뇌부에 닿아있는 복부인 민마담(김지수)과 함께 강남 개발의 이권다툼에 뛰어든 종대는 명동파의 중간보스가 된 용기와 재회하고, 두 사람은 정치권까지 개입된 의리와 음모, 배신의 전쟁터. 그 한 가운데에 놓이게 되는데…</value>
+							</column_data>
+							<column_data>
+								<column_id>54</column_id>
+								<value>이민호</value>
+							</column_data>
+							<column_data>
+								<column_id>55</column_id>
+								<value>김래원</value>
+							</column_data>
+							<column_data>
+								<column_id>56</column_id>
+								<value>정진영</value>
+							</column_data>
+							<column_data>
+								<column_id>57</column_id>
+								<value>설현</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>20137048</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>국제시장</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>Ode to My Father</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value>드라마</value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value>한국</value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value>20141217</value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value>윤제균</value>
+							</column_data>
+							<column_data>
+								<column_id>52</column_id>
+								<value>http://cfile76.uf.daum.net/C110x160/2502AF49546B09E61FB5F1</value>
+							</column_data>
+							<column_data>
+								<column_id>53</column_id>
+								<value>1950년 한국전쟁을 지나 부산으로 피란 온 ‘덕수’(황정민 분)의 다섯 식구, 전쟁 통에 헤어진 아버지를 대신해야 했던 ‘덕수’는 고모가 운영하는 부산 국제시장의 수입 잡화점 ‘꽃분이네’서 일하며 가족의 생계를 꾸려 나간다. 모두가 어려웠던 그때 그 시절, 남동생의 대학교 입학 등록금을 벌기 위해 이역만리 독일에 광부로 떠난 ‘덕수’는 그곳에서 첫사랑이자 평생의 동반자 ‘영자’(김윤진 분)를 만난다. 그는 가족의 삶의 터전이 되어버린 ‘꽃분이네’ 가게를 지키기 위해 ‘선장’이 되고 싶었던 오랜 꿈을 접고 다시 한번 전쟁이 한창이던 베트남으로 건너가 기술 근로자로 일하게 되는데… 가족을 위해 굳세게 살아온 그때 그 시절, 가장 평범한 아버지의 가장 위대한 이야기가 시작된다!</value>
+							</column_data>
+							<column_data>
+								<column_id>54</column_id>
+								<value>황정민</value>
+							</column_data>
+							<column_data>
+								<column_id>55</column_id>
+								<value>김윤진</value>
+							</column_data>
+							<column_data>
+								<column_id>56</column_id>
+								<value>오달수</value>
+							</column_data>
+							<column_data>
+								<column_id>57</column_id>
+								<value>정진영</value>
+							</column_data>
+						</data>
+						<data>
+							<column_data>
+								<column_id>45</column_id>
+								<value>20149570</value>
+							</column_data>
+							<column_data>
+								<column_id>46</column_id>
+								<value>조선명탐정 : 사라진 놉의 딸</value>
+							</column_data>
+							<column_data>
+								<column_id>47</column_id>
+								<value>Detective K: Secret of the Lost Island</value>
+							</column_data>
+							<column_data>
+								<column_id>48</column_id>
+								<value>사극</value>
+							</column_data>
+							<column_data>
+								<column_id>49</column_id>
+								<value>한국</value>
+							</column_data>
+							<column_data>
+								<column_id>50</column_id>
+								<value>20150211</value>
+							</column_data>
+							<column_data>
+								<column_id>51</column_id>
+								<value>김석윤</value>
+							</column_data>
+							<column_data>
+								<column_id>52</column_id>
+								<value>http://cfile118.uf.daum.net/C110x160/265E384954AE4C3003AB6B</value>
+							</column_data>
+							<column_data>
+								<column_id>53</column_id>
+								<value>우리가 또 나설 차례인가! 정조 19년. 한때는 왕의 밀명을 받던 특사였으나 무슨 이유인지 왕에게 미운 털이 박혀 외딴 섬에 유배되어 버린 조선 제일의 명탐정 김민. 찾아오는 이라곤 지난 날 함께 했던 파트너 서필과 매일 같이 동생을 찾아달라며 오는 어린 소녀뿐이다. 그러던 중 김민은 조선 전역에 불량은괴가 유통되고 있다는 소식을 접하게 되고, 이로 인해 잠자고 있던 탐정 본능이 꿈틀거리기 시작한다. 결국 유배지 이탈이라는 초강수를 두며 불량은괴 유통사건과 행방불명 된 소녀의 동생을 찾기 위해 본격 수사에 착수하게 된다. 사상 최초로 동시에 두 사건 해결에 나선 조선 명탐정 김민과 서필! 그러나 정체를 알 수 없는 미모의 여인 히사코로 인해 명콤비의 수사는 더욱 혼선을 빚는다. 과연 이들은 의문의 두 사건을 해결하고, 화려한 옛 영광을 되찾을 수 있을까? 조선 제일의 명탐정 콤비, 김민과 서필이 돌아왔다! “위기의 조선. 우리에게 한번 더 맡겨보시지요!”</value>
+							</column_data>
+							<column_data>
+								<column_id>54</column_id>
+								<value>김명민</value>
+							</column_data>
+							<column_data>
+								<column_id>55</column_id>
+								<value>오달수</value>
+							</column_data>
+							<column_data>
+								<column_id>56</column_id>
+								<value></value>
+							</column_data>
+							<column_data>
+								<column_id>57</column_id>
+								<value></value>
+							</column_data>
+						</data>
+					</direct_test_data>
+					<repeat_test_data>
+						<test_data_num>0</test_data_num>
+						<data_def_list>
+							<data_def>
+								<column_id>45</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_1</select>
+								<select>movie_2</select>
+								<select>movie_3</select>
+								<select>movie_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>46</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_title_kr_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_title_kr_1</select>
+								<select>movie_title_kr_2</select>
+								<select>movie_title_kr_3</select>
+								<select>movie_title_kr_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>47</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_title_eng_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_title_eng_1</select>
+								<select>movie_title_eng_2</select>
+								<select>movie_title_eng_3</select>
+								<select>movie_title_eng_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>48</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_genre_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_genre_1</select>
+								<select>movie_genre_2</select>
+								<select>movie_genre_3</select>
+								<select>movie_genre_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>49</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_nation_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_nation_1</select>
+								<select>movie_nation_2</select>
+								<select>movie_nation_3</select>
+								<select>movie_nation_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>50</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_open_date_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_open_date_1</select>
+								<select>movie_open_date_2</select>
+								<select>movie_open_date_3</select>
+								<select>movie_open_date_4</select>
+								<modified_values>
+								</modified_values>
+							</data_def>
+							<data_def>
+								<column_id>51</column_id>
+								<type>format</type>
+								<repeat_num>1</repeat_num>
+								<template>movie_director_%</template>
+								<from>1</from>
+								<to>100</to>
+								<increment>1</increment>
+								<select>movie_director_1</select>
+								<select>movie_director_2</select>
+								<select>movie_director_3</select>
+								<select>movie_director_4</select>
 								<modified_values>
 								</modified_values>
 							</data_def>

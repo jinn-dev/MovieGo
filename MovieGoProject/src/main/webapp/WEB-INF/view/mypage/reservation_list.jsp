@@ -54,7 +54,7 @@
  	var id;
 	$(document).ready(function() {
 		if ($("#cancel").val() == "n") {
-			//$(":button").hide();
+			$(":button").hide();
 		}
 	});
 	
@@ -73,9 +73,9 @@
 		<div class="reserve-wrap">
 		<table class="reserv-table">
 		<tr><td colspan="6">No.${status.index+1 }<hr></td></tr>
-		<tr><td colspan="2" rowspan="7">영화포스터</td></tr>
+		<tr><td colspan="2" rowspan="7"><div id="img"></div></td></tr>
 		<tr><th>영화</th><td><c:out value="${reservation.movieName }"/></td>
-		<th>예매번호</th><td><c:out value="${reservation.reservationId }" /></td></tr>
+		<th>예매번호</th><td id="rid"><c:out value="${reservation.reservationId }" /></td></tr>
 		<tr><th>상영시간</th><td><c:out value="${reservation.movieTime }"/></td>
 		<th>영화관</th><td><c:out value="${reservation.theaterName }"/></td></tr>
 		<tr><th>예매일</th><td><c:out value="${reservation.reservationDate }"/></td><th>결제금액</th><td><c:out value="${reservation.reservationPrice }"/></td></tr>
