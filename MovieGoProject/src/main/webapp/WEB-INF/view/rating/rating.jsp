@@ -60,8 +60,9 @@
                                 data : param,
                                 dataType : 'json',
                                  success : function(data) {
-                                	 var output = '<table class="rating-table"><tr><th colspan="6" align="center"><img id="headerimg" width="500" height="112" src="<%=request.getContextPath() %>/img/rating.png"/></th></tr><tr>';
-                                         for(var i=0; i<6; i++){
+                                	 var output = '<table class="rating-table"><tr><th colspan="6" align="center"><img id="headerimg" width="450" height="101" src="<%=request.getContextPath() %>/img/rating.png"/></th></tr><tr>';
+                                     output+='<tr><th colspan="6" align="center">30개 이상 평가하시면 취향 분석을 볼 수 있어요!</th></tr><tr>';    
+                                	 for(var i=0; i<6; i++){
 											output+='<td><div class="grid">'+
 											'<figure class="effect-zoe">'+
 											'<img width="180" height="253" src="'+data[i].movieImgUrl+'"/>'+

@@ -9,6 +9,12 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<style>
+.rmd-movie{
+	position: absolute;
+	right: 15%;
+}
+</style>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
 <script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
@@ -26,7 +32,7 @@ $(document).ready(function() {
         data: param,
 		dataType:"json",
 		success: function(data){
-			var output = '<table><tr><th colspan="6"></th></tr><tr>';
+			var output = '<table class="rmd-movie"><tr><th colspan="6"></th></tr><tr>';
 			for (var i=0; i<6; i++){
 					output+='<td><div class="grid">'+
 					'<figure class="effect-zoe">'+
@@ -56,8 +62,8 @@ $(document).ready(function() {
 </head>
 <body>
  <input type="hidden" var="${page }" id="page" name="page"/>
- <img id="rmdimg" width="350" height="130" src="<%=request.getContextPath() %>/img/recommend.png"/>
- <div class="genre-rmd-content"></div>
+<center><img width="350" height="130" src="<%=request.getContextPath() %>/img/recommend.png"/></center>
+<div class="genre-rmd-content"></div>
   <script>
  var flag = "n"; 
  function ratingInfo(s, m){
