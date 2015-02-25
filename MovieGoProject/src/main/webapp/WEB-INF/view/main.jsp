@@ -23,8 +23,8 @@ $(document).ready(function() {
 		$("#signupB").click(function() {
 			var pwdLength = $("#userPwd").val().length;
 			var idLength = $("#userId").val().length;
-			if(idLength == 0) {
-				alertify.alert("아이디를 입력해주세요.");
+			if($("#userId").val()=="") {
+				alert("아이디를 입력해주세요.");
 				event.preventDefault();
 			}
 			for(var i = 0; i < idLength; i++) {
@@ -34,6 +34,7 @@ $(document).ready(function() {
 					event.preventDefault();
 					break;
 				}
+				
 				  else if ($("#userPwd").val() == "") {
 						alert("비밀번호를 입력해주세요.");
 						event.preventDefault();
@@ -208,7 +209,7 @@ $(document).ready(function() {
 		function userInfo(){
 			<c:url value="/find_user_info" var="url"></c:url>
 			
-			window.open('${url}','_blank', "width=500, height=500, toolbar=no, menubar=no, resizable=no");
+			window.open('${url}','_blank', "width=500, height=600, left=650, top=250, toolbar=no, menubar=no, resizable=no");
 		}
 
 		/* 비밀번호 유효성 체크 */

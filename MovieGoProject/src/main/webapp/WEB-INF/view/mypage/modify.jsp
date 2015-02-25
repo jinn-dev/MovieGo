@@ -9,18 +9,25 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/modify.css"/>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <title>개인정보수정</title>
 </head>
 <script type="text/javascript">
 
 function deleteCheck() {
-	 if(confirm("회원탈퇴하시겠습니까??")) {
-		 location.href="<%=request.getContextPath()%>/deleteuser?userId=${user.userId }";
 
-		}
-	 else {
-		 event.preventDefault();
-	 }
+	 alertify.confirm("회원탈퇴하시겠습니까?", function (e) {
+			if(e) {
+				 location.href="<%=request.getContextPath()%>/deleteuser?userId=${user.userId }";
+			 
+			}else {
+
+	        }
+	    });
+	    return false;
+	    
 	}
 </script>
 
