@@ -57,13 +57,13 @@
 	      '<td width="100">'+data.evaluation[i].movies[0].movieGenre +'</td>'+
 	      '<td width="100">'+data.evaluation[i].evRating +'</td>';
 	      if(data.evaluation[i].evComment== null) {
-	         var param2="?movieCode=" + data.evaluation[i].movies[0].movieCode;
 	         output += '<td width="100">'+
-	             '<a href="javascript:evc('+data.evaluation[i].movies[0].movieCode+')" class="icon-search">코멘트</a>';
+	             '<a href="javascript:evc('+data.evaluation[i].movies[0].movieCode+')" class="icon-search">코멘트</a></td>';
 	            
 	         }
 	      else {
-	         output += '<td width="100">'+data.evaluation[i].evComment +'</td>';
+	         output += '<td width="100"><a href="javascript:evc('+data.evaluation[i].movies[0].movieCode+')" class="icon-search">'+
+	         data.evaluation[i].evComment +'</td>';
 	      }
 	      
 	      output += '<td width="100">';
@@ -122,7 +122,7 @@
  function evc(m) {
     var param2="?movieCode" +"="+m;
       <c:url value="/evcomment" var="url"></c:url>
-      window.open('${url}'+param2,'_blank', "width=460, height=180, left=700, top=450, toolbar=no, menubar=no, resizable=no");
+      window.open('${url}'+param2,'_blank', "width=500, height=180, left=700, top=450, toolbar=no, menubar=no, resizable=no");
 }
  
 function deleteCheck(id) {

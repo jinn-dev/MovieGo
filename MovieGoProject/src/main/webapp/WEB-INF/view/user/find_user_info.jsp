@@ -80,6 +80,8 @@
 <style>
 body {
 	background-color: #F2F2F2;
+
+	
 }
 </style>
 <title>ID/비밀번호 찾기</title>
@@ -116,6 +118,5 @@ body {
 					</form>
 				</div>
 			</div>
-			
 </body>
 </html>

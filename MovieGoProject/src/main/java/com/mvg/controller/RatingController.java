@@ -100,18 +100,11 @@ public class RatingController {
 		return "rating/write_comment";
 	}
 
-	@RequestMapping(value = "/addevcomment", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
-	@ResponseBody
-	public int addEvComment(@RequestParam int evId, @RequestParam String evComment, HttpSession session) {
-		User user = (User) session.getAttribute("log");	
-		String userId = user.getUserId();	
-		Evaluation eval = new Evaluation();
-		eval.setEvId(evId);
-		eval.setUserId(userId);
-		eval.setEvComment(evComment);
-		int result = eService.updateEvaluation(eval);
-		logger.trace("결과"+result);
-		return result;		
+	@RequestMapping(value = "/addevcomment", params = "_event_confirmed", method = RequestMethod.POST)
+	public String addEvComment(Model model, @ModelAttribute("ecomment") Evaluation ecomment) {
+		eService.updateEvaluation(ecomment);
+		
+		return "rating/write_comment";
 	}
 
 	
