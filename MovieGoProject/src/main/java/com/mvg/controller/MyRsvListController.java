@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mvg.entity.Cancellation;
+import com.mvg.entity.CancellationByUser;
 import com.mvg.entity.ReservationByUser;
 import com.mvg.entity.ReservationInfo;
 import com.mvg.entity.User;
+import com.mvg.service.CancellationByUserService;
 import com.mvg.service.CancellationService;
 import com.mvg.service.ReservationByUserService;
 import com.mvg.service.ReservationInfoService;
@@ -41,6 +43,9 @@ public class MyRsvListController {
 
 	@Autowired
 	CancellationService cservice;
+	
+	@Autowired
+	CancellationByUserService cuservice;
 
 	@RequestMapping(value = "/myrlist", method = RequestMethod.GET)
 	public String myRListCall(Model model, HttpSession session) {
@@ -59,6 +64,13 @@ public class MyRsvListController {
 			rlist.set(i, ru);
 		}
 		logger.trace("수업: " + rlist);
+		String str = "none";
+		if (rlist.size()==0) {
+			model.addAttribute("rlist", str);
+		}
+		else {
+			model.addAttribute("rlist", rlist);
+		}
 		model.addAttribute("rlist", rlist);
 		return "mypage/reservation_list";
 	}
@@ -80,21 +92,18 @@ public class MyRsvListController {
 
 	@RequestMapping(value = "/myclist", method = RequestMethod.GET)
 	public String myCListCall(Model model, HttpSession session) {
-		// 번호, 영화관, 영화제목, 예매일, 상영시간, 결제금액, 예매취소
-		/*User user = (User) session.getAttribute("user");
+		// 취소번호, 영화관, 영화제목, 상영시간, 취소일
+		User user = (User) session.getAttribute("user");
 		String userId = user.getUserId();
-		List<Cancellation> clist = cservice.getCancelByUserIdService(userId);
-		for (int i = 0; i < clist.size(); i++) {
-			int cancel = ruservice.cancelYNService(ru.getMovieTime());
-			if (cancel >= 1) {
-				ru.setCancel("y");
-			} else {
-				ru.setCancel("n");
-			}
-			rlist.set(i, ru);
+		List<CancellationByUser> clist = cuservice.getCListByUIdService(userId);
+		logger.trace("수업: " + clist);
+		String str = "none";
+		if (clist.size()==0) {
+			model.addAttribute("clist", str);
 		}
-		logger.trace("수업: " + rlist);
-		model.addAttribute("rlist", rlist);*/
+		else {
+			model.addAttribute("clist", clist);
+		}
 		return "mypage/cancel_list";
 	}
 
