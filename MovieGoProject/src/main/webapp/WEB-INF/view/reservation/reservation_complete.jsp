@@ -10,9 +10,12 @@
 <script>
 </script>
 <body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+<jsp:include page="/WEB-INF/view/user/header.jsp" />
 
-예매 완료
+<table>
+<tr></tr>
+</table>
+
 
 <input type="button" onclick="location.href='<%=request.getContextPath() %>/mainlogined'" value="메인페이지로" />
 <input type="button" onclick="location.href='<%=request.getContextPath() %>/myrlist'" value="MY예매내역" />
