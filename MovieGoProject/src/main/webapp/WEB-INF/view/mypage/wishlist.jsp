@@ -8,15 +8,51 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.labelinplace.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/wishlist.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
+<title>MOVIE GO - WISHLIST</title>
+<style>
+.back_to_top{
+	position:fixed;
+	bottom:0;
+	left:45%;
+	margin-left:700px;
+	text-decoration:none;
+	color:#f2f2f2;
+	background-color:rgba(79, 93, 115, 0.50);
+	font-size:15px;
+	padding:1em;
+	display:none;
+}  
+.back_to_top:hover{
+	background-color:rgba(199, 92, 92, 0.50);
+	color:#f2f2f2;
+}
+</style>
 <script type="text/javascript">
  $(document).ready(function() {
+	 
+	 /* 스크롤 위로 이동 */
+ 	var offset = 220;  
+     var duration = 500;  
+     $(window).scroll(function() {  
+         if ($(this).scrollTop() > offset) {  
+             $('.back_to_top').fadeIn(duration);  
+         } else {  
+             $('.back_to_top').fadeOut(duration);  
+         }  
+     });  
+       
+     $('.back_to_top').click(function(event) {  
+         event.preventDefault();  
+         $('html, body').animate({scrollTop: 0}, duration);  
+         return false;  
+     })  
 
-	<c:url value="/wishlist.ajax" var="url"/>
+     <c:url value="/wishlist.ajax" var="url"/>
 	$.ajax({
 		url:'${url}',
 			type:'GET',	    

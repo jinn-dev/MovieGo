@@ -13,10 +13,6 @@
 <title>Insert title here</title>
 </head>
 <style>
-
-
-
-	
 </style>
 <script type="text/javascript">
 var price = ${price };
@@ -91,8 +87,6 @@ function completeReserv() {
 
 <body>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
-<center>
-<h1>결제하기</h1></center>
 <div class="rsvInfo">
 <div class="h">
 <h2>${user.userId }님의 예매정보</h2></div>

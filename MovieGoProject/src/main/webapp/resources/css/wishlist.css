@@ -19,7 +19,7 @@
 }
 
 .list-table table {
-	margin: 0 auto;
+	margin: -20px auto 0 auto;
 	table-layout: fixed;
 	witdh: 740px;
 	border: 1px;
