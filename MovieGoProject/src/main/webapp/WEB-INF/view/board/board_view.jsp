@@ -61,10 +61,15 @@ $(document).ready(function() {
 	});
 	
 	$("#comment_modify").click(function(){
-		var result = window.confirm("코멘트를 수정하시겠습니까?");
-		if(result){
-			$("#commentForm").submit();
-		}
+		alertify.confirm("코멘트를 수정하시겠습니까?", function (result) {
+			if(result) {
+				$("#commentForm").submit();
+			 
+			}else {
+
+	        }
+	    });
+	    return false;
 	});
 });
 </script>
