@@ -58,5 +58,8 @@
 <input type="button" onclick="location.href='<%=request.getContextPath() %>/myrlist'" class="div-button" value="MY예매내역" />
 </td></tr>
 </table>
+
+
+
 </body>
 </html>

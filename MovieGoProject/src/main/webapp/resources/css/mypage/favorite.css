@@ -16,9 +16,8 @@ body {
 	background: transparent;
 }
 
-
 .wrap{
-	margin: 10px auto 5px auto;
+	margin: 0 auto;
 }
 
 #rmdimg{
@@ -26,30 +25,30 @@ body {
 }
 
 .frame-genre {
-	width: 40%;
-	min-width: 500px;
+	width: 50%;
+	min-width: 550px;
+	height: 23em;
 	border-radius: 4px;
 	background: rgba(30, 30, 30, 0.1);
 	padding: 20px;
-	margin: -10px auto auto -195.7px;
 }
 
 .frame-nation {
 	min-width: 500px;
-	height: 24.5em;
+	height: 23em;
 	border-radius: 4px;
 	background: rgba(30, 30, 30, 0.1);
 	padding: 20px;
-	margin: -8px auto auto;
 }
 
 .frame-rmd {
-	width: 75%;
-	min-width: 500px; 
+	width: 90%;
+	height: 100%;
+	min-width: 1000px; 
 	border-radius: 4px;
 	background: rgba(30, 30, 30, 0.1);
 	padding: 20px;
-	margin: 10px auto;
+	margin: 0 auto;
 }
 
 
@@ -71,10 +70,6 @@ body .frame .content h3 {
 }
 
 /* 영화추천 */
-.genre-rmd-content table {
-	margin: 0 auto;
-	padding: 10px;
-}
 
 hr{
         width: 20em;
@@ -86,8 +81,8 @@ hr{
         position: relative;
         float: left;
         overflow: hidden;
-        /* margin: 10px 1%; */
         margin: 10px 1%;
+        margin: 30px 1%;
         min-width: 180px;
         max-width: 180px;
         max-height: 253px;

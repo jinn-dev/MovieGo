@@ -28,7 +28,7 @@
 									async : false,
 									dataType : "json",
 									success : function(data) {
-										if (data.result >= 30) {
+										if (data.result >= 29) {
 											var sum = 0;
 											for ( var i in data.results) {
 												sum += data.results[i].count;
@@ -674,6 +674,7 @@
 </script>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+	
 	<table class="wrap"><tr><td>
 	<div class="frame-genre">
 		<div class="content"><!-- 장르 -->
@@ -686,9 +687,7 @@
 	<div class="taste-nation-div"><!-- 국가 -->
 	</div></div></td></tr>
 	</table>
-	<div class="frame-rmd">
 	<div class="genre-rmd-div"></div><!-- 추천 -->
-	</div>
 	<div id="submenu">
 		<jsp:include page="submenu.jsp"></jsp:include>
 	</div>
