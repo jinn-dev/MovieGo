@@ -7,10 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/jquery.labelinplace.css">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/modify.css"/>
+<title>개인정보수정</title>
 </head>
 <script type="text/javascript">
 
@@ -25,61 +24,13 @@ function deleteCheck() {
 	}
 </script>
 
-<style type="text/css">
-body {
-	width: 100%;
-	overflow-y: hidden;
-	background-color: #F2F2F2;
-	color: #4F5D73;
-}
-
-#submenu {
-	width: 30%;
-	float: left;
-}
-
-.modify-form {
-	
-}
-
-.modify-form table {
-	padding: 100px;
-	margin: 0 auto;
-}
-
-#modify-form-header {
-	padding: 0 0 30px 0;
-	font-size: 2.0em;
-}
-
-.modify-form label {
-	display: inline-block;
-	width: 100px;
-	padding: 10px;
-}
-
-#userBirthday {
-	width: 146.5px;
-}
-
-.div-button {
-	background: #C75C5C;
-	font-size: 1.0em;
-	color: #F2F2F2;
-	border: none;
-	letter-spacing: 1px;
-	padding: 0.5em;
-	outline: none;
-	margin: 30px 0 0 0;
-}
-</style>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
 <body>
 	<div class="modify-form">
 		<table>
 		
 			<tr>
-				<th><div id="modify-form-header">개인정보수정</div></th>
+				<th><div id="modify-form-header"><img width="350" height="175" src="<%=request.getContextPath() %>/img/user_modify.png"/></div></th>
 			</tr>
 			<c:url value="/update" var="action"></c:url>
 						<form:form modelAttribute="user" method="post" action="${action }">

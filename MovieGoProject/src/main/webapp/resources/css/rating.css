@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-/* @font-face {
+@font-face {
         font-weight: normal;
         font-style: normal;
         font-family: 'feathericons';
@@ -11,7 +11,7 @@
                 format('truetype'),
                 url('localhost:9090/MovieGoProject/resources/fonts/feathericons/feathericons.svg?-8is7zf#feathericons')
                 format('svg');
-} */
+}
 
 a.top {
   position: fixed;
@@ -56,7 +56,7 @@ hr{
         display: block;
         min-height: 100%;
         max-width: 100%;
-        opacity: 0.8;
+        /* opacity: 1.0; */
 		-moz-border-radius:10px;
 		-webkit-border-radius:10px;
 		border-radius:10px;

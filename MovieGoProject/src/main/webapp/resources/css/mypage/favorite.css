@@ -16,18 +16,41 @@ body {
 	background: transparent;
 }
 
+
 .wrap{
 	margin: 10px auto 5px auto;
 }
 
-.frame {
+#rmdimg{
+	margin: 0 auto;
+}
+.frame-genre {
 	width: 40%;
 	min-width: 500px;
 	border-radius: 4px;
-	background: rgba(30, 30, 30, .3);
+	background: rgba(30, 30, 30, 0.1);
 	padding: 20px;
-	margin: -10px auto;
+	margin: -10px auto auto -195.7px;
 }
+
+.frame-nation {
+	min-width: 500px;
+	height: 24.5em;
+	border-radius: 4px;
+	background: rgba(30, 30, 30, 0.1);
+	padding: 20px;
+	margin: -8px auto auto;
+}
+
+.frame-rmd {
+	width: 75%;
+	min-width: 500px; 
+	border-radius: 4px;
+	background: rgba(30, 30, 30, 0.1);
+	padding: 20px;
+	margin: 10px auto;
+}
+
 
 body .frame .content h3 {
 	margin: 0 0 10px 0;
@@ -49,7 +72,7 @@ body .frame .content h3 {
 /* 영화추천 */
 .genre-rmd-content table {
 	margin: 0 auto;
-	padding: 50px;
+	padding: 10px;
 }
 
 hr{
@@ -78,7 +101,10 @@ hr{
         display: block;
         min-height: 100%;
         max-width: 100%;
-        opacity: 0.8;
+        /* opacity: 1.0; */
+		-moz-border-radius:10px;
+		-webkit-border-radius:10px;
+		border-radius:10px;
 }
 
 .grid figure figcaption {

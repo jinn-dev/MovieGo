@@ -7,7 +7,7 @@
 }
 
 .chart-horiz .chart {
-	width: 90%
+	width: 70%;
 }
 
 .chart-horiz .chart li {
@@ -18,7 +18,7 @@
 }
 
 .chart-horiz .chart li:before {
-	color: #fff;
+	color: #F2F2F2;
 	content: attr(title);
 	left: 5px;
 	position: absolute
@@ -34,8 +34,13 @@
 	margin-top: 0
 }
 
-.chart-horiz .chart li .bar {
+.chart-horiz .chart li .bar:first-child{
 	background: #C75C5C;
+	height: 100%
+}
+
+.chart-horiz .chart li .bar{
+	background: #34495E;
 	height: 100%
 }
 
