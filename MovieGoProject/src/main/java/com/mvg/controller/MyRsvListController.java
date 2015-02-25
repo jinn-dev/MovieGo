@@ -1,5 +1,6 @@
 package com.mvg.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -53,9 +54,18 @@ public class MyRsvListController {
 		User user = (User) session.getAttribute("user");
 		String userId = user.getUserId();
 		List<ReservationByUser> rlist = ruservice.getAllRByUIdService(userId);
+		ArrayList<ReservationInfo> info = new ArrayList<ReservationInfo>();
+		ArrayList<Integer> seats = new ArrayList<Integer>();
 		for (int i = 0; i < rlist.size(); i++) {
 			ReservationByUser ru = rlist.get(i);
 			int cancel = ruservice.cancelYNService(ru.getMovieTime());
+			int rid = ru.getReservationId();
+			info = (ArrayList<ReservationInfo>) riservice.getRInfoByRIdService(rid);
+			seats = new ArrayList<Integer>();
+			for (int j=0;j<info.size();j++) {
+				int seatid = info.get(i).getSeatId();
+				seats.add(seatid);
+			}
 			if (cancel >= 1) {
 				ru.setCancel("y");
 			} else {
@@ -64,14 +74,8 @@ public class MyRsvListController {
 			rlist.set(i, ru);
 		}
 		logger.trace("수업: " + rlist);
-		String str = "none";
-		if (rlist.size()==0) {
-			model.addAttribute("rlist", str);
-		}
-		else {
-			model.addAttribute("rlist", rlist);
-		}
 		model.addAttribute("rlist", rlist);
+		model.addAttribute("seats", seats);
 		return "mypage/reservation_list";
 	}
 
@@ -96,14 +100,11 @@ public class MyRsvListController {
 		User user = (User) session.getAttribute("user");
 		String userId = user.getUserId();
 		List<CancellationByUser> clist = cuservice.getCListByUIdService(userId);
+		
 		logger.trace("수업: " + clist);
-		String str = "none";
-		if (clist.size()==0) {
-			model.addAttribute("clist", str);
-		}
-		else {
-			model.addAttribute("clist", clist);
-		}
+		
+		model.addAttribute("clist", clist);
+		
 		return "mypage/cancel_list";
 	}
 

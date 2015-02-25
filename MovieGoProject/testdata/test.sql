@@ -5,9 +5,9 @@ INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, us
 
 
 -- 극장
-INSERT INTO theaters (theater_name) VALUES ('건대');
-INSERT INTO theaters (theater_name) VALUES ('강변');
-INSERT INTO theaters (theater_name) VALUES ('군자');
+INSERT INTO theaters (theater_name) VALUES ('건대점');
+INSERT INTO theaters (theater_name) VALUES ('강변점');
+INSERT INTO theaters (theater_name) VALUES ('군자점');
 
 
 -- 영화

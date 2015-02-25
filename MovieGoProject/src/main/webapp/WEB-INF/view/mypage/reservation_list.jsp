@@ -48,6 +48,7 @@
 				<th>영화제목</th>
 				<th>예매일</th>
 				<th>상영시간</th>
+				<th>좌석</th>
 				<th>결제금액</th>
 				<th>예매취소</th>
 			</tr>
@@ -58,6 +59,7 @@
 				<td><c:out value="${reservation.movieName }"/></td>
 				<td><c:out value="${reservation.reservationDate }"/></td>
 				<td><c:out value="${reservation.movieTime }"/></td>
+				<td><c:out value="${seats }" /></td>
 				<td><c:out value="${reservation.reservationPrice }"/></td>
 				<td><input type="hidden" id="cancel" value="${reservation.cancel }" />
 					<input type="button" onclick="javascript:deleteRsv(${reservation.reservationId });" value="취소" /></td>
