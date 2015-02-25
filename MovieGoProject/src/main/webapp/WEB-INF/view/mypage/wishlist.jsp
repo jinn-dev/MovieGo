@@ -4,9 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
- <p>
 <head>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.labelinplace.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/wishlist.css" />
@@ -86,60 +84,13 @@ function deleteCheck(id) {
     });
     return false;
 }
-jQuery(document).ready(function() {  
-    var offset = 220;  
-    var duration = 500;  
-    jQuery(window).scroll(function() {  
-        if (jQuery(this).scrollTop() > offset) {  
-            jQuery('.back_to_top').fadeIn(duration);  
-        } else {  
-            jQuery('.back_to_top').fadeOut(duration);  
-        }  
-    });  
-      
-    jQuery('.back_to_top').click(function(event) {  
-        event.preventDefault();  
-        jQuery('html, body').animate({scrollTop: 0}, duration);  
-        return false;  
-    })  
-    
-    
-});
 </script>
-
- <style type="text/css">
-	#submenu {
-		width : 30%;
-		float : right;
-	}
-
-.back_to_top{
-	position:fixed;
-	bottom:0;
-	left:50%;
-	margin-left:700px;
-	text-decoration:none;
-	color:#000000;
-	background-color:rgba(0, 0, 0, 0.80);
-	font-size:12px;
-	padding:1em;
-	display:none;
-}  
-.back_to_top:hover{
-	background-color:rgba(0, 0, 0, 0.50);
-	color:#000;
-}
-</style>
 </head>
-<body>
-	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+	<body>
+		<jsp:include page="/WEB-INF/view/user/header.jsp" />
+		<a href="#" class="back_to_top">Back to Top</a>
+		<div id="movies"></div>
 
+		<jsp:include page="submenu.jsp"></jsp:include>
+	</body>
 
- <a href="#" class="back_to_top">Back to Top</a>
- <div id="movies"></div>
-
-<jsp:include page="submenu.jsp"></jsp:include>
-
-</body>
-
-</p>
