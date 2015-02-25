@@ -1,6 +1,10 @@
 @CHARSET "EUC-KR";
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 
+* {
+	font-family: '³ª´®°íµñ';
+}
+
 .list-table {
 	margin: 0 auto;
 }

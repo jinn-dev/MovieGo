@@ -9,6 +9,15 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<style>
+.rmd-movie{
+	position: absolute;
+	right: 15%;
+}
+</style>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	
@@ -23,7 +32,7 @@ $(document).ready(function() {
         data: param,
 		dataType:"json",
 		success: function(data){
-			var output = '<table><tr><th colspan="6"></th></tr><tr>';
+			var output = '<table class="rmd-movie"><tr><th colspan="6"></th></tr><tr>';
 			for (var i=0; i<6; i++){
 					output+='<td><div class="grid">'+
 					'<figure class="effect-zoe">'+
@@ -38,6 +47,21 @@ $(document).ready(function() {
 				    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
 				    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
 			} 
+		/* 	output+='</tr><tr></table><table><tr>';
+			for (var i=6; i<12; i++){
+				output+='<td><div class="grid">'+
+				'<figure class="effect-zoe">'+
+				'<img width="180" height="253" src="'+data[i].movieImgUrl+'"/>'+
+				'<figcaption><h2>'+data[i].movieTitleKr+'</h2><hr><br>'+
+				'<p class="icon-links">'+
+				'<a href="javascript:wishlist('+data[i].movieCode+')" class="icon"><i class="fa fa-heart fa-2x"></i>위시리스트</a><br>'+
+				'<a href="javascript:evcomment('+data[i].movieCode+')" class="icon"><i class="fa fa-comment-o fa-2x"></i>코멘트쓰기</a><br>'+
+				'<a href="javascript:ratingInfo(1, '+data[i].movieCode+')" class="icon" id="one"><font size="6">★<font></a>'+
+			    '<a href="javascript:ratingInfo(2, '+data[i].movieCode+')" class="icon" id="two"><font size="6">★<font></a>'+
+			    '<a href="javascript:ratingInfo(3, '+data[i].movieCode+')" class="icon" id="three"><font size="6">★<font></a>'+
+			    '<a href="javascript:ratingInfo(4, '+data[i].movieCode+')" class="icon" id="four"><font size="6">★<font></a>'+
+			    '<a href="javascript:ratingInfo(5, '+data[i].movieCode+')" class="icon" id="five"><font size="6">★<font></a></p></figcaption></td>';
+		}  */
 			 output+='</tr><tr></table>';
                $(".genre-rmd-content").html(output);
                
@@ -53,15 +77,15 @@ $(document).ready(function() {
 </head>
 <body>
  <input type="hidden" var="${page }" id="page" name="page"/>
- <img id="rmdimg" width="350" height="130" src="<%=request.getContextPath() %>/img/recommend.png"/>
- <div class="genre-rmd-content"></div>
+<center><img src="<%=request.getContextPath() %>/img/recommend.png"/></center>
+<div class="genre-rmd-content"></div>
   <script>
  var flag = "n"; 
  function ratingInfo(s, m){
  	var mov = m.toString();
  	var str = s + mov;
  	
- 	alert(s + "점추가되었습니다.");
+	 alertify.alert(s + "점추가되었습니다.");
  	 flag = "y"; 
  	var code;
  	 var xhr = new XMLHttpRequest();
@@ -111,7 +135,7 @@ function evcomment(m) {
 			dataType : 'text',
 	    	success : function(data) {
 	    	if(data == 0) {
-	    		 alert("별점을 먼저 선택하세요.");
+	    		alertify.alert("별점을 먼저 선택하세요.");
 			}				   
 	    	else {
 	    		<c:url value="/evcomment" var="url"></c:url>
@@ -136,11 +160,11 @@ $.ajax({
 			dataType : 'text',
 	    success : function(data) {
 	    	if(data == 0) {
-	    		 alert("위시리스트 추가되었습니다.");
+	    		alertify.alert("위시리스트 추가되었습니다.");
 			}				   
 		    
 	    	else {
-	    		alert("위시리스트 이미 포함되어 있습니다.");
+	    		alertify.alert("위시리스트 이미 포함되어 있습니다.");
 	    	}
 		},
 		error : function(request, status, error) {

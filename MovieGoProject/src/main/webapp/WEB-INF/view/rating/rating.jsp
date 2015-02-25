@@ -9,6 +9,9 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/rating.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <title>Insert title here</title>
 <style>
 .back_to_top{
@@ -57,8 +60,9 @@
                                 data : param,
                                 dataType : 'json',
                                  success : function(data) {
-                                	 var output = '<table class="rating-table"><tr><th colspan="6" align="center"><img id="headerimg" width="500" height="112" src="<%=request.getContextPath() %>/img/rating.png"/></th></tr><tr>';
-                                         for(var i=0; i<6; i++){
+                                	 var output = '<table class="rating-table"><tr><th colspan="6" align="center"><img id="headerimg" width="450" height="101" src="<%=request.getContextPath() %>/img/rating.png"/></th></tr><tr>';
+                                     output+='<tr><th colspan="6" align="center">30개 이상 평가하시면 취향 분석을 볼 수 있어요!</th></tr><tr>';    
+                                	 for(var i=0; i<6; i++){
 											output+='<td><div class="grid">'+
 											'<figure class="effect-zoe">'+
 											'<img width="180" height="253" src="'+data[i].movieImgUrl+'"/>'+
@@ -363,7 +367,7 @@
  	var mov = m.toString();
  	var str = s + mov;
  	
- 	alert(s + "점추가되었습니다.");
+ 	 alertify.alert(s + "점추가되었습니다.");
  	 flag = "y"; 
  	var code;
  	 var xhr = new XMLHttpRequest();
@@ -398,10 +402,10 @@ function evcomment(m) {
 	    	if(data) {
 	    		var param2="?movieCode" +"="+m;
 	    		<c:url value="/evcomment" var="url"></c:url>
-	 			window.open('${url}'+param2,'_blank', "width=800, height=300, toolbar=no, menubar=no, resizable=no");
+	 			window.open('${url}'+param2,'_blank', "width=460, height=180, left=700, top=450, toolbar=no, menubar=no, resizable=no");
 			}				   
 	    	else {
-	    		 alert("별점을 먼저 선택하세요.");
+	    		 alertify.alert("별점을 먼저 선택하세요.");
 
 	    	}
 		},
@@ -423,11 +427,13 @@ $.ajax({
 			dataType : 'text',
 	    success : function(data) {
 	    	if(data == 0) {
-	    		 alert("위시리스트 추가되었습니다.");
+	    		  alertify.alert("위시리스트 추가되었습니다.");
+	    		
+
 			}				   
 		    
 	    	else {
-	    		alert("위시리스트 이미 포함되어 있습니다.");
+	    		 alertify.alert("위시리스트 이미 포함되어 있습니다.");
 	    	}
 		},
 		error : function(request, status, error) {

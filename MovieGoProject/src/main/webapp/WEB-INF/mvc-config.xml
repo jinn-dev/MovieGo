@@ -73,5 +73,8 @@
 	<!-- mypage resource -->
 	<mvc:resources location="/resources/css/mypage/" mapping="/mypage/css/**" />
 	<mvc:resources location="/resources/js/mypage/" mapping="/mypage/js/**" />
-
+	<!-- alert resource -->
+	<mvc:resources location="/resources/css/alert/" mapping="/alert/css/**" />
+	<mvc:resources location="/resources/js/alert/" mapping="/alert/js/**" />
+	
 </beans>

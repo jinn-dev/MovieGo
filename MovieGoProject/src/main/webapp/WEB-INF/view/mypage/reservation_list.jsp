@@ -69,7 +69,6 @@
 
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	
 		<c:forEach items="${rlist }" var="reservation" varStatus="status">
 		<div class="reserve-wrap">
 		<table class="reserv-table">
@@ -83,6 +82,9 @@
 		<tr><td colspan="5" align="right"><hr><input type="hidden" id="cancel" value="${reservation.cancel }" />
 		<input type="button" onclick="javascript:deleteRsv(${reservation.reservationId });" value="예매취소" class="div-button"/></td></tr>
 		</table>
+		<c:if test="${status.index+1/2==0 }">
+		<br>
+		</c:if>
 		</div>
 		</c:forEach>
 		
