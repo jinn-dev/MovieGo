@@ -13,6 +13,9 @@
 </head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <style>
 .back_to_top{
 	position:fixed;
@@ -55,8 +58,8 @@
 	      '<td width="100">'+data.evaluation[i].evRating +'</td>';
 	      if(data.evaluation[i].evComment== null) {
 	         var param2="?movieCode=" + data.evaluation[i].movies[0].movieCode;
-	         output += '<td width="100">';
-	         /*    '<a href="javascript:evc('+data.evaluation[i].movies[0].movieCode+')" class="icon-search"></a>'+ */
+	         output += '<td width="100">'+
+	             '<a href="javascript:evc('+data.evaluation[i].movies[0].movieCode+')" class="icon-search">코멘트</a>';
 	            
 	         }
 	      else {
@@ -91,7 +94,6 @@
 	         $('#evlist').html(output);
 	      },
 	      error : function(request, status, error) {
-	         alert("노노");
 	         if(request.status != '0') {
 	            alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);   
 	         }   
@@ -124,10 +126,15 @@
 }
  
 function deleteCheck(id) {
-    if(confirm("영화평가를 삭제하시겠습니까??")) {
-       location.href="<%=request.getContextPath()%>/deleteevaluation?evId="+id;
-       
-    }
+    alertify.confirm("영화평가를 삭제하시겠습니까?", function (e) {
+		if(e) {
+		 location.href="<%=request.getContextPath()%>/deleteevaluation?evId="+id;
+		 
+		}else {
+
+        }
+    });
+    return false;
 }
 </script>
 <body>

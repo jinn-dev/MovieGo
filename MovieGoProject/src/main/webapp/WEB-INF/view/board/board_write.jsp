@@ -10,16 +10,19 @@
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <script>
 	$(document).ready(function() {
 		$("#write_submit").click(function() {
 			if ($("#boardTitle").val() == "") {
-				alert("제목을 입력해주세요.");
+				 alertify.alert("제목을 입력해주세요.");
 				event.preventDefault();
 			}
 
 			else if ($("#boardContent").val() == "") {
-				alert("내용을 입력해주세요.");
+				 alertify.alert("내용을 입력해주세요.");
 				event.preventDefault();
 			}
 		});
