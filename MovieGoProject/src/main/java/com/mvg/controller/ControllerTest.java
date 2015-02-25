@@ -43,6 +43,11 @@ public class ControllerTest {
 				new CustomDateEditor(simpleDateFormat, true));
 	}
 
+	@RequestMapping(value = "/tt", method = RequestMethod.GET)
+	public String imediate(Model model) {
+		return "/reservation/reservation_complete";
+	}
+	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String mainTest(Model model) {
 		model.addAttribute("log", new User());

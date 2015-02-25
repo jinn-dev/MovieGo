@@ -130,7 +130,7 @@ function reset() {
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
 <form name="frm" id="frm">
 <table class="reserve-table">
-<tr><td colspan="3" align="center"><h1>영화 예매 </h1></td>
+<tr><td colspan="3" align="center"><h1><img width="500" height="112" src="<%=request.getContextPath() %>/img/reservation.png"/></h1></td>
 <tr><td colspan="3" align="right"><a href="#" onclick="javascript:reset()"><img src="<%=request.getContextPath() %>/img/reserveReset.png"></a></td></tr>
 <tr><th>영화관</th><th>영화</th><th>날짜</th></tr>
 <tr>
