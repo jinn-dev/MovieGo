@@ -42,6 +42,7 @@ public class RatingController {
 	@RequestMapping(value="/thumbnail", method = RequestMethod.GET)
 	@ResponseBody
 	public String showThumbnail (@RequestParam String movieCode){
+		logger.trace("결과"+movieCode);
 		String thumbnail = service.getMovieThumbnailService(movieCode);
 		return thumbnail;
 	}

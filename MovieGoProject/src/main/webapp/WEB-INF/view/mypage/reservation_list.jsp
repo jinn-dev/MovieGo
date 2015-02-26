@@ -69,11 +69,13 @@ background: rgba(201, 00, 00, 0.1);
 	    }
 	} 
 </script>
-
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<center><img width="350" src="<%=request.getContextPath() %>/img/myreserve.png"/></center>
 		<c:forEach items="${rlist }" var="reservation" varStatus="status">
+		<c:if test="${reservation }==null">
+		<div class="reserve-wrap">예매 내역이 없습니다.</div>
+		</c:if>
 		<div class="reserve-wrap">
 	<table class="reserv-table">
 		<tr><td colspan="6">No.${status.index+1 }<hr></td></tr>
@@ -90,7 +92,7 @@ background: rgba(201, 00, 00, 0.1);
 		<c:if test="${status.index+1/2==0 }">
 		<br>
 		</c:if>
-		
+
 		</c:forEach>
 		
 	<form style="display: none;" id="postForm" method="post" action="<%=request.getContextPath()%>/cancelConfirm">
@@ -99,7 +101,5 @@ background: rgba(201, 00, 00, 0.1);
 	<div id="submenu">
 		<jsp:include page="submenu.jsp"></jsp:include>
 	</div>
-
-
 </body>
 </html>

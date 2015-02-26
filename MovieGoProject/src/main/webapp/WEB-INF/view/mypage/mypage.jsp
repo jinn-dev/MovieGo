@@ -12,8 +12,8 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
 <script type="text/javascript">
-	$(document).ready(
-					function() {
+	$(document).ready(function() {
+			
 						<c:url value="/genre.rmd" var="url"/>
 						$(".genre-rmd-div").load("${url}");
 						
@@ -648,19 +648,45 @@
 													});
 
 										} else {
+											//Popup dialog
+											function popup(message) {
+										        // get the screen height and width  
+										        var maskHeight = $(document).height();  
+										        var maskWidth = $(window).width();
+										        // calculate the values for center alignment
+										        var dialogTop =  (maskHeight/3) - ($('#dialog-box').height());  
+										        var dialogLeft = (maskWidth/2) - ($('#dialog-box').width()/2); 
+										        // assign values to the overlay and dialog box
+										        $('#dialog-overlay').css({height:maskHeight, width:maskWidth}).show();
+										        $('#dialog-box').css({top:dialogTop, left:dialogLeft}).show();
+										        // display the message
+										        $('#dialog-message').html(message);
+											}
 											
+											$('a.btn-ok, #dialog-overlay, #dialog-box').click(function () {         
+											$('#dialog-overlay, #dialog-box').hide();               
+											          return false;
+											  });
+											        
+											// if user resize the window, call the same function again
+											// to make sure the overlay fills the screen and dialogbox aligned to center    
+										 	$(window).resize(function () {
+											          //only do it if the dialog box is not hidden
+											           if (!$('#dialog-box').is(':hidden')) popup();           
+											 });  
+											/* $('wrapper')
 											var width = $(window).width();
 											var height = $(window).height();
 											//  화면 가리는 레이어 사이즈 조정
-											$('.wrap').width(width);
-											$('.wrap').height(height);
+											$('.wrapper').width(width);
+											$('.wrapper').height(height);
 											// 화면 가리는 레이어를 보여준다. (0.5초동안 30%의 농도의 투명도)
-											$('.wrap').fadeTo(500, 0.3);
+											$('.wrapper').fadeTo(500, 0.3);
 											// 팝업 레이어 보이게
 											var loadingDivObj = $('.loadingDiv');
 											loadingDivObj.css("top",$(document).height()/2-150);
 											loadingDivObj.css("left",$(document).width()/2-150);
-											loadingDivObj.fadeIn(500);
+											loadingDivObj.fadeIn(500); */
 											
 										/* 	$('.wrap')
 													.css(
@@ -668,7 +694,7 @@
 																"background" : "RGBA(242,242,242,0.8)",
 																"text-align" : "center"
 															});
-											$('.wrap')
+											$('')
 													.append(
 															"최소 30개의 영화 평가를 하시면 장르 통계를 볼 수 있습니다."); */
 										}
@@ -685,11 +711,11 @@
 								});
 
 						
-						// esc 누르면 화면 잠김 해제
+					/* 	// esc 누르면 화면 잠김 해제
 						$(document).keydown(function(event){
 							if(event.which=='27'){
 								$('.loadingDiv').fadeOut(300);
-								$('.wrap').fadeOut(1000);
+								$('.wrapper').fadeOut(1000);
 							}
 						});
 						
@@ -697,8 +723,8 @@
 						$(window).resize(function(){
 							var width = $(window).width();
 							var height = $(window).height();
-							$(".wrap").width(width).height(height);
-						});
+							$(".wrapper").width(width).height(height);
+						}); */
 						
 						
 						
@@ -706,8 +732,13 @@
 </script>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	<div class="wrap"></div>
-	<div class="loadingDiv"></div>
+	<div id="dialog-overlay"></div>
+	<div id="dialog-box">
+		<div class="dialog-content">
+			<div id="dialog-message"></div>
+			<a href="#" class="button">Close</a>
+		</div>
+	</div>
 	<table class="wrap"><tr><td>
 	<div class="frame-genre">
 		<div class="content"><!-- 장르 -->
