@@ -1,6 +1,5 @@
 package com.mvg.controller;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,31 +21,31 @@ public class CommentController {
 
 	@Autowired
 	CommentService service;
-	
+
 	/* 댓글 쓰기 */
-	@RequestMapping(value="/write", method=RequestMethod.POST)
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String commentWrite(Comment comment) {
 		service.addComment(comment);
-		String path ="redirect:/board/view?boardId="+comment.getBoardId();
+		String path = "redirect:/board/view?boardId=" + comment.getBoardId();
 		return path;
 	}
-	
+
 	/* 댓글 삭제 */
-	@RequestMapping(value="/drop", method=RequestMethod.GET)
-	public String commentDelete(@RequestParam int commentId){
+	@RequestMapping(value = "/drop", method = RequestMethod.GET)
+	public String commentDelete(@RequestParam int commentId) {
 		int boardId = service.getBoardIdByCmtId(commentId);
-		logger.trace("글번호"+boardId);
-		logger.trace("코멘트번호"+commentId);
+		logger.trace("글번호" + boardId);
+		logger.trace("코멘트번호" + commentId);
 		service.deleteComment(commentId);
-		String path = "redirect:/board/view?boardId="+boardId;
+		String path = "redirect:/board/view?boardId=" + boardId;
 		return path;
 	}
-	
+
 	/* 댓글 수정 */
-	@RequestMapping(value="/modify", method=RequestMethod.POST)
-	public String commentModify(@ModelAttribute("comment") Comment comment){
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String commentModify(@ModelAttribute("comment") Comment comment) {
 		service.updateComment(comment);
-		String path ="redirect:/board/view?boardId="+comment.getBoardId();
+		String path = "redirect:/board/view?boardId=" + comment.getBoardId();
 		return path;
 	}
 }

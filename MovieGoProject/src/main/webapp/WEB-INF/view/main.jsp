@@ -141,11 +141,41 @@ $(document).ready(function() {
 				}
 			 }); 
 		});
+ 		
+ 		$("#emailCheck").click(function() { 
+			var param="userEmail" +"="+ $("#userEmail").val();
+			$.ajax({
+				url:'http://localhost:9090/MovieGoProject/duplicatemail',
+ 				type:'GET',	
+ 				data : param,
+ 				cache : false,
+				async : false,
+ 				dataType : 'text',
+			    success : function(data) {
+					if(data) {
+						alert("이미 사용중인 이메일입니다.");	
+					}
+					else {
+						alert("사용가능한 이메일입니다.");
+						return false;
+					}
+				},
+				error : function(request, status, error) {
+					if(request.status != '0') {
+						alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+					}	
+				}
+			 }); 
+		});
+ 		
  	});
+
+
 
 </script>
 
 </head>
+
 <body>
 
 		<!-- 메인 배경화면 -->
@@ -189,6 +219,7 @@ $(document).ready(function() {
 										<p><label>아이디 (영문/숫자 혼합 10자리)</label><input type="text" id="userId" name="userId"/></p>
 										<input type="button" id="idCheck" name="idCheck" class="btn" value="중복확인"/>									
 										<p><label>이메일</label><input type="text" id="userEmail" name="userEmail"/></p>
+										<input type="button" id="emailCheck" name="emailCheck" class="btn" value="중복확인"/>									
 										<p><label>비밀번호 (영문/숫자 혼합 10자리)</label>
 										<input type="password" id="userPwd" name="userPwd" /></p>
 										<p><label>비밀번호 확인</label>
