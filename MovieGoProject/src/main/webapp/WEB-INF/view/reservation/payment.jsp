@@ -15,11 +15,20 @@
 <style>
 </style>
 <script type="text/javascript">
+
+
+
 var price = ${price };
 var totalprice = price;
 var spoint = price * 0.1;
 var yncoupon="notused";
 var upoint=0;
+
+$(document).ready(function(){
+	alert("dddd");
+	var p = $("#total").val() * 0.1;
+	$("#savePoint").val(p);
+});
 
 function cal() {
 	totalprice = $("#price").val() - $("#minusCoupon").val() - $("#minusPoint").val();

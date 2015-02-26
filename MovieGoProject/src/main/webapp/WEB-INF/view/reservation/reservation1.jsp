@@ -119,6 +119,33 @@ function clickTheater(theater) {
    xhr.open("post", url, true);
    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
    xhr.send("theaterId="+theater);   
+
+
+function clickTheater(theater) {	
+	$("#timelist").empty();
+	$("#movielist").empty();
+	$("#selMovie").empty();
+	$("#selTime").empty();
+	var xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState==4&&xhr.status==200) {
+			var jsonobj = JSON.parse(xhr.responseText);
+			$("#movielist").empty();
+			document.querySelector("#selTheater").innerHTML = theater;
+			for(var i = 0; i < jsonobj.movies.length; i++) {
+				/* var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>"; */
+				var appendText = "<label class='radio'><input id='radio1' type='radio' name='movie' onclick='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>";
+				appendText+="<span class='outer'><span class='inner'></span></span>"+jsonobj.movies[i].movieName +"</label><br>";
+				
+				
+				$("#movielist").append(appendText);
+			}
+		}
+	}
+	var url = "<%=request.getContextPath()%>/reserve/theater";
+	xhr.open("post", url, true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.send("theaterId="+theater);	
 }
 
 function reset() {
