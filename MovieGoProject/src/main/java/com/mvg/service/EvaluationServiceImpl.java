@@ -64,11 +64,5 @@ public class EvaluationServiceImpl implements EvaluationService {
 		return result;
 	}
 
-/*	@Override
-	public int deleteEvaluationByUserId(String userId) {
-		int result = dao.deleteEvaluationByUserId(userId);
-		return result;
-	}
-*/
 
 }

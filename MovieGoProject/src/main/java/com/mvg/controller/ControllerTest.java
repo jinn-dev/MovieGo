@@ -47,7 +47,7 @@ public class ControllerTest {
 	public String imediate(Model model) {
 		return "/mypage/reservation_list";
 	}
-	
+
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String mainTest(Model model) {
 		model.addAttribute("log", new User());
@@ -59,34 +59,33 @@ public class ControllerTest {
 		return "user/find_user_info";
 	}
 
-
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	@ResponseBody
-	public User loginCheck(Model model, HttpSession session, @RequestParam String userId, @RequestParam String userPwd) {
+	public User loginCheck(Model model, HttpSession session,
+			@RequestParam String userId, @RequestParam String userPwd) {
 		User log = new User();
 		log.setUserId(userId);
 		log.setUserPwd(userPwd);
-		
+
 		User u = service.getUserByUserId(log);
-		if(u != null) {
+		if (u != null) {
 			model.addAttribute("log", u);
 			model.addAttribute("user", u);
 		}
-		
+
 		else {
 			logger.trace("사용자없음");
 		}
-		
+
 		return u;
 	}
-	
 
 	@RequestMapping(value = "/mainlogined", method = RequestMethod.GET)
 	public String mainlogined(HttpSession session) {
 		session.setMaxInactiveInterval(3600);
 		return "user/main_logined";
 	}
-	
+
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String goMain() {
 		return "user/main_logined";
@@ -95,7 +94,7 @@ public class ControllerTest {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(@ModelAttribute("log") User log,
 			SessionStatus sessionStatus) {
-		if(log!=null){
+		if (log != null) {
 			sessionStatus.setComplete();
 		}
 		return "redirect:/main";
@@ -110,68 +109,35 @@ public class ControllerTest {
 	@RequestMapping(value = "/duplicate", method = RequestMethod.GET)
 	@ResponseBody
 	public String duplicate(@RequestParam String userId) {
-		  String result = service.selectUserById(userId);
-			return result;
+		String result = service.selectUserById(userId);
+		return result;
 	}
-	
+
 	@RequestMapping(value = "/duplicatemail", method = RequestMethod.GET)
 	@ResponseBody
 	public String duplicatemail(@RequestParam String userEmail) {
-		  String result = service.selectUserByEmail(userEmail);
-			return result;
+		String result = service.selectUserByEmail(userEmail);
+		return result;
 	}
-	
+
 	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
 	@ResponseBody
 	public String idcheck(@RequestParam String userEmail) {
-		  String result = service.selectUserByEmail(userEmail);
-		  logger.trace("수업:" + result);
-			return result;
+		String result = service.selectUserByEmail(userEmail);
+		logger.trace("수업:" + result);
+		return result;
 	}
-	
+
 	@RequestMapping(value = "/passwordCheck", method = RequestMethod.GET)
 	@ResponseBody
-	public String emailCheck(@RequestParam String userId, @RequestParam String userEmail) {
-		  String result = service.selectUserByIdAndEmail(userId, userEmail);
-			return result;
+	public String emailCheck(@RequestParam String userId,
+			@RequestParam String userEmail) {
+		String result = service.selectUserByIdAndEmail(userId, userEmail);
+		return result;
 	}
-	
-	@RequestMapping(value="/apitest3")
-	public String apiTest3(){
+
+	@RequestMapping(value = "/apitest3")
+	public String apiTest3() {
 		return "apitest/restService3";
 	}
 }
-	/*
-	  ModelAndView mav = new ModelAndView();
-		mav.setViewName("main");
-		int result = service.selectUserById(userId);
-		mav.addObject("result", result);
-		logger.trace("controller에서" + result);
-		return mav;
-	}
-	 @RequestMapping(value = "/test/SessionCheck")
-	@ResponseBody
-	public void selectDetail3(HttpSession session,
-			@ModelAttribute("SessionVO") SessionVO sessionVO,
-			HttpServletResponse response) throws JsonGenerationException,
-			JsonMappingException, IOException {
-
-		// 이부분에 세션 체크 넣어주면됨.
-		sessionVO sessionVO = CommonUtil.getSessionVOInfo("user");
-
-		String check = null;
-		if (sessionVO != null) {
-			check = "ok";
-		}
-
-		response.setContentType("text/html;charset=UTF-8");
-		PrintWriter out = response.getWriter();
-
-		if (check != null) {
-			out.print(check);
-		} else {
-			// 실패 메시지
-			out.print("");
-		}
-
-	}*/

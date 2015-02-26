@@ -47,7 +47,7 @@ public class MyRsvListController {
 
 	@Autowired
 	CancellationByUserService cuservice;
-	
+
 	@Autowired
 	MovieService mservice;
 

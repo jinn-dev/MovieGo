@@ -10,9 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mvg.entity.Wishlist;
+
 @Repository
 public class WishlistDaoImpl implements WishlistDao {
-	
+
 	private final static Logger logger;
 	static {
 		logger = LoggerFactory.getLogger(WishlistDaoImpl.class);
@@ -21,12 +22,6 @@ public class WishlistDaoImpl implements WishlistDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	
-	@Override
-	public int getAllWishlistCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public int insertWishlist(Wishlist wishlist) {
@@ -41,23 +36,16 @@ public class WishlistDaoImpl implements WishlistDao {
 	@Override
 	public int deleteWishlist(int wishId) {
 		int result = -1;
-		String stmt = namespace+"deleteWishlist";
+		String stmt = namespace + "deleteWishlist";
 		result = sqlSession.delete(stmt, wishId);
 		return result;
 	}
 
 	@Override
 	public List<Wishlist> getWishlistByUserId(String userId) {
-		// TODO Auto-generated method stub
 		String stmt = namespace + "getWishlistByUserId";
 		List<Wishlist> wishlist = sqlSession.selectList(stmt, userId);
 		return wishlist;
-	}
-
-	@Override
-	public List<Wishlist> getAllWishlist() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -70,15 +58,4 @@ public class WishlistDaoImpl implements WishlistDao {
 
 		return result;
 	}
-
-	@Override
-	public int getWishlistCountByMovieCode(String movieCode) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	
-
-
-
 }

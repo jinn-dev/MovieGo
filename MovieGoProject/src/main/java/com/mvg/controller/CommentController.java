@@ -34,8 +34,6 @@ public class CommentController {
 	@RequestMapping(value = "/drop", method = RequestMethod.GET)
 	public String commentDelete(@RequestParam int commentId) {
 		int boardId = service.getBoardIdByCmtId(commentId);
-		logger.trace("글번호" + boardId);
-		logger.trace("코멘트번호" + commentId);
 		service.deleteComment(commentId);
 		String path = "redirect:/board/view?boardId=" + boardId;
 		return path;

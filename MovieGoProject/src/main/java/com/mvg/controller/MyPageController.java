@@ -37,7 +37,7 @@ import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({ "wishlist", "evlist"})
+@SessionAttributes({ "wishlist", "evlist" })
 public class MyPageController {
 	private final static Logger logger;
 	static {
@@ -92,7 +92,7 @@ public class MyPageController {
 	// 위시리스트jsp 가져오기
 	@RequestMapping(value = "/wishlist", method = RequestMethod.GET)
 	public String wishlist(Model model) {
-		
+
 		return "mypage/wishlist";
 	}
 

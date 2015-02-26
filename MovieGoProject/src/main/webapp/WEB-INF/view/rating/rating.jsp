@@ -33,6 +33,7 @@
 </style>
 <script type="text/javascript">
         $(document).ready(function() {
+        	
         	/* 스크롤 위로 이동 */
         	var offset = 220;  
             var duration = 500;  

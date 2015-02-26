@@ -21,11 +21,6 @@ public class EvaluationDaoImpl implements EvaluationDao {
 	private final String namespace = "com.mvg.mappers.evaluationMapper.";
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	@Override
-	public int getAllEvaluationCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
 	public List<Evaluation> getAllEvaluations() {

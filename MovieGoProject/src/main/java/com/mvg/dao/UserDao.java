@@ -9,9 +9,6 @@ public interface UserDao {
 	//전체 user의 수 얻어오기
 	int getUserCount();
 	
-	//모든 user 얻어오기
-	List<User> getAllUsers();
-	
 	//회원가입
 	int insertUser(User user);
 	
