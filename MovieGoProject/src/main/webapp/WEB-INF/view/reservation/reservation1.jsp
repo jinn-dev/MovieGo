@@ -107,8 +107,10 @@ function clickTheater(theater) {
 			document.querySelector("#selTheater").innerHTML = theater;
 			for(var i = 0; i < jsonobj.movies.length; i++) {
 				/* var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>"; */
-				var appendText = "<label class='radio'><input id='radio1' type='radio' name='movie' onclick=javascript:clickMovie(" + jsonobj.movies[i].code + ")'>";
-				appendText+=" <span class='outer'><span class=i'inner'></span></span>"+jsonobj.movies[i].movieName+"</label><br>";
+				var appendText = "<label class='radio'><input id='radio1' type='radio' name='movie' onclick='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>";
+				appendText+="<span class='outer'><span class='inner'></span></span>"+jsonobj.movies[i].movieName +"</label><br>";
+				
+				
 				$("#movielist").append(appendText);
 			}
 		}

@@ -5,6 +5,7 @@ INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, us
 INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('sooyeonlee', 'soo12', 'sooyeon@gmail.com', '910326', 'n', '0');
 INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('anda5468', 'anda12', 'anda@gmail.com', '911029', 'n', '0');
 INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('kjeun', 'kjeun12', 'kjeun@gmail.com', '900922', 'n', '0');
+
 -- 극장
 INSERT INTO theaters (theater_name) VALUES ('건대점');
 INSERT INTO theaters (theater_name) VALUES ('강변점');
