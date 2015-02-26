@@ -94,6 +94,7 @@ public class SeatInfoDaoImpl implements SeatInfoDao {
 		sinfo.setSeatNo(seatNo);
 		String stmt = namespace + "getSeatId";
 		int seatId = sqlSession.selectOne(stmt, sinfo);
+		logger.trace("결과"+seatId);
 		return seatId;
 	}
 
