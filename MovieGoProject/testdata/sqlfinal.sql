@@ -1,4 +1,16 @@
--- 좌석정보
+-- 회원
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('a', 'a', 'a@gmail.com', '910326', 'n', '0');
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('b', 'b', 'b@gmail.com', '911029', 'n', '0');
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('c', 'c', 'c@gmail.com', '900222', 'n', '0');
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('sooyeonlee', 'soo12', 'sooyeon@gmail.com', '910326', 'n', '0');
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('anda5468', 'anda12', 'anda@gmail.com', '911029', 'n', '0');
+INSERT INTO users (user_id, user_pwd, user_email, user_birthday, user_coupon, user_point) VALUES ('kjeun', 'kjeun12', 'kjeun@gmail.com', '900922', 'n', '0');
+-- 극장
+INSERT INTO theaters (theater_name) VALUES ('건대점');
+INSERT INTO theaters (theater_name) VALUES ('강변점');
+INSERT INTO theaters (theater_name) VALUES ('군자점');
+
+--좌석테이블
 INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('', '1', '1');
 INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('', '1', '2');
 INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('', '1', '3');
@@ -51,6 +63,5 @@ INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('', '1', '49');
 INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('', '1', '50');
 INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('', '1', '51');
 INSERT INTO seatinfo (seat_id, nowmovie_id, seat_no) VALUES ('', '1', '52');
-
 
 
