@@ -78,12 +78,6 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public List<User> getAllUsers() {
-		// TODO Auto-generated method st76ub
-		return null;
-	}
-
-	@Override
 	public String selectUserById(String userId) {
 		String stmt = namespace + "selectUserById";
 		String result = sqlSession.selectOne(stmt, userId);

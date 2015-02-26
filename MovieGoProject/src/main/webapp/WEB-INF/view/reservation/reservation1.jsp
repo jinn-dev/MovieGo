@@ -11,120 +11,122 @@
 <title>Insert title here</title>
 <style>
 .reserve-table {
-	width:1000px;
-	margin: -60px auto auto auto;
-	border: 1px;
+   width:1000px;
+   margin: -60px auto auto auto;
+   border: 1px;
 }
 
 .reserve-table th {
-	background: #4F5D73;
- 	color: #F2F2F2;
- 	padding: 10px;
+   background: #4F5D73;
+    color: #F2F2F2;
+    padding: 10px;
 }
 
 .reserve-table-content {
-	background: #F2F2F2;
-	height: 280px;
+   background: #F2F2F2;
+   height: 280px;
 }
 
 #htable {
-	visibility: hidden;
+   visibility: hidden;
 }
 
 </style>
 <script type="text/javascript">
 function check() {
-	var v1 = document.querySelector("#selTheater").innerHTML;
-	var v2 = document.querySelector("#selMovie").innerHTML;
-	var v3 = document.querySelector("#selTime").innerHTML;
-	if (v1=="") {
-		alert("영화관을 선택하세요.");
-		event.preventDefault();
-	}
-	else if (v2=="") {
-		alert("영화를 선택하세요.");
-		event.preventDefault();
-	}
-	else if (v3=="") {
-		alert("시간을 선택하세요.");
-		event.preventDefault();
-	}
-	else {
-		event.preventDefault();
-		location.href="<%=request.getContextPath()%>/reserve/seat";
-	}
+   var v1 = document.querySelector("#selTheater").innerHTML;
+   var v2 = document.querySelector("#selMovie").innerHTML;
+   var v3 = document.querySelector("#selTime").innerHTML;
+   if (v1=="") {
+      alert("영화관을 선택하세요.");
+      event.preventDefault();
+   }
+   else if (v2=="") {
+      alert("영화를 선택하세요.");
+      event.preventDefault();
+   }
+   else if (v3=="") {
+      alert("시간을 선택하세요.");
+      event.preventDefault();
+   }
+   else {
+      event.preventDefault();
+      location.href="<%=request.getContextPath()%>/reserve/seat";
+   }
 }
 
 function clickTime(time) {
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState==4 && xhr.status==200) {
-			document.querySelector("#selTime").innerHTML = time;
-		}
-	}
-	var url = "<%=request.getContextPath()%>/reserve/time";
-	xhr.open("post", url, true);
-	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send("time="+time);
+   var xhr = new XMLHttpRequest();
+   xhr.onreadystatechange = function() {
+      if (xhr.readyState==4 && xhr.status==200) {
+         document.querySelector("#selTime").innerHTML = time;
+      }
+   }
+   var url = "<%=request.getContextPath()%>/reserve/time";
+   xhr.open("post", url, true);
+   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+   xhr.send("time="+time);
 } 
 
 
 function clickMovie(movie) {
-	$("#timelist").empty();
-	$("#selTime").empty();
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState==4 && xhr.status==200) {
-			var jsonobj2 = JSON.parse(xhr.responseText);
-			$("#timelist").empty();
-			document.querySelector("#selMovie").innerHTML = movie;
-			for (var i=0;i<jsonobj2.times.length;i++){
-				/* var appendTxt = "<a href='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>" + jsonobj2.times[i].time +"</a><br>"; */
-				var appendTxt = "<label class='radio'><input id='radio1' type='radio' name='time' onclick='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>";
-				appendTxt+="<span class='outer'><span class='inner'></span></span>"+jsonobj2.times[i].time+"</label><br>";
-				$("#timelist").append(appendTxt);
-			}
-		}
-	}
-	var url = "<%=request.getContextPath()%>/reserve/movie";
-	xhr.open("post", url, true);
-	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send("movieCode="+movie);
+   $("#timelist").empty();
+   $("#selTime").empty();
+   var xhr = new XMLHttpRequest();
+   xhr.onreadystatechange = function() {
+      if (xhr.readyState==4 && xhr.status==200) {
+         var jsonobj2 = JSON.parse(xhr.responseText);
+         $("#timelist").empty();
 
-	} 
+         document.querySelector("#selMovie").innerHTML = movie;
+         for (var i=0;i<jsonobj2.times.length;i++){
+           var appendTxt = "<a href='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>" + jsonobj2.times[i].time +"</a><br>";
+           /*  var appendTxt = "<label class='radio'><input id='radio1' type='radio' name='time' onclick='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>";
+            appendTxt+="<span class='outer'><span class='inner'></span></span>"+jsonobj2.times[i].time+"</label><br>"; */
+            $("#timelist").append(appendTxt);
+         }
+      }
+   }
+   var url = "<%=request.getContextPath()%>/reserve/movie";
+   xhr.open("post", url, true);
+   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+   xhr.send("movieCode="+movie);
+
+   } 
 
 
-function clickTheater(theater) {	
-	$("#timelist").empty();
-	$("#movielist").empty();
-	$("#selMovie").empty();
-	$("#selTime").empty();
-	var xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = function() {
-		if (xhr.readyState==4&&xhr.status==200) {
-			var jsonobj = JSON.parse(xhr.responseText);
-			$("#movielist").empty();
-			document.querySelector("#selTheater").innerHTML = theater;
-			for(var i = 0; i < jsonobj.movies.length; i++) {
-				/* var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>"; */
-				var appendText = "<label class='radio'><input id='radio1' type='radio' name='movie' onclick=javascript:clickMovie(" + jsonobj.movies[i].code + ")'>";
-				appendText+=" <span class='outer'><span class=i'inner'></span></span>"+jsonobj.movies[i].movieName+"</label><br>";
-				$("#movielist").append(appendText);
-			}
-		}
-	}
-	var url = "<%=request.getContextPath()%>/reserve/theater";
-	xhr.open("post", url, true);
-	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-	xhr.send("theaterId="+theater);	
+function clickTheater(theater) {   
+   $("#timelist").empty();
+   $("#movielist").empty();
+   $("#selMovie").empty();
+   $("#selTime").empty();
+   var xhr = new XMLHttpRequest();
+   xhr.onreadystatechange = function() {
+      if (xhr.readyState==4&&xhr.status==200) {
+         var jsonobj = JSON.parse(xhr.responseText);
+         $("#movielist").empty();
+         document.querySelector("#selTheater").innerHTML = theater;
+         for(var i = 0; i < jsonobj.movies.length; i++) {
+        	  var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>"; 
+        	  /* var appendText = "<label class='radio'><input id='radio' type='radio' name='movie' onclick=javascript:clickMovie(" + jsonobj.movies[i].code + ")'>";
+            appendText+=" <span class='outer'><span class='inner'></span></span>"+jsonobj.movies[i].movieName+"</label><br>";*/
+                        
+            $("#movielist").append(appendText);
+         }
+      }
+   }
+   var url = "<%=request.getContextPath()%>/reserve/theater";
+   xhr.open("post", url, true);
+   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+   xhr.send("theaterId="+theater);   
 }
 
 function reset() {
-	$("#timelist").empty();
-	$("#movielist").empty();
-	$("#selTheater").empty();
-	$("#selMovie").empty();
-	$("#selTime").empty();
+   $("#timelist").empty();
+   $("#movielist").empty();
+   $("#selTheater").empty();
+   $("#selMovie").empty();
+   $("#selTime").empty();
 }
 
 </script>
@@ -141,8 +143,8 @@ function reset() {
 <tr>
 <td class="reserve-table-content">
   <c:forEach items="${theaters }" var="theater">
- <%--  <a class="theaters" href="javascript:clickTheater(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br> --%>
- <label class="radio"><input id="radio1" type="radio" name="theater" onclick="javascript:clickTheater(${theater.theaterId })">
+<%--<a class="theaters" href="javascript:clickTheater(${theater.theaterId })" id="thChk${theater.theaterId }">${theater.theaterName }</a><br> --%>
+  <label class="radio"><input id="radio1" type="radio" name="theater" onclick="javascript:clickTheater(${theater.theaterId })">
  <span class="outer"><span class="inner"></span></span>${theater.theaterName }</label><br>
   </c:forEach>
 </td>

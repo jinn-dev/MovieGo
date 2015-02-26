@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.mvg.entity.Theater;
 import com.mvg.service.TheaterService;
 
-
 @Controller
 public class TheaterController {
 
@@ -21,15 +20,15 @@ public class TheaterController {
 	static {
 		logger = LoggerFactory.getLogger(TheaterController.class);
 	}
-	
+
 	@Autowired
 	TheaterService service;
-	
-	@RequestMapping(value="/theater", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/theater", method = RequestMethod.GET)
 	public String testMethod(Model model) {
 		List<Theater> theaters = service.getAllTheatersService();
 		model.addAttribute("allTheaters", theaters);
 		return "reservation/reservation1";
 	}
-	
+
 }

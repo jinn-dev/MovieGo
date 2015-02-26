@@ -46,6 +46,7 @@ public class MovieTasteController {
 	public String tasteNationRedirect() {
 		return "mypage/favorite_nations";
 	}
+
 	@RequestMapping(value = "/nation.count.do", method = RequestMethod.POST)
 	@ResponseBody
 	public HashMap<String, Object> tasteNation(HttpSession session) {

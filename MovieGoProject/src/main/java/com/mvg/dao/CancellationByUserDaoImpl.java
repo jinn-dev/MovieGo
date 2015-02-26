@@ -12,12 +12,12 @@ import com.mvg.entity.CancellationByUser;
 
 @Repository
 public class CancellationByUserDaoImpl implements CancellationByUserDao {
-	
+
 	private final static Logger logger;
 	static {
 		logger = LoggerFactory.getLogger(CancellationByUserDaoImpl.class);
 	}
-	
+
 	private final String namespace = "com.mvg.mappers.cancellationByUserMapper.";
 
 	@Autowired

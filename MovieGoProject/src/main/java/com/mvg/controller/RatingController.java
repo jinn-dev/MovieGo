@@ -25,7 +25,7 @@ import com.mvg.service.UserService;
 import com.mvg.service.WishlistService;
 
 @Controller
-@SessionAttributes({"evRating", "movies", "onemovie", "evlist", "avgrating"})
+@SessionAttributes({ "evRating", "movies", "onemovie", "evlist", "avgrating" })
 public class RatingController {
 	@Autowired
 	MovieService service;
@@ -39,26 +39,26 @@ public class RatingController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(RatingController.class);
 
-	@RequestMapping(value="/thumbnail", method = RequestMethod.GET)
+	@RequestMapping(value = "/thumbnail", method = RequestMethod.GET)
 	@ResponseBody
-	public String showThumbnail (@RequestParam String movieCode){
-		logger.trace("결과"+movieCode);
+	public String showThumbnail(@RequestParam String movieCode) {
+		logger.trace("결과" + movieCode);
 		String thumbnail = service.getMovieThumbnailService(movieCode);
 		return thumbnail;
 	}
-	
+
 	@RequestMapping(value = "/rating", method = RequestMethod.GET)
 	public String rating(Model model) {
 		List<Movie> movies = service.getAllMoviesService();
 		model.addAttribute("movies", movies);
 		return "rating/rating";
 	}
-	
+
 	@RequestMapping(value = "/rating.do", method = RequestMethod.GET)
 	public String ratingTest2() {
 		return "rating/test";
 	}
-	
+
 	@RequestMapping(value = "/rating.ajax", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Movie> ratingTest(@RequestParam int page) {
@@ -68,32 +68,35 @@ public class RatingController {
 
 	@RequestMapping(value = "/addwishlist", method = RequestMethod.GET)
 	@ResponseBody
-	public int addWishlist(@RequestParam String movieCode, Model model, HttpSession session) {
+	public int addWishlist(@RequestParam String movieCode, Model model,
+			HttpSession session) {
 
 		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
-		
+
 		int result = wService.getWishlistCntByUM(movieCode, userId);
-		
-		if(result == 0) {
+
+		if (result == 0) {
 			Wishlist wishlist = new Wishlist();
 			wishlist.setMovieCode(movieCode);
 			wishlist.setUserId(userId);
-			
+
 			wService.insertWishlist(wishlist);
 		}
-		
+
 		else {
-			logger.trace("위시리스트 이미 추가되어있음" );
+			logger.trace("위시리스트 이미 추가되어있음");
 		}
 		return result;
 	}
-	
+
 	@RequestMapping(value = "/evcomment", method = RequestMethod.GET)
-	public String evComment(@RequestParam String movieCode, HttpSession session, Model model) {
-		User user = (User) session.getAttribute("log");	
+	public String evComment(@RequestParam String movieCode,
+			HttpSession session, Model model) {
+		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
-		Evaluation evaluation = eService.selectEvaluationByMovieCode(movieCode, userId);
+		Evaluation evaluation = eService.selectEvaluationByMovieCode(movieCode,
+				userId);
 
 		Movie movie = service.getMovieByMCodeService(movieCode);
 		model.addAttribute("onemovie", movie);
@@ -102,39 +105,42 @@ public class RatingController {
 	}
 
 	@RequestMapping(value = "/addevcomment", params = "_event_confirmed", method = RequestMethod.POST)
-	public String addEvComment(Model model, @ModelAttribute("ecomment") Evaluation ecomment) {
+	public String addEvComment(Model model,
+			@ModelAttribute("ecomment") Evaluation ecomment) {
 		eService.updateEvaluation(ecomment);
-		
+
 		return "rating/write_comment";
 	}
 
-	
 	@RequestMapping(value = "/evcommentchk", method = RequestMethod.GET)
 	@ResponseBody
-	public Evaluation evcommentchk(Model model, @RequestParam String movieCode, HttpSession session) {
-		User user = (User) session.getAttribute("log");	
+	public Evaluation evcommentchk(Model model, @RequestParam String movieCode,
+			HttpSession session) {
+		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
-		Evaluation test = eService.selectEvaluationByMovieCode(movieCode, userId);
+		Evaluation test = eService.selectEvaluationByMovieCode(movieCode,
+				userId);
 		return test;
 	}
-	
+
 	@RequestMapping(value = "/evrating", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
-	public String evRating(@RequestParam String code, Model model, HttpSession session) {
+	public String evRating(@RequestParam String code, Model model,
+			HttpSession session) {
 
 		String sRating = code.substring(0, 1);
 		int rating = Integer.parseInt(sRating);
 		String movieCode = code.substring(1, 9);
-		
+
 		User user = (User) session.getAttribute("log");
 		String userId = user.getUserId();
-		
-		Evaluation test = eService.selectEvaluationByMovieCode(movieCode, userId);
+
+		Evaluation test = eService.selectEvaluationByMovieCode(movieCode,
+				userId);
 		Evaluation evaluation = null;
-		if(test == null) {
+		if (test == null) {
 			evaluation = new Evaluation(userId, movieCode, rating);
 			eService.insertEvaluation(evaluation);
-		}
-		else {
+		} else {
 			int evId = eService.selectEvId(movieCode, userId);
 
 			evaluation = new Evaluation(evId, userId, movieCode, rating);
@@ -143,38 +149,36 @@ public class RatingController {
 
 		return "rating/rating";
 	}
-	
+
 	@RequestMapping(value = "/movieinfo", method = RequestMethod.GET)
 	public String movieInfo(@RequestParam String movieCode, Model model) {
 		Movie movie = service.getMovieByMCodeService(movieCode);
 		model.addAttribute("onemovie", movie);
-		List<Evaluation> evaluation = eService.getEvaluationByMovieCode(movieCode);
+		List<Evaluation> evaluation = eService
+				.getEvaluationByMovieCode(movieCode);
 		model.addAttribute("evlist", evaluation);
 		int addRating = 0;
-		if(evaluation.size() == 0) {
+		if (evaluation.size() == 0) {
 			model.addAttribute("avgrating", 0);
-		}
-		else {
-			for(int i = 0; i < evaluation.size(); i++) {
+		} else {
+			for (int i = 0; i < evaluation.size(); i++) {
 				addRating += evaluation.get(i).getEvRating();
 			}
-			double avgRating = (double)addRating / evaluation.size();
-			
+			double avgRating = (double) addRating / evaluation.size();
+
 			model.addAttribute("avgrating", avgRating);
 		}
-		
+
 		return "rating/movie_info";
 	}
-	
 
-	@RequestMapping(value="/onemovieimg", method = RequestMethod.GET)
+	@RequestMapping(value = "/onemovieimg", method = RequestMethod.GET)
 	@ResponseBody
-	public String oneMovieImg (@RequestParam String movieCode){
+	public String oneMovieImg(@RequestParam String movieCode) {
 		logger.trace("무비코드:" + movieCode);
 
 		String thumbnail = service.getMovieThumbnailService(movieCode);
 		return thumbnail;
 	}
 
-	
 }

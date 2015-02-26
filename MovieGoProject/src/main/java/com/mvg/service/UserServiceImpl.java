@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	}
 	@Autowired
 	UserDao dao;
-	
+
 	@Override
 	public int getUserCntService() {
 		int result = dao.getUserCount();
@@ -30,11 +30,10 @@ public class UserServiceImpl implements UserService {
 		return result;
 	}
 
-
 	@Override
 	public User getUserByUserId(User user) {
 		User result = dao.getUserByUserId(user);
-		
+
 		return result;
 
 	}
@@ -50,8 +49,6 @@ public class UserServiceImpl implements UserService {
 		int result = dao.deleteUser(userId);
 		return result;
 	}
-
-	
 
 	@Override
 	public String selectUserById(String userId) {
@@ -70,6 +67,5 @@ public class UserServiceImpl implements UserService {
 		String result = dao.selectUserByIdAndEmail(userId, userEmail);
 		return result;
 	}
-	
-	
+
 }

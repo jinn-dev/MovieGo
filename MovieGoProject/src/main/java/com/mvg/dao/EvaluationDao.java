@@ -6,9 +6,6 @@ import com.mvg.entity.Evaluation;
 
 public interface EvaluationDao {
 	
-	//모든 평가의 수
-	int getAllEvaluationCount();
-	
 	//모든 평가 얻어오기
 	List<Evaluation> getAllEvaluations();
 	

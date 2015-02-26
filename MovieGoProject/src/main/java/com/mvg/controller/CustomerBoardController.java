@@ -22,78 +22,80 @@ import com.mvg.service.CustomerBoardService;
 
 @Controller
 @RequestMapping("/board")
-@SessionAttributes({"content","detail"})
+@SessionAttributes({ "content", "detail" })
 public class CustomerBoardController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(CustomerBoardController.class);
-	
+
 	@Autowired
 	CustomerBoardService service;
-	
+
 	@Autowired
 	CommentService cmtservice;
-	
+
 	/* 게시판 리스트 */
-	@RequestMapping(method=RequestMethod.GET)
-	public String boardList(Model model){
+	@RequestMapping(method = RequestMethod.GET)
+	public String boardList(Model model) {
 		List<CustomerBoard> list = service.getAllBoardList();
-		model.addAttribute("list", list); // list는 게시판 글 전체 객체 
+		model.addAttribute("list", list); // list는 게시판 글 전체 객체
 		return "board/board_list";
 	}
-	
-	@RequestMapping(value="/list.do",method=RequestMethod.GET)
-	public String boardList(Model model, SessionStatus sessionStatus){
+
+	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+	public String boardList(Model model, SessionStatus sessionStatus) {
 		List<CustomerBoard> list = service.getAllBoardList();
-		model.addAttribute("list", list); // list는 게시판 글 전체 객체 
-		sessionStatus.setComplete(); //  sesseion에서 detail 객체 삭제
+		model.addAttribute("list", list); // list는 게시판 글 전체 객체
+		sessionStatus.setComplete(); // sesseion에서 detail 객체 삭제
 		return "board/board_list";
 	}
-	
-	
+
 	/* 게시판 글보기 */
-	@RequestMapping(value="/view", method=RequestMethod.GET)
-	public String showContent(@RequestParam int boardId, Model model){
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public String showContent(@RequestParam int boardId, Model model) {
 		CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
-		model.addAttribute("detail", board); // detail은 게시판 글+코멘트 하나 객체 
+		model.addAttribute("detail", board); // detail은 게시판 글+코멘트 하나 객체
 		return "board/board_view";
 	}
-	
+
 	/* 게시판 글쓰기 */
-	@RequestMapping(value="/write", method=RequestMethod.GET)
-	public String boardWrite(){
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public String boardWrite() {
 		return "board/board_write";
 	}
-	@RequestMapping(value="/submit", params="_event_confirmed", method=RequestMethod.POST)
-	public String boardSubmit(@ModelAttribute("board") CustomerBoard board){
+
+	@RequestMapping(value = "/submit", params = "_event_confirmed", method = RequestMethod.POST)
+	public String boardSubmit(@ModelAttribute("board") CustomerBoard board) {
 		service.addBoard(board);
 		return "redirect:/board";
 	}
-	
+
 	/* 게시판 글수정 */
-	@RequestMapping(value="/modify", method=RequestMethod.GET)
-	public String redirToEntryForm(@RequestParam int boardId, Model model){
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public String redirToEntryForm(@RequestParam int boardId, Model model) {
 		CustomerBoard content = service.getBoardByBdId(boardId);
-		model.addAttribute("content", content); // content는 게시판 글 수정한거 객체 
+		model.addAttribute("content", content); // content는 게시판 글 수정한거 객체
 		return "board/board_modify";
 	}
-	@RequestMapping(value="/modified", method=RequestMethod.POST)
-	public String boardmodified(@ModelAttribute("content") CustomerBoard board){
+
+	@RequestMapping(value = "/modified", method = RequestMethod.POST)
+	public String boardmodified(@ModelAttribute("content") CustomerBoard board) {
 		service.modifyBoard(board);
-		String path="redirect:/board/review?boardId="+board.getBoardId();
+		String path = "redirect:/board/review?boardId=" + board.getBoardId();
 		return path;
 	}
-	
-	@RequestMapping(value="/review", method=RequestMethod.GET)
-	public String redirToList(@RequestParam int boardId, Model model, SessionStatus sessionStatus){
+
+	@RequestMapping(value = "/review", method = RequestMethod.GET)
+	public String redirToList(@RequestParam int boardId, Model model,
+			SessionStatus sessionStatus) {
 		sessionStatus.setComplete(); // sesseion에서 content 객체 삭제
 		CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
-		model.addAttribute("detail", board); // detail은 게시판 글+코멘트 하나 객체 
+		model.addAttribute("detail", board); // detail은 게시판 글+코멘트 하나 객체
 		return "board/board_view";
 	}
-	
+
 	/* 게시판 글삭제 */
-	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public String boardDelete(@RequestParam int boardId){
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String boardDelete(@RequestParam int boardId) {
 		service.deleteBoard(boardId);
 		return "redirect:/board";
 	}
