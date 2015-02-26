@@ -73,7 +73,11 @@ position: relative;
 	width: 900px;
 	height: 400px;
 }
-
+.box th {
+	background: #4F5D73;
+	color: white;
+	text-align: center;
+}
 .in {
 
 	padding-right: 150px;
@@ -84,13 +88,13 @@ position: relative;
 .story {
 	padding-top: 50px;
 	padding-bottom: 50px;
+	text-align: center;
 }
 
-.box2{
-border-radius:50px 0;
-border:2px solid black; 
-
+.in td {
+ 	padding-left: 10px;
 }
+
 
 </style>
 <title>Insert title here</title>
@@ -148,7 +152,7 @@ border:2px solid black;
 </tr>
 </table>
 
-<table border=1 class="box2">
+<table class="box2">
 <c:forEach items="${evlist}" var="evlist">
 <tr>
 	<th>코멘트</th>

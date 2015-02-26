@@ -114,6 +114,13 @@ public class ControllerTest {
 			return result;
 	}
 	
+	@RequestMapping(value = "/duplicatemail", method = RequestMethod.GET)
+	@ResponseBody
+	public String duplicatemail(@RequestParam String userEmail) {
+		  String result = service.selectUserByEmail(userEmail);
+			return result;
+	}
+	
 	@RequestMapping(value = "/idcheck", method = RequestMethod.GET)
 	@ResponseBody
 	public String idcheck(@RequestParam String userEmail) {
