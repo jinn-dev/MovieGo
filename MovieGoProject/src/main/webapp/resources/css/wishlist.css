@@ -40,4 +40,7 @@
 }
 
 
-
+#cancelconfirm .btn {
+	background: #C75C5C;
+	color: #F2F2F2;
+}

@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reserve.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <title>Insert title here</title>
 <style>
@@ -38,15 +41,15 @@ function check() {
    var v2 = document.querySelector("#selMovie").innerHTML;
    var v3 = document.querySelector("#selTime").innerHTML;
    if (v1=="") {
-      alert("영화관을 선택하세요.");
+	  alertify.alert("영화관을 선택하세요.");
       event.preventDefault();
    }
    else if (v2=="") {
-      alert("영화를 선택하세요.");
+	   alertify.alert("영화를 선택하세요.");
       event.preventDefault();
    }
    else if (v3=="") {
-      alert("시간을 선택하세요.");
+	  alertify.alert("시간을 선택하세요.");
       event.preventDefault();
    }
    else {
@@ -80,9 +83,9 @@ function clickMovie(movie) {
 
          document.querySelector("#selMovie").innerHTML = movie;
          for (var i=0;i<jsonobj2.times.length;i++){
-           var appendTxt = "<a href='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>" + jsonobj2.times[i].time +"</a><br>";
-           /*  var appendTxt = "<label class='radio'><input id='radio1' type='radio' name='time' onclick='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>";
-            appendTxt+="<span class='outer'><span class='inner'></span></span>"+jsonobj2.times[i].time+"</label><br>"; */
+        	 /*var appendTxt = "<a href='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>" + jsonobj2.times[i].time +"</a><br>";*/
+             var appendTxt = "<label class='radio'><input id='radio1' type='radio' name='time' onclick='javascript:clickTime(" + jsonobj2.times[i].ampm + ")'>";
+            appendTxt+="<span class='outer'><span class='inner'></span></span>"+jsonobj2.times[i].time+"</label><br>"; 
             $("#timelist").append(appendTxt);
          }
       }
@@ -93,32 +96,6 @@ function clickMovie(movie) {
    xhr.send("movieCode="+movie);
 
    } 
-
-
-function clickTheater(theater) {   
-   $("#timelist").empty();
-   $("#movielist").empty();
-   $("#selMovie").empty();
-   $("#selTime").empty();
-   var xhr = new XMLHttpRequest();
-   xhr.onreadystatechange = function() {
-      if (xhr.readyState==4&&xhr.status==200) {
-         var jsonobj = JSON.parse(xhr.responseText);
-         $("#movielist").empty();
-         document.querySelector("#selTheater").innerHTML = theater;
-         for(var i = 0; i < jsonobj.movies.length; i++) {
-        	  var appendText = "<a href='javascript:clickMovie(" + jsonobj.movies[i].code + ")'>" + jsonobj.movies[i].movieName +"</a><br>"; 
-        	  /* var appendText = "<label class='radio'><input id='radio' type='radio' name='movie' onclick=javascript:clickMovie(" + jsonobj.movies[i].code + ")'>";
-            appendText+=" <span class='outer'><span class='inner'></span></span>"+jsonobj.movies[i].movieName+"</label><br>";*/
-                        
-            $("#movielist").append(appendText);
-         }
-      }
-   }
-   var url = "<%=request.getContextPath()%>/reserve/theater";
-   xhr.open("post", url, true);
-   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-   xhr.send("theaterId="+theater);   
 
 
 function clickTheater(theater) {	

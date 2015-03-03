@@ -20,7 +20,6 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-
 	var param="movieCode"+"="+$(".firstMovie").val();
 	<c:url value="/thumbnail" var="url"/>
 	$.ajax({

@@ -34,6 +34,7 @@ public class ReservationByUserDaoImpl implements ReservationByUserDao {
 	public int cancelYN(String movieTime) {
 		String stmt = namespace + "cancelYN";
 		int result = sqlSession.selectOne(stmt, movieTime);
+		logger.trace("수업: "+result);
 		return result;
 	}
 

@@ -56,7 +56,7 @@
 		 				dataType : 'text',
 					    success : function(data) {
 					    	if(data) {
-						    	  $("#passwordCheckResultView").html("<b>비밀번호는" + data + " 입니다.<b>"); 
+						    	  $("#passwordCheckResultView").html("<b>비밀번호는 " + data + " 입니다.<b>"); 
 						    	  event.preventDefault();
 							}
 					    	else {

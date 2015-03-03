@@ -16,6 +16,15 @@ body {
 	background: transparent;
 }
 
+#svg {
+  width: 500px;
+  height: 300px;
+}
+
+.content {
+  text-align: center;
+}
+
 .wrap{
 	margin: 0 auto;
 }
@@ -49,24 +58,6 @@ body {
 	background: rgba(30, 30, 30, 0.1);
 	padding: 20px;
 	margin: 0 auto;
-}
-
-
-body .frame .content h3 {
-	margin: 0 0 10px 0;
-	text-align: left;
-	color: white;
-	font-weight: 100;
-	text-transform: uppercase;
-}
-
-#svg {
-	width: 500px;
-	height: 300px;
-}
-
-.content {
-	text-align: center;
 }
 
 /* 영화추천 */

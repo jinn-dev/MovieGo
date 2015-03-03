@@ -56,6 +56,7 @@ public class MovieTasteController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("result", result);
 		map.put("results", results);
+		logger.trace("결과"+result);
 		return map;
 	}
 

@@ -25,7 +25,6 @@ var yncoupon="notused";
 var upoint=0;
 
 $(document).ready(function(){
-	alert("dddd");
 	var p = $("#total").val() * 0.1;
 	$("#savePoint").val(p);
 });
