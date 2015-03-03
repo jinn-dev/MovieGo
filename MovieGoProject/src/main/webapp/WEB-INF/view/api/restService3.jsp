@@ -26,13 +26,13 @@
 	// 결과 ROW의 개수를 지정 
 	String itemPerPage = request.getParameter("itemPerPage")==null?"20":request.getParameter("itemPerPage");
 	// 영화명으로 조회
-	String movieNm = request.getParameter("movieNm")==null?"킹스맨":request.getParameter("movieNm");
+	String movieNm = request.getParameter("movieNm")==null?"":request.getParameter("movieNm");
 	// 감독명으로 조회
 	String directorNm = request.getParameter("directorNm")==null?"":request.getParameter("directorNm");
 	// YYYY형식의 조회시작 개봉연도 입력
-	String openStartDt = request.getParameter("openStartDt")==null?"":request.getParameter("openStartDt");
+	String openStartDt = request.getParameter("openStartDt")==null?"2014":request.getParameter("openStartDt");
 	// YYYY형식의 조회종료 개봉연도 입력
-	String openEndDt = request.getParameter("openEndDt")==null?"":request.getParameter("openEndDt");
+	String openEndDt = request.getParameter("openEndDt")==null?"2015":request.getParameter("openEndDt");
 	// YYYY형식의 조회시작 제작연도 입력
 	String prdtStartYear = request.getParameter("prdtStartYear")==null?"":request.getParameter("prdtStartYear");
 	// YYYY형식의 조회종료 제작연도 입력
@@ -112,16 +112,18 @@
 		 				daumResult3.set(i, "false");
 		 			}
 					Map<String, Object> daumResult4 = (Map)daumResult3.get(i);
+					/* out.println(daumResult4); */
 					ArrayList director = (ArrayList)daumResult4.get("director"); //감독
 					request.setAttribute("director", director);
 					ArrayList thumbnail = (ArrayList)daumResult4.get("thumbnail"); //포스터url
 					request.setAttribute("thumbnail", thumbnail); 
-					/* ArrayList openInfo = (ArrayList)daumResult4.get("open_info"); // 관람등급, 런닝타임
-					request.setAttribute("openInfo", openInfo);  */ 
+					ArrayList openInfo = (ArrayList)daumResult4.get("open_info"); // 관람등급, 런닝타임
+					request.setAttribute("openInfo", openInfo);  
 					ArrayList story = (ArrayList)daumResult4.get("story"); //줄거리
 					request.setAttribute("story", story);
 					ArrayList actor = (ArrayList)daumResult4.get("actor"); //배우
 					request.setAttribute("actor", actor);
+					out.println(actor);
 		 		}
 				%>	
 				<c:if test="${not empty director }">
@@ -129,11 +131,11 @@
 						<td><c:out value="${director.content }" /></td>
 						</c:forEach>
 				</c:if>
-			<%-- 	<c:if test="${not empty openInfo }">
+				<c:if test="${not empty openInfo }">
 					<c:forEach items="${openInfo }" var="openInfo">
 						<td><c:out value="${openInfo.content }" /></td>
 						</c:forEach>
-				</c:if> --%>
+				</c:if>
 				<c:if test="${not empty thumbnail }">
 					<c:forEach items="${thumbnail }" var="thumbnail">
 						<td><c:out value="${thumbnail.content }" /></td>
@@ -149,24 +151,6 @@
 						<td><c:out value="${actor.content }" /></td>
 						</c:forEach>
 				</c:if>
-			<%-- <% 
-			String code = (String)map.get("movieCd");			
-			String movieCd = request.getParameter("movieCd")==null?code:request.getParameter("movieCd");
-			
-			String movieInfoItem = service.getMovieInfo(true, movieCd);
-			ObjectMapper InfoMapper = new ObjectMapper();
-			
-			HashMap<String, Object> movieResult2 = InfoMapper.readValue(movieInfoItem, HashMap.class);
-			Map<String, Object> moviInfoResult = (Map)movieResult2.get("movieInfoResult");
-			Map<String, Object> moviInfo = (Map)moviInfoResult.get("movieInfo");
-			ArrayList actors = (ArrayList)moviInfo.get("actors");
-			request.setAttribute("actors", actors);  
-			%>
-				<c:if test="${not empty actors }">
-					<c:forEach items="${actors }" var="actorInfo">
-						<td><c:out value="${actorInfo.peopleNm }" /></td>
-						</c:forEach>
-				</c:if> --%>
 		</tr>
 	</c:forEach>
 	</c:if>

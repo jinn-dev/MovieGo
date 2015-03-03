@@ -138,6 +138,6 @@ public class ControllerTest {
 
 	@RequestMapping(value = "/apitest3")
 	public String apiTest3() {
-		return "apitest/restService3";
+		return "api/restService3";
 	}
 }

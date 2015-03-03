@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -112,9 +113,9 @@ table{
 	String year = Integer.toString(now.get(Calendar.YEAR));
 	String month = Integer.toString(now.get(Calendar.MONTH)+1);
 	String date = Integer.toString(now.get(Calendar.DAY_OF_MONTH)-1);
-	String sysdate = year+"0"+month+date; 
+	String sysdate = year+"0"+month+"0"+date;  
 	String targetDt = request.getParameter("targetDt")==null?sysdate:request.getParameter("targetDt");	
-	// 결과 row 수	
+	// 결과 row 수
 	String itemPerPage = request.getParameter("itemPerPage")==null?"30":request.getParameter("itemPerPage");
 	// "Y": 다양성영화 "N": 상업영화 (default: 전체)
 	String multiMovieYn = request.getParameter("multiMovieYn")==null?"":request.getParameter("multiMovieYn");
