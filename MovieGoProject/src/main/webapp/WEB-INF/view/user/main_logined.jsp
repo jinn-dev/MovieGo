@@ -140,7 +140,7 @@ table{
 
 %>
 	
-<%--  <jsp:include page="/WEB-INF/view/user/header.jsp" /> --%>
+ <jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<section>
 		<div class="box-office">
 		<img id="thumbnail" src="#" width="213" height="301">
