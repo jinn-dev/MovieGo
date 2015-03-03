@@ -458,6 +458,7 @@ h2 {
 				if ((document.querySelector("#"+rowchar)) && (document.getElementById(seatNoStr).value == seatNoStr)){
 					$("#"+rowchar+"> :button[value='"+seatNoStr+"']").addClass('reserved');
 					$("#"+rowchar+"> :button[value='"+seatNoStr+"']").disabled = true;
+					console.log("disabled처리됨");
 				}
 			}
 		});
