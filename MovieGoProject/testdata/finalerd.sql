@@ -110,18 +110,19 @@ CREATE TABLE evaluations
 CREATE TABLE movies
 (
 	movie_code varchar2(8) NOT NULL,
-	movie_title_kr varchar2(400) NOT NULL,
-	movie_title_eng varchar2(400) NOT NULL,
-	movie_genre varchar2(400) NOT NULL,
-	movie_nation varchar2(400) NOT NULL,
-	movie_open_date varchar2(400),
-	movie_director varchar2(400) NOT NULL,
+	movie_title_kr varchar2(4000) NOT NULL,
+	movie_title_eng varchar2(4000) NOT NULL,
+	movie_genre varchar2(4000) NOT NULL,
+	movie_nation varchar2(4000) NOT NULL,
+	movie_open_date varchar2(4000),
+	movie_director varchar2(4000) NOT NULL,
 	movie_img_url varchar2(4000),
+	movie_grade varchar2(4000),
 	movie_story varchar2(4000),
-	movie_actor1 varchar2(200),
-	movie_actor2 varchar2(200),
-	movie_actor3 varchar2(200),
-	movie_actor4 varchar2(200),
+	movie_actor1 varchar2(4000),
+	movie_actor2 varchar2(4000),
+	movie_actor3 varchar2(4000),
+	movie_actor4 varchar2(4000),
 	PRIMARY KEY (movie_code)
 );
 
@@ -168,7 +169,7 @@ CREATE TABLE seatinfo
 CREATE TABLE theaters
 (
 	theater_id number NOT NULL,
-	theater_name varchar2(50) NOT NULL UNIQUE,
+	theater_name varchar2(200) NOT NULL,
 	PRIMARY KEY (theater_id)
 );
 
@@ -178,7 +179,7 @@ CREATE TABLE users
 	user_id varchar2(10) NOT NULL,
 	user_pwd varchar2(10) NOT NULL,
 	user_email varchar2(30) NOT NULL UNIQUE,
-	user_birthday date,
+	user_birthday date NOT NULL,
 	user_coupon char DEFAULT 'n' NOT NULL,
 	user_point number DEFAULT 0 NOT NULL,
 	PRIMARY KEY (user_id)
@@ -203,13 +204,13 @@ ALTER TABLE comments
 ;
 
 
-ALTER TABLE evaluations
+ALTER TABLE wishlists
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
 ;
 
 
-ALTER TABLE wishlists
+ALTER TABLE evaluations
 	ADD FOREIGN KEY (movie_code)
 	REFERENCES movies (movie_code)
 ;
@@ -233,13 +234,13 @@ ALTER TABLE reservationinfo
 ;
 
 
-ALTER TABLE reservationinfo
+ALTER TABLE cancellations
 	ADD FOREIGN KEY (seat_id)
 	REFERENCES seatinfo (seat_id)
 ;
 
 
-ALTER TABLE cancellations
+ALTER TABLE reservationinfo
 	ADD FOREIGN KEY (seat_id)
 	REFERENCES seatinfo (seat_id)
 ;
@@ -251,7 +252,25 @@ ALTER TABLE nowmovies
 ;
 
 
+ALTER TABLE wishlists
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
 ALTER TABLE customerboards
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE evaluations
+	ADD FOREIGN KEY (user_id)
+	REFERENCES users (user_id)
+;
+
+
+ALTER TABLE comments
 	ADD FOREIGN KEY (user_id)
 	REFERENCES users (user_id)
 ;
@@ -269,23 +288,15 @@ ALTER TABLE reservations
 ;
 
 
-ALTER TABLE evaluations
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
+/* Create Unique Constraints */
+ALTER TABLE nowmovies
+ADD CONSTRAINT uniq_movie UNIQUE (theater_id, movie_code, movie_time)
 ;
 
 
-ALTER TABLE wishlists
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
+ALTER TABLE seatinfo
+ADD CONSTRAINT uniq_nm UNIQUE (nowmovie_id, seat_no)
 ;
-
-
-ALTER TABLE comments
-	ADD FOREIGN KEY (user_id)
-	REFERENCES users (user_id)
-;
-
 
 
 /* Create Triggers */
