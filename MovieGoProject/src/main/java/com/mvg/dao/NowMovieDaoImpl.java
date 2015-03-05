@@ -92,20 +92,13 @@ public class NowMovieDaoImpl implements NowMovieDao {
 	}
 
 	@Override
-	public Map<String, String> getNMovieTimeByThAndMovie(int theaterId, String movieCode) {
+	public List<String> getNMovieTimeByThAndMovie(int theaterId, String movieCode) {
 		NowMovie n = new NowMovie();
 		n.setTheaterId(theaterId);
 		n.setMovieCode(movieCode);
 		String stmt2 = namespace + "getNMovieTimeByThAndMovie2";
 		List<String> tlist = sqlSession.selectList(stmt2, n);
-		HashMap<String, String> mtimes = new HashMap<String, String>();
-		for (int i=0;i<tlist.size();i++) {
-			String value=tlist.get(i);
-			value = getMovieTimeAmPm(value);
-			mtimes.put(tlist.get(i), value);	
-		}
-		logger.trace("수업: 영화시간맵: "+mtimes);
-		return mtimes;
+		return tlist;
 	}
 	
 	@Override

@@ -121,27 +121,45 @@ public class ReservationController {
 		mCode = movieCode;
 		logger.trace("수업: 영화코드: " + mCode);
 
-		Map<String, String> times = nservice.getNMovieTimeByThAndMovieService(
+		List<String> times = nservice.getNMovieTimeByThAndMovieService(
 				thId, mCode);
-		Iterator<String> iter = times.keySet().iterator();
 
 		StringBuilder jsonBuilder = new StringBuilder();
 
 		jsonBuilder.append("{\"times\":[");
-		if (iter.hasNext()) {
-			String key = iter.next();
-			String value = times.get(key);
-			jsonBuilder.append("{\"ampm\":").append(key).append(", ")
-					.append("\"time\":").append("\"").append(value)
-					.append("\"").append("}");
+		if (!times.isEmpty()) {
+			String value = times.get(0);
+			jsonBuilder.append("{\"ampm\":\"")
+				.append(value)
+				.append("\", \"time\":\"")
+				.append(value.substring(4, 6))
+				.append("월 ")
+				.append(value.substring(6, 8))
+				.append("일 ");
+			if(value.charAt(9) == '6') {
+				jsonBuilder.append("오전");
+			} else if(value.charAt(9) == '8') {
+				jsonBuilder.append("오후");
+			}
+			jsonBuilder.append("\"").append("}");
 		}
-		while (iter.hasNext()) {
+		for (int i = 1; i < times.size(); i++) {
 			jsonBuilder.append(", ");
-			String key = iter.next();
-			String value = times.get(key);
-			jsonBuilder.append("{\"ampm\":").append(key).append(", ")
-					.append("\"time\":").append("\"").append(value)
-					.append("\"").append("}");
+			
+			String value = times.get(i);
+			jsonBuilder.append("{\"ampm\":\"")
+				.append(value)
+				.append("\", \"time\":\"")
+				.append(value.substring(4, 6))
+				.append("월 ")
+				.append(value.substring(6, 8))
+				.append("일 ");
+			if(value.charAt(9) == '6') {
+				jsonBuilder.append("오전");
+			} else if(value.charAt(9) == '8') {
+				jsonBuilder.append("오후");
+			}
+			jsonBuilder.append("\"").append("}");
 		}
 		jsonBuilder.append("]}");
 

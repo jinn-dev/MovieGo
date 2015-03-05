@@ -441,6 +441,10 @@ h2 {
 		var rowchar;
 		var seatNo;
 		
+		function returnFalse() {
+			return false;
+		}
+		
 		$(document).ready(function() {
 			var rseats = ${reservedSeats };
 			var rseatsarr = rseats.rsvdSeats;
@@ -457,7 +461,8 @@ h2 {
 
 				if ((document.querySelector("#"+rowchar)) && (document.getElementById(seatNoStr).value == seatNoStr)){
 					$("#"+rowchar+"> :button[value='"+seatNoStr+"']").addClass('reserved');
-					$("#"+rowchar+"> :button[value='"+seatNoStr+"']").disabled = true;
+					$("#"+rowchar+"> :button[value='"+seatNoStr+"']").unbind();
+					console.log("disabled처리됨");
 				}
 			}
 		});
@@ -530,7 +535,9 @@ h2 {
 					} else if (limitSeat2 - checkSeatCnt == 1) {
 						$(this).addClass('clicked');
 					} else {
-						$(this).addClass('clicked').next().addClass('clicked');
+						if(!($(this).addClass('clicked').next().hasClass("reserved"))) {
+							$(this).addClass('clicked').next().addClass('clicked');
+						}
 					}
 				} else {
 					alert('인원은 최소 1명 이상 선택해야 합니다.');

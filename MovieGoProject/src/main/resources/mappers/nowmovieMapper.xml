@@ -25,10 +25,12 @@
 	
 	<select id="getNMovieTimeByThAndMovie" parameterType="NowMovie" resultType="String">
 		select to_char(movie_time, 'mm"월" dd"일" hh24') from nowmovies where theater_id=#{theaterId} and movie_code=#{movieCode}
+		order by movie_time
 	</select>
 	
 	<select id="getNMovieTimeByThAndMovie2" parameterType="NowMovie" resultType="String">
 		select to_char(movie_time, 'yyyymmddhh24') from nowmovies where theater_id=#{theaterId} and movie_code=#{movieCode}
+		order by movie_time
 	</select>
 	
 	<select id="getNMovieIdByNMovie" parameterType="NowMovie" resultType="Integer">

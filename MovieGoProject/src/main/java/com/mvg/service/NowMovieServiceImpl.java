@@ -67,8 +67,8 @@ public class NowMovieServiceImpl implements NowMovieService {
 	}
 
 	@Override
-	public Map<String, String> getNMovieTimeByThAndMovieService(int theaterId, String movieCode) {
-		Map<String, String> times = dao.getNMovieTimeByThAndMovie(theaterId, movieCode);
+	public List<String> getNMovieTimeByThAndMovieService(int theaterId, String movieCode) {
+		List<String> times = dao.getNMovieTimeByThAndMovie(theaterId, movieCode);
 		return times;
 	}
 

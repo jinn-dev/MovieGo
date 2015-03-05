@@ -1,5 +1,8 @@
 package com.mvg.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -30,7 +33,18 @@ public class ReservationByUserServiceImpl implements ReservationByUserService {
 
 	@Override
 	public int cancelYNService(String movieTime) {
-		int result = dao.cancelYN(movieTime);
+		SimpleDateFormat dateFormate = new SimpleDateFormat("yyyy-mm-dd hh:MM:ss");
+		Date mTime = null;
+		try {
+			mTime = dateFormate.parse(movieTime);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Date currTime = new Date();
+		int result = (int) (mTime.getTime() - currTime.getTime());
+		logger.trace("mylog: " + mTime);
+		
+//		int result = dao.cancelYN(movieTime);
 		return result;
 	}
 
