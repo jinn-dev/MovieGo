@@ -13,6 +13,7 @@ public interface CommentDao {
 	//댓글 모두 가져오기
 	List<Comment> getAllComments();
 	
+	
 	//댓글 등록
 	int insertComment(Comment comment);
 	

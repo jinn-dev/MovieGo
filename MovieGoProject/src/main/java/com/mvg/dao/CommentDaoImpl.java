@@ -51,14 +51,14 @@ public class CommentDaoImpl implements CommentDao {
 	public int deleteComment(int commentId) {
 		String stmt = namespace+"deleteComment";
 		int result = sqlSession.delete(stmt, commentId);
-		logger.trace("코멘트삭제"+result);
 		return result;
 	}
 
 	@Override
 	public Comment getCommentByCommentId(int commentId) {
-		// TODO Auto-generated method stub
-		return null;
+		String stmt = namespace+"selectCommentByCommentId";
+		Comment result = sqlSession.selectOne(stmt, commentId);
+		return result;
 	}
 
 	@Override

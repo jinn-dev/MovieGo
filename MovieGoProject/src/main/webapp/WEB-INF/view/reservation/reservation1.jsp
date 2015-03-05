@@ -61,7 +61,7 @@ function check() {
 function clickTime(time) {
    var xhr = new XMLHttpRequest();
    xhr.onreadystatechange = function() {
-      if (xhr.readyState==4 && xhr.status==200) {
+      if (xhr.readyState==4 && xhr.status==200){
          document.querySelector("#selTime").innerHTML = time;
       }
    }

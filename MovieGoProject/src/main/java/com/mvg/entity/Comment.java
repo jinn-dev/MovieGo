@@ -10,7 +10,8 @@ public class Comment {
 	private String commentContent;
 	private Date commentDate;
 
-	public Comment(){}
+	public Comment() {
+	}
 
 	public Comment(int commentId, int boardId, String userId,
 			String commentContent, Date commentDate) {
@@ -68,8 +69,7 @@ public class Comment {
 				+ ", userId=" + userId + ", commentContent=" + commentContent
 				+ ", commentDate=" + commentDate + "]";
 	}
-	
-	
+
 	
 
 }

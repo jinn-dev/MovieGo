@@ -25,6 +25,12 @@
 		where comment_id = #{commentId}
 	</select>
 	
+	<select id="selectCommentByCommentId" parameterType="INTEGER" resultType="Comment">
+		select *
+		from comments
+		where comment_id = #{commentId}	
+	</select>
+	
 	<select id="selectCommentByBoardId" parameterType="INTEGER" resultType="Comment">
 		select *
 		from comments

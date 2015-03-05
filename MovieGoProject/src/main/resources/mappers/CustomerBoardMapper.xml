@@ -5,74 +5,34 @@
 <mapper namespace="com.mvg.mappers.customerBoardMapper">
 	
 	<select id="selectBoardByUserId" parameterType="String" resultType="CustomerBoard">
-		select * from customerboards where user_id = #{userId}
+		select * from CUSTOMERBOARDS where user_id = #{userId}
 	</select> 
 
 	<select id="selectBoardCnt" resultType="INTEGER">
-		select count(*) from customerboards
+		select count(*) from CUSTOMERBOARDS
 	</select>
 
 
 	<select id="selectAllBoard" resultMap="boardMap">
 		select board_id, user_id, board_title, board_date
-		from customerboards
-		order by board_id desc
+		from CUSTOMERBOARDS
+		order by board_id DESC
 	</select>
 
 	<select id="selectBoardByNo" resultMap="boardMap">
 		select board_id, user_id, board_title, board_content, board_date
-		from customerboards
+		from CUSTOMERBOARDS
 		where board_id = #{boardId}
 	</select>
 
 	<select id="selectBoardByIdWithCmt" resultMap="ComplexBoardComment">
 		select b.board_id, b.user_id, b.board_title, b.board_content, b.board_date,
 		c.comment_id, c.board_id, c.user_id, c.comment_content, c.comment_date
-		from customerboards b
-		left join comments c
+		from CUSTOMERBOARDS b
+		left join COMMENTS c
 		on(b.board_id = c.board_id)
 		where b.board_id = #{boardId}
 	</select>
-	
-	<select id="selectBoardWithCmtByCommentId" resultMap="ComplexBoardComment">
-		select b.board_id, b.user_id, b.board_title, b.board_content, b.board_date,
-		c.comment_id, c.board_id, c.user_id, c.comment_content, c.comment_date
-		from customerboards b
-		left join comments c
-		on(b.board_id = c.board_id)
-		where c.comment_id = #{commentId}
-	</select>
-
-	<insert id="insertBoard" parameterType="CustomerBoard">
-		insert into customerboards (user_id, board_title, board_content)
-		values (#{userId}, #{boardTitle}, #{boardContent})
-	</insert>
-
-	<update id="updateBoard" parameterType="CustomerBoard">
-		update customerboards
-		set board_title = #{boardTitle}, board_content = #{boardContent}
-		where board_id=#{boardId} and user_id=#{userId}
-	</update>
-
-	<delete id="deleteBoard" parameterType="INTEGER">
-		delete from customerboards
-		where board_id=#{boardId}
-	</delete>
-
-	<delete id="deleteBoardByUserId" parameterType="String">
-		delete from customerboards
-		where user_id=#{userId}
-	</delete>
-	
-	<delete id="deleteComment" parameterType="INTEGER">
-		delete from comments
-		where board_id = #{boardId}
-	</delete>
-
-	<delete id="deleteCommentByUserId" parameterType="String">
-		delete from comments
-		where user_id=#{userId}
-	</delete>
 	
 	<resultMap type="CustomerBoard" id="ComplexBoardComment">
 		<id column="board_id" jdbcType="INTEGER" property="boardId" />
@@ -88,7 +48,47 @@
 			<result column="comment_date" jdbcType="DATE" property="commentDate" />
 		</collection>
 	</resultMap>
+	
+	<select id="selectBoardWithCmtByCommentId" resultMap="ComplexBoardComment">
+		select b.board_id, b.user_id, b.board_title, b.board_content, b.board_date,
+		c.comment_id, c.board_id, c.user_id, c.comment_content, c.comment_date
+		from CUSTOMERBOARDS b
+		left join comments c
+		on(b.board_id = c.board_id)
+		where c.comment_id = #{commentId}
+	</select>
 
+	<insert id="insertBoard" parameterType="CustomerBoard">
+		insert into CUSTOMERBOARDS (user_id, board_title, board_content)
+		values (#{userId}, #{boardTitle}, #{boardContent})
+	</insert>
+
+	<update id="updateBoard" parameterType="CustomerBoard">
+		update CUSTOMERBOARDS
+		set board_title = #{boardTitle}, board_content = #{boardContent}
+		where board_id=#{boardId} and user_id=#{userId}
+	</update>
+
+	<delete id="deleteBoard" parameterType="INTEGER">
+		delete from CUSTOMERBOARDS
+		where board_id=#{boardId}
+	</delete>
+
+	<delete id="deleteBoardByUserId" parameterType="String">
+		delete from CUSTOMERBOARDS
+		where user_id=#{userId}
+	</delete>
+	
+	<delete id="deleteComment" parameterType="INTEGER">
+		delete from comments
+		where board_id = #{boardId}
+	</delete>
+
+	<delete id="deleteCommentByUserId" parameterType="String">
+		delete from comments
+		where user_id=#{userId}
+	</delete>
+	
 
 	<resultMap type="CustomerBoard" id="boardMap">
 		<id column="board_id" jdbcType="INTEGER" property="boardId" />

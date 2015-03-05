@@ -1,21 +1,26 @@
 package com.mvg.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.mvg.entity.Comment;
 import com.mvg.entity.CustomerBoard;
 import com.mvg.service.CommentService;
 import com.mvg.service.CustomerBoardService;
@@ -37,26 +42,31 @@ public class CustomerBoardController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String boardList(Model model) {
 		List<CustomerBoard> list = service.getAllBoardList();
-		model.addAttribute("list", list); // list는 게시판 글 전체 객체
+		model.addAttribute("list", list);
 		return "board/board_list";
 	}
+	
 
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	public String boardList(Model model, SessionStatus sessionStatus) {
 		List<CustomerBoard> list = service.getAllBoardList();
 		model.addAttribute("list", list); // list는 게시판 글 전체 객체
 		sessionStatus.setComplete(); // sesseion에서 detail 객체 삭제
 		return "board/board_list";
-	}
+	}*/
 
 	/* 게시판 글보기 */
-	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public String showContent(@RequestParam int boardId, Model model) {
-		CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
-		model.addAttribute("detail", board); // detail은 게시판 글+코멘트 하나 객체
+		CustomerBoard board = service.getBoardByBdId(boardId);
+		List<Comment> comment = cmtservice.getCommentByBoardId(boardId);
+		// CustomerBoard board = service.getBoardByBdIdWithCmts(boardId);
+		model.addAttribute("board", board); 
+		model.addAttribute("comment", comment);
 		return "board/board_view";
 	}
-
+	
+	
 	/* 게시판 글쓰기 */
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public String boardWrite() {

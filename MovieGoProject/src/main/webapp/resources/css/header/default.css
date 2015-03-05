@@ -23,10 +23,10 @@ a:hover {
 	color: #C75C5C;
 }
 
-.container {
-	position: relative;
-	margin-top: 15em;
+.container{
+	margin-top: 10em;	
 }
+
 
 /* .container>header, .main section>div {
 	width: 90%;

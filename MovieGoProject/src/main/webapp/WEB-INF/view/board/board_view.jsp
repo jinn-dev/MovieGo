@@ -7,185 +7,385 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/board.css" />
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
+<!-- Custom CSS -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
-<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
-<script>
-$(document).ready(function() {
-	$("#board_delete").click(function(){		
-		alertify.confirm("글을 삭제하시겠습니까?", function (result) {
-			if(result) {
-				<c:url value="/board/delete" var="url"></c:url>
-				location.href="${url}?boardId=${detail.boardId }";
-			 
-			}else {
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
+<style type="text/css">
+.div-button {
+	background: #C75C5C;
+	color: #F2F2F2;
+	border: none;
+	letter-spacing: 1px;
+	padding: 0.5em;
+	outline: none;
+}
 
-	        }
-	    });
-	    return false;
-	    
-	});
-	
-	$("#comment_submit").click(function(){
-		if($("#commentContentInput").val()==""){
-			alertify.alert("코멘트 내용을 입력해주세요.");
-			event.preventDefault();
-		}
-	});
-	$("#comment_delete").click(function(){
-		alertify.confirm("코멘트를 삭제하시겠습니까?", function (result) {
-			if(result) {
-				<c:url value="/comment/drop" var="url"></c:url>
-				location.href="${url}?commentId="+$("#comment_id").val();
-			 
-			}else {
+.div-button:hover {
+	background: #4F5D73;
+	color: #F2F2F2;
+}
 
-	        }
-	    });
-	    return false;
-	    
-	});   
-	
-	$(".content").click(function(){
-		var commentId = $("#id1").val();
-		var userId = $("#id2").val();
-		if(commentId ==  userId){
-			$(".content").attr("readonly",false);
-		}
-		else{
-			return false;
-		}
-	});
-	
-	$("#comment_modify").click(function(){
-		alertify.confirm("코멘트를 수정하시겠습니까?", function (result) {
-			if(result) {
-				$("#commentForm").submit();
-			 
-			}else {
+#comment_header {
+	background: #4F5D73;
+	color: #F2F2F2;
+	text-align: center;
+	font-size: 1.25em;
+}
 
-	        }
-	    });
-	    return false;
-	});
-});
-</script>
+#commentContent{
+	width: 1000px;
+	height: 48px;
+}
+
+.comment_link{
+	text-decoration: underline;
+}
+</style>
 <title>고객센터</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	<header>
-		<center><img width="500" src="<%=request.getContextPath() %>/img/qna.png"/></center>
-	</header>
-	<section>
-	<div class="view-table">
-		<table width="602">
-			<tr>
-				<th id="title" colspan="4"><c:out
-						value="${detail.boardTitle }" /></th>
-			</tr>
-			<tr>
-				<th>작성자</th>
-				<td><c:out value="${detail.userId}" /></td>
-				<th>작성일자</th>
-				<fmt:formatDate value="${detail.boardDate}" type="date" var="date" />
-				<td align="left"><c:out value="${date}" /></td>
-			</tr>
-			<tr>
-				<td colspan="4" align="left" height="300"><c:out value="${detail.boardContent }" /></td>
-			</tr>
-				<tr>
-				<td colspan="4" align="right">
-					<c:if test="${detail.userId==log.userId }">
-						<c:url value="/board/modify?boardId=${detail.boardId }" var="url"></c:url>
-						<a href="${url }"><button class="div-button">MODIFY</button></a>
-						<button class="div-button" id="board_delete">DELETE</button>
-					</c:if>
-					<c:url value="/board/list.do" var="url"></c:url>
-					<a href="${url }"><button class="div-button">LIST</button></a>
-				</td>
-				</tr>
-				<tr>
-		</table><p><p>
-	</div>
-		<div class="comment-table">
-		<table width="602">
-			<tr>
-				<th colspan="5">COMMENT</th>
-			</tr>
-			<tr>
-			<td colspan="5" align="center">*댓글을 수정하려면 글을 클릭하세요.</td>
-			</tr>
-		  	<tr>
-		    <c:if test="${detail.comments[0].commentId!=0 }">
-				<c:forEach items="${detail.comments }" var="comments">
-				<c:url value="/comment/modify" var="url"/>
-					<form:form method="POST" modelAttribute="comment" id="commentForm" action="${url }">
-					<td>
-					<c:out value="${comments.userId }" />
-					<input type="hidden" id="id1" value="${comments.userId }"/>
-					</td>
-					<fmt:formatDate value="${comments.commentDate }" type="date" var="date"/>		
-					<td align="left" colspan="2">
-					<c:out value="${date }" />
-					</td>
-					<c:if test="${comments.userId==log.userId }">
-						<td colspan="2" align="right">
-						<input type="hidden" name="commentId" id="comment_id" value="${comments.commentId }"/>
-						<input type="hidden" name="boardId" value="${detail.boardId }" />
-						<input type="submit" class="div-button" id="comment_modify" value="MODIFY">
-						<input type="button" class="div-button" id="comment_delete" value="DELETE">
-						</td>
-					</c:if>
+	<div class="container">
+		<center><img width="500" src="<%=request.getContextPath()%>/img/qna.png" /></center>
+		<div class="row">
+			<div class="col-md-12">
+				<table class="table table-bordered table-striped table-responsive">
 					<tr>
-					<td colspan="5" align="left" height="25">
-					<input type="text" name="commentContent" class="content" value="${comments.commentContent }" style='border: 0px; font-size:1.0em;'
-					 readonly/>
-					</td>
+						<th colspan="4"><c:out value="${board.boardTitle }" /></th>
 					</tr>
-					</form:form>
-				</c:forEach>
-			</c:if>
-			</tr>  
-			<tr>
-					<td colspan="5">
-					<div class="comment-form">		
-					<c:url value="/comment/write" var="url"></c:url>
-						<form:form method="post" modelAttribute="comment" action="${url }" name="comment-form">
-							<div class="comment-form-inner">
-								<input type="text" name="commentContent" id="commentContentInput"
-								 placeholder="댓글을 입력해주세요."/>
-								<input type="hidden" name="boardId" value="${detail.boardId }" />
-								<input type="hidden" name="userId" id="id2" value="${log.userId }" />&nbsp;&nbsp;
-								<input type="submit" class="div-button"  id="comment_submit" value="SUBMIT"/>
-							</div>
-						</form:form>
-					</div>
-					</td>
-				</tr>
-		</table><br>
+					<tr>
+						<th>작성자</th>
+						<td><c:out value="${board.userId}" /></td>
+						<th>작성일자</th>
+						<fmt:formatDate value="${board.boardDate}" type="date" var="date" />
+						<td align="left"><c:out value="${date}" /></td>
+					</tr>
+					<tr>
+						<td colspan="4" align="left" height="300"><c:out
+								value="${board.boardContent }" /></td>
+					</tr>
+					<tr>
+						<td colspan="4" align="right"><c:if
+								test="${board.userId==log.userId }">
+								<c:url value="/board/modify?boardId=${board.boardId }" var="url"></c:url>
+								<a href="${url }"><button class="div-button btn btn-primary">수정</button></a>
+								<button class="div-button btn btn-primary" id="board_delete">삭제</button>
+							</c:if> <c:url value="/board" var="url"></c:url>
+							<a href="${url }"><button class="div-button btn btn-primary">목록</button></a></td>
+					</tr>
+					<tr>
+				</table>
+			</div>
 		</div>
-	</section>
-	<script type="text/javascript" src="<%=request.getContextPath() %>/js/placeholdem.min.js"></script>
-		<script>
-			Placeholdem( document.querySelectorAll( '[placeholder]' ) );
+		<div class="row">
+			<div class="col-md-12">
+			<div class="comment_wrap">
+				<table class="table table-bordered table-striped table-responsive">
+					<tr><th colspan="5" id="comment_header">COMMENT</th></tr>
+					<c:forEach items="${comment }" var="comments" varStatus="status">
+						<tr>
+							<td><c:out value="${comments.userId }" /></td>
+							<fmt:formatDate value="${comments.commentDate }" type="both"
+								var="date" />
+							<td colspan="4"><c:out value="${date }" /></td>
+						</tr>
+						<tr>
+						<td colspan="5" align="left" height="25">
+						<div class="comment_modify_${status.index }">
+							<c:out value="${comments.commentContent }"/>
+							<c:if test="${comments.userId==log.userId }">
+								<div class="pull-right">
+										 <a onclick="javascript:commentLoad(${comments.commentId},${status.index })" 
+										 class="comment_link">수정</a> 
+								<a onclick="javascript:commentDelete(${comments.commentId})" 
+										 class="comment_link">삭제</a>
+								</div>
+							</c:if>
+						</div>		
+						</td>
+						</tr>
+					</c:forEach>
+				</table>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+			<table class="table"><tr><td>
+				<form method="POST" id="writeForm">
+					<input type="hidden" name="boardId" value="${board.boardId}" />
+					<input type="hidden" name="userId" value="${log.userId }" />
+					<div class="pull-left">
+					<input name="commentContent" class="form-control" id="commentContent" onkeypress="if(event.keyCode==13) {commentWrite(); return false;}" placeholder="댓글을 입력해주세요."/></div>
+					<div class="pull-right">
+					<button type="button" class="div-button btn btn-primary" style="height:48px;"onclick="commentWrite()">댓글쓰기</button>
+			   		</div>
+			    </form>
+			   </td></tr>
+			</table> 
+			</div>
+		</div>
+	</div>
+<script>
 
-			var fadeElems = document.body.querySelectorAll( '.fade' ),
-				fadeElemsLength = fadeElems.length,
-				i = 0,
-				interval = 75;
+function commentLoad(id, index){
+	var param = "commentId="+id;
+	<c:url value="/comment/modify" var="url"/>
+	var xhr = new XMLHttpRequest();
+	   xhr.onreadystatechange = function() {
+	      if (xhr.readyState==4 && xhr.status==200){
+			var jsonobj = JSON.parse(xhr.responseText);
+			<c:url value="/comment/modified" var="action"/>
+			var output= '<form method="POST" id="modifyform" name="modifyform" action="${action}">'+
+			'<textarea id="commentContent" name="commentContent" onkeypress="if(event.keyCode==13) {commentModify(); return false;}">'+jsonobj.commentContent+'</textarea>';
+			output+= '<input type="hidden" id="commentId" name="commentId" value="'+jsonobj.commentId+'"/>'+
+			'<input type="hidden" id="boardId" name="boardId" value="'+jsonobj.boardId+'"/>'; 
+			output+= '<div class="pull-right"><a onclick="commentModify()" class="btn btn-success">수정</a>&nbsp';
+			output+= '<a class="div-button btn btn-primary">수정취소</a></div></form>';
+			$(".comment_modify_"+index).html(output);
+	      }
+	   }
+	var url = "${url}";
+	xhr.open("post", url, true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.send("commentId="+id);
+}
 
-				function incFade() {
-					if( i < fadeElemsLength ) {
-						fadeElems[ i ].className += ' fade-load';
-						i++;
-						setTimeout( incFade, interval );
+function commentWrite(){
+	var param = $("#writeForm").serialize();
+	var xhr = new XMLHttpRequest();
+	  xhr.onreadystatechange = function() {
+		  if (xhr.readyState==4 && xhr.status==200){
+			  var jsonobj = JSON.parse(xhr.responseText); 
+			  var output = '<table class="table table-bordered table-striped table-responsive">'+
+			  '<tr><th colspan="5" id="comment_header">COMMENT</th></tr>';
+			  for(var i = 0; i<jsonobj.length;i++){
+				var date = new Date();
+				date.setTime(jsonobj[i].commentDate);
+				if(date.getHours()<12){
+					var ampm = "오전";
+					if(date.getMinutes()<10){
+						var minutes = '0'+date.getMinutes();
 					}
+					else{
+						var minutes = date.getMinutes();
+					}
+					if(date.getSeconds()<10){
+						var seconds = '0'+date.getSeconds();
+					}
+					else{
+						var seconds = date.getSeconds();
+					}
+					var time = date.getHours()+':'+minutes+':'+seconds;
 				}
-				setTimeout( incFade, interval );
-		</script>
+				else{
+					var ampm = "오후";
+					
+					if(date.getMinutes()<10){
+						var minutes = '0'+date.getMinutes();
+					}
+					else{
+						var minutes = date.getMinutes();
+					}
+					if(date.getSeconds()<10){
+						var seconds = '0'+date.getSeconds();
+					}
+					else{
+						var seconds = date.getSeconds();
+					}
+					var time = (date.getHours()-12)+':'+minutes+':'+seconds;
+				}
+				var showdate = date.getFullYear()+'. '+(date.getMonth()+1)+'. '+date.getDate()+' '+ampm+' '+time;
+				output+='<tr><td>'+jsonobj[i].userId+'</td>'+
+						'<td colspan="4">'+showdate+'</td></tr><tr>'+
+					'<td colspan="5" align="left" height="25">'+
+					'<div class="comment_modify_'+i+'">'+
+						jsonobj[i].commentContent;
+					if(jsonobj[i].userId=='<c:out value="${log.userId}"/>'){
+						output+='<div class="pull-right">'+
+								'<a onclick="javascript:commentLoad('+jsonobj[i].commentId+','+i+')" '+
+								' class="comment_link">수정</a>&nbsp'+
+								'<a onclick="javascript:commentDelete('+jsonobj[i].commentId+','+i+')" '+
+								' class="comment_link">삭제</a>'+
+								'</div>';
+					}
+					output+='</div></td></tr>';		
+			  }
+			output+='</table>';  
+			$(".comment_wrap").html(output);
+			$("#commentContent").val("");
+		  }
+	  }
+	  	var url = "<%=request.getContextPath()%>/comment/write";
+		xhr.open("post", url, true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send(param);
+}
+
+function commentDelete(id){
+	var param = "commentId="+id;
+	<c:url value="/comment/drop" var="url"/>
+	alertify.confirm("댓글을 삭제하시겠습니까?", function(e){ 
+		if(e){
+			var xhr = new XMLHttpRequest();
+			 xhr.onreadystatechange = function() {
+		 	 if (xhr.readyState==4 && xhr.status==200){
+				  var jsonobj = JSON.parse(xhr.responseText);
+				  var output = '<table class="table table-bordered table-striped table-responsive">'+
+				  '<tr><th colspan="5" id="comment_header">COMMENT</th></tr>';
+			 
+				  for(var i = 0; i<jsonobj.length;i++){
+					
+					var date = new Date();
+					date.setTime(jsonobj[i].commentDate);
+					if(date.getHours()<12){
+						var ampm = "오전";
+						if(date.getMinutes()<10){
+							var minutes = '0'+date.getMinutes();
+						}
+						else{
+							var minutes = date.getMinutes();
+						}
+						if(date.getSeconds()<10){
+							var seconds = '0'+date.getSeconds();
+						}
+						else{
+							var seconds = date.getSeconds();
+						}
+							var time = date.getHours()+':'+minutes+':'+seconds;
+						}
+						else{
+							var ampm = "오후";
+							if(date.getMinutes()<10){
+								var minutes = '0'+date.getMinutes();
+							}
+							else{
+								var minutes = date.getMinutes();
+							}
+							if(date.getSeconds()<10){
+								var seconds = '0'+date.getSeconds();
+							}
+							else{
+								var seconds = date.getSeconds();
+							}
+							var time = (date.getHours()-12)+':'+minutes+':'+seconds;
+							}
+					
+							var showdate = date.getFullYear()+'. '+(date.getMonth()+1)+'. '+date.getDate()+' '+ampm+' '+time;
+				
+							output+='<tr><td>'+jsonobj[i].userId+'</td>'+
+									'<td colspan="4">'+showdate+'</td></tr><tr>'+
+									'<td colspan="5" align="left" height="25">'+
+									'<div class="comment_modify_'+i+'">'+
+									jsonobj[i].commentContent;
+								
+								if(jsonobj[i].userId=='<c:out value="${log.userId}"/>'){
+									output+='<div class="pull-right">'+
+										'<a onclick="javascript:commentLoad('+jsonobj[i].commentId+','+i+')" '+
+										' class="comment_link">수정</a>&nbsp'+
+										'<a onclick="javascript:commentDelete('+jsonobj[i].commentId+')" '+
+										' class="comment_link">삭제</a>'+
+										'</div>';
+								}
+								
+								output+='</div></td></tr>';		
+				  			}
+					output+='</table>';  
+					$(".comment_wrap").html(output);
+		 	 }
+	 }
+	 var url= "${url}";
+		xhr.open("post", url, true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send(param);
+	}else{}
+	});
+	return false;
+}
+
+function commentModify(){
+	var str = $("#modifyform").serialize();
+	alertify.confirm("댓글을 수정하시겠습니까?", function(e){ 
+	if(e){
+	var xhr = new XMLHttpRequest();
+	  xhr.onreadystatechange = function() {
+		  if (xhr.readyState==4 && xhr.status==200){
+			  var jsonobj = JSON.parse(xhr.responseText); 
+			  var output = '<table class="table table-bordered table-striped table-responsive">'+
+			  '<tr><th colspan="5" id="comment_header">COMMENT</th></tr>';
+			  for(var i = 0; i<jsonobj.length;i++){
+				
+				var date = new Date();
+				date.setTime(jsonobj[i].commentDate);
+				if(date.getHours()<12){
+					var ampm = "오전";
+					if(date.getMinutes()<10){
+						var minutes = '0'+date.getMinutes();
+					}
+					else{
+						var minutes = date.getMinutes();
+					}
+					if(date.getSeconds()<10){
+						var seconds = '0'+date.getSeconds();
+					}
+					else{
+						var seconds = date.getSeconds();
+					}
+					var time = date.getHours()+':'+minutes+':'+seconds;
+				}
+				else{
+					var ampm = "오후";
+					
+					if(date.getMinutes()<10){
+						var minutes = '0'+date.getMinutes();
+					}
+					else{
+						var minutes = date.getMinutes();
+					}
+					if(date.getSeconds()<10){
+						var seconds = '0'+date.getSeconds();
+					}
+					else{
+						var seconds = date.getSeconds();
+					}
+					var time = (date.getHours()-12)+':'+minutes+':'+seconds;
+				}
+				var showdate = date.getFullYear()+'. '+(date.getMonth()+1)+'. '+date.getDate()+' '+ampm+' '+time;
+				
+				output+='<tr><td>'+jsonobj[i].userId+'</td>'+
+						'<td colspan="4">'+showdate+'</td></tr><tr>'+
+					'<td colspan="5" align="left" height="25">'+
+					'<div class="comment_modify_'+i+'">'+
+						jsonobj[i].commentContent;
+					if(jsonobj[i].userId=='<c:out value="${log.userId}"/>'){
+						output+='<div class="pull-right">'+
+								'<a onclick="javascript:commentLoad('+jsonobj[i].commentId+','+i+')" '+
+								' class="comment_link">수정</a>&nbsp'+
+								'<a onclick="javascript:commentDelete('+jsonobj[i].commentId+')" '+
+								' class="comment_link">삭제</a>'+
+								'</div>';
+					}
+					output+='</div></td></tr>';		
+			  }
+			output+='</table>';  
+			$(".comment_wrap").html(output);
+		  }
+	  }
+	var url= $("#modifyform").attr("action");
+	xhr.open("post", url, true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	xhr.send(str);
+	} else{}
+	});
+	return false;
+}
+</script>
 </body>
 </html>
