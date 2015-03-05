@@ -8,14 +8,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap core CSS -->
-<link rel="stylesheet"
-	href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
-<!-- Custom CSS -->
-<script type="text/javascript"
-	src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
 <style type="text/css">
+
+.header{
+	text-align: center;
+}
 .no {
 	width: 70px;
 }
@@ -45,7 +46,8 @@
 	color: #F2F2F2;
 	border: none;
 	letter-spacing: 1px;
-	padding: 0.5em;
+	padding: 1.0em;
+	font-size: 1.0em;
 	outline: none;
 }
 
@@ -62,7 +64,7 @@
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<div class="container">
 		<header>
-		<center><img width="500" src="<%=request.getContextPath()%>/img/qna.png" /></center>
+		<div class="header"><img width="500" src="<%=request.getContextPath()%>/img/qna.png" /></div>
 		</header>
 		<div class="row">
 			<div class="col-md-12">

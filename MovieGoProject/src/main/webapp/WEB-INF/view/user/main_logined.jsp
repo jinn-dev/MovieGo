@@ -2,23 +2,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService"%>
+<%@ page
+	import="kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService"%>
 <%@ page import="org.codehaus.jackson.map.ObjectMapper"%>
 <%@ page import="java.util.*"%>
-<%@ page import="java.lang.*" %>
-<%@ page import="java.io.*" %>
-<%@ page import="java.net.URL" %>
-<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.lang.*"%>
+<%@ page import="java.io.*"%>
+<%@ page import="java.net.URL"%>
+<%@ page import="java.net.URLEncoder"%>
 <%@ page import="net.sf.json.JSONObject"%>
 <%@ page import="net.sf.json.util.JSONBuilder"%>
 <%@ page import="net.sf.json.JSONArray"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/location.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/video-js.css">
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/main/css/location.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/main/css/video-js.css">
+<script type="text/javascript"
+	src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	var param="movieCode"+"="+$(".firstMovie").val();
@@ -64,50 +77,17 @@ $(document).ready(function() {
 <script>
 </script>
 <style>
-section{
-	margin: 0 auto;
-	width: 75%;
-	height: 100%;
+table {
+	background: #F2F2F2;
+	padding: 10px;
 }
-.box-office {
-	margin: 0 auto;
+.align{
 	text-align: center;
-	width: 1000px;
-	height: 400px;
 }
-
-table{
-	background:#F2F2F2;
-	padding: 10px;
-}
-
-
-.table-th{
-	padding: 10px;
-	font-size: 1.0em;
-	background: #4F5D73;
-	color:#F2F2F2;
-}
-
-#table-index{
-	border-bottom: 1px solid;
-	border-bottom-color: #8C8C8C;
-}
-
-#video-tr{
-	margin: 10px;
-}
-
-#moviego-table{
-	position: relative;
-	top: 8%;
-	left: 3.5%;
-}
-
 </style>
 </head>
 <body>
-<%	
+	<%	
 	// 조회일자
 	Calendar now = new GregorianCalendar();
 	String year = Integer.toString(now.get(Calendar.YEAR));
@@ -139,63 +119,58 @@ table{
 	request.setAttribute("codeResult", codeResult);
 
 %>
-	
- <jsp:include page="/WEB-INF/view/user/header.jsp" />
-	<section>
-		<div class="box-office">
-		<img id="thumbnail" src="#" width="213" height="301">
-			<table align="right">
-				<tr>
-					<th colspan="6">
-					<img id="tasteimg" src="<%=request.getContextPath() %>/img/boxoffice.png"/>
-					</th>
-				</tr>
-				<tr>
-					<td></td>
-					<td>영화명</td>
-					<td>누적매출액</td>
-					<td>누적관객수</td>
-					<td>스크린수</td>
-					<td>상영횟수</td>
-				</tr>
-				<c:if test="${not empty dailyResult.boxOfficeResult.dailyBoxOfficeList }">
-					<c:forEach items="${dailyResult.boxOfficeResult.dailyBoxOfficeList }" var="boxoffice" varStatus="status">
-					<input type="hidden" value="${boxoffice.movieCd }" class='firstMovie' />
-					<tr class="boxoffice-tr">
-							<td><c:out value="${status.count }"/>
-							<%-- <c:out value="${boxoffice.rank }" /> --%></td>
-							<td><a href="#" class="movieName" onmouseover="javascript:viewThumbnail('${boxoffice.movieCd}')"><c:out value="${boxoffice.movieNm }" /></a></td>
-							<td><c:out value="${boxoffice.salesAcc }" /></td>
-							<td><c:out value="${boxoffice.audiAcc }" /></td>
-							<td><c:out value="${boxoffice.scrnCnt }" /></td>
-							<td><c:out value="${boxoffice.showCnt }" /></td>
-					</c:forEach>
-				</c:if>
-				</tr>
-				<tr>
-					<td colspan="6" id="video-tr">
-					<hr><video id="main-video"
-							class="video-js vjs-default-skin" controls preload="none"
-							poster="<%=request.getContextPath()%>/img/kingsman12-1024x576.jpg"
-							data-setup="{}" width="600" height="360">
-							<source
-								src="<%=request.getContextPath()%>/vid/KINGSMAN.mp4"
-								type='video/mp4' />
-						</video></td>
-						
-				</tr>
-			</table>
-			<!-- <table id="moviego-table">
-				<tr><th colspan="2" class="table-th">무비고 내 영화 예매 순위</th></tr>
-				<tr><td>1</td><td></td></tr>
-				<tr><td>2</td><td></td></tr>
-				<tr><td>3</td><td></td></tr>
-				<tr><td>4</td><td></td></tr>
-				<tr><td>5</td><td></td></tr>
-			</table> -->
+	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="align img-rounded"><img id="thumbnail" src="#" width="213" height="301"></div>
+			</div>
+			<div class="col-md-8">
+				<table class="table table-bordered table-striped table-responsive">
+					<tr>
+						<th colspan="6" class="align"><img id="tasteimg"
+							src="<%=request.getContextPath()%>/img/boxoffice.png" /></th>
+					</tr>
+					<tr>
+						<td></td>
+						<td>영화명</td>
+						<td>누적매출액</td>
+						<td>누적관객수</td>
+						<td>스크린수</td>
+						<td>상영횟수</td>
+					</tr>
+					<c:if
+						test="${not empty dailyResult.boxOfficeResult.dailyBoxOfficeList }">
+							<c:forEach
+								items="${dailyResult.boxOfficeResult.dailyBoxOfficeList }"
+								var="boxoffice" varStatus="status">
+								<input type="hidden" value="${boxoffice.movieCd }"
+									class='firstMovie' />
+								<tr class="boxoffice-tr"><td><c:out value="${status.count }" /> <%-- <c:out value="${boxoffice.rank }" /> --%></td>
+								<td><a href="#" class="movieName"
+									onmouseover="javascript:viewThumbnail('${boxoffice.movieCd}')"><c:out
+											value="${boxoffice.movieNm }" /></a></td>
+								<td><c:out value="${boxoffice.salesAcc }" /></td>
+								<td><c:out value="${boxoffice.audiAcc }" /></td>
+								<td><c:out value="${boxoffice.scrnCnt }" /></td>
+								<td><c:out value="${boxoffice.showCnt }" /></td></tr>
+							</c:forEach>
+					</c:if>
+				</table>
+			</div>
 		</div>
-	</section>
-<script>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-8 align">
+				<video style="text-align: center;" id="main-video" class="video-js vjs-default-skin" controls preload="none"
+					poster="<%=request.getContextPath()%>/img/kingsman12-1024x576.jpg"
+					data-setup="{}" width="600" height="360">
+					<source src="<%=request.getContextPath()%>/vid/KINGSMAN.mp4"
+						type='video/mp4' />
+				</video>
+			</div>
+		</div>
+		<script>
 function viewThumbnail(m){
 	var param="movieCode"+"="+m;
 	<c:url value="/thumbnail" var="url"/>
@@ -218,7 +193,7 @@ function viewThumbnail(m){
 	});
 }
 
-</script>	
+</script>
 </body>
 </html>
 

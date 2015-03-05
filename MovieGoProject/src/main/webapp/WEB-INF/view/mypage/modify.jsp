@@ -8,73 +8,142 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/modify.css"/>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
-<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<title>MOVIEGO</title>
-</head>
-<script type="text/javascript">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/bootstrap/bootstrap.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/bootstrap/bootstrap-theme.css">
+<!-- Custom CSS -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/alert/css/alertify.core.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/alert/css/alertify.default.css"
+	id="toggleCSS" />
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery-2.1.3.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/bootstrap/bootstrap.js"></script>
+<script src="<%=request.getContextPath()%>/alert/js/alertify.min.js"></script>
+<style type="text/css">
+body {
+	width: 100%;
+	overflow-y: hidden;
+	background-color: #F2F2F2;
+	color: #4F5D73;
+}
 
+.header {
+	text-align: center;
+}
+
+#confirm {
+	margin: auto auto auto 200px;
+	border: 0;
+	background: rgba(30, 30, 30, 0.0);
+}
+
+.div-button {
+	background: #C75C5C;
+	color: #F2F2F2;
+	border: none;
+	letter-spacing: 1px;
+	padding: 1.0em;
+	font-size: 1.0em;
+	outline: none;
+}
+
+.div-button:hover {
+	background: #4F5D73;
+	color: #F2F2F2;
+}
+
+#submenu {
+	width: 30%;
+	float: left;
+}
+
+</style>
+<script type="text/javascript">
 $(document).ready(function(){
 	
 	/* 수정확인시 유효성 체크*/
 	$("#submitB").click(function() {
 	if ($("#pw1").val() != $("#pw2").val()) {
 		alertify.alert("비밀번호와 확인 비밀번호가 일치하지 않습니다.");
-		event.preventDefault();
 		$("#pw2").focus();
+		event.preventDefault();
 	}
 	});
 });
 </script>
-
+<title>MOVIE GO</title>
+</head>
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
 <body>
-	<div class="modify-form">
-		<table>
-		
-			<tr>
-				<th><div id="modify-form-header"><img width="350" height="175" src="<%=request.getContextPath() %>/img/user_modify.png"/></div></th>
-			</tr>
-			<c:url value="/update" var="action"></c:url>
-						<form:form modelAttribute="user" method="post" action="${action }" name="modifyFrm">
-			<tr>
-				<td>
-					<div class="mygroup">
-							<label>아이디</label>
-							<form:input type="text" path="userId" readonly="true" />
-							<br>
-							<label>비밀번호</label>
-							<form:input type="password" path="userPwd" id="pw1"/>
-							<br>
-							<label>비밀번호 확인</label>
-							<form:input type="password" path="" id="pw2" onblur="javascript:passchk()"/>
-							<input type="text" name="chk" id="confirm" value="비밀번호를 입력하세요" readonly="readonly">
-							<br>
-							<label>EMAIL</label>
-							<form:input type="email" path="userEmail" />
-							<br>
-							<label>생년월일</label>
-							<form:input type="date" path="userBirthday" id="userBirthday" />
-							<br>
-					</div>
-				</td>
-			</tr>
-			<tr>
-				<td align="center">
-					<button type="submit" name="_event_confirmed" id="submitB" class="div-button">수정확인</button>
-					</form:form>
-					<button onclick="deleteCheck()" class="div-button">회원탈퇴</button>	
-				</td>
-			</tr>
-		</table>
+	<div class="container">
+		<div class="header">
+			<img width="500"
+				src="<%=request.getContextPath()%>/img/user_modify.png" />
+		</div>
+		<c:url value="/update" var="action"></c:url>
+		<form:form modelAttribute="user" method="post" action="${action }"
+			name="modifyFrm" class="form-horizontal" role="form">
+ 						 <div class="form-group">
+				<label for="userId" class="col-lg-2 control-label">아이디</label>
+				<div class="col-lg-10">
+					<form:input type="text" id="userId" class="form-control"
+						path="userId" readonly="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="pw1" class="col-lg-2 control-label">비밀번호</label>
+				<div class="col-lg-10">
+					<form:input type="password" class="form-control" path="userPwd"
+						id="pw1" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="pw2" class="col-lg-2 control-label">비밀번호 확인</label>
+				<div class="col-lg-10">
+					<form:input type="password" path="" id="pw2" class="form-control"
+						onblur="javascript:passchk()" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="input-group">
+					<label for="confirm" class="col-lg-2 control-label"></label> <input
+						type="text" name="chk" id="confirm" value="비밀번호를 입력하세요"
+						class="form-control" readonly="readonly">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="email" class="col-lg-2 control-label">이메일</label>
+				<div class="col-lg-10">
+					<form:input id="email" type="email" class="form-control"
+						path="userEmail" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="userBirthday" class="col-lg-2 control-label">생년월일</label>
+				<div class="col-lg-10">
+					<form:input type="date" class="form-control" path="userBirthday"
+						id="userBirthday" />
+				</div>
+			</div>
+			<div class="form-group">
+			  <div class="col-lg-offset-2 col-lg-10">
+				<button type="submit" name="_event_confirmed" id="submitB" class="div-button btn btn-primary">수정확인</button>&nbsp;&nbsp;
+				<button type="button" onclick="deleteCheck()" class="div-button btn btn-primary">회원탈퇴</button>
+			</div>
+			</div>
+			</form:form>
 	</div>
+
 	<div id="submenu">
 		<jsp:include page="submenu.jsp"></jsp:include>
 	</div>
-<script type="text/javascript">
+	<script type="text/javascript">
 	/* 비밀번호 유효성 체크 */
 	function passchk() {
 		var userPwd = document.modifyFrm.pw1.value;
@@ -104,12 +173,12 @@ $(document).ready(function(){
 					}
 					else{
 						 location.href="<%=request.getContextPath()%>/deleteuser?userId=${user.userId }";
-					 }
-				}else {
-		      }
-		});
-    return false;
-   }
-</script>
+									}
+								} else {
+								}
+							});
+			return false;
+		}
+	</script>
 </body>
 </html>

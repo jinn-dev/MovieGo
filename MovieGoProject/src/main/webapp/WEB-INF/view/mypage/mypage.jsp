@@ -6,21 +6,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/favorite.css" />
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/mypage/favorite.css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
 <script type="text/javascript">
-	$(document).ready(
-					function() {
-						
+	$(document).ready(function() {
 						<c:url value="/nation.count" var="url"/>
 						$(".taste-nation-div").load("${url}");
 						
 						<c:url value="/genre.rmd" var="url"/>
 						$(".genre-rmd-div").load("${url}");
-						
 						
 						<c:url value="/genre.count" var="url"/>
 						$.ajax({
@@ -92,6 +96,7 @@
 															label : data.results[8].movieGenre+'('+data.results[8].count+')',
 															color : '#F5CF88'
 														} ];
+												
 												/***********************************************************
 												 * Create framework
 												 ***********************************************************/
@@ -519,22 +524,29 @@
 
 });
 </script>
+<title>MOVIE GO</title>
+</head>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	
-	<table class="wrap"><tr><td>
-	<div class="frame-genre">
-		<div class="content"><!-- 장르 -->
-			<h3><span id="genre-header"></span></h3> 
-			<svg id="svg"></svg>
+	<div class="container">
+	<center><img width="350" src="<%=request.getContextPath()%>/img/taste.png" /></center>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="frame-genre">
+					<div class="content">
+						<h3><span id="genre-header"></span></h3>
+						<svg id="svg"></svg>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="frame-nation">
+					<div class="taste-nation-div"></div>
+				</div>
+			</div>
 		</div>
-	</div></td><td width="500px">
-	<div class="frame-nation">
-	<img width="350" src="<%=request.getContextPath() %>/img/taste.png"/>
-	<div class="taste-nation-div"><!-- 국가 -->
-	</div></div></td></tr>
-	</table>
-	<div class="genre-rmd-div"></div><!-- 추천 -->
+		<div class="row"><div class="col-md-12"><div class="genre-rmd-div"></div></div></div>
+	</div>
 	<div id="submenu">
 		<jsp:include page="submenu.jsp"></jsp:include>
 	</div>

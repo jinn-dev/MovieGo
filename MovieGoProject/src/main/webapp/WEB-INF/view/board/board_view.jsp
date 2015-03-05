@@ -23,7 +23,8 @@
 	color: #F2F2F2;
 	border: none;
 	letter-spacing: 1px;
-	padding: 0.5em;
+	padding: 1.0em;
+	font-size: 1.0em;
 	outline: none;
 }
 
@@ -48,7 +49,7 @@
 	text-decoration: underline;
 }
 </style>
-<title>고객센터</title>
+<title>MOVIE GO</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />

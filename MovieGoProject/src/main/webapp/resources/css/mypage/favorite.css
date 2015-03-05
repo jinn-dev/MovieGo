@@ -1,12 +1,12 @@
 @CHARSET "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,200,100);
 
-@import
-	url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,200,100)
-	;
 
+
+/**** 장르그래프 ******/
 html {
-	background-size: cover;
-	padding: 20px 0px;
+  background-size: cover;
+  padding: 20px 0px;
 }
 
 body {
@@ -16,48 +16,41 @@ body {
 	background: transparent;
 }
 
-#svg {
-  width: 500px;
-  height: 300px;
-}
-
-.content {
-  text-align: center;
-}
-
-.wrap{
-	margin: 0 auto;
-}
-
-#rmdimg{
-	margin: 0 auto;
-}
-
 .frame-genre {
 	width: 50%;
 	min-width: 550px;
 	height: 23em;
 	border-radius: 4px;
 	background: rgba(30, 30, 30, 0.1);
-	padding: 20px;
+	margin: auto;
+	padding: 10px;
 }
 
+body .frame .content h1 {
+	margin: 0 0 10px 0;
+	text-align: center;
+	color: white;
+	font-weight: 100;
+	text-transform: uppercase;
+}
+
+#svg {
+	width: 500px;
+	height: 300px;
+}
+
+.content {
+	text-align: center;
+}
+/******************/
+
 .frame-nation {
-	min-width: 500px;
+	min-width: 400px;
 	height: 23em;
 	border-radius: 4px;
 	background: rgba(30, 30, 30, 0.1);
-	padding: 20px;
-}
-
-.frame-rmd {
-	width: 90%;
-	height: 100%;
-	min-width: 1000px; 
-	border-radius: 4px;
-	background: rgba(30, 30, 30, 0.1);
-	padding: 20px;
-	margin: 0 auto;
+	margin: auto;
+	padding: 10px;
 }
 
 /* 영화추천 */

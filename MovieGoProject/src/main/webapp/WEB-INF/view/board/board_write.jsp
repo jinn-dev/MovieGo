@@ -5,14 +5,36 @@
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/board.css" />
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
+<!-- Custom CSS -->
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.core.css"  />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
-<script src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
+<style type="text/css">
+#boardContent {
+	height: 500px;
+}
+
+.div-button {
+	background: #C75C5C;
+	color: #F2F2F2;
+	border: none;
+	letter-spacing: 1px;
+	padding: 1.0em;
+	font-size: 1.0em;
+	outline: none;
+}
+
+.div-button:hover {
+	background: #4F5D73;
+	color: #F2F2F2;
+}
+</style>
 <script>
 	$(document).ready(function() {
 		$("#write_submit").click(function() {
@@ -29,56 +51,40 @@
 
 	});
 </script>
-<title>고객센터</title>
+<title>MOVIE GO</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	<header>
-		<center><img width="500" src="<%=request.getContextPath() %>/img/qna.png"/></center>
-	</header>
-
-	<section>
-			<table class="write-table">
-				<tr>
-					<c:url value="/board/submit" var="url" />
-					<form:form method="POST" action="${url }" modelAttribute="board">
-						<td align="left"><input type="hidden" name="userId"
-							value="${log.userId }" /><br> <input type="text"
-							name="boardTitle" id="boardTitle" placeholder="제목을 입력해주세요." /><br>
-						</td>
-						<tr>
-							<td>
-							<textarea rows="5" cols="80" name="boardContent"
-									id="boardContent" placeholder="내용을 입력해주세요."></textarea><br></td>
-						</tr>
-						<tr>
-							<td>
-								<button class="div-button" type="submit" id="write_submit"
-									name="_event_confirmed">SUBMIT</button> <input
-								class="div-button" type="reset" value="RESET" />
-							</td>
-					</form:form>
-				</tr>
-			</table>
-	</section>
-	<script src="<%=request.getContextPath() %>/js/placeholdem.min.js"></script>
-		<script>
-			Placeholdem( document.querySelectorAll( '[placeholder]' ) );
-
-			var fadeElems = document.body.querySelectorAll( '.fade' ),
-				fadeElemsLength = fadeElems.length,
-				i = 0,
-				interval = 75;
-
-				function incFade() {
-					if( i < fadeElemsLength ) {
-						fadeElems[ i ].className += ' fade-load';
-						i++;
-						setTimeout( incFade, interval );
-					}
-				}
-
-				setTimeout( incFade, interval );
-		</script>
+	<div class="container">
+		<center>
+			<img width="500" src="<%=request.getContextPath()%>/img/qna.png" />
+		</center>
+				<table class="table write_table">
+					<tr>
+						<c:url value="/board/submit" var="url" />
+						<form:form method="POST" action="${url }" modelAttribute="board">
+							<td><input type="hidden" name="userId" value="${log.userId }" /><br> 
+							<div class="input-group input-group-lg">
+  								<span class="input-group-addon">제목</span>
+  								<input type="text" class="form-control input-lg" name="boardTitle" id="boardTitle" placeholder="제목을 입력해주세요." />
+							</div></td>
+							<tr><td>
+							<div class="input-group input-group-lg">
+  								<span class="input-group-addon">내용</span>
+  								<textarea name="boardContent" class="form-control input-lg" id="boardContent" placeholder="내용을 입력해주세요."></textarea>
+							</div></td>
+							</tr>
+							<tr>
+								<td>
+								<div class="pull-right">
+									<button class="div-button btn btn-primary" type="submit" id="write_submit"
+										name="_event_confirmed">SUBMIT</button> <input
+									class="div-button btn btn-primary" type="reset" value="RESET" />
+									</div>
+								</td>
+						</form:form>
+					</tr>
+				</table>
+	</div>
 </body>
 </html>
