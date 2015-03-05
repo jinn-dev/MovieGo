@@ -33,6 +33,7 @@ public class ReservationByUserDaoImpl implements ReservationByUserDao {
 	@Override
 	public int cancelYN(String movieTime) {
 		String stmt = namespace + "cancelYN";
+		logger.trace("mylog: " + movieTime);
 		int result = sqlSession.selectOne(stmt, movieTime);
 		logger.trace("수업: "+result);
 		return result;

@@ -24,7 +24,7 @@ public interface NowMovieDao {
 	Map<String, String> getAllNowMovieNames(int theaterId);
 	
 	//영화관, 영화코드 이용하여 상영시간 얻어오기
-	Map<String, String> getNMovieTimeByThAndMovie(int theaterId, String movieCode);
+	List<String> getNMovieTimeByThAndMovie(int theaterId, String movieCode);
 	
 	//모든 정보를 이용해서 상영영화의 아이디 얻어오기
 	int getNMovieIdByNMovie(int theaterId, String movieCode, String movieTime);
