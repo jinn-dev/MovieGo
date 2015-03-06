@@ -49,6 +49,7 @@
 		delete from users
 		where user_id=#{userId}
 	</delete>
+	<select resultType="User" id="selectAllUser"> select * from users </select>
 </mapper>
 
 

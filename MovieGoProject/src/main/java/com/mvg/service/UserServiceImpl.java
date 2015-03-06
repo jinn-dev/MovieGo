@@ -1,5 +1,7 @@
 package com.mvg.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +67,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String selectUserByIdAndEmail(String userId, String userEmail) {
 		String result = dao.selectUserByIdAndEmail(userId, userEmail);
+		return result;
+	}
+
+
+	@Override
+	public List<User> selectAllUser() {
+		List<User> result = dao.selectAllUser();
 		return result;
 	}
 
