@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.mvg.entity.User"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,12 +99,32 @@ body {
 					<li><a href="${url }">고객센터</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<c:url value="/logout" var="url" />
-					<li><a href="#"><img id="headerimg" width="25px" src="<%=request.getContextPath() %>/img/Roundicons-16.png"/>&nbsp;&nbsp;&nbsp;
-					<c:out value="${user.userId}"/>님 반갑습니다.</a></li>
-					<li><a href="${url }"><b>LOGOUT</b></a></li>
-				</ul>
-			</div>
+				
+				
+				<%
+					User user = (User)session.getAttribute("user");
+					String userId = user.getUserId();
+					if(userId.equals("admin")) {
+					
+					%>
+
+					<c:url value="/admin" var="url" />
+					<li><a href="${url }">관리자</a></li>
+					<%
+					}
+					else {
+						%>
+						<c:url value="/logout" var="url" />
+						<li><a href="#"><img id="headerimg" width="25px" src="<%=request.getContextPath() %>/img/Roundicons-16.png"/>&nbsp;&nbsp;&nbsp;
+						<c:out value="${user.userId}"/>님 반갑습니다.</a></li>
+						<li><a href="${url }"><b>LOGOUT</b></a></li>
+						
+						<%
+					}
+						%> 
+						
+						</ul>
+					</div>
 		</div>
 </nav>
 

@@ -140,4 +140,9 @@ public class ControllerTest {
 	public String apiTest3() {
 		return "api/restService3";
 	}
+	
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String admin() {
+		return "admin/admin";
+	}
 }
