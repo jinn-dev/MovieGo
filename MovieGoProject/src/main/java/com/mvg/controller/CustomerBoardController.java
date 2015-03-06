@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -108,5 +109,16 @@ public class CustomerBoardController {
 	public String boardDelete(@RequestParam int boardId) {
 		service.deleteBoard(boardId);
 		return "redirect:/board";
+	}
+	
+	@RequestMapping(params={"boardTitle"}, method=RequestMethod.GET)
+	public String getRestaurantListbyName(@RequestParam String boardTitle, Model model){
+		
+		
+		List<CustomerBoard> list = (List<CustomerBoard>)service.boardListByTitle(boardTitle);
+		model.addAttribute("list", list);
+		
+		return "board/board_list";
+		
 	}
 }

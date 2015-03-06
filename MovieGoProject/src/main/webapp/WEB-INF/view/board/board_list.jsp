@@ -40,11 +40,22 @@
 }
 </style>
 <script>
+$(document).ready(function(){
+$("#search1").click(function(){
+	alert('체크');
+	var title = $('#title').val();
+	
+	if(title != null){
+	<%-- $.get("<%=request.getContextPath()%>/restaurant/list?resName="+name); --%>
+	$(location).attr('href',"<%=request.getContextPath()%>/board?boardTitle="+ title);}
+})
+});
 </script>
 <title>MOVIE GO</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
+	
 	<div class="container">
 		<header>
 		<div class="header"><img width="500" src="<%=request.getContextPath()%>/img/qna.png" /></div>
@@ -69,5 +80,11 @@
 			</div>
 		</div>
 	</div>
+	<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search"
+							id="title">
+					</div>
+
+					<button class="btn btn-default" id="search1">Search</button>
 </body>
 </html>

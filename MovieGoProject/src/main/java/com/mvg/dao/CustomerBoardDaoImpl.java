@@ -85,5 +85,12 @@ public class CustomerBoardDaoImpl implements CustomerBoardDao {
 		return results;
 	}
 
+	@Override
+	public List<CustomerBoard> getBoardByTitle(String boardTitle) {
+		String stmt = namespace + "selectBoardByTitle";
+		List<CustomerBoard> result = sqlSession.selectList(stmt, boardTitle);
+		return result;
+	}
+
 
 }

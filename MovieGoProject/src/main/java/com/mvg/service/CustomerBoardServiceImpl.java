@@ -61,4 +61,10 @@ public class CustomerBoardServiceImpl implements CustomerBoardService {
 		return result;
 	}
 
+	@Override
+	public List<CustomerBoard> boardListByTitle(String boardTitle) {
+		List<CustomerBoard> result = dao.getBoardByTitle(boardTitle);
+		return result;
+	}
+
 }
