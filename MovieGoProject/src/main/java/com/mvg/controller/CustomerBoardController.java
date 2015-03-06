@@ -111,10 +111,8 @@ public class CustomerBoardController {
 		return "redirect:/board";
 	}
 	
-	@RequestMapping(params={"boardTitle"}, method=RequestMethod.GET)
+	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public String getRestaurantListbyName(@RequestParam String boardTitle, Model model){
-		
-		
 		List<CustomerBoard> list = (List<CustomerBoard>)service.boardListByTitle(boardTitle);
 		model.addAttribute("list", list);
 		

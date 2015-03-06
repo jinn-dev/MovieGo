@@ -44,16 +44,25 @@
 }
 </style>
 <script>
-$(document).ready(function(){
+function searchContent(){
+	alert(parm);
+	if(param != null){
+		$('#searchForm').submit();
+	}
+}
+
+<%-- $(document).ready(function(){
+	
+	
 $("#search1").click(function(){
 	alert('체크');
-	var title = $('#title').val();
+	var title = $('#search_content').val();
 	
 	if(title != null){
-	<%-- $.get("<%=request.getContextPath()%>/restaurant/list?resName="+name); --%>
-	$(location).attr('href',"<%=request.getContextPath()%>/board?boardTitle="+ title);}
-})
+	$(location).attr('href',"<%=request.getContextPath()%>/board?boardTitle="+ title);
+	}
 });
+}); --%>
 </script>
 <title>MOVIE GO</title>
 </head>
@@ -83,11 +92,13 @@ $("#search1").click(function(){
 				</table>
 			</div>
 		</div>
+		<c:url value="/board/search" var="url"/>
+		<form id="searchForm" action="${url} ">
 			<div class="form-group">
-		<input type="text" id="search_content" class="form-control"
-			placeholder="Search" id="title">
-		<button class="btn btn-default" id="search1">Search</button>	
-	</div>
+				<input type="text" id="search_content" name="boardTitle" onkeypress="if(event.keyCode==13) {searchContent() return false;}" class="form-control" placeholder="Search"/>
+				<button class="btn btn-default" id="search1">Search</button>
+			</div>	
+		</form>
 	</div>
 </body>
 </html>

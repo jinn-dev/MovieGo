@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mvg.mappers.customerBoardMapper">
 	
-		<select id="selectBoardByTitle" parameterType="String" resultType="CustomerBoard">
-		select * from CUSTOMERBOARDS where  board_title = #{boardTitle}
+	<select id="selectBoardByTitle" parameterType="String" resultType="CustomerBoard">
+		select * from CUSTOMERBOARDS where  board_title like #{boardTitle}
 	</select> 
 	
 	<select id="selectBoardByUserId" parameterType="String" resultType="CustomerBoard">
