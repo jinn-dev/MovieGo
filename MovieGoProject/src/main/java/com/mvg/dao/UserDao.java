@@ -27,4 +27,6 @@ public interface UserDao {
 	
 	String selectUserByIdAndEmail(String userId, String userEmail);
 	
+	List<User> selectAllUser();
+	
 }

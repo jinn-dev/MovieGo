@@ -1,5 +1,7 @@
 package com.mvg.service;
 
+import java.util.List;
+
 import com.mvg.entity.User;
 
 public interface UserService {
@@ -18,4 +20,6 @@ public interface UserService {
 	public String selectUserByEmail(String userEmail);
 
 	public String selectUserByIdAndEmail(String userId, String userEmail);
+	
+	public List<User> selectAllUser();
 }

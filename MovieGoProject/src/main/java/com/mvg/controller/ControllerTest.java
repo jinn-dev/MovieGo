@@ -2,6 +2,7 @@ package com.mvg.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -144,5 +145,11 @@ public class ControllerTest {
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String admin() {
 		return "admin/admin";
+	}
+	@RequestMapping(value = "/userlist", method = RequestMethod.GET)
+	public String userlist(Model model) {
+		List<User> list = service.selectAllUser();
+		model.addAttribute("userlist", list);
+		return "admin/userlist";
 	}
 }

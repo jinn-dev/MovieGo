@@ -105,4 +105,12 @@ public class UserDaoImpl implements UserDao {
 		return result;
 	}
 
+	@Override
+	public List<User> selectAllUser() {
+		String stmt = namespace + "selectAllUser";
+		List<User> result = sqlSession.selectList(stmt);
+		return result;
+	}
+
+
 }
