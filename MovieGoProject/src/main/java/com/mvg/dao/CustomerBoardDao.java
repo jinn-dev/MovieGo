@@ -38,4 +38,6 @@ public interface CustomerBoardDao {
 	//내가쓴 게시물 가져오기+댓글
 	// List<CustomerBoard> getBoardByUserIdWithComments(String userId);
 	
+	
+	List<CustomerBoard> getBoardByTitle(String boardTitle);
 }

@@ -1,17 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="com.mvg.entity.User"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
 <!-- Custom CSS -->
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
 <style type="text/css">
 @import url('http://fonts.googleapis.com/earlyaccess/nanumgothic.css');
 
@@ -57,18 +62,19 @@ body {
 </style>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <c:url value="/main.do" var="url"/>
-      <a class="navbar-brand" href="${url }"><font color="#4F5D73"><b>MOVIE</b></font><font color="#C75C5C"><b>GO</b></font></a>
-    </div>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<c:url value="/main.do" var="url" />
+				<a class="navbar-brand" href="${url }"><font color="#4F5D73"><b>MOVIE</b></font><font
+					color="#C75C5C"><b>GO</b></font></a>
+			</div>
 
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
@@ -77,8 +83,9 @@ body {
 					<li><a href="${url }">영화 예매 <span class="sr-only">(current)</span></a></li>
 					<c:url value="/rating" var="url" />
 					<li><a href="${url }">영화 평가하기</a></li>
-					<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">MY PAGE<span class="caret"></span></a>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" aria-expanded="true">MY PAGE<span
+							class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<c:url value="/mypage" var="url"></c:url>
 							<li role="presentation"><a href="${url }">영화취향분석</a></li>
@@ -90,25 +97,38 @@ body {
 							<li role="presentation"><a href="${url }">예매취소내역</a></li>
 							<li class="divider"></li>
 							<c:url value="/wishlist" var="url"></c:url>
-							<li role="presentation"><a href="${url }?userId=${log.userId }">위시리스트</a></li>
+							<li role="presentation"><a
+								href="${url }?userId=${log.userId }">위시리스트</a></li>
 							<c:url value="/ratinglist" var="url"></c:url>
-							<li role="presentation"><a href="${url }?userId=${log.userId }">영화평가목록</a></li>
-						</ul> 
-					<c:url value="/board" var="url" />
+							<li role="presentation"><a
+								href="${url }?userId=${log.userId }">영화평가목록</a></li>
+						</ul> <c:url value="/board" var="url" />
 					<li><a href="${url }">고객센터</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-					<a href="#">
-					<img id="headerimg" width="25px" src="<%=request.getContextPath() %>/img/Roundicons-16.png"/>&nbsp;&nbsp;&nbsp;
-					<c:out value="${user.userId}"/>님 반갑습니다.</a>
-					<!-- 관리자일경우 -->
-					</li>
+					<%
+					User user = (User)session.getAttribute("user");
+					String userId = user.getUserId();
+					if(userId.equals("admin")) {
+					%>
+					<c:url value="/admin" var="url" />
+					<li><a href="${url }">관리자</a></li>
+					<%
+					}
+					else {
+						%>
 					<c:url value="/logout" var="url" />
+					<li><a href="#"><img id="headerimg" width="25px"
+							src="<%=request.getContextPath() %>/img/Roundicons-16.png" />&nbsp;&nbsp;&nbsp;
+							<c:out value="${user.userId}" />님 반갑습니다.</a></li>
 					<li><a href="${url }"><b>LOGOUT</b></a></li>
+
+					<%
+					}
+						%>
 				</ul>
+
 			</div>
+
 		</div>
-</nav>
-
-
+	</nav>
