@@ -57,12 +57,6 @@ body {
 	background: #4F5D73;
 	color: #F2F2F2;
 }
-
-#submenu {
-	width: 30%;
-	float: left;
-}
-
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -82,9 +76,8 @@ $(document).ready(function(){
 <jsp:include page="/WEB-INF/view/user/header.jsp" />
 <body>
 	<div class="container">
-		<div class="header">
-			<img width="500"
-				src="<%=request.getContextPath()%>/img/user_modify.png" />
+		<div class="align">
+			<img width="500" src="<%=request.getContextPath()%>/img/user_modify.png" />
 		</div>
 		<c:url value="/update" var="action"></c:url>
 		<form:form modelAttribute="user" method="post" action="${action }"
@@ -138,10 +131,6 @@ $(document).ready(function(){
 			</div>
 			</div>
 			</form:form>
-	</div>
-
-	<div id="submenu">
-		<jsp:include page="submenu.jsp"></jsp:include>
 	</div>
 	<script type="text/javascript">
 	/* 비밀번호 유효성 체크 */

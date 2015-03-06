@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mypage/horizBarChart.css" />
-<script src="<%=request.getContextPath ()%>/js/mypage/jquery.horizBarChart.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<title>Insert title here</title>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<title>MOVIE GO</title>
 </head>
 <script>
 $(document).ready(function(){
@@ -19,15 +19,38 @@ $(document).ready(function(){
 		type:'POST',
 		cache : false,
 		async : false,
+		contentType: "application/json; charset=utf-8",
 		dataType : 'json',
     success : function(data) {
-			var output = '<ul class="chart">'+
-			'<li class="title" title="선호 국가: '+data.results[0].movieNation+'영화를 가장 많이 보셨어요."></li>'+
-            '<li class="current" title="'+data.results[0].movieNation+'"><span class="bar" data-number="'+data.results[0].count+'"></span><span class="number">'+data[0].results.count+'</span></li>'+
-            '<li class="current" title="'+data.results[1].movieNation+'"><span class="bar" data-number="'+data.results[1].count+'"></span><span class="number">'+data[1].results.count+'</span></li>'+
-            '<li class="current" title="'+data.results[2].movieNation+'"><span class="bar" data-number="'+data.results[2].count+'"></span><span class="number">'+data[2].results.count+'</span></li><ul>';
-			alert(output);
-            $('.chart-horiz').html(output);
+    	 $('#nationchart').highcharts({
+    	        chart: {
+    	            type: 'bar'
+    	        },
+    	        title: {
+    	            text: 'Stacked bar chart'
+    	        },
+    	        xAxis: {
+    	            categories: [data.nations[0].movieNation, data.nations[1].movieNation, data.nations[2].movieNation, data.nations[3].movieNation, data.nations[4].movieNation]
+    	        },
+    	        yAxis: {
+    	            min: 0,
+    	            title: {
+    	                text: 'Total fruit consumption'
+    	            }
+    	        },
+    	        legend: {
+    	            reversed: true
+    	        },
+    	        plotOptions: {
+    	            series: {
+    	                stacking: 'normal'
+    	            }
+    	        },
+    	        series: [{
+    	            name: 'John',
+    	            data: [data.nations[0].count, data.nations[1].count, data.nations[2].count, data.nations[3].count, data.nations[4].count]
+    	        }]
+    	    });
 	},
 
 	error : function(request, status, error) {
@@ -36,18 +59,13 @@ $(document).ready(function(){
 		   }	
 	   }
    });
-	
-	
-	});
+});
 </script>
 <body>
-	<div class="chart-horiz"></div>
-	
-	<script>
-		$('.chart').horizBarChart({
-			selector : '.bar',
-			speed : 1500
-		});
-	</script>
+
+<div id="nationchart" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto">
+
+</div>
+
 </body>
 </html>

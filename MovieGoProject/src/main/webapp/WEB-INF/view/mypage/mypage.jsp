@@ -16,15 +16,12 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.3.0/snap.svg-min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-						<c:url value="/nation.count" var="url"/>
-						$(".taste-nation-div").load("${url}");
-						
+		
 						<c:url value="/genre.rmd" var="url"/>
-						$(".genre-rmd-div").load("${url}");
+						$(".genre-rmd-div").load("${url}"); 
 						
 						<c:url value="/genre.count" var="url"/>
 						$.ajax({
@@ -521,6 +518,25 @@
 											}
 									}
 							});
+						
+						<c:url value="/nation.count.do" var="url"></c:url>
+						$.ajax({
+							url:'${url}',
+							type:'POST',
+							cache : false,
+							async : false,
+							contentType: "application/json; charset=utf-8",
+							dataType : 'json',
+					    success : function(data) {
+					    	alert(data);
+						},
+
+						error : function(request, status, error) {
+							if(request.status != '0') {
+								alert("code :" +request.status + "\r\nmessage : " + request.responseText + "\r\nerror:" + error);	
+							   }	
+						   }
+					  });
 
 });
 </script>
@@ -529,26 +545,33 @@
 <body>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
 	<div class="container">
-	<center><img width="350" src="<%=request.getContextPath()%>/img/taste.png" /></center>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="frame-genre">
-					<div class="content">
-						<h3><span id="genre-header"></span></h3>
-						<svg id="svg"></svg>
+		<div class="align">
+			<img width="350" src="<%=request.getContextPath()%>/img/taste.png" />
+			<div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="frame-genre">
+							<div class="content">
+								<h3>
+									<span id="genre-header"></span>
+								</h3>
+								<svg id="svg"></svg>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+							<div class="taste-nation-div">
+								<div id="nationchart"></div>
+							</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="genre-rmd-div"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4">
-				<div class="frame-nation">
-					<div class="taste-nation-div"></div>
-				</div>
-			</div>
 		</div>
-		<div class="row"><div class="col-md-12"><div class="genre-rmd-div"></div></div></div>
-	</div>
-	<div id="submenu">
-		<jsp:include page="submenu.jsp"></jsp:include>
 	</div>
 </body>
 </html>

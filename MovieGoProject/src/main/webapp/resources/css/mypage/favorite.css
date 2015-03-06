@@ -19,7 +19,7 @@ body {
 .frame-genre {
 	width: 50%;
 	min-width: 550px;
-	height: 23em;
+	height: 30em;
 	border-radius: 4px;
 	background: rgba(30, 30, 30, 0.1);
 	margin: auto;

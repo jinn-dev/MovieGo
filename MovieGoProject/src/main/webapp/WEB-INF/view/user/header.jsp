@@ -98,9 +98,13 @@ body {
 					<li><a href="${url }">고객센터</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<li>
+					<a href="#">
+					<img id="headerimg" width="25px" src="<%=request.getContextPath() %>/img/Roundicons-16.png"/>&nbsp;&nbsp;&nbsp;
+					<c:out value="${user.userId}"/>님 반갑습니다.</a>
+					<!-- 관리자일경우 -->
+					</li>
 					<c:url value="/logout" var="url" />
-					<li><a href="#"><img id="headerimg" width="25px" src="<%=request.getContextPath() %>/img/Roundicons-16.png"/>&nbsp;&nbsp;&nbsp;
-					<c:out value="${user.userId}"/>님 반갑습니다.</a></li>
 					<li><a href="${url }"><b>LOGOUT</b></a></li>
 				</ul>
 			</div>

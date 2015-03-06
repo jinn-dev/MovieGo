@@ -41,22 +41,15 @@ public class MovieTasteController {
 		return map;
 	}
 
-	// 선호국가 통계
-	@RequestMapping(value = "/nation.count", method = RequestMethod.GET)
-	public String tasteNationRedirect() {
-		return "mypage/favorite_nations";
-	}
-
 	@RequestMapping(value = "/nation.count.do", method = RequestMethod.POST)
 	@ResponseBody
 	public HashMap<String, Object> tasteNation(HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		int result = service.countMovieEvalService(user);
-		List<Movie> results = service.countNationService(user);
+		List<Movie> nations = service.countNationService(user);
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("result", result);
-		map.put("results", results);
-		logger.trace("결과"+result);
+		map.put("nations", nations);
 		return map;
 	}
 

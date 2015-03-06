@@ -59,8 +59,8 @@
                                 data : param,
                                 dataType : 'json',
                                  success : function(data) {
-                                	 var output = '<table class="rating-table"><tr><th colspan="6" align="center"><img id="headerimg" width="350px" src="<%=request.getContextPath() %>/img/rating.png"/></th></tr><tr>';
-                                     output+='<tr><th colspan="6" align="center">30개 이상 평가하시면 취향 분석을 볼 수 있어요!</th></tr><tr>';    
+                                	 var output = '<table class="rating-table"><tr><th colspan="6" align="center"><div class="align"><img id="headerimg" width="350px" src="<%=request.getContextPath() %>/img/rating.png"/></div></th></tr><tr>';
+                                     output+='<tr><th colspan="6"><div class="align">30개 이상 평가하시면 취향 분석을 볼 수 있어요!</div></th></tr><tr>';    
                                 	 for(var i=0; i<6; i++){
 											output+='<td><div class="grid">'+
 											'<figure class="effect-zoe">'+
