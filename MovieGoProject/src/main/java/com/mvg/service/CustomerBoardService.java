@@ -21,5 +21,7 @@ public interface CustomerBoardService {
 	CustomerBoard getBoardByBdId(int boardId);
 	
 	CustomerBoard getBoardByBdIdWithCmts(int boardId);
+	
+	List<CustomerBoard> boardListByTitle(String boardTitle);
 
 }
