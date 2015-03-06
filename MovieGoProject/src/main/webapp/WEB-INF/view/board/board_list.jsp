@@ -11,9 +11,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
 <style type="text/css">
-
 .header{
 	text-align: center;
 }
@@ -39,21 +37,6 @@
 	text-align: center;
 	padding: 0.25em;
 	font-size: 1.25em;
-}
-
-.div-button {
-	background: #C75C5C;
-	color: #F2F2F2;
-	border: none;
-	letter-spacing: 1px;
-	padding: 1.0em;
-	font-size: 1.0em;
-	outline: none;
-}
-
-.div-button:hover {
-	background: #4F5D73;
-	color: #F2F2F2;
 }
 </style>
 <script>

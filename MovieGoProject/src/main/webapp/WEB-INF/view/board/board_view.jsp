@@ -16,7 +16,6 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/alert/css/alertify.default.css" id="toggleCSS" />
 <script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath ()%>/alert/js/alertify.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
 <style type="text/css">
 .div-button {
 	background: #C75C5C;

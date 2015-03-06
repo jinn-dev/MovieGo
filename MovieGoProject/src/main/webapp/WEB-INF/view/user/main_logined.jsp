@@ -2,8 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page
-	import="kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService"%>
+<%@ page import="kr.or.kobis.kobisopenapi.consumer.rest.KobisOpenAPIRestService"%>
 <%@ page import="org.codehaus.jackson.map.ObjectMapper"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.lang.*"%>
@@ -19,22 +18,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Bootstrap core CSS -->
-<link rel="stylesheet"
-	href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap/bootstrap-theme.css">
 <!-- Custom CSS -->
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/main/css/location.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/main/css/video-js.css">
-<script type="text/javascript"
-	src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath() %>/js/bootstrap/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap/clean-blog.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/main/css/video-js.css">
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery-2.1.3.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/bootstrap/clean-blog.js"></script>
+<style>
+table {
+	background: #F2F2F2;
+	padding: 10px;
+}
+body{
+	padding-bottom: -100px;
+}
+.container{
+	margin-top: 5em;
+}
+</style>
 <script type="text/javascript">
 $(document).ready(function() {
 	var param="movieCode"+"="+$(".firstMovie").val();
+	alert(param);
 	<c:url value="/thumbnail" var="url"/>
 	$.ajax({
 		url:'${url}',
@@ -68,23 +74,9 @@ $(document).ready(function() {
 	$(".movieName").mouseleave(function() { 
 		$(this).css("color","#4F5D73");
 		});
-	
-
 });
-
 </script>
-<title>MOVIE GO 메인 페이지</title>
-<script>
-</script>
-<style>
-table {
-	background: #F2F2F2;
-	padding: 10px;
-}
-.align{
-	text-align: center;
-}
-</style>
+<title>MOVIE GO</title>
 </head>
 <body>
 	<%	
@@ -120,12 +112,26 @@ table {
 
 %>
 	<jsp:include page="/WEB-INF/view/user/header.jsp" />
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
+	 <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('<%=request.getContextPath()%>/img/interstellar.png')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading">
+                        <h1><font color="#4F5D73">MOVIE</font><font color="#C75C5C">GO</font></h1>
+                        <hr class="small">
+                        <span class="subheading"><font color="#393939">영화예매 및 영화추천 서비스</font></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+		<div class="row" style="border:1px;">
+			<div class="col-md-2">
 				<div class="align img-rounded"><img id="thumbnail" src="#" width="213" height="301"></div>
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-6">
 				<table class="table table-bordered table-striped table-responsive">
 					<tr>
 						<th colspan="6" class="align"><img id="tasteimg"
@@ -144,9 +150,8 @@ table {
 							<c:forEach
 								items="${dailyResult.boxOfficeResult.dailyBoxOfficeList }"
 								var="boxoffice" varStatus="status">
-								<input type="hidden" value="${boxoffice.movieCd }"
-									class='firstMovie' />
-								<tr class="boxoffice-tr"><td><c:out value="${status.count }" /> <%-- <c:out value="${boxoffice.rank }" /> --%></td>
+								<input type="hidden" value="${boxoffice.movieCd }" class='firstMovie' />
+								<tr class="boxoffice-tr"><td><c:out value="${boxoffice.rank }" /></td>
 								<td><a href="#" class="movieName"
 									onmouseover="javascript:viewThumbnail('${boxoffice.movieCd}')"><c:out
 											value="${boxoffice.movieNm }" /></a></td>
@@ -158,10 +163,7 @@ table {
 					</c:if>
 				</table>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-8 align">
+			<div class="col-md-4">
 				<video style="text-align: center;" id="main-video" class="video-js vjs-default-skin" controls preload="none"
 					poster="<%=request.getContextPath()%>/img/kingsman12-1024x576.jpg"
 					data-setup="{}" width="600" height="360">
@@ -170,7 +172,7 @@ table {
 				</video>
 			</div>
 		</div>
-		<script>
+<script>
 function viewThumbnail(m){
 	var param="movieCode"+"="+m;
 	<c:url value="/thumbnail" var="url"/>
